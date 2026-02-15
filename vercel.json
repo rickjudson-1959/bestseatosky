@@ -1,0 +1,22 @@
+{
+  "redirects": [
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.bestseatosky.com" }],
+      "destination": "https://bestseatosky.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "bestseatosky.ca" }],
+      "destination": "https://bestseatosky.com/:path*",
+      "permanent": true
+    },
+    {
+      "source": "/:path*",
+      "has": [{ "type": "host", "value": "www.bestseatosky.ca" }],
+      "destination": "https://bestseatosky.com/:path*",
+      "permanent": true
+    }
+  ]
+}
