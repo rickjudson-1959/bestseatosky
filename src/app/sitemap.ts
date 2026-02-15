@@ -1,17 +1,3 @@
-const listingPages: MetadataRoute.Sitemap = (listings || []).map((listing) => {
-    const cat = Array.isArray(listing.categories) ? listing.categories[0] : listing.categories;
-    return {
-      url: `${baseUrl}/${(cat as unknown as { slug: string })?.slug || 'eat'}/${listing.slug}`,
-      lastModified: new Date(listing.updated_at),
-      changeFrequency: 'weekly' as const,
-      priority: 0.8,
-    };
-  });
-```
-
-Or even simpler — let me just give you the whole fixed file. Delete the old one and create it fresh:
-```
-cat > src/app/sitemap.ts << 'ENDOFFILE'
 import { MetadataRoute } from 'next';
 import { supabase } from '@/lib/supabase';
 
@@ -46,5 +32,3 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [...staticPages, ...listingPages];
 }
-ENDOFFILE
-```
