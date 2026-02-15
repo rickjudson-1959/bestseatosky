@@ -113,10 +113,20 @@ export default async function ListingPage({ params }: Props) {
       </nav>
 
       {/* Hero Image */}
-      <div className={`h-64 md:h-80 rounded-2xl overflow-hidden bg-gradient-to-br ${styles.gradient} flex items-center justify-center relative mb-10`}>
-        <span className="text-8xl opacity-15 saturate-0 brightness-200">
-          {CAT_ICONS[catSlug]}
-        </span>
+      <div className={`h-64 md:h-80 rounded-2xl overflow-hidden bg-gradient-to-br ${styles.gradient} relative mb-10`}>
+        {listing.featured_image_url ? (
+          <img
+            src={listing.featured_image_url}
+            alt={listing.name}
+            className="w-full h-full object-cover"
+          />
+        ) : (
+          <div className="w-full h-full flex items-center justify-center">
+            <span className="text-8xl opacity-15 saturate-0 brightness-200">
+              {CAT_ICONS[catSlug]}
+            </span>
+          </div>
+        )}
         <div className="absolute bottom-6 left-6">
           <span className={`${styles.bg} rounded-full px-4 py-1.5 text-xs font-semibold ${styles.text} uppercase tracking-wide`}>
             {listing.towns?.name || 'Sea to Sky'}
