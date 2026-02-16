@@ -40,7 +40,7 @@ src/
 │   ├── layout.tsx              # Root layout (Header, Footer, fonts, meta)
 │   ├── page.tsx                # Homepage (hero, search, featured, categories)
 │   ├── globals.css             # Tailwind imports, custom scrollbar, utilities
-│   ├── sitemap.ts              # Dynamic XML sitemap for all listings
+│   ├── sitemap.ts              # Dynamic XML sitemap (listings + guide pages)
 │   ├── robots.ts               # Robots.txt config
 │   ├── not-found.tsx           # Custom 404 page
 │   ├── [category]/
@@ -48,18 +48,22 @@ src/
 │   │   ├── FilterBar.tsx       # Client-side town + tag filtering
 │   │   └── [slug]/
 │   │       └── page.tsx        # Individual listing detail page
+│   ├── guide/
+│   │   └── [slug]/
+│   │       └── page.tsx        # SEO guide page (ranked listing lists)
 │   └── api/
 │       └── search/
 │           └── route.ts        # GET /api/search?q= — name search endpoint
 ├── components/
 │   ├── Header.tsx              # Sticky nav with category links
-│   ├── Footer.tsx              # Organized footer with curated links
+│   ├── Footer.tsx              # Organized footer with curated links + guides
 │   ├── SearchBar.tsx           # Debounced live search (client component)
 │   └── ListingCard.tsx         # Listing preview card with image/gradient
 ├── lib/
 │   ├── supabase.ts             # Supabase client + type definitions
-│   └── data.ts                 # Data fetching functions (getListings, etc.)
-└── middleware.ts               # Domain redirect (→ bestseatosky.com)
+│   └── data.ts                 # Data fetching functions
+├── middleware.ts               # Domain redirect (→ bestseatosky.com)
+└── PROJECT_MANIFEST.md         # This file
 ```
 
 ---
@@ -75,6 +79,7 @@ src/
 | **tags** | id, slug, name, category_id |
 | **listings** | id, slug, name, description, short_description, category_id, town_id, address, phone, email, website, hours, price_level, google_rating, google_review_count, google_place_id, featured_image_url, images, featured, status, meta_title, meta_description, schema_type, schema_json |
 | **listing_tags** | listing_id, tag_id (junction table) |
+| **seo_pages** | id, slug, title, meta_description, h1_text, intro_content, category_id, tag_id, town_id, schema_json, canonical_url, status |
 
 ### Categories
 
@@ -97,6 +102,8 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 | `getListings(options?)` | Listing[] | Homepage, category pages |
 | `getListingBySlug(slug)` | Listing \| null | Detail pages |
 | `getListingCount(slug?)` | number | Category pages |
+| `getSeoPageBySlug(slug)` | SeoPage \| null | Guide pages |
+| `getGuideListings(page)` | Listing[] | Guide pages |
 
 ---
 
@@ -106,8 +113,26 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **706 listings** have Google Places photos (lh3.googleusercontent.com)
 - **Live search** on homepage (debounced, searches by name)
 - **Filtering** on category pages (by town, by tag)
+- **SEO guide pages** at `/guide/[slug]` — ranked lists from seo_pages table
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
 - **Image fallback:** gradient + emoji when no photo available
+
+---
+
+## Guide Pages (`/guide/[slug]`)
+
+Driven by the `seo_pages` table. Each guide page:
+- Filters listings by category_id, town_id, and/or tag_id
+- Displays top 15 listings ranked by google_rating + google_review_count
+- Includes numbered list with photos, ratings, descriptions, addresses
+- Schema.org ItemList JSON-LD markup
+- Breadcrumb navigation
+
+Key guides linked from footer:
+- `/guide/best-restaurants-squamish`
+- `/guide/best-hikes-squamish`
+- `/guide/best-hotels-whistler`
+- `/guide/things-to-do-whistler`
 
 ---
 
