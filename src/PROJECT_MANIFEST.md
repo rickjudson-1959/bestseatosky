@@ -47,11 +47,11 @@ src/
 │   │   ├── page.tsx            # Category listing page (eat, stay, play, etc.)
 │   │   ├── FilterBar.tsx       # Client-side town + tag filtering
 │   │   └── [slug]/
-│   │       └── page.tsx        # Individual listing detail page (related + cross-category sections)
+│   │       └── page.tsx        # Listing detail (OG tags, related, cross-category, claim link)
 │   ├── guide/
 │   │   ├── page.tsx            # Guide landing page (all guides grouped by category)
 │   │   └── [slug]/
-│   │       └── page.tsx        # SEO guide page (ranked listing lists)
+│   │       └── page.tsx        # SEO guide page (ranked listings, OG tags)
 │   └── api/
 │       └── search/
 │           └── route.ts        # GET /api/search?q= — name search endpoint
@@ -121,6 +121,8 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **SEO guide pages** at `/guide/[slug]` — ranked lists from seo_pages table
 - **Related listings** on detail pages: "More in [Town]" (4, same category) + "You Might Also Like" (3, different category)
 - **Enhanced Schema.org JSON-LD** on detail pages: full PostalAddress (locality, BC, CA), canonical url, sameAs, image
+- **Open Graph & Twitter cards** on listing detail pages (title, description, image, canonical url) and guide pages (default OG image)
+- **Claim your listing** — "Is this your business?" mailto link on listing sidebar (hello@bestseatosky.com)
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
 - **Image fallback:** gradient + emoji when no photo available
 
