@@ -77,7 +77,7 @@ export default function Footer() {
           <div className="flex gap-4">
             <Link href="/terms" className="text-xs text-slate-600 hover:text-slate-400">Terms</Link>
             <Link href="/privacy" className="text-xs text-slate-600 hover:text-slate-400">Privacy</Link>
-            <Link href="/contact" className="text-xs text-slate-600 hover:text-slate-400">Contact</Link>
+            <a href="mailto:hello@bestseatosky.com" className="text-xs text-slate-600 hover:text-slate-400">Contact</a>
           </div>
         </div>
       </div>
