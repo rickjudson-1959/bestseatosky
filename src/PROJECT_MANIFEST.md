@@ -49,13 +49,14 @@ src/
 │   │   └── [slug]/
 │   │       └── page.tsx        # Individual listing detail page (related + cross-category sections)
 │   ├── guide/
+│   │   ├── page.tsx            # Guide landing page (all guides grouped by category)
 │   │   └── [slug]/
 │   │       └── page.tsx        # SEO guide page (ranked listing lists)
 │   └── api/
 │       └── search/
 │           └── route.ts        # GET /api/search?q= — name search endpoint
 ├── components/
-│   ├── Header.tsx              # Sticky nav with category links
+│   ├── Header.tsx              # Sticky nav with category links + Guides
 │   ├── Footer.tsx              # Organized footer with curated links + guides
 │   ├── SearchBar.tsx           # Debounced live search (client component)
 │   └── ListingCard.tsx         # Listing preview card with image/gradient
@@ -102,6 +103,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 | `getListings(options?)` | Listing[] | Homepage, category pages |
 | `getListingBySlug(slug)` | Listing \| null | Detail pages |
 | `getListingCount(slug?)` | number | Category pages |
+| `getAllSeoPages()` | SeoPage[] (with categories) | Guide landing page |
 | `getSeoPageBySlug(slug)` | SeoPage \| null | Guide pages |
 | `getRelatedListings(id, townId, catId)` | Listing[] | Detail page ("More in [Town]") |
 | `getCrossCategoryListings(id, townId, catId)` | Listing[] | Detail page ("You Might Also Like") |
@@ -115,6 +117,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **706 listings** have Google Places photos (lh3.googleusercontent.com)
 - **Live search** on homepage (debounced, searches by name)
 - **Filtering** on category pages (by town, by tag)
+- **Guide landing page** at `/guide` — all published guides grouped by category
 - **SEO guide pages** at `/guide/[slug]` — ranked lists from seo_pages table
 - **Related listings** on detail pages: "More in [Town]" (4, same category) + "You Might Also Like" (3, different category)
 - **Enhanced Schema.org JSON-LD** on detail pages: full PostalAddress (locality, BC, CA), canonical url, sameAs, image
@@ -123,8 +126,15 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 
 ---
 
-## Guide Pages (`/guide/[slug]`)
+## Guide Pages (`/guide` and `/guide/[slug]`)
 
+### Landing Page (`/guide`)
+- Shows all published seo_pages as cards grouped by category
+- Cards display h1_text, meta_description, and link to the full guide
+- Category section headers with colored accents (Eat, Stay, Play, Visit)
+- "Guides" link in main header nav
+
+### Individual Guide Pages (`/guide/[slug]`)
 Driven by the `seo_pages` table. Each guide page:
 - Filters listings by category_id, town_id, and/or tag_id
 - Displays top 15 listings ranked by google_rating + google_review_count
