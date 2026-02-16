@@ -116,6 +116,16 @@ export async function getListingCount(categorySlug?: string): Promise<number> {
   return count || 0;
 }
 
+export async function getAllSeoPages(): Promise<(SeoPage & { categories?: Category })[]> {
+  const { data, error } = await supabase
+    .from('seo_pages')
+    .select('*, categories(*)')
+    .eq('status', 'published')
+    .order('title');
+  if (error) return [];
+  return data || [];
+}
+
 export async function getSeoPageBySlug(slug: string): Promise<SeoPage | null> {
   const { data, error } = await supabase
     .from('seo_pages')
