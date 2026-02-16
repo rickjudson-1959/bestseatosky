@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getListingBySlug } from '@/lib/data';
+import { getListingBySlug, getRelatedListings, getCrossCategoryListings } from '@/lib/data';
 
 const CAT_STYLES: Record<string, { gradient: string; bg: string; text: string; border: string; accent: string }> = {
   eat: { gradient: 'from-orange-500 to-red-600', bg: 'bg-orange-50', text: 'text-amber-700', border: 'border-orange-200', accent: 'bg-amber-700' },
@@ -79,6 +79,12 @@ export default async function ListingPage({ params }: Props) {
     ...(listing.email ? [{ label: 'Email', value: listing.email, icon: '✉️' }] : []),
   ];
 
+  // Fetch related listings
+  const [relatedListings, crossCategoryListings] = await Promise.all([
+    getRelatedListings(listing.id, listing.town_id, listing.category_id),
+    getCrossCategoryListings(listing.id, listing.town_id, listing.category_id),
+  ]);
+
   // Build schema markup
   const schema = listing.schema_json || {
     '@context': 'https://schema.org',
@@ -88,6 +94,9 @@ export default async function ListingPage({ params }: Props) {
     address: {
       '@type': 'PostalAddress',
       streetAddress: listing.address,
+      addressLocality: listing.towns?.name || 'Sea to Sky',
+      addressRegion: 'BC',
+      addressCountry: 'CA',
     },
     ...(listing.google_rating && {
       aggregateRating: {
@@ -97,8 +106,10 @@ export default async function ListingPage({ params }: Props) {
       },
     }),
     ...(listing.phone && { telephone: listing.phone }),
-    ...(listing.website && { url: listing.website }),
+    url: `https://bestseatosky.com/${catSlug}/${listing.slug}`,
     priceRange: listing.price_level === 0 ? 'Free' : '$'.repeat(listing.price_level),
+    ...(listing.website && { sameAs: [listing.website] }),
+    ...(listing.featured_image_url && { image: listing.featured_image_url }),
   };
 
   return (
@@ -218,6 +229,107 @@ export default async function ListingPage({ params }: Props) {
           </div>
         </div>
       </div>
+
+      {/* More in [Town] */}
+      {relatedListings.length > 0 && (
+        <div className="mt-16">
+          <h2 className="font-serif text-2xl font-bold text-slate-900 mb-6">
+            More in {listing.towns?.name || 'This Area'}
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+            {relatedListings.map((related) => {
+              const rCatSlug = related.categories?.slug || catSlug;
+              const rStyles = CAT_STYLES[rCatSlug] || CAT_STYLES.eat;
+              return (
+                <Link key={related.id} href={`/${rCatSlug}/${related.slug}`} className="group">
+                  <div className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-md transition-all">
+                    <div className={`h-32 bg-gradient-to-br ${rStyles.gradient} relative overflow-hidden`}>
+                      {related.featured_image_url ? (
+                        <img
+                          src={related.featured_image_url}
+                          alt={related.name}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-4xl opacity-15 saturate-0 brightness-200">
+                            {CAT_ICONS[rCatSlug]}
+                          </span>
+                        </div>
+                      )}
+                    </div>
+                    <div className="p-3">
+                      <h3 className="font-serif text-sm font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-tight line-clamp-1">
+                        {related.name}
+                      </h3>
+                      {related.google_rating && (
+                        <div className="flex items-center gap-1 mt-1">
+                          <Stars rating={related.google_rating} />
+                          <span className="text-xs font-bold text-slate-700">{related.google_rating.toFixed(1)}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
+
+      {/* You Might Also Like */}
+      {crossCategoryListings.length > 0 && (
+        <div className="mt-16">
+          <h2 className="font-serif text-2xl font-bold text-slate-900 mb-6">
+            You Might Also Like
+          </h2>
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-5">
+            {crossCategoryListings.map((item) => {
+              const iCatSlug = item.categories?.slug || 'eat';
+              const iStyles = CAT_STYLES[iCatSlug] || CAT_STYLES.eat;
+              return (
+                <Link key={item.id} href={`/${iCatSlug}/${item.slug}`} className="group">
+                  <div className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-md transition-all">
+                    <div className={`h-36 bg-gradient-to-br ${iStyles.gradient} relative overflow-hidden`}>
+                      {item.featured_image_url ? (
+                        <img
+                          src={item.featured_image_url}
+                          alt={item.name}
+                          className="w-full h-full object-cover"
+                          loading="lazy"
+                        />
+                      ) : (
+                        <div className="w-full h-full flex items-center justify-center">
+                          <span className="text-4xl opacity-15 saturate-0 brightness-200">
+                            {CAT_ICONS[iCatSlug]}
+                          </span>
+                        </div>
+                      )}
+                      <div className="absolute top-2 left-2">
+                        <span className={`${iStyles.bg} rounded-full px-2.5 py-1 text-[10px] font-semibold ${iStyles.text} uppercase tracking-wide`}>
+                          {item.categories?.name || iCatSlug}
+                        </span>
+                      </div>
+                    </div>
+                    <div className="p-3">
+                      <h3 className="font-serif text-sm font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-tight line-clamp-1">
+                        {item.name}
+                      </h3>
+                      {item.google_rating && (
+                        <div className="flex items-center gap-1 mt-1">
+                          <Stars rating={item.google_rating} />
+                          <span className="text-xs font-bold text-slate-700">{item.google_rating.toFixed(1)}</span>
+                        </div>
+                      )}
+                    </div>
+                  </div>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      )}
 
       {/* JSON-LD Schema */}
       <script

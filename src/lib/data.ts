@@ -127,6 +127,44 @@ export async function getSeoPageBySlug(slug: string): Promise<SeoPage | null> {
   return data;
 }
 
+export async function getRelatedListings(
+  listingId: string,
+  townId: string,
+  categoryId: string,
+  limit = 4
+): Promise<Listing[]> {
+  const { data, error } = await supabase
+    .from('listings')
+    .select('*, categories(*), towns(*), listing_tags(tags(*))')
+    .eq('status', 'published')
+    .eq('town_id', townId)
+    .eq('category_id', categoryId)
+    .neq('id', listingId)
+    .order('google_rating', { ascending: false })
+    .limit(limit);
+  if (error) return [];
+  return data || [];
+}
+
+export async function getCrossCategoryListings(
+  listingId: string,
+  townId: string,
+  categoryId: string,
+  limit = 3
+): Promise<Listing[]> {
+  const { data, error } = await supabase
+    .from('listings')
+    .select('*, categories(*), towns(*), listing_tags(tags(*))')
+    .eq('status', 'published')
+    .eq('town_id', townId)
+    .neq('category_id', categoryId)
+    .neq('id', listingId)
+    .order('google_rating', { ascending: false })
+    .limit(limit);
+  if (error) return [];
+  return data || [];
+}
+
 export async function getGuideListings(page: SeoPage): Promise<Listing[]> {
   if (page.tag_id) {
     // Filter through listing_tags junction table
