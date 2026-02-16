@@ -21,12 +21,28 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const page = await getSeoPageBySlug(slug);
   if (!page) return {};
 
+  const url = `https://bestseatosky.com/guide/${slug}`;
+  const ogImage = 'https://bestseatosky.com/og-default.jpg';
+
   return {
     title: page.title,
     description: page.meta_description,
     ...(page.canonical_url && {
       alternates: { canonical: page.canonical_url },
     }),
+    openGraph: {
+      title: page.title,
+      description: page.meta_description,
+      url,
+      type: 'website',
+      images: [{ url: ogImage, alt: page.title }],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: page.title,
+      description: page.meta_description,
+      images: [ogImage],
+    },
   };
 }
 

@@ -26,13 +26,35 @@ type Props = {
 };
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
+  const { category, slug } = await params;
   const listing = await getListingBySlug(slug);
   if (!listing) return {};
 
+  const title = listing.meta_title || `${listing.name} | Best Sea to Sky`;
+  const description = listing.meta_description || listing.short_description || listing.description?.slice(0, 160);
+  const catSlug = listing.categories?.slug || category;
+  const url = `https://bestseatosky.com/${catSlug}/${listing.slug}`;
+
   return {
-    title: listing.meta_title || `${listing.name} | Best Sea to Sky`,
-    description: listing.meta_description || listing.short_description || listing.description?.slice(0, 155),
+    title,
+    description,
+    openGraph: {
+      title: listing.name,
+      description,
+      url,
+      type: 'website',
+      ...(listing.featured_image_url && {
+        images: [{ url: listing.featured_image_url, alt: listing.name }],
+      }),
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: listing.name,
+      description,
+      ...(listing.featured_image_url && {
+        images: [listing.featured_image_url],
+      }),
+    },
   };
 }
 
@@ -226,6 +248,13 @@ export default async function ListingPage({ params }: Props) {
                 Visit Website ↗
               </a>
             )}
+
+            <a
+              href={`mailto:hello@bestseatosky.com?subject=${encodeURIComponent(`Claim: ${listing.name}`)}&body=${encodeURIComponent(`I'd like to claim the listing for ${listing.name} at bestseatosky.com/${catSlug}/${listing.slug}`)}`}
+              className="block text-center text-xs text-slate-400 hover:text-slate-600 transition-colors mt-5"
+            >
+              Is this your business?
+            </a>
           </div>
         </div>
       </div>
