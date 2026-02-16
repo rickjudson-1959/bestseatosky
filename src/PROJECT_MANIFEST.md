@@ -119,6 +119,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 
 - **859 listings** scraped via Apify from Google Places
 - **809 listings** have Google Places photos (lh3.googleusercontent.com)
+- **859 AI-generated descriptions** via Claude Sonnet (unique, SEO-optimized, 2-3 sentences each)
 - **Live search** on homepage (debounced, searches by name)
 - **Filtering** on category pages (by town, by tag)
 - **Guide landing page** at `/guide` — all published guides grouped by category
