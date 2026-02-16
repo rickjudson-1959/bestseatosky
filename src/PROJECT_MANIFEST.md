@@ -1,6 +1,6 @@
 # Best Sea to Sky — Project Manifest
 
-**Last updated:** 2026-02-15
+**Last updated:** 2026-02-16
 **Live URL:** https://bestseatosky.com
 **Repo:** https://github.com/rickjudson-1959/bestseatosky
 **Hosting:** Vercel (auto-deploy from `main`)
@@ -47,7 +47,7 @@ src/
 │   │   ├── page.tsx            # Category listing page (eat, stay, play, etc.)
 │   │   ├── FilterBar.tsx       # Client-side town + tag filtering
 │   │   └── [slug]/
-│   │       └── page.tsx        # Individual listing detail page
+│   │       └── page.tsx        # Individual listing detail page (related + cross-category sections)
 │   ├── guide/
 │   │   └── [slug]/
 │   │       └── page.tsx        # SEO guide page (ranked listing lists)
@@ -103,6 +103,8 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 | `getListingBySlug(slug)` | Listing \| null | Detail pages |
 | `getListingCount(slug?)` | number | Category pages |
 | `getSeoPageBySlug(slug)` | SeoPage \| null | Guide pages |
+| `getRelatedListings(id, townId, catId)` | Listing[] | Detail page ("More in [Town]") |
+| `getCrossCategoryListings(id, townId, catId)` | Listing[] | Detail page ("You Might Also Like") |
 | `getGuideListings(page)` | Listing[] | Guide pages |
 
 ---
@@ -114,6 +116,8 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Live search** on homepage (debounced, searches by name)
 - **Filtering** on category pages (by town, by tag)
 - **SEO guide pages** at `/guide/[slug]` — ranked lists from seo_pages table
+- **Related listings** on detail pages: "More in [Town]" (4, same category) + "You Might Also Like" (3, different category)
+- **Enhanced Schema.org JSON-LD** on detail pages: full PostalAddress (locality, BC, CA), canonical url, sameAs, image
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
 - **Image fallback:** gradient + emoji when no photo available
 
