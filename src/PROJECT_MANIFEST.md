@@ -57,7 +57,7 @@ src/
 │           └── route.ts        # GET /api/search?q= — name search endpoint
 ├── components/
 │   ├── Header.tsx              # Sticky nav with category links + Guides
-│   ├── Footer.tsx              # Organized footer with curated links + guides
+│   ├── Footer.tsx              # Footer with curated links, guides, mailto contact
 │   ├── SearchBar.tsx           # Debounced live search (client component)
 │   └── ListingCard.tsx         # Listing preview card with image/gradient
 ├── lib/
