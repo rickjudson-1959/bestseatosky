@@ -65,6 +65,10 @@ src/
 │   └── data.ts                 # Data fetching functions
 ├── middleware.ts               # Domain redirect (→ bestseatosky.com)
 └── PROJECT_MANIFEST.md         # This file
+
+public/
+├── og-default.svg              # OG image source (1200x630, dark green)
+└── og-default.png              # OG image for social sharing (converted from SVG)
 ```
 
 ---
@@ -121,7 +125,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **SEO guide pages** at `/guide/[slug]` — ranked lists from seo_pages table
 - **Related listings** on detail pages: "More in [Town]" (4, same category) + "You Might Also Like" (3, different category)
 - **Enhanced Schema.org JSON-LD** on detail pages: full PostalAddress (locality, BC, CA), canonical url, sameAs, image
-- **Open Graph & Twitter cards** on listing detail pages (title, description, image, canonical url) and guide pages (default OG image)
+- **Open Graph & Twitter cards** on listing detail pages (title, description, image, canonical url) and guide pages (default OG image at `public/og-default.png`)
 - **Claim your listing** — "Is this your business?" mailto link on listing sidebar (hello@bestseatosky.com)
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
 - **Image fallback:** gradient + emoji when no photo available
