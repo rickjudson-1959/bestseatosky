@@ -33,11 +33,9 @@ export default async function HomePage() {
             SQUAMISH • WHISTLER • PEMBERTON
           </p>
 
-          <h1 className="font-serif text-5xl md:text-6xl font-bold text-white leading-tight mb-5">
-            Discover the{' '}
-            <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-200 bg-clip-text text-transparent">
-              Best of Sea to Sky
-            </span>
+          <h1 className="font-serif font-bold text-white mb-5">
+            <span className="block text-3xl md:text-4xl mb-2">Discover</span>
+            <span className="block text-5xl md:text-6xl leading-tight">the Best of Sea to Sky</span>
           </h1>
 
           <p className="text-lg text-slate-400 leading-relaxed max-w-xl mx-auto mb-10">
