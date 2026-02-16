@@ -34,7 +34,7 @@ export default async function HomePage() {
           </p>
 
           <h1 className="font-serif font-bold text-white mb-5">
-            <span className="block text-3xl md:text-4xl mb-2">Discover</span>
+            <span className="block text-5xl md:text-6xl mb-2">Discover</span>
             <span className="block text-5xl md:text-6xl leading-tight">the Best of Sea to Sky</span>
           </h1>
 
