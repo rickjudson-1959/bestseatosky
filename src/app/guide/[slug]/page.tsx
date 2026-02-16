@@ -22,7 +22,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!page) return {};
 
   const url = `https://bestseatosky.com/guide/${slug}`;
-  const ogImage = 'https://bestseatosky.com/og-default.svg';
+  const ogImage = 'https://bestseatosky.com/og-default.png';
 
   return {
     title: page.title,
