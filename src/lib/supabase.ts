@@ -65,3 +65,18 @@ export type Listing = {
   towns?: Town;
   listing_tags?: { tags: Tag }[];
 };
+
+export type SeoPage = {
+  id: string;
+  slug: string;
+  title: string;
+  meta_description: string;
+  h1_text: string;
+  intro_content: string;
+  category_id: string | null;
+  tag_id: string | null;
+  town_id: string | null;
+  schema_json: Record<string, unknown> | null;
+  canonical_url: string | null;
+  status: string;
+};

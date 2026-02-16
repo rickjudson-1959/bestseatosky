@@ -1,4 +1,4 @@
-import { supabase, Category, Town, Tag, Listing } from './supabase';
+import { supabase, Category, Town, Tag, Listing, SeoPage } from './supabase';
 
 export async function getCategories(): Promise<Category[]> {
   const { data, error } = await supabase
@@ -114,4 +114,63 @@ export async function getListingCount(categorySlug?: string): Promise<number> {
   const { count, error } = await query;
   if (error) return 0;
   return count || 0;
+}
+
+export async function getSeoPageBySlug(slug: string): Promise<SeoPage | null> {
+  const { data, error } = await supabase
+    .from('seo_pages')
+    .select('*')
+    .eq('slug', slug)
+    .eq('status', 'published')
+    .single();
+  if (error) return null;
+  return data;
+}
+
+export async function getGuideListings(page: SeoPage): Promise<Listing[]> {
+  if (page.tag_id) {
+    // Filter through listing_tags junction table
+    const { data: taggedListingIds } = await supabase
+      .from('listing_tags')
+      .select('listing_id')
+      .eq('tag_id', page.tag_id);
+
+    if (!taggedListingIds || taggedListingIds.length === 0) return [];
+
+    let query = supabase
+      .from('listings')
+      .select('*, categories(*), towns(*), listing_tags(tags(*))')
+      .eq('status', 'published')
+      .in('id', taggedListingIds.map(t => t.listing_id));
+
+    if (page.category_id) query = query.eq('category_id', page.category_id);
+    if (page.town_id) query = query.eq('town_id', page.town_id);
+
+    query = query
+      .order('google_rating', { ascending: false })
+      .order('google_review_count', { ascending: false })
+      .limit(15);
+
+    const { data, error } = await query;
+    if (error) return [];
+    return data || [];
+  }
+
+  // No tag filter — just category and/or town
+  let query = supabase
+    .from('listings')
+    .select('*, categories(*), towns(*), listing_tags(tags(*))')
+    .eq('status', 'published');
+
+  if (page.category_id) query = query.eq('category_id', page.category_id);
+  if (page.town_id) query = query.eq('town_id', page.town_id);
+
+  query = query
+    .order('google_rating', { ascending: false })
+    .order('google_review_count', { ascending: false })
+    .limit(15);
+
+  const { data, error } = await query;
+  if (error) return [];
+  return data || [];
 }

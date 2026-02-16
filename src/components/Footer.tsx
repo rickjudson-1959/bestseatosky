@@ -33,13 +33,19 @@ const FOOTER_LINKS = {
     { label: 'Museums', href: '/visit?tag=museums' },
     { label: 'Bridges & Trails', href: '/visit?tag=bridges' },
   ],
+  Guides: [
+    { label: 'Best Restaurants in Squamish', href: '/guide/best-restaurants-squamish' },
+    { label: 'Best Hikes in Squamish', href: '/guide/best-hikes-squamish' },
+    { label: 'Best Hotels in Whistler', href: '/guide/best-hotels-whistler' },
+    { label: 'Things to Do in Whistler', href: '/guide/things-to-do-whistler' },
+  ],
 };
 
 export default function Footer() {
   return (
     <footer className="bg-slate-900 pt-16 pb-12 px-6 text-slate-400">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-10 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 mb-12">
           {Object.entries(FOOTER_LINKS).map(([section, links]) => (
             <div key={section}>
               <h4 className="font-serif text-base text-white mb-4">{section}</h4>

@@ -30,5 +30,17 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     };
   });
 
-  return [...staticPages, ...listingPages];
+  const { data: seoPages } = await supabase
+    .from('seo_pages')
+    .select('slug')
+    .eq('status', 'published');
+
+  const guidePages: MetadataRoute.Sitemap = (seoPages || []).map((page: Record<string, unknown>) => ({
+    url: `${baseUrl}/guide/${page.slug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.85,
+  }));
+
+  return [...staticPages, ...listingPages, ...guidePages];
 }
