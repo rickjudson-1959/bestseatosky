@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { getCategories, getListings } from '@/lib/data';
 import ListingCard from '@/components/ListingCard';
+import SearchBar from '@/components/SearchBar';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -43,6 +44,8 @@ export default async function HomePage() {
             Your trusted guide to the best restaurants, adventures, stays and experiences
             across the Sea to Sky corridor.
           </p>
+
+          <SearchBar />
 
           {/* Category Cards */}
           <div className="flex flex-wrap gap-3 justify-center">
