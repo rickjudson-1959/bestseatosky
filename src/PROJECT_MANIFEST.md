@@ -73,6 +73,7 @@ src/
 └── PROJECT_MANIFEST.md         # This file
 
 public/
+├── icon.svg                    # Custom SVG icon (favicon, header logo, footer logo)
 ├── og-default.svg              # OG image source (1200x630, dark green)
 └── og-default.png              # OG image for social sharing (converted from SVG)
 ```
