@@ -138,7 +138,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Enhanced Schema.org JSON-LD** on detail pages: full PostalAddress (locality, BC, CA), canonical url, sameAs, image
 - **Open Graph & Twitter cards** on listing detail pages (title, description, image, canonical url) and guide pages (default OG image at `public/og-default.png`)
 - **Claim your listing** — "Is this your business?" mailto link on listing sidebar (hello@bestseatosky.com)
-- **Advertise page** at `/advertise` — 3 pricing tiers (Claimed free, Featured $49/mo, Sponsored $149/mo)
+- **Advertise page** at `/advertise` — 3 pricing tiers (Claimed free, Featured $49/mo, Sponsored $149/mo) with Stripe checkout for paid tiers
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
 - **Image fallback:** gradient + emoji when no photo available
 
