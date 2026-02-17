@@ -66,6 +66,21 @@ export type Listing = {
   listing_tags?: { tags: Tag }[];
 };
 
+export type BlogPost = {
+  id: string;
+  slug: string;
+  title: string;
+  meta_description: string;
+  featured_image: string | null;
+  excerpt: string;
+  content: string;
+  author: string;
+  status: string;
+  published_at: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type SeoPage = {
   id: string;
   slug: string;

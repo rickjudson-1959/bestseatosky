@@ -11,6 +11,7 @@ const NAV_ITEMS = [
   { slug: 'shop', label: 'Shop' },
   { slug: 'services', label: 'Services' },
   { slug: 'guide', label: 'Guides' },
+  { slug: 'blog', label: 'Blog' },
 ];
 
 export default function Header() {
