@@ -2,6 +2,8 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getBlogPosts } from '@/lib/data';
 
+export const dynamic = 'force-dynamic';
+
 export const metadata: Metadata = {
   title: 'Sea to Sky Blog | Travel Tips & Local Guides',
   description:
