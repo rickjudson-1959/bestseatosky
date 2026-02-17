@@ -48,6 +48,8 @@ src/
 │   │   ├── FilterBar.tsx       # Client-side town + tag filtering
 │   │   └── [slug]/
 │   │       └── page.tsx        # Listing detail (OG tags, related, cross-category, claim link)
+│   ├── advertise/
+│   │   └── page.tsx            # Advertise page (3 pricing tiers, CTAs)
 │   ├── blog/
 │   │   ├── page.tsx            # Blog index (post cards with title, excerpt, date)
 │   │   └── [slug]/
@@ -61,7 +63,7 @@ src/
 │           └── route.ts        # GET /api/search?q= — name search endpoint
 ├── components/
 │   ├── Header.tsx              # Sticky nav with category links, Guides, Blog
-│   ├── Footer.tsx              # Footer with curated links, guides, mailto contact
+│   ├── Footer.tsx              # Footer with curated links, guides, contact, advertise
 │   ├── SearchBar.tsx           # Debounced live search (client component)
 │   └── ListingCard.tsx         # Listing preview card with image/gradient
 ├── lib/
@@ -136,6 +138,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Enhanced Schema.org JSON-LD** on detail pages: full PostalAddress (locality, BC, CA), canonical url, sameAs, image
 - **Open Graph & Twitter cards** on listing detail pages (title, description, image, canonical url) and guide pages (default OG image at `public/og-default.png`)
 - **Claim your listing** — "Is this your business?" mailto link on listing sidebar (hello@bestseatosky.com)
+- **Advertise page** at `/advertise` — 3 pricing tiers (Claimed free, Featured $49/mo, Sponsored $149/mo)
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
 - **Image fallback:** gradient + emoji when no photo available
 
