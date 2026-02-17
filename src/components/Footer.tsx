@@ -66,9 +66,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2.5">
-            <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#1a3a2a] to-[#2d5a3f] flex items-center justify-center text-emerald-400 text-sm font-bold">
-              S
-            </div>
+            <img src="/icon.svg" alt="Best Sea to Sky" className="w-8 h-8" />
             <span className="font-serif text-base text-slate-200">BestSeaToSky</span>
           </div>
           <p className="text-xs text-slate-600">

@@ -35,6 +35,10 @@ export const metadata: Metadata = {
     'skiing',
     'things to do',
   ],
+  icons: {
+    icon: '/icon.svg',
+    apple: '/icon.svg',
+  },
   openGraph: {
     title: 'Best Sea to Sky | Your Guide to the Corridor',
     description:

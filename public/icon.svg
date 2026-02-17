@@ -1,0 +1,46 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200">
+  <!-- Outer circle ring -->
+  <circle cx="100" cy="100" r="96" fill="none" stroke="#c8cdd0" stroke-width="5"/>
+  
+  <!-- Clipping circle for inner content -->
+  <defs>
+    <clipPath id="inner">
+      <circle cx="100" cy="100" r="88"/>
+    </clipPath>
+  </defs>
+  
+  <g clip-path="url(#inner)">
+    <!-- White background -->
+    <circle cx="100" cy="100" r="88" fill="white"/>
+    
+    <!-- Sky area - light -->
+    <rect x="0" y="0" width="200" height="120" fill="#f0f4f3"/>
+    
+    <!-- Left mountain (darker green) -->
+    <polygon points="25,120 75,45 105,120" fill="#5a8a3c"/>
+    <!-- Left snow cap -->
+    <polygon points="75,45 66,65 84,65" fill="white"/>
+    
+    <!-- Right mountain (lighter green) -->
+    <polygon points="95,120 135,50 175,120" fill="#7fb44e"/>
+    <!-- Right snow cap -->
+    <polygon points="135,50 126,70 144,70" fill="white"/>
+    
+    <!-- Center overlap mountain -->
+    <polygon points="60,120 100,55 140,120" fill="#6a9e42"/>
+    <!-- Center snow cap -->
+    <polygon points="100,55 92,73 108,73" fill="white"/>
+    
+    <!-- Dark blue water body -->
+    <path d="M12,115 Q50,105 100,115 Q150,125 188,110 L188,200 L12,200 Z" fill="#1e5a8a"/>
+    
+    <!-- Mid blue wave -->
+    <path d="M12,125 Q55,112 100,125 Q145,138 188,120 L188,200 L12,200 Z" fill="#2878b5"/>
+    
+    <!-- Light blue wave highlight -->
+    <path d="M12,135 Q60,122 110,135 Q155,145 188,132 L188,200 L12,200 Z" fill="#3a95cc" opacity="0.7"/>
+    
+    <!-- Wave accent line -->
+    <path d="M20,125 Q60,115 105,128 Q145,138 180,122" fill="none" stroke="#5ab0dc" stroke-width="2.5" stroke-linecap="round" opacity="0.6"/>
+  </g>
+</svg>
