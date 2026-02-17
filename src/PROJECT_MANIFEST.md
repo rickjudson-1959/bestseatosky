@@ -1,6 +1,6 @@
 # Best Sea to Sky — Project Manifest
 
-**Last updated:** 2026-02-16
+**Last updated:** 2026-02-17
 **Live URL:** https://bestseatosky.com
 **Repo:** https://github.com/rickjudson-1959/bestseatosky
 **Hosting:** Vercel (auto-deploy from `main`)
@@ -62,7 +62,7 @@ src/
 │       └── search/
 │           └── route.ts        # GET /api/search?q= — name search endpoint
 ├── components/
-│   ├── Header.tsx              # Sticky nav with category links, Guides, Blog
+│   ├── Header.tsx              # Sticky nav with category links, Guides, Blog, mobile hamburger menu
 │   ├── Footer.tsx              # Footer with curated links, guides, contact, advertise
 │   ├── SearchBar.tsx           # Debounced live search (client component)
 │   └── ListingCard.tsx         # Listing preview card with image/gradient
@@ -142,6 +142,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Advertise page** at `/advertise` — 3 pricing tiers (Claimed free, Featured $49/mo, Sponsored $149/mo) with Stripe checkout for paid tiers
 - **Google Analytics** (G-E25R61BYD9) — loaded via root layout on all pages
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
+- **Mobile hamburger menu** — animated 3-bar toggle in header, full-width dropdown nav, auto-closes on link tap
 - **Image fallback:** gradient + emoji when no photo available
 
 ---
