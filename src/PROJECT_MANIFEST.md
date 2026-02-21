@@ -152,7 +152,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 ### Landing Page (`/guide`)
 - Shows all published seo_pages as cards grouped by category
 - Cards display h1_text, meta_description, and link to the full guide
-- Category section headers with colored accents (Eat, Stay, Play, Visit)
+- Category section headers with colored accents (Eat, Stay, Play, Visit, Shop)
 - "Guides" link in main header nav
 
 ### Individual Guide Pages (`/guide/[slug]`)
