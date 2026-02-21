@@ -93,7 +93,7 @@ export default async function GuidePage({ params }: Props) {
         name: listing.name,
         description: listing.short_description || listing.description?.slice(0, 155),
         address: listing.address,
-        ...(listing.google_rating && {
+        ...(listing.google_rating && listing.google_review_count > 0 && {
           aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: listing.google_rating,

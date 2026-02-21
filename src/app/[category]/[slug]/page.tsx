@@ -120,7 +120,7 @@ export default async function ListingPage({ params }: Props) {
       addressRegion: 'BC',
       addressCountry: 'CA',
     },
-    ...(listing.google_rating && {
+    ...(listing.google_rating && listing.google_review_count > 0 && {
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: listing.google_rating,
