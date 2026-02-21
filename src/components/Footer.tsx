@@ -35,9 +35,13 @@ const FOOTER_LINKS = {
   ],
   Guides: [
     { label: 'Best Restaurants in Squamish', href: '/guide/best-restaurants-squamish' },
+    { label: 'Best Restaurants in Whistler', href: '/guide/best-restaurants-whistler' },
     { label: 'Best Hikes in Squamish', href: '/guide/best-hikes-squamish' },
+    { label: 'Best Hikes in Whistler', href: '/guide/best-hikes-whistler' },
     { label: 'Best Hotels in Whistler', href: '/guide/best-hotels-whistler' },
+    { label: 'Things to Do in Squamish', href: '/guide/things-to-do-squamish' },
     { label: 'Things to Do in Whistler', href: '/guide/things-to-do-whistler' },
+    { label: 'All Guides', href: '/guide' },
   ],
 };
 
