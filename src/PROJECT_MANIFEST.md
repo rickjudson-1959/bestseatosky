@@ -58,6 +58,10 @@ src/
 │   │   ├── page.tsx            # Guide landing page (all guides grouped by category)
 │   │   └── [slug]/
 │   │       └── page.tsx        # SEO guide page (ranked listings, OG tags)
+│   ├── terms/
+│   │   └── page.tsx            # Terms of use page
+│   ├── privacy/
+│   │   └── page.tsx            # Privacy policy page
 │   └── api/
 │       └── search/
 │           └── route.ts        # GET /api/search?q= — name search endpoint
