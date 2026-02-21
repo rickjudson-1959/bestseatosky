@@ -134,7 +134,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Filtering** on category pages (by town, by tag)
 - **Guide landing page** at `/guide` — all published guides grouped by category
 - **Blog** at `/blog` — index page + individual post pages with HTML content, Article schema, OG tags
-- **SEO guide pages** at `/guide/[slug]` — ranked lists from seo_pages table
+- **27 SEO guide pages** at `/guide/[slug]` — ranked lists from seo_pages table
 - **Related listings** on detail pages: "More in [Town]" (4, same category) + "You Might Also Like" (3, different category)
 - **Enhanced Schema.org JSON-LD** on detail pages: full PostalAddress (locality, BC, CA), canonical url, sameAs, image; aggregateRating only renders when review count > 0
 - **Open Graph & Twitter cards** on listing detail pages (title, description, image, canonical url) and guide pages (default OG image at `public/og-default.png`)
@@ -165,9 +165,13 @@ Driven by the `seo_pages` table. Each guide page:
 
 Key guides linked from footer:
 - `/guide/best-restaurants-squamish`
+- `/guide/best-restaurants-whistler`
 - `/guide/best-hikes-squamish`
+- `/guide/best-hikes-whistler`
 - `/guide/best-hotels-whistler`
+- `/guide/things-to-do-squamish`
 - `/guide/things-to-do-whistler`
+- `/guide` (All Guides)
 
 ---
 
