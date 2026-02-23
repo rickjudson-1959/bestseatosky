@@ -77,6 +77,7 @@ export default function Footer() {
             © {new Date().getFullYear()} Best Sea to Sky. Your guide to the best of the corridor.
           </p>
           <div className="flex gap-4">
+            <Link href="/get-listed" className="text-xs text-slate-600 hover:text-slate-400">Get Listed</Link>
             <Link href="/terms" className="text-xs text-slate-600 hover:text-slate-400">Terms</Link>
             <Link href="/privacy" className="text-xs text-slate-600 hover:text-slate-400">Privacy</Link>
             <a href="mailto:hello@bestseatosky.com" className="text-xs text-slate-600 hover:text-slate-400">Contact</a>

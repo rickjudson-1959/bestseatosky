@@ -81,6 +81,21 @@ export type BlogPost = {
   updated_at: string;
 };
 
+export type ListingRequest = {
+  id: string;
+  business_name: string;
+  contact_name: string;
+  email: string;
+  phone: string | null;
+  website: string | null;
+  category_id: string | null;
+  town_id: string | null;
+  message: string | null;
+  status: string;
+  created_at: string;
+  updated_at: string;
+};
+
 export type SeoPage = {
   id: string;
   slug: string;

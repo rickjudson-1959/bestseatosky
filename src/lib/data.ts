@@ -1,4 +1,4 @@
-import { supabase, Category, Town, Tag, Listing, SeoPage, BlogPost } from './supabase';
+import { supabase, Category, Town, Tag, Listing, SeoPage, BlogPost, ListingRequest } from './supabase';
 
 export async function getCategories(): Promise<Category[]> {
   const { data, error } = await supabase
@@ -231,6 +231,18 @@ export async function getBlogPosts(): Promise<BlogPost[]> {
     .order('published_at', { ascending: false });
   if (error) return [];
   return data || [];
+}
+
+export async function submitListingRequest(
+  request: Omit<ListingRequest, 'id' | 'status' | 'created_at' | 'updated_at'>
+): Promise<ListingRequest> {
+  const { data, error } = await supabase
+    .from('listing_requests')
+    .insert({ ...request, status: 'new' })
+    .select()
+    .single();
+  if (error) throw error;
+  return data;
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {

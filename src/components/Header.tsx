@@ -48,6 +48,13 @@ export default function Header() {
           })}
         </nav>
 
+        <Link
+          href="/get-listed"
+          className="hidden md:inline-flex px-4 py-2 rounded-lg bg-emerald-700 text-white text-sm font-semibold hover:bg-emerald-800 transition-colors"
+        >
+          Get Listed
+        </Link>
+
         {/* Hamburger button — mobile only */}
         <button
           onClick={() => setMenuOpen(!menuOpen)}
@@ -93,6 +100,13 @@ export default function Header() {
                 </Link>
               );
             })}
+            <Link
+              href="/get-listed"
+              onClick={() => setMenuOpen(false)}
+              className="px-4 py-2.5 rounded-lg text-sm font-semibold bg-emerald-700 text-white hover:bg-emerald-800 transition-colors mt-1"
+            >
+              Get Listed
+            </Link>
           </div>
         </nav>
       )}

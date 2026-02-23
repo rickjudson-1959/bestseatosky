@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getListingBySlug, getRelatedListings, getCrossCategoryListings } from '@/lib/data';
+import { buildUTMUrl } from '@/lib/utm';
 
 const CAT_STYLES: Record<string, { gradient: string; bg: string; text: string; border: string; accent: string }> = {
   eat: { gradient: 'from-orange-500 to-red-600', bg: 'bg-orange-50', text: 'text-amber-700', border: 'border-orange-200', accent: 'bg-amber-700' },
@@ -229,7 +230,10 @@ export default async function ListingPage({ params }: Props) {
 
             {listing.address && (
               <a
-                href={`https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(listing.address)}`}
+                href={buildUTMUrl(
+                  `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(listing.address)}`,
+                  { campaign: catSlug, content: listing.slug }
+                )}
                 target="_blank"
                 rel="noopener noreferrer"
                 className={`block w-full text-center py-3.5 rounded-xl text-white text-sm font-bold mt-5 transition-opacity hover:opacity-90 ${styles.accent}`}
@@ -240,7 +244,7 @@ export default async function ListingPage({ params }: Props) {
 
             {listing.website && (
               <a
-                href={listing.website}
+                href={buildUTMUrl(listing.website, { campaign: catSlug, content: listing.slug })}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="block w-full text-center py-3.5 rounded-xl bg-slate-50 text-slate-800 border border-slate-200 text-sm font-bold mt-3 transition-colors hover:bg-slate-100"

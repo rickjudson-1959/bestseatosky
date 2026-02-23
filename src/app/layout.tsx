@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { DM_Serif_Display, Source_Sans_3 } from 'next/font/google';
-import Script from 'next/script';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
 
 const dmSerif = DM_Serif_Display({
@@ -58,21 +58,8 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={`${dmSerif.variable} ${sourceSans.variable}`}>
-      <head>
-        <Script
-          src="https://www.googletagmanager.com/gtag/js?id=G-E25R61BYD9"
-          strategy="afterInteractive"
-        />
-        <Script id="gtag-init" strategy="afterInteractive">
-          {`
-            window.dataLayer = window.dataLayer || [];
-            function gtag(){dataLayer.push(arguments);}
-            gtag('js', new Date());
-            gtag('config', 'G-E25R61BYD9');
-          `}
-        </Script>
-      </head>
       <body className="font-sans antialiased bg-slate-50 text-slate-900">
+        <GoogleAnalytics />
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
