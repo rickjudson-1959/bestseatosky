@@ -1,5 +1,8 @@
 import { NextRequest, NextResponse } from 'next/server';
+import { Resend } from 'resend';
 import { supabase } from '@/lib/supabase';
+
+const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: NextRequest) {
   try {
@@ -38,11 +41,24 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to submit request. Please try again.' }, { status: 500 });
     }
 
-    // Email notification (stub — swap in Resend or similar later)
+    // Send email notification
     try {
-      console.log(`[Get Listed] New request from ${contact_name} <${email}> for "${business_name}"`);
-      // TODO: Send email via Resend
-      // await resend.emails.send({ from: '...', to: '...', subject: '...', html: '...' });
+      await resend.emails.send({
+        from: 'Best Sea to Sky <noreply@bestseatosky.com>',
+        to: 'hello@bestseatosky.com',
+        subject: `New Listing Request: ${business_name.trim()}`,
+        html: `
+          <h2>New Listing Request</h2>
+          <table style="border-collapse:collapse;font-family:sans-serif;">
+            <tr><td style="padding:6px 12px;font-weight:bold;">Business</td><td style="padding:6px 12px;">${business_name.trim()}</td></tr>
+            <tr><td style="padding:6px 12px;font-weight:bold;">Contact</td><td style="padding:6px 12px;">${contact_name.trim()}</td></tr>
+            <tr><td style="padding:6px 12px;font-weight:bold;">Email</td><td style="padding:6px 12px;">${email.trim()}</td></tr>
+            ${phone ? `<tr><td style="padding:6px 12px;font-weight:bold;">Phone</td><td style="padding:6px 12px;">${phone.trim()}</td></tr>` : ''}
+            ${website ? `<tr><td style="padding:6px 12px;font-weight:bold;">Website</td><td style="padding:6px 12px;">${website.trim()}</td></tr>` : ''}
+            ${message ? `<tr><td style="padding:6px 12px;font-weight:bold;">Message</td><td style="padding:6px 12px;">${message.trim()}</td></tr>` : ''}
+          </table>
+        `,
+      });
     } catch (emailError) {
       console.error('Email notification failed:', emailError);
       // Don't fail the request if email fails
