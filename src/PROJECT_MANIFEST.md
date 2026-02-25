@@ -1,6 +1,6 @@
 # Best Sea to Sky — Project Manifest
 
-**Last updated:** 2026-02-21
+**Last updated:** 2026-02-24
 **Live URL:** https://bestseatosky.com
 **Repo:** https://github.com/rickjudson-1959/bestseatosky
 **Hosting:** Vercel (auto-deploy from `main`)
@@ -15,6 +15,7 @@
 - **Styling:** Tailwind CSS v4
 - **Database:** Supabase (PostgreSQL)
 - **Fonts:** DM Serif Display (headings), Source Sans 3 (body)
+- **Email:** Resend (transactional email notifications)
 - **React Compiler:** Enabled
 
 ---
@@ -37,7 +38,7 @@ Domain redirects handled by `src/middleware.ts` + `vercel.json`.
 ```
 src/
 ├── app/
-│   ├── layout.tsx              # Root layout (Header, Footer, fonts, meta, GA)
+│   ├── layout.tsx              # Root layout (Header, Footer, fonts, meta, GoogleAnalytics)
 │   ├── page.tsx                # Homepage (hero, search, featured, categories)
 │   ├── globals.css             # Tailwind imports, custom scrollbar, utilities
 │   ├── sitemap.ts              # Dynamic XML sitemap (listings, guides, blog)
@@ -47,7 +48,7 @@ src/
 │   │   ├── page.tsx            # Category listing page (eat, stay, play, etc.)
 │   │   ├── FilterBar.tsx       # Client-side town + tag filtering
 │   │   └── [slug]/
-│   │       └── page.tsx        # Listing detail (OG tags, related, cross-category, claim link)
+│   │       └── page.tsx        # Listing detail (OG tags, related, cross-category, UTM links, claim link)
 │   ├── advertise/
 │   │   └── page.tsx            # Advertise page (3 pricing tiers, CTAs)
 │   ├── blog/
@@ -58,21 +59,28 @@ src/
 │   │   ├── page.tsx            # Guide landing page (all guides grouped by category)
 │   │   └── [slug]/
 │   │       └── page.tsx        # SEO guide page (ranked listings, OG tags)
+│   ├── get-listed/
+│   │   ├── page.tsx            # Get Listed page (server component, fetches categories/towns)
+│   │   └── GetListedForm.tsx   # Get Listed form (client component, status states)
 │   ├── terms/
 │   │   └── page.tsx            # Terms of use page
 │   ├── privacy/
 │   │   └── page.tsx            # Privacy policy page
 │   └── api/
+│       ├── get-listed/
+│       │   └── route.ts        # POST /api/get-listed — listing request + Resend email
 │       └── search/
 │           └── route.ts        # GET /api/search?q= — name search endpoint
 ├── components/
-│   ├── Header.tsx              # Sticky nav with category links, Guides, Blog, mobile hamburger menu
-│   ├── Footer.tsx              # Footer with curated links, guides, contact, advertise
+│   ├── GoogleAnalytics.tsx     # GA4 client component (G-E25R61BYD9, afterInteractive)
+│   ├── Header.tsx              # Sticky nav with category links, Guides, Blog, Get Listed CTA, mobile hamburger menu
+│   ├── Footer.tsx              # Footer with curated links, guides, Get Listed, contact, advertise
 │   ├── SearchBar.tsx           # Debounced live search (client component)
 │   └── ListingCard.tsx         # Listing preview card with image/gradient
 ├── lib/
-│   ├── supabase.ts             # Supabase client + type definitions
-│   └── data.ts                 # Data fetching functions
+│   ├── supabase.ts             # Supabase client + type definitions (incl. ListingRequest)
+│   ├── data.ts                 # Data fetching functions (incl. submitListingRequest)
+│   └── utm.ts                  # buildUTMUrl() — appends UTM params to outbound links
 ├── middleware.ts               # Domain redirect (→ bestseatosky.com)
 └── PROJECT_MANIFEST.md         # This file
 
@@ -97,6 +105,7 @@ public/
 | **listing_tags** | listing_id, tag_id (junction table) |
 | **seo_pages** | id, slug, title, meta_description, h1_text, intro_content, category_id, tag_id, town_id, schema_json, canonical_url, status |
 | **blog_posts** | id, slug, title, meta_description, featured_image, excerpt, content, author, status, published_at |
+| **listing_requests** | id, business_name, contact_name, email, phone, website, category_id (FK), town_id (FK), message, status, created_at, updated_at |
 
 ### Categories
 
@@ -126,6 +135,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 | `getGuideListings(page)` | Listing[] | Guide pages |
 | `getBlogPosts()` | BlogPost[] | Blog index |
 | `getBlogPostBySlug(slug)` | BlogPost \| null | Blog post page |
+| `submitListingRequest(request)` | ListingRequest | Get Listed API route |
 
 ---
 
@@ -144,7 +154,9 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Open Graph & Twitter cards** on listing detail pages (title, description, image, canonical url) and guide pages (default OG image at `public/og-default.png`)
 - **Claim your listing** — "Is this your business?" mailto link on listing sidebar (hello@bestseatosky.com)
 - **Advertise page** at `/advertise` — 3 pricing tiers (Claimed free, Featured $49/mo, Sponsored $149/mo) with Stripe checkout for paid tiers
-- **Google Analytics** (G-E25R61BYD9) — loaded via root layout on all pages
+- **Get Listed form** at `/get-listed` — business submission form with category/town dropdowns, validates and inserts into `listing_requests` table, sends email notification via Resend to rjudson@protonmail.com
+- **UTM tracking** on outbound links — "Get Directions" and "Visit Website" links on listing detail pages include utm_source=bestseatosky, utm_medium=directory, utm_campaign={category}, utm_content={listing-slug}
+- **Google Analytics** (G-E25R61BYD9) — loaded via GoogleAnalytics client component on all pages
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
 - **Mobile hamburger menu** — animated 3-bar toggle in header, full-width dropdown nav, auto-closes on link tap
 - **Image fallback:** gradient + emoji when no photo available
@@ -198,6 +210,7 @@ Key guides linked from footer:
 |----------|---------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase public API key |
+| `RESEND_API_KEY` | Resend API key for email notifications |
 
 Set in both `.env.local` (local) and Vercel dashboard (production/preview/development).
 
@@ -223,6 +236,7 @@ npm run lint     # Run ESLint
 | **Namecheap** | Domain registrar for .com and .ca |
 | **Vercel** | Hosting, auto-deploy from GitHub |
 | **Supabase** | Database, API, auth (PostgreSQL) |
+| **Resend** | Transactional email (Get Listed notifications) |
 
 ---
 
