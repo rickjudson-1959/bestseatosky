@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Best Sea to Sky is a locally curated directory for the Sea to Sky corridor — from West Vancouver to Pemberton. Built by locals who know it best.',
+    'Best Sea to Sky is a locally curated directory for the Sea to Sky corridor — from West Vancouver to Pemberton. Built by a Squamish local who got tired of the tourist noise.',
 };
 
 export default function AboutPage() {
@@ -17,30 +17,65 @@ export default function AboutPage() {
       </nav>
 
       <h1 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 mb-4">
-        About Best Sea to Sky
+        The Story Behind Best Sea to Sky
       </h1>
       <p className="text-slate-500 text-lg mb-10">
-        The local&apos;s shortlist for the Sea to Sky corridor.
+        A local directory built for the people who live, work, and play in this corridor.
       </p>
 
       <div className="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 space-y-6">
-        <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">Why We Built This</h2>
+
+        {/* Founder Story */}
+        <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">For the Love of the Corridor</h2>
         <p>
-          The Sea to Sky corridor is one of the most stunning stretches of highway in the world — from the coastal
-          mountains above West Vancouver, through the granite walls of Squamish, past the alpine peaks of Whistler,
-          and into the farmland of Pemberton. Millions of people travel it every year.
+          I didn&apos;t build Best Sea to Sky because I&apos;m a travel writer. I built it because I live here.
         </p>
         <p>
-          But finding the best places to eat, stay, and explore has always meant piecing together
-          results from Google Maps, TripAdvisor, tourism board sites, and word of mouth. No single
-          source covers the entire corridor with local knowledge and real visitor ratings in one place.
+          When I moved to Squamish, I fell in love with the raw energy of this place — the way the
+          morning mist sits on the Chief and the community that thrives at the intersection of the
+          mountains and the sound. But I quickly realized that finding the <em>real</em> Squamish meant
+          filtering through a lot of noise.
         </p>
         <p>
-          That&apos;s why we created Best Sea to Sky — a curated directory that covers every town from
-          West Vancouver to Pemberton, powered by real Google reviews and organized by people who
-          actually live here.
+          The big travel blogs always point you to the same three crowded spots. They don&apos;t tell
+          you which coffee shop is actually open at 6:00 AM for your pre-hike caffeine hit, or which
+          local brewery has the best patio for a post-trail pint with your dog.
         </p>
 
+        <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">A Local&apos;s Perspective</h2>
+        <p>
+          I found a need for a service that cut through the tourist traps and offered the straight
+          goods on the places we actually go. Best Sea to Sky is a local directory built for the
+          people who live, work, and play in this corridor.
+        </p>
+        <ul className="list-disc pl-5 space-y-2">
+          <li>
+            <strong>Authentic Discovery.</strong> We only feature the spots that make the Sea to Sky special.
+          </li>
+          <li>
+            <strong>Community First.</strong> Our goal is to support the small businesses that give
+            our towns their character.
+          </li>
+          <li>
+            <strong>Field-Tested Guides.</strong> Every trail recommendation and &quot;must-stop&quot; is
+            based on real experience in the Squamish backcountry.
+          </li>
+        </ul>
+        <p>
+          Whether you&apos;re a long-term local or just passing through, I want to make sure you find
+          the version of the Sea to Sky that I fell in love with.
+        </p>
+
+        <p className="text-slate-900 font-semibold mt-8">
+          — Rick Judson
+          <br />
+          <span className="text-slate-500 font-normal">Founder &amp; Squamish Local</span>
+        </p>
+
+        {/* Separator */}
+        <hr className="border-slate-200 my-10" />
+
+        {/* How It Works */}
         <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">What Makes Us Different</h2>
         <ul className="list-disc pl-5 space-y-2">
           <li>
@@ -52,11 +87,6 @@ export default function AboutPage() {
             <strong>Real reviews, not paid placements.</strong> Every listing shows its actual Google
             rating and review count. We don&apos;t manufacture reviews or let businesses buy higher
             star ratings.
-          </li>
-          <li>
-            <strong>Curated by locals.</strong> Our team lives in the corridor. We know which trail
-            is worth the drive, which restaurant just changed chefs, and which hidden gem hasn&apos;t
-            made it onto the tourist radar yet.
           </li>
           <li>
             <strong>859+ verified listings.</strong> From fine dining to food trucks, luxury lodges
@@ -84,31 +114,9 @@ export default function AboutPage() {
           with priority placement and additional promotion.
         </p>
 
-        <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">Our Editorial Approach</h2>
-        <p>
-          Our curated guides — like{' '}
-          <Link href="/guide" className="text-emerald-700 hover:underline">
-            Best Restaurants in Squamish
-          </Link>{' '}
-          or{' '}
-          <Link href="/guide" className="text-emerald-700 hover:underline">
-            Best Hikes in Whistler
-          </Link>{' '}
-          — are written by locals who have personally visited the places they recommend. We combine
-          first-hand experience with real Google review data to surface the places that are genuinely
-          worth your time.
-        </p>
-        <p>
-          We update our guides regularly to reflect seasonal changes, new openings, and closures. If
-          something has changed, we want to know —{' '}
-          <Link href="/contact" className="text-emerald-700 font-semibold hover:underline">
-            get in touch
-          </Link>.
-        </p>
-
         <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">Get in Touch</h2>
         <p>
-          Have a question, a correction, or a suggestion? We&apos;d love to hear from you.
+          Have a question, a correction, or a suggestion? I&apos;d love to hear from you.
         </p>
         <p>
           Email us at{' '}
