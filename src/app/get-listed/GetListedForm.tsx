@@ -1,4 +1,5 @@
 'use client';
+'use no memo';
 
 import { useState, FormEvent } from 'react';
 import { Category, Town } from '@/lib/supabase';
