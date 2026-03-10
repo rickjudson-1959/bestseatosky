@@ -253,12 +253,27 @@ export default async function ListingPage({ params }: Props) {
               </a>
             )}
 
-            <a
-              href={`mailto:hello@bestseatosky.com?subject=${encodeURIComponent(`Claim: ${listing.name}`)}&body=${encodeURIComponent(`I'd like to claim the listing for ${listing.name} at bestseatosky.com/${catSlug}/${listing.slug}`)}`}
-              className="block text-center text-xs text-slate-400 hover:text-slate-600 transition-colors mt-5"
-            >
-              Is this your business?
-            </a>
+            {/* Claim Your Business CTA */}
+            <div className="mt-6 bg-slate-50 rounded-xl p-5 border border-slate-200">
+              <h4 className="font-serif text-base font-bold text-slate-900 mb-1.5">
+                Is this your business?
+              </h4>
+              <p className="text-xs text-slate-500 mb-4 leading-relaxed">
+                Claim this listing to update your description, add photos, and ensure your info is accurate. Free to get started.
+              </p>
+              <a
+                href={`mailto:hello@bestseatosky.com?subject=${encodeURIComponent(`Claim My Listing: ${listing.name}`)}&body=${encodeURIComponent(`Hi,\n\nI'd like to claim the listing for ${listing.name} on Best Sea to Sky.\n\nListing: https://bestseatosky.com/${catSlug}/${listing.slug}\n\nMy name:\nMy role at the business:\nEmail:\nPhone:\n\nThanks!`)}`}
+                className="block w-full text-center py-3 rounded-xl bg-slate-900 text-white text-sm font-bold transition-colors hover:bg-slate-800"
+              >
+                Claim This Listing
+              </a>
+              <Link
+                href="/advertise"
+                className="block text-center text-xs text-slate-400 hover:text-emerald-700 transition-colors mt-3"
+              >
+                Want more visibility? See paid options →
+              </Link>
+            </div>
           </div>
         </div>
       </div>
