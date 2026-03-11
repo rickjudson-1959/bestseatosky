@@ -35,7 +35,7 @@ export default function FilterBar({ listings, tags, towns, categorySlug, initial
   };
 
   const filtered = useMemo(() => {
-    return listings.filter((listing) => {
+    const result = listings.filter((listing) => {
       // Town filter
       if (activeTown !== 'all') {
         const townSlug = listing.towns?.slug;
@@ -49,6 +49,13 @@ export default function FilterBar({ listings, tags, towns, categorySlug, initial
       }
 
       return true;
+    });
+
+    // Sort featured listings to top, then by rating
+    return result.sort((a, b) => {
+      if (a.featured && !b.featured) return -1;
+      if (!a.featured && b.featured) return 1;
+      return (b.google_rating || 0) - (a.google_rating || 0);
     });
   }, [listings, activeTown, activeTags]);
 

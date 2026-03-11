@@ -49,10 +49,15 @@ export default function ListingCard({ listing }: { listing: Listing }) {
   const catSlug = listing.categories?.slug || 'eat';
   const styles = CAT_STYLES[catSlug] || CAT_STYLES.eat;
   const tags = listing.listing_tags?.map((lt) => lt.tags) || [];
+  const isFeatured = listing.featured === true;
 
   return (
     <Link href={`/${catSlug}/${listing.slug}`}>
-      <div className="bg-white rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl shadow-sm border border-slate-100 hover:border-slate-200 group">
+      <div className={`rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl shadow-sm group ${
+        isFeatured
+          ? 'bg-emerald-50/40 border-2 border-emerald-300 hover:border-emerald-400 ring-1 ring-emerald-100'
+          : 'bg-white border border-slate-100 hover:border-slate-200'
+      }`}>
         {/* Image / Gradient Header */}
         <div className={`h-44 bg-gradient-to-br ${styles.gradient} relative overflow-hidden`}>
           {listing.featured_image_url ? (
@@ -72,6 +77,11 @@ export default function ListingCard({ listing }: { listing: Listing }) {
           <div className={`absolute top-3 left-3 ${styles.bg} rounded-full px-3 py-1 text-xs font-semibold ${styles.text} uppercase tracking-wide`}>
             {listing.towns?.name || 'Sea to Sky'}
           </div>
+          {isFeatured && (
+            <div className="absolute bottom-3 left-3 bg-emerald-700 rounded-full px-3 py-1 text-xs font-bold text-white tracking-wide flex items-center gap-1">
+              ★ Featured
+            </div>
+          )}
           <div className="absolute top-3 right-3 bg-black/60 rounded-full px-2.5 py-1 text-xs font-semibold text-white flex items-center gap-1">
             ★ {listing.google_rating?.toFixed(1) || '–'}
           </div>

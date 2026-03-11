@@ -77,7 +77,9 @@ export async function getListings(options?: {
     query = query.limit(options.limit);
   }
 
-  query = query.order('google_rating', { ascending: false });
+  query = query
+    .order('featured', { ascending: false })
+    .order('google_rating', { ascending: false });
 
   const { data, error } = await query;
   if (error) throw error;
