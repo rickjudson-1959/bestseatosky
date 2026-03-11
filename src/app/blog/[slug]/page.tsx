@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getBlogPostBySlug, getAllSeoPages } from '@/lib/data';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -134,6 +135,19 @@ export default async function BlogPostPage({ params }: Props) {
           </div>
         </div>
       )}
+
+      {/* Newsletter Signup */}
+      <div className="border-t border-slate-100 pt-10 mt-10">
+        <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 text-center">
+          <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
+            Enjoying this? Get more local picks.
+          </h2>
+          <p className="text-sm text-slate-500 mb-6">
+            Free Sea to Sky Trip Planner — restaurant recs, trail guides, and insider tips from locals.
+          </p>
+          <NewsletterSignup source="blog" />
+        </div>
+      </div>
 
       {/* JSON-LD Schema */}
       <script

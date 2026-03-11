@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { getCategories, getListings } from '@/lib/data';
 import ListingCard from '@/components/ListingCard';
 import SearchBar from '@/components/SearchBar';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -108,6 +109,20 @@ export default async function HomePage() {
               </Link>
             );
           })}
+        </div>
+      </section>
+
+      {/* NEWSLETTER SIGNUP */}
+      <section className="bg-gradient-to-br from-[#0f2318] via-[#1a3a2a] to-[#0f2318] px-6 py-16">
+        <div className="max-w-xl mx-auto text-center">
+          <h2 className="font-serif text-2xl md:text-3xl text-white mb-3">
+            Get the Free Sea to Sky Trip Planner
+          </h2>
+          <p className="text-slate-400 text-sm leading-relaxed mb-8">
+            Local restaurant picks, must-do trails, and insider tips for the corridor —
+            delivered straight to your inbox.
+          </p>
+          <NewsletterSignup source="homepage" />
         </div>
       </section>
 

@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -225,6 +226,17 @@ export default async function GuidePage({ params }: Props) {
           latest reviews and community feedback. All information is sourced from verified business
           listings and real visitor reviews.
         </p>
+      </div>
+
+      {/* Newsletter Signup */}
+      <div className="bg-white rounded-2xl p-8 border border-slate-200 mt-8">
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-2 text-center">
+          Want more local picks?
+        </h2>
+        <p className="text-sm text-slate-500 text-center mb-6">
+          Get the free Sea to Sky Trip Planner — restaurant recs, trail guides, and insider tips.
+        </p>
+        <NewsletterSignup source="guide" />
       </div>
 
       {/* JSON-LD Schema */}
