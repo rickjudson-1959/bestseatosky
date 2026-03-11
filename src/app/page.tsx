@@ -148,6 +148,50 @@ export default async function HomePage() {
       {/* VISITOR TESTIMONIALS + PLATFORM STATS */}
       <VisitorTestimonials />
 
+      {/* LOCAL GUIDES */}
+      <section className="max-w-7xl mx-auto px-6 py-16">
+        <h2 className="font-serif text-3xl text-slate-900 mb-2">Local Guides &amp; Itineraries</h2>
+        <p className="text-slate-500 mb-8">Insider knowledge you won&apos;t find in a brochure</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {[
+            {
+              href: '/48-hours-squamish',
+              title: '48 Hours in Squamish',
+              desc: 'A local\'s itinerary for first-timers — early-morning coffee to hidden trails to the best dinner in town.',
+            },
+            {
+              href: '/ski-season',
+              title: 'Ski Season Survival Guide',
+              desc: 'How to do Whistler without going broke or losing your mind. Lift lines, secret runs, and cheap eats.',
+            },
+            {
+              href: '/best-patios',
+              title: 'Best Patios in the Corridor',
+              desc: 'Where to drink with a view after a day on the trails — ranked by a local who has sat on every one.',
+            },
+            {
+              href: '/neighbourhood/squamish',
+              title: 'Squamish Neighbourhoods',
+              desc: 'Downtown vs. Garibaldi Highlands — where to eat, stay, and explore based on your trip style.',
+            },
+            {
+              href: '/neighbourhood/whistler',
+              title: 'Whistler Neighbourhoods',
+              desc: 'Village vs. Creekside — how to pick the right base and skip the crowds.',
+            },
+          ].map((guide) => (
+            <Link key={guide.href} href={guide.href} className="group">
+              <div className="rounded-2xl border border-slate-100 p-6 h-full hover:border-emerald-200 hover:bg-emerald-50/30 transition-all">
+                <h3 className="font-serif text-lg font-bold text-slate-900 mb-2 group-hover:text-emerald-800 transition-colors">
+                  {guide.title}
+                </h3>
+                <p className="text-sm text-slate-500 leading-relaxed">{guide.desc}</p>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </section>
+
       {/* NEWSLETTER SIGNUP */}
       <section className="bg-gradient-to-br from-[#0f2318] via-[#1a3a2a] to-[#0f2318] px-6 py-16">
         <div className="max-w-xl mx-auto text-center">

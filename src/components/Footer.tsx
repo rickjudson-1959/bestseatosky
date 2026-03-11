@@ -34,13 +34,11 @@ const FOOTER_LINKS = {
     { label: 'Bridges & Trails', href: '/visit?tag=bridges' },
   ],
   Guides: [
-    { label: 'Best Restaurants in Squamish', href: '/guide/best-restaurants-squamish' },
-    { label: 'Best Restaurants in Whistler', href: '/guide/best-restaurants-whistler' },
-    { label: 'Best Hikes in Squamish', href: '/guide/best-hikes-squamish' },
-    { label: 'Best Hikes in Whistler', href: '/guide/best-hikes-whistler' },
-    { label: 'Best Hotels in Whistler', href: '/guide/best-hotels-whistler' },
-    { label: 'Things to Do in Squamish', href: '/guide/things-to-do-squamish' },
-    { label: 'Things to Do in Whistler', href: '/guide/things-to-do-whistler' },
+    { label: '48 Hours in Squamish', href: '/48-hours-squamish' },
+    { label: 'Ski Season Survival Guide', href: '/ski-season' },
+    { label: 'Best Patios', href: '/best-patios' },
+    { label: 'Squamish Neighbourhoods', href: '/neighbourhood/squamish' },
+    { label: 'Whistler Neighbourhoods', href: '/neighbourhood/whistler' },
     { label: 'All Guides', href: '/guide' },
   ],
 };
