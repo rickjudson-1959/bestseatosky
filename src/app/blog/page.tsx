@@ -1,6 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getBlogPosts } from '@/lib/data';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 export const dynamic = 'force-dynamic';
 
@@ -75,6 +76,17 @@ export default async function BlogPage() {
       {posts.length === 0 && (
         <p className="text-slate-500 text-center py-12">No blog posts published yet.</p>
       )}
+
+      {/* Newsletter Signup */}
+      <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 mt-12 text-center">
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
+          Want more local picks?
+        </h2>
+        <p className="text-sm text-slate-500 mb-6">
+          Get the free Sea to Sky Trip Planner — restaurant recs, trail guides, and insider tips.
+        </p>
+        <NewsletterSignup source="blog-index" />
+      </div>
     </section>
   );
 }

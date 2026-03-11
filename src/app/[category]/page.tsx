@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import { getCategoryBySlug, getListings, getTagsByCategory, getTowns } from '@/lib/data';
 import ListingCard from '@/components/ListingCard';
 import FilterBar from './FilterBar';
+import NewsletterSignup from '@/components/NewsletterSignup';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -87,6 +88,17 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         initialTown={town}
         initialTag={tag}
       />
+
+      {/* Newsletter Signup */}
+      <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 mt-12 text-center">
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
+          Get the Free Sea to Sky Trip Planner
+        </h2>
+        <p className="text-sm text-slate-500 mb-6">
+          Local restaurant picks, must-do trails, and insider tips — delivered to your inbox.
+        </p>
+        <NewsletterSignup source={`category-${categorySlug}`} />
+      </div>
 
       {/* Schema markup for the listing page */}
       <script
