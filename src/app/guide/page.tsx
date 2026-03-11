@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllSeoPages } from '@/lib/data';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { VisitorTestimonials } from '@/components/SocialProof';
 
 export const metadata: Metadata = {
   title: 'Sea to Sky Guides | Best Of Lists for Squamish, Whistler & Pemberton',
@@ -40,6 +41,7 @@ export default async function GuidesPage() {
   });
 
   return (
+    <>
     <section className="max-w-5xl mx-auto px-6 py-8">
       {/* Breadcrumb */}
       <nav className="flex items-center gap-2 text-sm text-slate-400 mb-6">
@@ -89,7 +91,12 @@ export default async function GuidesPage() {
       {pages.length === 0 && (
         <p className="text-slate-500 text-center py-12">No guides published yet.</p>
       )}
+    </section>
 
+    {/* Visitor Testimonials */}
+    <VisitorTestimonials />
+
+    <section className="max-w-5xl mx-auto px-6 pb-8">
       {/* Newsletter Signup */}
       <div className="bg-white rounded-2xl p-8 border border-slate-200 mt-4 text-center">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
@@ -101,5 +108,6 @@ export default async function GuidesPage() {
         <NewsletterSignup source="guides-index" />
       </div>
     </section>
+    </>
   );
 }

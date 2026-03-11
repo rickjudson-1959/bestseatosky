@@ -4,6 +4,7 @@ import { getCategoryBySlug, getListings, getTagsByCategory, getTowns } from '@/l
 import ListingCard from '@/components/ListingCard';
 import FilterBar from './FilterBar';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { TrustStrip } from '@/components/SocialProof';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -78,6 +79,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         <p className="text-slate-500">
           {listings.length} places across the Sea to Sky corridor
         </p>
+      </div>
+
+      {/* Trust Strip */}
+      <div className="mb-8">
+        <TrustStrip />
       </div>
 
       {/* Filters + Grid */}

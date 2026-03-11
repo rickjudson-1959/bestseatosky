@@ -3,6 +3,7 @@ import { getCategories, getListings } from '@/lib/data';
 import ListingCard from '@/components/ListingCard';
 import SearchBar from '@/components/SearchBar';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { VisitorTestimonials } from '@/components/SocialProof';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -143,6 +144,9 @@ export default async function HomePage() {
           })}
         </div>
       </section>
+
+      {/* VISITOR TESTIMONIALS + PLATFORM STATS */}
+      <VisitorTestimonials />
 
       {/* NEWSLETTER SIGNUP */}
       <section className="bg-gradient-to-br from-[#0f2318] via-[#1a3a2a] to-[#0f2318] px-6 py-16">

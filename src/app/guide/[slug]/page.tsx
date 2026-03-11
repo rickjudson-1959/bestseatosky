@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import { TrustStrip } from '@/components/SocialProof';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -129,6 +130,11 @@ export default async function GuidePage({ params }: Props) {
           </p>
         </div>
       )}
+
+      {/* Trust Strip */}
+      <div className="mb-10">
+        <TrustStrip />
+      </div>
 
       {/* Numbered Listings */}
       <div className="flex flex-col gap-6 mb-16">
