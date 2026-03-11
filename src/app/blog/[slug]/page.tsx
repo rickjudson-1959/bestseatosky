@@ -16,7 +16,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const url = `https://bestseatosky.com/blog/${slug}`;
 
   return {
-    title: `${post.title} | Best Sea to Sky Blog`,
+    title: post.title,
     description: post.meta_description || post.excerpt,
     alternates: { canonical: `/blog/${slug}` },
     openGraph: {
