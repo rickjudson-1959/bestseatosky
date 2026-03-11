@@ -31,7 +31,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const listing = await getListingBySlug(slug);
   if (!listing) return {};
 
-  const title = listing.meta_title || `${listing.name} | Best Sea to Sky`;
+  const townName = listing.towns?.name;
+  // If meta_title already contains the brand name, use it raw to avoid duplication from the layout template
+  const rawTitle = listing.meta_title;
+  const title = rawTitle
+    ? (rawTitle.includes('Best Sea to Sky') ? { absolute: rawTitle } : rawTitle)
+    : (townName ? `${listing.name} in ${townName}` : listing.name);
   const description = listing.meta_description || listing.short_description || listing.description?.slice(0, 160);
   const catSlug = listing.categories?.slug || category;
   const url = `https://bestseatosky.com/${catSlug}/${listing.slug}`;
