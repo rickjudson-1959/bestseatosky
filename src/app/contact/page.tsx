@@ -57,7 +57,7 @@ export default function ContactPage() {
             Interested in featured or sponsored placement?
           </p>
           <Link
-            href="/advertise"
+            href="/get-listed"
             className="text-sm text-emerald-700 font-semibold hover:underline"
           >
             View Plans

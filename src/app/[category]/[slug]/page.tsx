@@ -268,7 +268,7 @@ export default async function ListingPage({ params }: Props) {
                 Claim This Listing
               </a>
               <Link
-                href="/advertise"
+                href="/get-listed"
                 className="block text-center text-xs text-slate-400 hover:text-emerald-700 transition-colors mt-3"
               >
                 Want more visibility? See paid options →

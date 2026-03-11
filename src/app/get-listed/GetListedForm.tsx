@@ -21,7 +21,14 @@ export default function GetListedForm({ categories, towns }: Props) {
     setErrorMessage('');
 
     const form = e.currentTarget;
-    const data = Object.fromEntries(new FormData(form));
+    const formData = new FormData(form);
+    const data = {
+      business_name: formData.get('business_name'),
+      contact_name: formData.get('business_name'),
+      email: formData.get('email'),
+      category_id: formData.get('category_id') || null,
+      town_id: formData.get('town_id') || null,
+    };
 
     try {
       const res = await fetch('/api/get-listed', {
@@ -48,25 +55,28 @@ export default function GetListedForm({ categories, towns }: Props) {
   if (status === 'success') {
     return (
       <div className="bg-emerald-50 border border-emerald-200 rounded-xl p-8 text-center">
-        <div className="text-4xl mb-4">✓</div>
-        <h3 className="font-serif text-2xl font-bold text-slate-900 mb-2">Request Submitted!</h3>
+        <div className="text-4xl mb-4">&#10003;</div>
+        <h3 className="font-serif text-2xl font-bold text-slate-900 mb-2">You&apos;re In!</h3>
         <p className="text-slate-600">
-          Thanks for your interest in being listed on Best Sea to Sky. We&apos;ll review your
-          request and get back to you soon.
+          We&apos;ll set up your free listing and send you a confirmation within 24 hours.
+          Want featured placement?{' '}
+          <a href="mailto:hello@bestseatosky.com?subject=Featured Listing Inquiry" className="text-emerald-700 font-semibold hover:underline">
+            Let us know
+          </a>.
         </p>
       </div>
     );
   }
 
   return (
-    <form onSubmit={handleSubmit} className="space-y-6">
+    <form onSubmit={handleSubmit} className="space-y-5">
       {status === 'error' && (
         <div className="bg-red-50 border border-red-200 rounded-xl px-5 py-4 text-sm text-red-700">
           {errorMessage}
         </div>
       )}
 
-      <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
         <div>
           <label htmlFor="business_name" className="block text-sm font-semibold text-slate-700 mb-1.5">
             Business Name <span className="text-red-500">*</span>
@@ -82,20 +92,6 @@ export default function GetListedForm({ categories, towns }: Props) {
         </div>
 
         <div>
-          <label htmlFor="contact_name" className="block text-sm font-semibold text-slate-700 mb-1.5">
-            Contact Name <span className="text-red-500">*</span>
-          </label>
-          <input
-            type="text"
-            id="contact_name"
-            name="contact_name"
-            required
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-            placeholder="Your full name"
-          />
-        </div>
-
-        <div>
           <label htmlFor="email" className="block text-sm font-semibold text-slate-700 mb-1.5">
             Email <span className="text-red-500">*</span>
           </label>
@@ -106,32 +102,6 @@ export default function GetListedForm({ categories, towns }: Props) {
             required
             className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
             placeholder="you@business.com"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="phone" className="block text-sm font-semibold text-slate-700 mb-1.5">
-            Phone
-          </label>
-          <input
-            type="tel"
-            id="phone"
-            name="phone"
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-            placeholder="(604) 555-0123"
-          />
-        </div>
-
-        <div>
-          <label htmlFor="website" className="block text-sm font-semibold text-slate-700 mb-1.5">
-            Website
-          </label>
-          <input
-            type="url"
-            id="website"
-            name="website"
-            className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
-            placeholder="https://yourbusiness.com"
           />
         </div>
 
@@ -172,26 +142,17 @@ export default function GetListedForm({ categories, towns }: Props) {
         </div>
       </div>
 
-      <div>
-        <label htmlFor="message" className="block text-sm font-semibold text-slate-700 mb-1.5">
-          Message
-        </label>
-        <textarea
-          id="message"
-          name="message"
-          rows={4}
-          className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent resize-none"
-          placeholder="Tell us about your business..."
-        />
-      </div>
-
       <button
         type="submit"
         disabled={status === 'submitting'}
-        className="w-full md:w-auto px-8 py-3.5 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
+        className="w-full py-3.5 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
       >
-        {status === 'submitting' ? 'Submitting...' : 'Submit Request'}
+        {status === 'submitting' ? 'Submitting...' : 'Get Your Free Listing'}
       </button>
+
+      <p className="text-xs text-slate-400 text-center">
+        Free forever. No credit card required. Upgrade anytime.
+      </p>
     </form>
   );
 }

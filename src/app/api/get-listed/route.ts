@@ -11,10 +11,10 @@ export async function POST(request: NextRequest) {
     const { business_name, contact_name, email, phone, website, category_id, town_id, message } =
       body;
 
-    // Validate required fields
-    if (!business_name?.trim() || !contact_name?.trim() || !email?.trim()) {
+    // Validate required fields (contact_name optional in simplified form)
+    if (!business_name?.trim() || !email?.trim()) {
       return NextResponse.json(
-        { error: 'Business name, contact name, and email are required.' },
+        { error: 'Business name and email are required.' },
         { status: 400 }
       );
     }
@@ -26,7 +26,7 @@ export async function POST(request: NextRequest) {
 
     const { error } = await supabase.from('listing_requests').insert({
       business_name: business_name.trim(),
-      contact_name: contact_name.trim(),
+      contact_name: contact_name?.trim() || business_name.trim(),
       email: email.trim(),
       phone: phone?.trim() || null,
       website: website?.trim() || null,
@@ -46,12 +46,13 @@ export async function POST(request: NextRequest) {
       await resend.emails.send({
         from: 'Best Sea to Sky <noreply@bestseatosky.com>',
         to: 'rjudson@protonmail.com',
+        replyTo: email.trim(),
         subject: `New Listing Request: ${business_name.trim()}`,
         html: `
           <h2>New Listing Request</h2>
           <table style="border-collapse:collapse;font-family:sans-serif;">
             <tr><td style="padding:6px 12px;font-weight:bold;">Business</td><td style="padding:6px 12px;">${business_name.trim()}</td></tr>
-            <tr><td style="padding:6px 12px;font-weight:bold;">Contact</td><td style="padding:6px 12px;">${contact_name.trim()}</td></tr>
+            ${contact_name ? `<tr><td style="padding:6px 12px;font-weight:bold;">Contact</td><td style="padding:6px 12px;">${contact_name.trim()}</td></tr>` : ''}
             <tr><td style="padding:6px 12px;font-weight:bold;">Email</td><td style="padding:6px 12px;">${email.trim()}</td></tr>
             ${phone ? `<tr><td style="padding:6px 12px;font-weight:bold;">Phone</td><td style="padding:6px 12px;">${phone.trim()}</td></tr>` : ''}
             ${website ? `<tr><td style="padding:6px 12px;font-weight:bold;">Website</td><td style="padding:6px 12px;">${website.trim()}</td></tr>` : ''}
@@ -61,7 +62,6 @@ export async function POST(request: NextRequest) {
       });
     } catch (emailError) {
       console.error('Email notification failed:', emailError);
-      // Don't fail the request if email fails
     }
 
     return NextResponse.json({ success: true });

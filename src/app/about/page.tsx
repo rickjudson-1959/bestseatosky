@@ -108,7 +108,7 @@ export default function AboutPage() {
           </Link>{' '}
           to update their description, add photos, and ensure their information is accurate. For
           businesses that want more visibility, we offer{' '}
-          <Link href="/advertise" className="text-emerald-700 font-semibold hover:underline">
+          <Link href="/get-listed" className="text-emerald-700 font-semibold hover:underline">
             Featured and Sponsored tiers
           </Link>{' '}
           with priority placement and additional promotion.

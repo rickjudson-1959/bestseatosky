@@ -82,7 +82,6 @@ export default function Footer() {
             <Link href="/terms" className="text-xs text-slate-600 hover:text-slate-400">Terms</Link>
             <Link href="/privacy" className="text-xs text-slate-600 hover:text-slate-400">Privacy</Link>
             <Link href="/contact" className="text-xs text-slate-600 hover:text-slate-400">Contact</Link>
-            <Link href="/advertise" className="text-xs text-slate-600 hover:text-slate-400">Advertise</Link>
           </div>
         </div>
       </div>
