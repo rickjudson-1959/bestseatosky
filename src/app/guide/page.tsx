@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Sea to Sky Guides | Best Of Lists for Squamish, Whistler & Pemberton',
   description:
     'Browse our curated guides to the best restaurants, hikes, hotels, and attractions across the Sea to Sky corridor. Rankings based on real Google reviews.',
+  alternates: { canonical: '/guide' },
 };
 
 const CAT_STYLES: Record<string, { gradient: string; text: string; border: string; bg: string }> = {

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Privacy Policy',
   description:
     'Privacy policy for bestseatosky.com — how we collect and use your information.',
+  alternates: { canonical: '/privacy' },
 };
 
 export default function PrivacyPage() {

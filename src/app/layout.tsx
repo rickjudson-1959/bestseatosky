@@ -19,6 +19,7 @@ const sourceSans = Source_Sans_3({
 });
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://bestseatosky.com'),
   title: {
     default: 'Best Sea to Sky | Your Guide to Squamish, Whistler & Pemberton',
     template: '%s | Best Sea to Sky',
@@ -36,6 +37,9 @@ export const metadata: Metadata = {
     'skiing',
     'things to do',
   ],
+  alternates: {
+    canonical: '/',
+  },
   icons: {
     icon: '/icon.svg',
     apple: '/icon.svg',

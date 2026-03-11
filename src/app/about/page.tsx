@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'About Us',
   description:
     'Best Sea to Sky is a locally curated directory for the Sea to Sky corridor — from West Vancouver to Pemberton. Built by a Squamish local who got tired of the tourist noise.',
+  alternates: { canonical: '/about' },
 };
 
 export default function AboutPage() {

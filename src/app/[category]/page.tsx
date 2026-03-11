@@ -36,6 +36,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   return {
     title: `Best Places to ${CAT_VERBS[category.slug] || category.name} in Sea to Sky`,
     description: `Discover the best ${category.description?.toLowerCase() || 'places'} across Squamish, Whistler, and Pemberton in the Sea to Sky corridor.`,
+    alternates: { canonical: `/${categorySlug}` },
   };
 }
 

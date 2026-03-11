@@ -9,6 +9,7 @@ export const metadata: Metadata = {
   title: 'Sea to Sky Blog | Travel Tips & Local Guides',
   description:
     'Travel tips, local guides, and insider knowledge for exploring Squamish, Whistler, and Pemberton along the Sea to Sky corridor.',
+  alternates: { canonical: '/blog' },
 };
 
 export default async function BlogPage() {

@@ -5,6 +5,7 @@ export const metadata: Metadata = {
   title: 'Terms of Use',
   description:
     'Terms of use for bestseatosky.com — your guide to the Sea to Sky corridor.',
+  alternates: { canonical: '/terms' },
 };
 
 export default function TermsPage() {

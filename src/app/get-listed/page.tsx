@@ -7,6 +7,7 @@ export const metadata: Metadata = {
   title: 'Get Listed | Put Your Business in Front of Sea to Sky Visitors',
   description:
     'Your listing appears alongside top-rated businesses, ranked by real Google reviews. Free to get started — 859+ businesses already listed on Best Sea to Sky.',
+  alternates: { canonical: '/get-listed' },
 };
 
 const TIERS = [

@@ -6,6 +6,7 @@ export const metadata: Metadata = {
   title: 'Contact Us',
   description:
     'Get in touch with the Best Sea to Sky team. Questions about listings, advertising, corrections, or partnerships — we\'d love to hear from you.',
+  alternates: { canonical: '/contact' },
 };
 
 export default function ContactPage() {
