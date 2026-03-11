@@ -37,7 +37,21 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const title = rawTitle
     ? (rawTitle.includes('Best Sea to Sky') ? { absolute: rawTitle } : rawTitle)
     : (townName ? `${listing.name} in ${townName}` : listing.name);
-  const description = listing.meta_description || listing.short_description || listing.description?.slice(0, 160);
+  // Build a unique meta description from listing data instead of using a thin template
+  const catName = listing.categories?.name;
+  const ratingStr = listing.google_rating
+    ? `Rated ${listing.google_rating.toFixed(1)} stars from ${(listing.google_review_count || 0).toLocaleString()} Google reviews.`
+    : '';
+  const blurb = listing.short_description || listing.description?.slice(0, 100) || '';
+  const locationStr = townName ? `in ${townName}` : 'in the Sea to Sky corridor';
+
+  // Use custom meta_description only if it looks hand-written (not a generic template)
+  const storedMeta = listing.meta_description || '';
+  const isTemplated = storedMeta.startsWith('Discover ') && storedMeta.includes('Ratings, reviews, hours');
+  const description = (!isTemplated && storedMeta)
+    ? storedMeta
+    : `${listing.name} ${locationStr}${catName ? ` — ${catName.toLowerCase()}` : ''}. ${ratingStr}${blurb ? ` ${blurb}` : ''}`
+        .slice(0, 160);
   const catSlug = listing.categories?.slug || category;
   const url = `https://bestseatosky.com/${catSlug}/${listing.slug}`;
 
