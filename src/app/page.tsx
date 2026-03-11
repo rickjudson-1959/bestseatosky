@@ -30,18 +30,14 @@ export default async function HomePage() {
         />
 
         <div className="relative z-10 max-w-3xl mx-auto">
-          <p className="text-emerald-400 text-sm font-semibold tracking-[3px] uppercase mb-5">
-            SQUAMISH • WHISTLER • PEMBERTON
-          </p>
-
           <h1 className="font-serif font-bold text-white mb-5">
-            <span className="block text-5xl md:text-6xl mb-2">Discover</span>
-            <span className="block text-5xl md:text-6xl leading-tight">the Best of Sea to Sky</span>
+            <span className="block text-4xl md:text-5xl mb-3 text-emerald-400">Squamish. Whistler. Pemberton.</span>
+            <span className="block text-3xl md:text-4xl leading-tight text-slate-200">The only guide ranked by real reviews.</span>
           </h1>
 
           <p className="text-lg text-slate-400 leading-relaxed max-w-xl mx-auto mb-10">
-            Your trusted guide to the best restaurants, adventures, stays and experiences
-            across the Sea to Sky corridor.
+            859+ local businesses — restaurants, trails, hotels, and hidden gems —
+            curated by locals and backed by verified Google ratings.
           </p>
 
           <SearchBar />
