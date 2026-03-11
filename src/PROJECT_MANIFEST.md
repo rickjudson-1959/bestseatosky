@@ -1,6 +1,6 @@
 # Best Sea to Sky — Project Manifest
 
-**Last updated:** 2026-02-24
+**Last updated:** 2026-03-11
 **Live URL:** https://bestseatosky.com
 **Repo:** https://github.com/rickjudson-1959/bestseatosky
 **Hosting:** Vercel (auto-deploy from `main`)
@@ -59,9 +59,28 @@ src/
 │   │   ├── page.tsx            # Guide landing page (all guides grouped by category)
 │   │   └── [slug]/
 │   │       └── page.tsx        # SEO guide page (ranked listings, OG tags)
+│   ├── 48-hours-squamish/
+│   │   └── page.tsx            # 48-hour Squamish itinerary (2-day timeline layout)
+│   ├── best-patios/
+│   │   └── page.tsx            # Best patios guide (8 ranked patios, Squamish to Pemberton)
+│   ├── ski-season/
+│   │   └── page.tsx            # Ski Season Survival Guide (5 sections, Whistler focus)
+│   ├── neighbourhood/
+│   │   ├── squamish/
+│   │   │   └── page.tsx        # Downtown vs Garibaldi Highlands comparison
+│   │   └── whistler/
+│   │       └── page.tsx        # Village vs Creekside comparison
 │   ├── get-listed/
 │   │   ├── page.tsx            # Get Listed page (server component, fetches categories/towns)
 │   │   └── GetListedForm.tsx   # Get Listed form (client component, status states)
+│   ├── about/
+│   │   └── page.tsx            # About page
+│   ├── why/
+│   │   └── page.tsx            # Why Best Sea to Sky (competitive comparison)
+│   ├── methodology/
+│   │   └── page.tsx            # How We Rank (ranking methodology)
+│   ├── contact/
+│   │   └── page.tsx            # Contact page
 │   ├── terms/
 │   │   └── page.tsx            # Terms of use page
 │   ├── privacy/
@@ -76,7 +95,9 @@ src/
 │   ├── Header.tsx              # Sticky nav with category links, Guides, Blog, Get Listed CTA, mobile hamburger menu
 │   ├── Footer.tsx              # Footer with curated links, guides, Get Listed, contact, advertise
 │   ├── SearchBar.tsx           # Debounced live search (client component)
-│   └── ListingCard.tsx         # Listing preview card with image/gradient
+│   ├── ListingCard.tsx         # Listing preview card with image/gradient (featured badge + green border for featured)
+│   ├── SocialProof.tsx         # VisitorTestimonials (full section) + TrustStrip (compact bar)
+│   └── NewsletterSignup.tsx    # Newsletter signup form (client component)
 ├── lib/
 │   ├── supabase.ts             # Supabase client + type definitions (incl. ListingRequest)
 │   ├── data.ts                 # Data fetching functions (incl. submitListingRequest)
@@ -160,6 +181,11 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
 - **Mobile hamburger menu** — animated 3-bar toggle in header, full-width dropdown nav, auto-closes on link tap
 - **Image fallback:** gradient + emoji when no photo available
+- **Featured listings** — visual differentiation with emerald border, green tint, and "★ Featured" badge; sorted to top of category pages
+- **Social proof** — VisitorTestimonials on homepage + guide index; TrustStrip on category pages + guide detail pages
+- **5 static content pages** — neighbourhood guides (Squamish, Whistler), seasonal (ski, patios), itinerary (48hrs Squamish)
+- **Dynamic meta descriptions** — listing pages generate unique descriptions from name, town, rating, review count
+- **Outcome-focused B2B copy** — Get Listed and Advertise pages use warm local voice, not SaaS jargon
 
 ---
 
@@ -180,14 +206,21 @@ Driven by the `seo_pages` table. Each guide page:
 - Breadcrumb navigation
 
 Key guides linked from footer:
-- `/guide/best-restaurants-squamish`
-- `/guide/best-restaurants-whistler`
-- `/guide/best-hikes-squamish`
-- `/guide/best-hikes-whistler`
-- `/guide/best-hotels-whistler`
-- `/guide/things-to-do-squamish`
-- `/guide/things-to-do-whistler`
 - `/guide` (All Guides)
+
+### Static Content Pages (not database-driven)
+
+These are standalone pages with hardcoded local content, separate from the `/guide/[slug]` dynamic route:
+
+| Route | Type | Description |
+|-------|------|-------------|
+| `/48-hours-squamish` | Itinerary | 2-day local's itinerary with timeline layout (14 stops) |
+| `/ski-season` | Seasonal | Whistler ski survival guide (lift lines, cheap eats, secret runs, accommodation, Highway 99) |
+| `/best-patios` | Seasonal | 8 ranked patios from Squamish to Pemberton |
+| `/neighbourhood/squamish` | Neighbourhood | Downtown vs Garibaldi Highlands comparison |
+| `/neighbourhood/whistler` | Neighbourhood | Village vs Creekside comparison |
+
+All linked from: homepage "Local Guides" section, footer Guides column, and cross-linked between each other.
 
 ---
 

@@ -58,7 +58,38 @@ export default async function GuidesPage() {
         Curated best-of lists for Squamish, Whistler &amp; Pemberton, ranked by real reviews.
       </p>
 
-      {/* Grouped Guide Cards */}
+      {/* Local Guides — static content pages */}
+      <div className="mb-14">
+        <div className="flex items-center gap-3 mb-5">
+          <div className="h-1 w-8 rounded-full bg-gradient-to-r from-emerald-500 to-teal-600" />
+          <h2 className="font-serif text-xl font-bold text-slate-900">Local Guides &amp; Itineraries</h2>
+        </div>
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+          {[
+            { href: '/48-hours-squamish', title: '48 Hours in Squamish', desc: 'A local\'s itinerary for first-timers — 14 stops over 2 days, from early-morning coffee to hidden trails to the best dinner in town.' },
+            { href: '/ski-season', title: 'Ski Season Survival Guide', desc: 'How to do Whistler without going broke. Skip the lift lines, eat well without a second mortgage, and find the runs tourists miss.' },
+            { href: '/best-patios', title: 'Best Patios in the Corridor', desc: '8 patios ranked by a local who has sat on every one — post-trail beers, sunset dinners, and hidden decks from Squamish to Pemberton.' },
+            { href: '/neighbourhood/squamish', title: 'Squamish Neighbourhoods', desc: 'Downtown vs. Garibaldi Highlands — where to eat, stay, and explore based on your trip style.' },
+            { href: '/neighbourhood/whistler', title: 'Whistler Neighbourhoods', desc: 'Village vs. Creekside — how to pick the right base for your trip and skip the crowds.' },
+          ].map((g) => (
+            <Link key={g.href} href={g.href} className="group">
+              <div className="bg-white rounded-xl p-5 border border-emerald-200 hover:shadow-md transition-all h-full flex flex-col">
+                <h3 className="font-serif text-base font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-snug mb-2">
+                  {g.title}
+                </h3>
+                <p className="text-sm text-slate-500 leading-relaxed line-clamp-3 flex-1">
+                  {g.desc}
+                </p>
+                <span className="text-xs font-semibold text-emerald-700 mt-3 inline-block">
+                  Read guide →
+                </span>
+              </div>
+            </Link>
+          ))}
+        </div>
+      </div>
+
+      {/* Grouped Guide Cards — database-driven */}
       {sortedGroups.map((group) => {
         const styles = CAT_STYLES[group.slug] || CAT_STYLES.eat;
         return (
