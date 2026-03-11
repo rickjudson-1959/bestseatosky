@@ -74,7 +74,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       {/* Page Header */}
       <div className="mb-8">
         <h1 className="font-serif text-3xl md:text-4xl text-slate-900 mb-2">
-          {CAT_ICONS[categorySlug]} Best Places to {CAT_VERBS[categorySlug] || category.name}
+          Best Places to {CAT_VERBS[categorySlug] || category.name}
         </h1>
         <p className="text-slate-500">
           {listings.length} places across the Sea to Sky corridor
