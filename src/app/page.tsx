@@ -75,23 +75,23 @@ export default async function HomePage() {
       <section className="bg-emerald-50 border-y border-emerald-100 px-6 py-10">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 text-center mb-8">
-            Curated by Locals. Backed by Real Reviews.
+            Why People Trust This Guide
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
               <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">859+</div>
               <div className="text-sm font-semibold text-slate-900 mb-1">Hand-Picked Listings</div>
-              <p className="text-xs text-slate-500">Every business vetted by people who actually live here</p>
+              <p className="text-xs text-slate-500">Every business vetted by people who live and eat and hike here</p>
             </div>
             <div className="text-center">
               <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">Zero</div>
-              <div className="text-sm font-semibold text-slate-900 mb-1">Ads in Search Results</div>
-              <p className="text-xs text-slate-500">Rankings based on quality, not who pays the most</p>
+              <div className="text-sm font-semibold text-slate-900 mb-1">Ads in Our Rankings</div>
+              <p className="text-xs text-slate-500">You&apos;re here because you&apos;re good, not because you paid</p>
             </div>
             <div className="text-center">
               <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">20+</div>
-              <div className="text-sm font-semibold text-slate-900 mb-1">Years of Local Knowledge</div>
-              <p className="text-xs text-slate-500">Built by corridor residents, not a tech company in San Francisco</p>
+              <div className="text-sm font-semibold text-slate-900 mb-1">Years on the Corridor</div>
+              <p className="text-xs text-slate-500">Built by your neighbours, not a tech company in California</p>
             </div>
           </div>
         </div>
@@ -100,8 +100,8 @@ export default async function HomePage() {
       {/* FEATURED LISTINGS */}
       {featuredListings.length > 0 && (
         <section className="max-w-7xl mx-auto px-6 py-16">
-          <h2 className="font-serif text-3xl text-slate-900 mb-2">Featured Places</h2>
-          <p className="text-slate-500 mb-8">Handpicked highlights from the Sea to Sky corridor</p>
+          <h2 className="font-serif text-3xl text-slate-900 mb-2">Places Worth the Drive</h2>
+          <p className="text-slate-500 mb-8">Local favourites handpicked from across the corridor</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredListings.map((listing) => (
               <ListingCard key={listing.id} listing={listing} />

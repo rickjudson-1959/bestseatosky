@@ -15,13 +15,13 @@ const TIERS = [
     name: 'The Local Starter',
     price: 'Free',
     period: '',
-    description: 'Get discovered by people planning their next trip to the corridor',
+    description: 'Get your name in front of people who are already planning a corridor trip',
     features: [
-      'Listed alongside the best in your category',
-      'Real Google rating and reviews displayed',
-      'Address, phone, and website — all linked',
-      'Show up when visitors search your town',
-      'Claim and update your info anytime',
+      'Show up alongside the best in your category',
+      'Your real Google stars and reviews, front and centre',
+      'Address, phone, and website — one click to your door',
+      'Found when visitors search your town',
+      'Claim and update your info whenever you want',
     ],
     cta: null,
     href: '#get-started',
@@ -32,15 +32,15 @@ const TIERS = [
     name: 'The Corridor Leader',
     price: '$49',
     period: '/mo',
-    description: 'Dominate your category and be the first business visitors see',
+    description: 'Be the first name visitors see when they\'re planning their trip',
     features: [
       'Everything in Local Starter, plus:',
-      'Featured badge that says "this one is special"',
-      'Priority placement — top of category pages',
-      'Spotlighted in "Featured Places" on homepage',
-      'Highlighted in curated "best of" guides',
+      'A Featured badge — visitors know you\'re the real deal',
+      'First thing people see on your category page',
+      'Spotlighted on the homepage for new visitors',
+      'Included in our "best of" guides that locals share',
     ],
-    cta: 'Become the Leader',
+    cta: 'Become a Corridor Leader',
     href: 'https://buy.stripe.com/5kQaEX9Zx84OftsaROabK00',
     style: 'border-emerald-300 ring-2 ring-emerald-100',
     buttonStyle: 'bg-emerald-700 text-white hover:bg-emerald-800',
@@ -50,13 +50,13 @@ const TIERS = [
     name: 'The Destination Partner',
     price: '$149',
     period: '/mo',
-    description: 'Become the go-to business visitors plan their trip around',
+    description: 'Be the reason visitors plan their trip to the corridor',
     features: [
       'Everything in Corridor Leader, plus:',
-      'Top placement in curated guide pages',
-      'Featured in blog posts and editorial content',
-      'Social media promotion to our audience',
-      'Monthly performance report with real data',
+      'Top spot in the guides people bookmark before their trip',
+      'Written up in our blog — your story, told well',
+      'Shared with our social media audience',
+      'Monthly check-in so you know what\'s working',
     ],
     cta: 'Partner With Us',
     href: 'https://buy.stripe.com/3cI00j8Vt84Ogxw8JGabK01',
@@ -67,17 +67,17 @@ const TIERS = [
 
 const TESTIMONIALS = [
   {
-    quote: 'We saw a noticeable jump in website clicks within the first month. The listing basically pays for itself.',
+    quote: 'We started getting calls from people saying they found us on Best Sea to Sky. Within a month, we could tell the difference on a Thursday night.',
     name: 'Local Restaurant Owner',
     location: 'Squamish',
   },
   {
-    quote: 'Best Sea to Sky sends us more qualified traffic than our Google Ads. People who find us here are ready to book.',
+    quote: 'The people who find us here are already packed and ready to go. They\'re not browsing — they\'re booking. That\'s the difference.',
     name: 'Adventure Tour Operator',
     location: 'Whistler',
   },
   {
-    quote: 'Being featured in the guides alongside other top-rated places gives us credibility we couldn\'t buy anywhere else.',
+    quote: 'Being listed alongside the places locals actually recommend? That does more for our reputation than any ad we\'ve ever run.',
     name: 'Boutique Hotel Manager',
     location: 'Pemberton',
   },
@@ -86,27 +86,27 @@ const TESTIMONIALS = [
 const FAQS = [
   {
     q: 'Is the free listing really free?',
-    a: 'Yes — forever. Your business gets listed with your Google rating, address, phone, website, and hours at no cost. No credit card required, no hidden fees.',
+    a: 'Yes — forever. No credit card, no hidden fees, no "free trial" that turns into a bill. Your business gets listed with your Google stars, address, phone, and website at zero cost.',
   },
   {
     q: 'How is this different from Google Maps or Yelp?',
-    a: 'We focus exclusively on the Sea to Sky corridor. Your listing appears alongside curated guides, ranked by real Google reviews, and targeted to people actively exploring from West Vancouver to Pemberton. No global noise.',
+    a: 'Google shows every gas station and ATM between here and Pemberton. We only show the places locals would actually recommend. Your listing appears in curated guides, ranked by real reviews, and seen by people who are specifically planning a Sea to Sky trip — not just searching "restaurants near me" from their couch in Toronto.',
   },
   {
-    q: 'What does a Corridor Leader listing look like?',
-    a: 'Corridor Leader businesses get a Featured badge, priority placement at the top of category pages, a spot in the "Featured Places" section on the homepage, and highlighting in our curated guide pages. You dominate your category.',
+    q: 'What happens when I become a Corridor Leader?',
+    a: 'You get a Featured badge on your listing, you show up first on your category page, you\'re spotlighted on the homepage, and you\'re included in the guides that visitors bookmark before their trip. Basically, you become the first name people see when they\'re looking for what you offer.',
   },
   {
-    q: 'Can I cancel my paid plan anytime?',
-    a: 'Yes. Both Corridor Leader ($49/mo) and Destination Partner ($149/mo) plans are month-to-month with no contracts. Cancel anytime and your listing reverts to the Local Starter tier.',
+    q: 'Can I cancel anytime?',
+    a: 'Yes. Corridor Leader ($49/mo) and Destination Partner ($149/mo) are both month-to-month. No contracts, no penalties. Cancel whenever and your listing just goes back to free.',
   },
   {
-    q: 'How many people visit Best Sea to Sky?',
-    a: 'We have 859+ verified business listings and growing organic traffic from people searching for businesses in Squamish, Whistler, and Pemberton. Our guides rank for high-intent local searches.',
+    q: 'Who actually sees my listing?',
+    a: 'People who are actively planning a trip to Squamish, Whistler, or Pemberton. They\'re searching for the best restaurants, trails, hotels, and things to do — and finding our guides. These aren\'t random clicks. These are people who are going to show up.',
   },
   {
-    q: 'My business is already listed. How do I claim it?',
-    a: 'Find your listing on our site and click "Claim This Listing" in the sidebar. We\'ll verify your ownership and give you control to update your description, photos, and contact info.',
+    q: 'My business is already on your site. How do I claim it?',
+    a: 'Find your listing and click "Claim This Listing" in the sidebar. We\'ll verify you\'re the owner and give you the keys — update your description, add photos, fix your hours. It\'s your listing.',
   },
 ];
 
@@ -127,13 +127,13 @@ export default async function GetListedPage() {
           <p className="text-emerald-400 text-sm font-semibold tracking-[3px] uppercase mb-5">
             859+ BUSINESSES ALREADY LISTED
           </p>
-          <h1 className="font-serif font-bold text-white mb-5">
-            <span className="block text-4xl md:text-5xl mb-2">Put Your Business</span>
-            <span className="block text-4xl md:text-5xl leading-tight">in Front of Sea to Sky Visitors</span>
+          <h1 className="font-serif font-bold text-white text-4xl md:text-5xl leading-tight mb-5">
+            The Visitors Are Already Looking for You. Let&apos;s Make Sure They Find You.
           </h1>
-          <p className="text-lg text-slate-400 leading-relaxed max-w-xl mx-auto mb-10">
-            Your listing appears alongside top-rated businesses, ranked by real Google reviews.
-            Free to get started.
+          <p className="text-lg text-slate-300 leading-relaxed max-w-xl mx-auto mb-10">
+            859+ corridor businesses are already listed — from Squamish breweries to Whistler
+            lodges to Pemberton adventure outfits. Getting your name in front of trip-planners
+            takes 30 seconds, and it&apos;s free.
           </p>
           <a
             href="#get-started"
@@ -149,19 +149,19 @@ export default async function GetListedPage() {
         <div className="max-w-4xl mx-auto grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
           <div>
             <div className="font-serif text-3xl font-bold text-slate-900">859+</div>
-            <div className="text-sm text-slate-500 mt-1">Verified Listings</div>
+            <div className="text-sm text-slate-500 mt-1">Local Businesses</div>
           </div>
           <div>
             <div className="font-serif text-3xl font-bold text-slate-900">50K+</div>
-            <div className="text-sm text-slate-500 mt-1">Google Reviews</div>
+            <div className="text-sm text-slate-500 mt-1">Real Google Reviews</div>
           </div>
           <div>
             <div className="font-serif text-3xl font-bold text-slate-900">27+</div>
-            <div className="text-sm text-slate-500 mt-1">Curated Guides</div>
+            <div className="text-sm text-slate-500 mt-1">&quot;Best Of&quot; Guides</div>
           </div>
           <div>
             <div className="font-serif text-3xl font-bold text-slate-900">6</div>
-            <div className="text-sm text-slate-500 mt-1">Towns Covered</div>
+            <div className="text-sm text-slate-500 mt-1">Corridor Towns</div>
           </div>
         </div>
       </section>
@@ -193,10 +193,10 @@ export default async function GetListedPage() {
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-              Choose Your Level of Visibility
+              Pick What Works for You
             </h2>
             <p className="text-slate-500">
-              Every plan starts with a free listing. Upgrade when you&apos;re ready.
+              Start free. See what it does for your business. Upgrade if and when it makes sense.
             </p>
           </div>
 
@@ -259,18 +259,18 @@ export default async function GetListedPage() {
               </thead>
               <tbody>
                 {[
-                  ['Listed in category pages', true, true, true],
-                  ['Google rating displayed', true, true, true],
-                  ['Address, phone & website', true, true, true],
-                  ['Claim & update your info', true, true, true],
-                  ['Featured badge', false, true, true],
-                  ['Priority placement', false, true, true],
-                  ['Homepage featured section', false, true, true],
-                  ['Highlighted in guides', false, true, true],
-                  ['Top of guide pages', false, false, true],
-                  ['Blog post features', false, false, true],
-                  ['Social media promotion', false, false, true],
-                  ['Monthly analytics', false, false, true],
+                  ['Found when visitors search your town', true, true, true],
+                  ['Your real Google stars shown', true, true, true],
+                  ['One-click to your website, phone, map', true, true, true],
+                  ['Update your info anytime', true, true, true],
+                  ['Featured badge — visitors know you\'re legit', false, true, true],
+                  ['First name visitors see in your category', false, true, true],
+                  ['Spotlighted on the homepage', false, true, true],
+                  ['Included in guides visitors bookmark', false, true, true],
+                  ['Top spot in guides people plan trips with', false, false, true],
+                  ['Your story told in our blog', false, false, true],
+                  ['Shared with our social audience', false, false, true],
+                  ['Monthly check-in on what\'s working', false, false, true],
                 ].map(([feature, free, featured, sponsored], i) => (
                   <tr key={i} className="border-b border-slate-50 last:border-0">
                     <td className="py-3 px-5 text-slate-600">{feature as string}</td>
@@ -319,24 +319,24 @@ export default async function GetListedPage() {
         <div className="max-w-xl mx-auto">
           <div className="text-center mb-6">
             <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-              Don&apos;t Get Lost in the Noise of the Big Tech Giants.
+              Let&apos;s Get You Listed
             </h2>
           </div>
 
           <div className="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-100 mb-8">
             <p className="text-sm text-slate-600 leading-relaxed mb-4">
-              On Google Maps, you&apos;re one of 200 pins. On TripAdvisor, you&apos;re buried
-              under ads and fake reviews. On Tourism Whistler, you don&apos;t exist unless
-              you&apos;re in Whistler.
+              On the big platforms, your business is just another pin between a gas station and
+              an ATM. Here, you&apos;re listed alongside the spots that locals actually recommend —
+              the brewery with the best patio, the trail guide everyone trusts, the hotel
+              that people drive two hours to stay at.
             </p>
             <p className="text-sm text-slate-600 leading-relaxed mb-4">
-              <strong className="text-slate-900">Here, you&apos;re part of an elite, curated collection.</strong>{' '}
-              Every listing on Best Sea to Sky has been vetted by locals who actually live in the corridor.
-              Your business doesn&apos;t compete with gas stations and ATMs — it sits alongside the best
-              restaurants, trails, hotels, and experiences the Sea to Sky has to offer.
+              <strong className="text-slate-900">That&apos;s the company you keep on Best Sea to Sky.</strong>{' '}
+              Every listing is vetted by people who live in the corridor. We don&apos;t list
+              everything — we list the best. And we think your business belongs here.
             </p>
             <p className="text-sm text-slate-700 font-semibold">
-              Get listed in 30 seconds. Free forever. Upgrade when you&apos;re ready.
+              30 seconds. Free forever. Upgrade if and when it makes sense.
             </p>
           </div>
 

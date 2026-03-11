@@ -2,27 +2,27 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'Advertise | Get Your Business in Front of the Right People',
+  title: 'Advertise | Be the Place Visitors Find First',
   description:
-    'Own your category in the Sea to Sky corridor. Targeted high-intent traffic from people actively planning trips — not just more impressions. Featured and Sponsored placements available.',
+    'Be the restaurant, hotel, or adventure company that corridor visitors find before they even leave the house. 859+ local businesses listed — free to start.',
   alternates: { canonical: '/advertise' },
 };
 
 const VALUE_PROPS = [
   {
-    title: 'Own the Search',
+    title: 'Be the Place They Find First',
     description:
-      'When someone searches "best restaurants in Squamish" or "things to do in Whistler," your business appears at the top of a curated list — not buried under 200 generic pins. You don\'t just show up. You dominate your category.',
+      'When someone googles "best restaurants in Squamish," you want to be in that answer — not buried under 200 pins between a gas station and a Tim Hortons. On Best Sea to Sky, your business shows up in a curated list alongside the corridor\'s best. The people reading it are already planning their trip. They just need to know your name.',
   },
   {
-    title: 'Targeted, High-Intent Traffic',
+    title: 'More Hikers at Your Tables. More Guests in Your Rooms.',
     description:
-      'Every visitor to Best Sea to Sky is actively planning a trip to the corridor. They\'re not browsing a global platform — they\'re looking for exactly the kind of business you run, in exactly the towns you serve. That\'s the difference between impressions and customers.',
+      'Everyone who visits Best Sea to Sky is planning a trip to the corridor right now. They\'re not casually browsing a global site — they\'re looking for exactly the kind of place you run, in exactly the town you\'re in. That means the people who find you here are ready to walk through your door, not just scroll past your pin.',
   },
   {
-    title: 'Authentic Association',
+    title: 'You\'re Known by the Company You Keep',
     description:
-      'Your business appears alongside the corridor\'s best — hand-picked, locally vetted, and ranked by real reviews. No pay-to-play rankings, no fake reviews, no algorithmic lottery. When you\'re featured on Best Sea to Sky, you\'re associated with quality. Period.',
+      'Your listing sits alongside places that locals actually recommend — the brewery with the best patio in Squamish, the lodge that Whistler regulars swear by, the trail guide everyone trusts. No fake reviews, no pay-to-rank schemes. When your business appears on Best Sea to Sky, people know you earned that spot.',
   },
 ];
 
@@ -39,15 +39,15 @@ export default function AdvertisePage() {
         />
         <div className="relative z-10 max-w-3xl mx-auto">
           <p className="text-emerald-400 text-sm font-semibold tracking-[3px] uppercase mb-5">
-            FOR SEA TO SKY BUSINESSES
+            FOR LOCAL BUSINESSES
           </p>
           <h1 className="font-serif font-bold text-white text-4xl md:text-5xl leading-tight mb-6">
-            Get Your Business in Front of the Right People — Not Just More People.
+            Be the Place Visitors Find Before They Even Leave the House.
           </h1>
           <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
-            Google gives you impressions. TripAdvisor gives you noise. We give you the customers
-            who are already planning their next trip to the corridor — and looking for exactly
-            what you offer.
+            You know what it&apos;s like — someone drives through town, eats at the wrong place, and
+            never comes back. We make sure the right visitors find you first. The ones who are already
+            planning their corridor trip and looking for exactly what you offer.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
@@ -75,11 +75,12 @@ export default function AdvertisePage() {
         </nav>
 
         <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 mb-4">
-          Why Advertise on Best Sea to Sky?
+          What This Actually Does for Your Business
         </h2>
         <p className="text-slate-500 leading-relaxed mb-12 max-w-2xl">
-          The big platforms treat your business like a pin on a map. We treat you like what you
-          are — a vital part of this corridor. Here&apos;s what that means for your bottom line.
+          We&apos;re not a tech company selling you dashboards. We&apos;re your neighbours,
+          and we built this to help corridor businesses get found by the people who&apos;ll
+          actually show up. Here&apos;s what that looks like.
         </p>
 
         <div className="flex flex-col gap-8 mb-16">
@@ -105,24 +106,24 @@ export default function AdvertisePage() {
         {/* The Numbers */}
         <div className="bg-slate-50 rounded-2xl p-8 md:p-10 border border-slate-100 mb-16">
           <h2 className="font-serif text-2xl font-bold text-slate-900 mb-6 text-center">
-            The Corridor by the Numbers
+            You&apos;re Joining Good Company
           </h2>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             <div>
               <div className="font-serif text-3xl font-bold text-emerald-700">859+</div>
-              <div className="text-sm text-slate-500 mt-1">Verified Listings</div>
+              <div className="text-sm text-slate-500 mt-1">Local Businesses Listed</div>
             </div>
             <div>
               <div className="font-serif text-3xl font-bold text-emerald-700">27+</div>
-              <div className="text-sm text-slate-500 mt-1">Curated Guides</div>
+              <div className="text-sm text-slate-500 mt-1">&quot;Best Of&quot; Guides</div>
             </div>
             <div>
               <div className="font-serif text-3xl font-bold text-emerald-700">6</div>
-              <div className="text-sm text-slate-500 mt-1">Towns Covered</div>
+              <div className="text-sm text-slate-500 mt-1">Towns, One Corridor</div>
             </div>
             <div>
               <div className="font-serif text-3xl font-bold text-emerald-700">100%</div>
-              <div className="text-sm text-slate-500 mt-1">Locally Curated</div>
+              <div className="text-sm text-slate-500 mt-1">Run by Locals</div>
             </div>
           </div>
         </div>
@@ -130,12 +131,12 @@ export default function AdvertisePage() {
         {/* Pricing CTA */}
         <div className="bg-emerald-50 rounded-2xl p-8 md:p-10 border border-emerald-100 text-center">
           <h2 className="font-serif text-2xl font-bold text-slate-900 mb-3">
-            Ready to Own Your Category?
+            Ready to Get Found by the Right People?
           </h2>
           <p className="text-sm text-slate-600 mb-6 max-w-lg mx-auto">
-            Start free as a <strong>Local Starter</strong>. Dominate your category as a{' '}
-            <strong>Corridor Leader</strong> ($49/mo). Become the business visitors plan their
-            trip around as a <strong>Destination Partner</strong> ($149/mo).
+            Start with a free <strong>Local Starter</strong> listing. Want to be the first place
+            visitors see? Become a <strong>Corridor Leader</strong> ($49/mo). Want to be the reason
+            people plan their trip? Become a <strong>Destination Partner</strong> ($149/mo).
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
