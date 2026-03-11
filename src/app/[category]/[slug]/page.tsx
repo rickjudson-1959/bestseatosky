@@ -55,7 +55,6 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const description = (!isTemplated && storedMeta)
     ? storedMeta
     : `${listing.name} ${locationStr}${ratingStr}. Hours, directions, and ${similarStr}.`;
-  const catSlug = listing.categories?.slug || category;
   const url = `https://bestseatosky.com/${catSlug}/${listing.slug}`;
 
   return {
