@@ -79,6 +79,8 @@ export default function Footer() {
           <div className="flex gap-4">
             <Link href="/get-listed" className="text-xs text-slate-600 hover:text-slate-400">Get Listed</Link>
             <Link href="/about" className="text-xs text-slate-600 hover:text-slate-400">About</Link>
+            <Link href="/why" className="text-xs text-slate-600 hover:text-slate-400">Why Us</Link>
+            <Link href="/methodology" className="text-xs text-slate-600 hover:text-slate-400">How We Rank</Link>
             <Link href="/terms" className="text-xs text-slate-600 hover:text-slate-400">Terms</Link>
             <Link href="/privacy" className="text-xs text-slate-600 hover:text-slate-400">Privacy</Link>
             <Link href="/contact" className="text-xs text-slate-600 hover:text-slate-400">Contact</Link>
