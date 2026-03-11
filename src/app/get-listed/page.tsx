@@ -317,12 +317,26 @@ export default async function GetListedPage() {
       {/* GET STARTED FORM */}
       <section id="get-started" className="px-6 py-20">
         <div className="max-w-xl mx-auto">
-          <div className="text-center mb-10">
+          <div className="text-center mb-6">
             <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 mb-3">
-              Get Your Free Listing
+              Don&apos;t Get Lost in the Noise of the Big Tech Giants.
             </h2>
-            <p className="text-slate-500 text-sm">
-              Takes 30 seconds. We&apos;ll set up your listing and email you a confirmation.
+          </div>
+
+          <div className="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-100 mb-8">
+            <p className="text-sm text-slate-600 leading-relaxed mb-4">
+              On Google Maps, you&apos;re one of 200 pins. On TripAdvisor, you&apos;re buried
+              under ads and fake reviews. On Tourism Whistler, you don&apos;t exist unless
+              you&apos;re in Whistler.
+            </p>
+            <p className="text-sm text-slate-600 leading-relaxed mb-4">
+              <strong className="text-slate-900">Here, you&apos;re part of an elite, curated collection.</strong>{' '}
+              Every listing on Best Sea to Sky has been vetted by locals who actually live in the corridor.
+              Your business doesn&apos;t compete with gas stations and ATMs — it sits alongside the best
+              restaurants, trails, hotels, and experiences the Sea to Sky has to offer.
+            </p>
+            <p className="text-sm text-slate-700 font-semibold">
+              Get listed in 30 seconds. Free forever. Upgrade when you&apos;re ready.
             </p>
           </div>
 

@@ -10,18 +10,6 @@ export const metadata: Metadata = {
 
 const COMPETITORS = [
   {
-    name: 'Tourism Whistler',
-    icon: '🏔️',
-    strengths: ['Official DMO status', 'Strong brand recognition', 'Local partnerships'],
-    weaknesses: [
-      'Whistler only — no Squamish, Pemberton, or corridor coverage',
-      'Listings are pay-to-play, not ranked by quality',
-      'No real visitor ratings or review data',
-      'Promotional tone, not independent recommendations',
-    ],
-    verdict: 'Great if your trip starts and ends in Whistler. But the corridor is 150 km of incredible towns, and Tourism Whistler covers one of them.',
-  },
-  {
     name: 'Google Maps',
     icon: '📍',
     strengths: ['Comprehensive coverage', 'Real-time hours and directions', 'Massive review database'],
@@ -30,8 +18,9 @@ const COMPETITORS = [
       'No context for what\'s worth your time vs. what\'s just nearby',
       'Algorithm favors businesses that game SEO, not quality',
       'No guides, no local perspective, no editorial voice',
+      'Bot-written and incentivized reviews pollute the ratings',
     ],
-    verdict: 'The best tool for directions. But "restaurants near me" returns 200 results with no way to tell the hidden gem from the tourist trap.',
+    verdict: 'The best tool for directions. But "restaurants near me" returns 200 results with no way to tell the hidden gem from the tourist trap. You need a local to sort through the noise — that\'s us.',
   },
   {
     name: 'TripAdvisor',
@@ -42,31 +31,35 @@ const COMPETITORS = [
       'Pay-to-play advertising buries organic results',
       'Global platform — no special attention to Sea to Sky',
       'Fake review problem erodes trust in ratings',
+      'Businesses can pay for premium placement regardless of quality',
     ],
-    verdict: 'Useful for Cancun resorts. Less useful for finding the breakfast spot that Squamish locals swear by.',
+    verdict: 'Useful for Cancun resorts. Less useful for finding the breakfast spot that Squamish locals swear by. And good luck telling the sponsored results from the real ones.',
   },
   {
-    name: 'Explore Squamish',
-    icon: '🧗',
-    strengths: ['Strong local credibility', 'Community-driven', 'Good Squamish coverage'],
+    name: 'Tourism Whistler / Explore Squamish',
+    icon: '🏔️',
+    strengths: ['Official tourism authority status', 'Strong brand recognition in their respective towns', 'Community-driven'],
     weaknesses: [
-      'Squamish only — no Whistler, Pemberton, or broader corridor',
-      'Limited listing depth and review integration',
-      'No curated "best of" guides ranked by data',
+      'Single-town focus — neither covers the full corridor',
+      'Listings are pay-to-play, not ranked by quality',
+      'No real visitor ratings or review data',
+      'Promotional tone, not independent recommendations',
+      'If you\'re driving Vancouver to Pemberton, you need three different sites',
     ],
-    verdict: 'A great community resource for Squamish. But if you\'re driving the corridor, you need more than one town.',
+    verdict: 'Great community resources — for one town at a time. But the Sea to Sky is 150 km of incredible communities, and no one else covers all of them independently.',
   },
 ];
 
 const COMPARISON_TABLE = [
-  { feature: 'Full corridor coverage', bsts: true, tw: false, gm: true, ta: true, es: false },
-  { feature: 'Real Google review ratings', bsts: true, tw: false, gm: true, ta: false, es: false },
-  { feature: 'Locally curated guides', bsts: true, tw: false, gm: false, ta: false, es: false },
-  { feature: 'Independent rankings', bsts: true, tw: false, gm: false, ta: false, es: true },
-  { feature: 'Free basic listings', bsts: true, tw: false, gm: true, ta: false, es: true },
-  { feature: 'No global noise', bsts: true, tw: true, gm: false, ta: false, es: true },
-  { feature: 'Category + town filtering', bsts: true, tw: true, gm: false, ta: true, es: true },
-  { feature: '859+ verified listings', bsts: true, tw: false, gm: true, ta: true, es: false },
+  { feature: 'Full corridor coverage (Van to Pemberton)', bsts: true, gm: true, ta: true, tb: false },
+  { feature: 'Hand-picked by locals who live here', bsts: true, gm: false, ta: false, tb: false },
+  { feature: 'Real Google review ratings displayed', bsts: true, gm: true, ta: false, tb: false },
+  { feature: 'Curated "best of" guides', bsts: true, gm: false, ta: false, tb: false },
+  { feature: 'Zero ads in search results', bsts: true, gm: false, ta: false, tb: false },
+  { feature: 'Independent rankings (no pay-to-rank)', bsts: true, gm: false, ta: false, tb: false },
+  { feature: 'Category + town filtering', bsts: true, gm: false, ta: true, tb: true },
+  { feature: 'Free basic listings for businesses', bsts: true, gm: true, ta: false, tb: false },
+  { feature: '859+ verified local listings', bsts: true, gm: true, ta: true, tb: false },
 ];
 
 export default function WhyPage() {
@@ -82,14 +75,16 @@ export default function WhyPage() {
         />
         <div className="relative z-10 max-w-3xl mx-auto">
           <p className="text-emerald-400 text-sm font-semibold tracking-[3px] uppercase mb-5">
-            THE LOCAL ALTERNATIVE
+            HAND-PICKED BY LOCALS. ZERO ADS. NO BS.
           </p>
           <h1 className="font-serif font-bold text-white text-4xl md:text-5xl leading-tight mb-5">
             Why Best Sea to Sky?
           </h1>
-          <p className="text-lg text-slate-400 leading-relaxed max-w-xl mx-auto">
-            The only directory built exclusively for the Sea to Sky corridor — from West Vancouver
-            to Pemberton — ranked by real reviews and curated by locals.
+          <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto">
+            Google gives you 200 pins. TripAdvisor gives you tourist reviews from 2019. Tourism
+            boards only cover their own town. We give you the straight goods — every town, every
+            category, vetted by people who actually live here. No ads in results. No pay-to-rank.
+            Just the best of the corridor.
           </p>
         </div>
       </section>
@@ -108,17 +103,20 @@ export default function WhyPage() {
           <p>
             You&apos;re planning a trip to the Sea to Sky corridor. You open Google Maps and get 200
             results for &quot;restaurants near Squamish&quot; — half of them are gas station convenience
-            stores. TripAdvisor shows reviews from people who visited once three years ago. Tourism
-            Whistler only covers Whistler.
+            stores. TripAdvisor shows reviews from tourists who visited once three years ago and left
+            a one-star review because it rained. Tourism Whistler only covers Whistler. Explore
+            Squamish only covers Squamish.
           </p>
           <p>
             None of them answer the question you actually have: <strong>&quot;Where would a local
             take me?&quot;</strong>
           </p>
           <p>
-            That&apos;s the gap Best Sea to Sky fills. We&apos;re not a global platform trying to
+            That&apos;s what Best Sea to Sky exists for. We&apos;re not a global platform trying to
             cover every city on earth. We&apos;re a single-corridor directory built by people who
-            live here, for people who want to experience the corridor the way we do.
+            have lived here for 20 years — for people who want to experience the corridor the way
+            we do. Every listing is hand-picked. Every guide is locally curated. Zero ads in our
+            results. No pay-to-rank. Just the straight goods.
           </p>
         </div>
 
@@ -177,12 +175,11 @@ export default function WhyPage() {
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-100">
-                  <th className="text-left py-4 px-4 font-semibold text-slate-900 min-w-[180px]">Feature</th>
-                  <th className="text-center py-4 px-3 font-semibold text-emerald-700 bg-emerald-50/50 min-w-[80px]">Us</th>
-                  <th className="text-center py-4 px-3 font-semibold text-slate-500 min-w-[80px]">Tourism Whistler</th>
-                  <th className="text-center py-4 px-3 font-semibold text-slate-500 min-w-[80px]">Google Maps</th>
-                  <th className="text-center py-4 px-3 font-semibold text-slate-500 min-w-[80px]">TripAdvisor</th>
-                  <th className="text-center py-4 px-3 font-semibold text-slate-500 min-w-[80px]">Explore Squamish</th>
+                  <th className="text-left py-4 px-4 font-semibold text-slate-900 min-w-[220px]">Feature</th>
+                  <th className="text-center py-4 px-3 font-semibold text-emerald-700 bg-emerald-50/50 min-w-[100px]">Best Sea to Sky</th>
+                  <th className="text-center py-4 px-3 font-semibold text-slate-500 min-w-[100px]">Google Maps</th>
+                  <th className="text-center py-4 px-3 font-semibold text-slate-500 min-w-[100px]">TripAdvisor</th>
+                  <th className="text-center py-4 px-3 font-semibold text-slate-500 min-w-[100px]">Tourism Boards</th>
                 </tr>
               </thead>
               <tbody>
@@ -190,19 +187,16 @@ export default function WhyPage() {
                   <tr key={i} className="border-b border-slate-50 last:border-0">
                     <td className="py-3 px-4 text-slate-600">{row.feature}</td>
                     <td className="text-center py-3 px-3 bg-emerald-50/30">
-                      {row.bsts ? <span className="text-emerald-600 font-bold">&#10003;</span> : <span className="text-slate-200">—</span>}
+                      {row.bsts ? <span className="text-emerald-600 font-bold">&#10003;</span> : <span className="text-slate-200">&mdash;</span>}
                     </td>
                     <td className="text-center py-3 px-3">
-                      {row.tw ? <span className="text-slate-400">&#10003;</span> : <span className="text-slate-200">—</span>}
+                      {row.gm ? <span className="text-slate-400">&#10003;</span> : <span className="text-slate-200">&mdash;</span>}
                     </td>
                     <td className="text-center py-3 px-3">
-                      {row.gm ? <span className="text-slate-400">&#10003;</span> : <span className="text-slate-200">—</span>}
+                      {row.ta ? <span className="text-slate-400">&#10003;</span> : <span className="text-slate-200">&mdash;</span>}
                     </td>
                     <td className="text-center py-3 px-3">
-                      {row.ta ? <span className="text-slate-400">&#10003;</span> : <span className="text-slate-200">—</span>}
-                    </td>
-                    <td className="text-center py-3 px-3">
-                      {row.es ? <span className="text-slate-400">&#10003;</span> : <span className="text-slate-200">—</span>}
+                      {row.tb ? <span className="text-slate-400">&#10003;</span> : <span className="text-slate-200">&mdash;</span>}
                     </td>
                   </tr>
                 ))}

@@ -30,14 +30,15 @@ export default async function HomePage() {
         />
 
         <div className="relative z-10 max-w-3xl mx-auto">
-          <h1 className="font-serif font-bold text-white mb-5">
-            <span className="block text-4xl md:text-5xl mb-3 text-emerald-400">Squamish. Whistler. Pemberton.</span>
-            <span className="block text-3xl md:text-4xl leading-tight text-slate-200">The only guide ranked by real reviews.</span>
+          <h1 className="font-serif font-bold text-white text-4xl md:text-5xl leading-tight mb-6">
+            Don&apos;t Just Visit the Sea to Sky. Experience it Like a Local.
           </h1>
 
-          <p className="text-lg text-slate-400 leading-relaxed max-w-xl mx-auto mb-10">
-            859+ local businesses — restaurants, trails, hotels, and hidden gems —
-            curated by locals and backed by verified Google ratings.
+          <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
+            Stop scrolling through thousands of bot-written reviews and outdated tourist traps.
+            Best Sea to Sky is the only directory curated by locals who have spent 20 years living,
+            working, and exploring this corridor. We give you the straight goods on the best spots
+            from Vancouver to Whistler — no noise, no ads, just the best of the West Coast.
           </p>
 
           <SearchBar />
