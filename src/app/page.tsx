@@ -13,6 +13,15 @@ const CAT_ICONS: Record<string, string> = {
   services: '🧭',
 };
 
+const CAT_PULLS: Record<string, string> = {
+  eat: 'Find the best post-trail patios, hidden brunch spots, and local-favourite dinners',
+  stay: 'Book the cabin, lodge, or hotel that locals actually recommend to their friends',
+  play: 'Discover the trails, slopes, and rivers that make this corridor world-class',
+  visit: 'See the waterfalls, viewpoints, and parks that most tourists drive right past',
+  shop: 'Support the local shops, galleries, and markets that define corridor culture',
+  services: 'Find trusted local guides, outfitters, and services vetted by the community',
+};
+
 export default async function HomePage() {
   const categories = await getCategories();
   const featuredListings = await getListings({ featured: true, limit: 6 });
@@ -61,6 +70,32 @@ export default async function HomePage() {
         </div>
       </section>
 
+      {/* CURATED BY LOCALS TRUST BAR */}
+      <section className="bg-emerald-50 border-y border-emerald-100 px-6 py-10">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 text-center mb-8">
+            Curated by Locals. Backed by Real Reviews.
+          </h2>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            <div className="text-center">
+              <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">859+</div>
+              <div className="text-sm font-semibold text-slate-900 mb-1">Hand-Picked Listings</div>
+              <p className="text-xs text-slate-500">Every business vetted by people who actually live here</p>
+            </div>
+            <div className="text-center">
+              <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">Zero</div>
+              <div className="text-sm font-semibold text-slate-900 mb-1">Ads in Search Results</div>
+              <p className="text-xs text-slate-500">Rankings based on quality, not who pays the most</p>
+            </div>
+            <div className="text-center">
+              <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">20+</div>
+              <div className="text-sm font-semibold text-slate-900 mb-1">Years of Local Knowledge</div>
+              <p className="text-xs text-slate-500">Built by corridor residents, not a tech company in San Francisco</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* FEATURED LISTINGS */}
       {featuredListings.length > 0 && (
         <section className="max-w-7xl mx-auto px-6 py-16">
@@ -100,7 +135,7 @@ export default async function HomePage() {
                   <div className="relative z-10 h-full flex flex-col justify-end p-6">
                     <span className="text-4xl mb-2">{CAT_ICONS[cat.slug]}</span>
                     <h3 className="font-serif text-2xl text-white font-bold">{cat.name}</h3>
-                    <p className="text-white/80 text-sm">{cat.description}</p>
+                    <p className="text-white/80 text-sm">{CAT_PULLS[cat.slug] || cat.description}</p>
                   </div>
                 </div>
               </Link>
@@ -123,24 +158,84 @@ export default async function HomePage() {
         </div>
       </section>
 
-      {/* SEO CONTENT BLOCK */}
+      {/* SEO CONTENT BLOCK — THREE-COLUMN FEATURE LAYOUT */}
       <section className="bg-white border-t border-slate-100 px-6 py-16">
-        <div className="max-w-4xl mx-auto text-center">
-          <h2 className="font-serif text-3xl text-slate-900 mb-4">
+        <div className="max-w-5xl mx-auto">
+          <h2 className="font-serif text-3xl text-slate-900 mb-4 text-center">
             Your Complete Guide to the Sea to Sky Corridor
           </h2>
-          <p className="text-slate-500 leading-relaxed mb-6">
-            The Sea to Sky corridor stretches from West Vancouver through Squamish to Whistler
-            and Pemberton, offering some of British Columbia&apos;s most spectacular scenery,
-            world-class outdoor recreation, and vibrant communities. Whether you&apos;re looking
-            for the best restaurants in Squamish, luxury hotels in Whistler, epic hiking trails,
-            or hidden gems along the highway, Best Sea to Sky is your trusted local guide.
+          <p className="text-slate-500 leading-relaxed mb-12 text-center max-w-2xl mx-auto">
+            150 km of the most spectacular scenery in British Columbia — and we know every
+            kilometre of it. Here&apos;s what you&apos;ll find.
           </p>
-          <p className="text-slate-500 leading-relaxed">
-            From the granite walls of the Stawamus Chief to the alpine peaks of Whistler Blackcomb,
-            from craft breweries to fine dining with ocean views — discover everything the corridor
-            has to offer, curated by locals who know it best.
-          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="text-center md:text-left">
+              <h3 className="font-serif text-xl font-bold text-slate-900 mb-3">The Granite Walls</h3>
+              <p className="text-sm text-slate-500 leading-relaxed mb-3">
+                Squamish is the outdoor capital of Canada. The Stawamus Chief, the Sea to Sky
+                Gondola, world-class climbing, and a food scene that punches way above its weight.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-1.5">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                  <span>Best restaurants in Squamish</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                  <span>Top hiking trails and climbing spots</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                  <span>Local breweries and post-trail patios</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h3 className="font-serif text-xl font-bold text-slate-900 mb-3">The Alpine Peaks</h3>
+              <p className="text-sm text-slate-500 leading-relaxed mb-3">
+                Whistler needs no introduction — but most visitors only scratch the surface.
+                We&apos;ll show you the spots that locals actually go to, not just the tourist circuit.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-1.5">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                  <span>Best hotels and lodges in Whistler</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                  <span>Local-favourite restaurants and bars</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                  <span>Ski, bike, hike — and where to apr&egrave;s</span>
+                </li>
+              </ul>
+            </div>
+
+            <div className="text-center md:text-left">
+              <h3 className="font-serif text-xl font-bold text-slate-900 mb-3">The Hidden In-Between</h3>
+              <p className="text-sm text-slate-500 leading-relaxed mb-3">
+                Britannia Beach, Furry Creek, Brackendale, Pemberton — the corridor is full of
+                places that most visitors blow past at 100 km/h. Their loss. Your gain.
+              </p>
+              <ul className="text-sm text-slate-600 space-y-1.5">
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                  <span>Hidden waterfalls and viewpoints</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                  <span>Off-the-highway farm stands and cafes</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                  <span>Pemberton&apos;s growing food and adventure scene</span>
+                </li>
+              </ul>
+            </div>
+          </div>
         </div>
       </section>
     </>

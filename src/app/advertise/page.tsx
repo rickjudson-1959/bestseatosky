@@ -133,8 +133,9 @@ export default function AdvertisePage() {
             Ready to Own Your Category?
           </h2>
           <p className="text-sm text-slate-600 mb-6 max-w-lg mx-auto">
-            Every listing starts free. Featured ($49/mo) and Sponsored ($149/mo) placements
-            put you at the top — with a badge, priority placement, and guide inclusion.
+            Start free as a <strong>Local Starter</strong>. Dominate your category as a{' '}
+            <strong>Corridor Leader</strong> ($49/mo). Become the business visitors plan their
+            trip around as a <strong>Destination Partner</strong> ($149/mo).
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link

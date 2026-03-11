@@ -12,15 +12,15 @@ export const metadata: Metadata = {
 
 const TIERS = [
   {
-    name: 'Free Listing',
+    name: 'The Local Starter',
     price: 'Free',
     period: '',
-    description: 'Get discovered by corridor visitors',
+    description: 'Get discovered by people planning their next trip to the corridor',
     features: [
-      'Listed in category and town pages',
-      'Google rating and reviews displayed',
-      'Address, phone, and website links',
-      'Appear in search results',
+      'Listed alongside the best in your category',
+      'Real Google rating and reviews displayed',
+      'Address, phone, and website — all linked',
+      'Show up when visitors search your town',
       'Claim and update your info anytime',
     ],
     cta: null,
@@ -29,36 +29,36 @@ const TIERS = [
     buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
   },
   {
-    name: 'Featured',
+    name: 'The Corridor Leader',
     price: '$49',
     period: '/mo',
-    description: 'Stand out from the competition',
+    description: 'Dominate your category and be the first business visitors see',
     features: [
-      'Everything in Free, plus:',
-      'Featured badge on your listing',
-      'Priority placement in category pages',
-      'Appear in "Featured Places" on homepage',
-      'Highlighted in relevant guide pages',
+      'Everything in Local Starter, plus:',
+      'Featured badge that says "this one is special"',
+      'Priority placement — top of category pages',
+      'Spotlighted in "Featured Places" on homepage',
+      'Highlighted in curated "best of" guides',
     ],
-    cta: 'Get Featured',
+    cta: 'Become the Leader',
     href: 'https://buy.stripe.com/5kQaEX9Zx84OftsaROabK00',
     style: 'border-emerald-300 ring-2 ring-emerald-100',
     buttonStyle: 'bg-emerald-700 text-white hover:bg-emerald-800',
     popular: true,
   },
   {
-    name: 'Sponsored',
+    name: 'The Destination Partner',
     price: '$149',
     period: '/mo',
-    description: 'Maximum visibility across the site',
+    description: 'Become the go-to business visitors plan their trip around',
     features: [
-      'Everything in Featured, plus:',
-      'Sponsored placement at top of guide pages',
-      'Dedicated section in blog posts',
-      'Social media promotion',
-      'Monthly analytics report',
+      'Everything in Corridor Leader, plus:',
+      'Top placement in curated guide pages',
+      'Featured in blog posts and editorial content',
+      'Social media promotion to our audience',
+      'Monthly performance report with real data',
     ],
-    cta: 'Go Sponsored',
+    cta: 'Partner With Us',
     href: 'https://buy.stripe.com/3cI00j8Vt84Ogxw8JGabK01',
     style: 'border-slate-200',
     buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
@@ -93,12 +93,12 @@ const FAQS = [
     a: 'We focus exclusively on the Sea to Sky corridor. Your listing appears alongside curated guides, ranked by real Google reviews, and targeted to people actively exploring from West Vancouver to Pemberton. No global noise.',
   },
   {
-    q: 'What does a Featured listing look like?',
-    a: 'Featured businesses get a badge on their listing, priority placement at the top of category pages, a spot in the "Featured Places" section on the homepage, and highlighting in our curated guide pages.',
+    q: 'What does a Corridor Leader listing look like?',
+    a: 'Corridor Leader businesses get a Featured badge, priority placement at the top of category pages, a spot in the "Featured Places" section on the homepage, and highlighting in our curated guide pages. You dominate your category.',
   },
   {
     q: 'Can I cancel my paid plan anytime?',
-    a: 'Yes. Both Featured ($49/mo) and Sponsored ($149/mo) plans are month-to-month with no contracts. Cancel anytime and your listing reverts to the free tier.',
+    a: 'Yes. Both Corridor Leader ($49/mo) and Destination Partner ($149/mo) plans are month-to-month with no contracts. Cancel anytime and your listing reverts to the Local Starter tier.',
   },
   {
     q: 'How many people visit Best Sea to Sky?',
@@ -252,9 +252,9 @@ export default async function GetListedPage() {
               <thead>
                 <tr className="border-b border-slate-100">
                   <th className="text-left py-4 px-5 font-semibold text-slate-900">Feature</th>
-                  <th className="text-center py-4 px-4 font-semibold text-slate-900">Free</th>
-                  <th className="text-center py-4 px-4 font-semibold text-emerald-700 bg-emerald-50/50">Featured</th>
-                  <th className="text-center py-4 px-4 font-semibold text-slate-900">Sponsored</th>
+                  <th className="text-center py-4 px-4 font-semibold text-slate-900">Local Starter</th>
+                  <th className="text-center py-4 px-4 font-semibold text-emerald-700 bg-emerald-50/50">Corridor Leader</th>
+                  <th className="text-center py-4 px-4 font-semibold text-slate-900">Destination Partner</th>
                 </tr>
               </thead>
               <tbody>
@@ -286,8 +286,8 @@ export default async function GetListedPage() {
                   </tr>
                 ))}
                 <tr className="bg-slate-50">
-                  <td className="py-4 px-5 font-semibold text-slate-900">Price</td>
-                  <td className="text-center py-4 px-4 font-bold text-slate-900">Free</td>
+                  <td className="py-4 px-5 font-semibold text-slate-900">Investment</td>
+                  <td className="text-center py-4 px-4 font-bold text-slate-900">Free forever</td>
                   <td className="text-center py-4 px-4 font-bold text-emerald-700 bg-emerald-50/50">$49/mo</td>
                   <td className="text-center py-4 px-4 font-bold text-slate-900">$149/mo</td>
                 </tr>
