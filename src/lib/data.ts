@@ -252,7 +252,7 @@ export async function getGuidesForListing(
   townId: string,
   tagIds: string[],
 ): Promise<SeoPage[]> {
-  const { data: byTown } = await supabase
+  const townQuery = supabase
     .from('seo_pages')
     .select('*')
     .eq('status', 'published')
@@ -260,16 +260,20 @@ export async function getGuidesForListing(
     .eq('town_id', townId)
     .limit(5);
 
-  let byTag: SeoPage[] = [];
-  if (tagIds.length > 0) {
-    const { data } = await supabase
-      .from('seo_pages')
-      .select('*')
-      .eq('status', 'published')
-      .in('tag_id', tagIds)
-      .limit(3);
-    byTag = (data || []) as SeoPage[];
-  }
+  const tagQuery = tagIds.length > 0
+    ? supabase
+        .from('seo_pages')
+        .select('*')
+        .eq('status', 'published')
+        .in('tag_id', tagIds)
+        .limit(3)
+    : null;
+
+  const [{ data: byTown }, tagResult] = await Promise.all([
+    townQuery,
+    tagQuery ?? Promise.resolve({ data: null }),
+  ]);
+  const byTag = (tagResult.data || []) as SeoPage[];
 
   const seen = new Set<string>();
   const results: SeoPage[] = [];

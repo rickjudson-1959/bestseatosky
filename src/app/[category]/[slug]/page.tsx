@@ -150,12 +150,14 @@ export default async function ListingPage({ params }: Props) {
   };
 
   const openingHours = listing.hours
-    ? Object.entries(listing.hours).map(([day, times]) => ({
-        '@type': 'OpeningHoursSpecification',
-        dayOfWeek: dayMap[day.toLowerCase()] || day,
-        opens: times.open,
-        closes: times.close,
-      }))
+    ? Object.entries(listing.hours)
+        .filter(([, times]) => times && times.open && times.close)
+        .map(([day, times]) => ({
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: dayMap[day.toLowerCase()] || day,
+          opens: times.open,
+          closes: times.close,
+        }))
     : undefined;
 
   const tagNames = tags.map((t) => t.name);
