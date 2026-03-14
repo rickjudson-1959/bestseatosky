@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getBlogPostBySlug, getAllSeoPages } from '@/lib/data';
 import NewsletterSignup from '@/components/NewsletterSignup';
+import FaqSection from '@/components/FaqSection';
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -137,6 +138,11 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       )}
 
+      {/* FAQ Section */}
+      {post.faq_json && Array.isArray(post.faq_json) && post.faq_json.length > 0 && (
+        <FaqSection faqs={post.faq_json} />
+      )}
+
       {/* Newsletter Signup */}
       <div className="border-t border-slate-100 pt-10 mt-10">
         <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 text-center">
@@ -150,11 +156,45 @@ export default async function BlogPostPage({ params }: Props) {
         </div>
       </div>
 
-      {/* JSON-LD Schema */}
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://bestseatosky.com' },
+              { '@type': 'ListItem', position: 2, name: 'Blog', item: 'https://bestseatosky.com/blog' },
+              { '@type': 'ListItem', position: 3, name: post.title, item: `https://bestseatosky.com/blog/${post.slug}` },
+            ],
+          }),
+        }}
+      />
+
+      {/* Article Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+
+      {/* FAQ Schema */}
+      {post.faq_json && Array.isArray(post.faq_json) && post.faq_json.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: post.faq_json.map((faq: { question: string; answer: string }) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+              })),
+            }),
+          }}
+        />
+      )}
     </article>
   );
 }

@@ -34,10 +34,33 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = await getCategoryBySlug(categorySlug);
   if (!category) return {};
 
+  const title = `Best Places to ${CAT_VERBS[category.slug] || category.name} in Sea to Sky`;
+  const description = `Discover the best ${category.description?.toLowerCase() || 'places'} across Squamish, Whistler, and Pemberton in the Sea to Sky corridor.`;
+  const ogImage = `https://bestseatosky.com/og-${category.slug}.jpg`;
+
   return {
-    title: `Best Places to ${CAT_VERBS[category.slug] || category.name} in Sea to Sky`,
-    description: `Discover the best ${category.description?.toLowerCase() || 'places'} across Squamish, Whistler, and Pemberton in the Sea to Sky corridor.`,
+    title,
+    description,
     alternates: { canonical: `/${categorySlug}` },
+    openGraph: {
+      title,
+      description,
+      url: `https://bestseatosky.com/${category.slug}`,
+      images: [
+        {
+          url: ogImage,
+          width: 1200,
+          height: 630,
+          alt: `Best places to ${(CAT_VERBS[category.slug] || category.name).toLowerCase()} in the Sea to Sky corridor`,
+        },
+      ],
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title,
+      description,
+      images: [ogImage],
+    },
   };
 }
 
@@ -107,7 +130,32 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         <NewsletterSignup source={`category-${categorySlug}`} />
       </div>
 
-      {/* Schema markup for the listing page */}
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              {
+                '@type': 'ListItem',
+                position: 1,
+                name: 'Home',
+                item: 'https://bestseatosky.com',
+              },
+              {
+                '@type': 'ListItem',
+                position: 2,
+                name: category.name,
+                item: `https://bestseatosky.com/${categorySlug}`,
+              },
+            ],
+          }),
+        }}
+      />
+
+      {/* ItemList Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
