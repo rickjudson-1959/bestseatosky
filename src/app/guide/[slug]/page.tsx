@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
+import FaqSection from '@/components/FaqSection';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -24,7 +25,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!page) return {};
 
   const url = `https://bestseatosky.com/guide/${slug}`;
-  const ogImage = 'https://bestseatosky.com/og-default.png';
+  const ogImage = 'https://bestseatosky.com/og-default.jpg';
 
   return {
     title: page.title,
@@ -221,6 +222,11 @@ export default async function GuidePage({ params }: Props) {
         <p className="text-slate-500 text-center py-12">No listings found for this guide yet.</p>
       )}
 
+      {/* FAQ Section */}
+      {page.faq_json && Array.isArray(page.faq_json) && page.faq_json.length > 0 && (
+        <FaqSection faqs={page.faq_json} />
+      )}
+
       {/* About This Guide */}
       <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">About This Guide</h2>
@@ -243,11 +249,45 @@ export default async function GuidePage({ params }: Props) {
         <NewsletterSignup source="guide" />
       </div>
 
-      {/* JSON-LD Schema */}
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://bestseatosky.com' },
+              { '@type': 'ListItem', position: 2, name: 'Guides', item: 'https://bestseatosky.com/guide' },
+              { '@type': 'ListItem', position: 3, name: page.h1_text || page.title, item: `https://bestseatosky.com/guide/${slug}` },
+            ],
+          }),
+        }}
+      />
+
+      {/* ItemList Schema */}
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(schema) }}
       />
+
+      {/* FAQ Schema */}
+      {page.faq_json && Array.isArray(page.faq_json) && page.faq_json.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: page.faq_json.map((faq: { question: string; answer: string }) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+              })),
+            }),
+          }}
+        />
+      )}
     </section>
   );
 }

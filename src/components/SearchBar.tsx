@@ -11,6 +11,13 @@ export default function SearchBar() {
   const [searched, setSearched] = useState(false);
   const timerRef = useRef<ReturnType<typeof setTimeout>>(null);
 
+  // Hydrate from ?q= URL param (supports Google SearchAction sitelinks)
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    const q = params.get('q');
+    if (q) setQuery(q);
+  }, []);
+
   useEffect(() => {
     if (timerRef.current) clearTimeout(timerRef.current);
 

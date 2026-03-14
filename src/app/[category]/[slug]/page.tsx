@@ -1,8 +1,9 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getListingBySlug, getRelatedListings, getCrossCategoryListings } from '@/lib/data';
+import { getListingBySlug, getRelatedListings, getCrossCategoryListings, getGuidesForListing } from '@/lib/data';
 import { buildUTMUrl } from '@/lib/utm';
+import FeaturedInGuides from '@/components/FeaturedInGuides';
 
 const CAT_STYLES: Record<string, { gradient: string; bg: string; text: string; border: string; accent: string }> = {
   eat: { gradient: 'from-orange-500 to-red-600', bg: 'bg-orange-50', text: 'text-amber-700', border: 'border-orange-200', accent: 'bg-amber-700' },
@@ -124,25 +125,64 @@ export default async function ListingPage({ params }: Props) {
     ...(listing.email ? [{ label: 'Email', value: listing.email, icon: '✉️' }] : []),
   ];
 
-  // Fetch related listings
-  const [relatedListings, crossCategoryListings] = await Promise.all([
+  const tagIds = tags.map((t) => t.id);
+
+  // Fetch related listings and guides
+  const [relatedListings, crossCategoryListings, featuredGuides] = await Promise.all([
     getRelatedListings(listing.id, listing.town_id, listing.category_id),
     getCrossCategoryListings(listing.id, listing.town_id, listing.category_id),
+    getGuidesForListing(listing.category_id, listing.town_id, tagIds),
   ]);
 
-  // Build schema markup
-  const schema = listing.schema_json || {
+  // Build enriched schema markup
+  const schemaTypeMap: Record<string, string> = {
+    eat: 'Restaurant',
+    stay: 'LodgingBusiness',
+    play: 'TouristAttraction',
+    visit: 'TouristAttraction',
+    shop: 'Store',
+    services: 'LocalBusiness',
+  };
+
+  const dayMap: Record<string, string> = {
+    monday: 'Monday', tuesday: 'Tuesday', wednesday: 'Wednesday',
+    thursday: 'Thursday', friday: 'Friday', saturday: 'Saturday', sunday: 'Sunday',
+  };
+
+  const openingHours = listing.hours
+    ? Object.entries(listing.hours)
+        .filter(([, times]) => times && times.open && times.close)
+        .map(([day, times]) => ({
+          '@type': 'OpeningHoursSpecification',
+          dayOfWeek: dayMap[day.toLowerCase()] || day,
+          opens: times.open,
+          closes: times.close,
+        }))
+    : undefined;
+
+  const tagNames = tags.map((t) => t.name);
+  const priceRange = listing.price_level === 0 ? 'Free' : '$'.repeat(listing.price_level);
+
+  const baseSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
-    '@type': listing.schema_type || 'LocalBusiness',
+    '@type': listing.schema_type || schemaTypeMap[catSlug] || 'LocalBusiness',
     name: listing.name,
     description: listing.description,
+    url: `https://bestseatosky.com/${catSlug}/${listing.slug}`,
     address: {
       '@type': 'PostalAddress',
       streetAddress: listing.address,
-      addressLocality: listing.towns?.name || 'Sea to Sky',
+      ...(listing.towns?.name && { addressLocality: listing.towns.name }),
       addressRegion: 'BC',
       addressCountry: 'CA',
     },
+    ...(listing.latitude && listing.longitude && {
+      geo: {
+        '@type': 'GeoCoordinates',
+        latitude: listing.latitude,
+        longitude: listing.longitude,
+      },
+    }),
     ...(listing.google_rating && listing.google_review_count > 0 && {
       aggregateRating: {
         '@type': 'AggregateRating',
@@ -151,11 +191,29 @@ export default async function ListingPage({ params }: Props) {
       },
     }),
     ...(listing.phone && { telephone: listing.phone }),
-    url: `https://bestseatosky.com/${catSlug}/${listing.slug}`,
-    priceRange: listing.price_level === 0 ? 'Free' : '$'.repeat(listing.price_level),
-    ...(listing.website && { sameAs: [listing.website] }),
     ...(listing.featured_image_url && { image: listing.featured_image_url }),
+    ...(listing.website && { sameAs: [listing.website] }),
+    priceRange,
   };
+
+  if (catSlug === 'eat') {
+    if (tagNames.length > 0) baseSchema.servesCuisine = tagNames;
+    if (openingHours) baseSchema.openingHoursSpecification = openingHours;
+  } else if (catSlug === 'stay') {
+    if (tagNames.length > 0) {
+      baseSchema.amenityFeature = tagNames.map((name) => ({
+        '@type': 'LocationFeatureSpecification', name, value: true,
+      }));
+    }
+  } else if (catSlug === 'play' || catSlug === 'visit') {
+    if (tagNames.length > 0) baseSchema.touristType = tagNames;
+    if (listing.price_level === 0) baseSchema.isAccessibleForFree = true;
+    baseSchema.publicAccess = true;
+  } else {
+    if (openingHours) baseSchema.openingHoursSpecification = openingHours;
+  }
+
+  const schema = listing.schema_json || baseSchema;
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-8">
@@ -231,6 +289,9 @@ export default async function ListingPage({ params }: Props) {
               ))}
             </div>
           )}
+
+          {/* Featured In Guides */}
+          <FeaturedInGuides guides={featuredGuides} listingName={listing.name} />
         </div>
 
         {/* Sidebar */}
@@ -400,6 +461,22 @@ export default async function ListingPage({ params }: Props) {
           </div>
         </div>
       )}
+
+      {/* BreadcrumbList Schema */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            '@context': 'https://schema.org',
+            '@type': 'BreadcrumbList',
+            itemListElement: [
+              { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://bestseatosky.com' },
+              { '@type': 'ListItem', position: 2, name: listing.categories?.name || catSlug, item: `https://bestseatosky.com/${catSlug}` },
+              { '@type': 'ListItem', position: 3, name: listing.name, item: `https://bestseatosky.com/${catSlug}/${listing.slug}` },
+            ],
+          }),
+        }}
+      />
 
       {/* JSON-LD Schema */}
       <script

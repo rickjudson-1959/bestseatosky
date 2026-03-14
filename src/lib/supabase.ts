@@ -76,6 +76,7 @@ export type BlogPost = {
   content: string;
   author: string;
   status: string;
+  faq_json: { question: string; answer: string }[] | null;
   published_at: string;
   created_at: string;
   updated_at: string;
@@ -108,5 +109,6 @@ export type SeoPage = {
   town_id: string | null;
   schema_json: Record<string, unknown> | null;
   canonical_url: string | null;
+  faq_json: { question: string; answer: string }[] | null;
   status: string;
 };

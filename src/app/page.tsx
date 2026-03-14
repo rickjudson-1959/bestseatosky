@@ -23,12 +23,67 @@ const CAT_PULLS: Record<string, string> = {
   services: 'Find trusted local guides, outfitters, and services vetted by the community',
 };
 
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@graph': [
+    {
+      '@type': 'WebSite',
+      '@id': 'https://bestseatosky.com/#website',
+      url: 'https://bestseatosky.com',
+      name: 'Best Sea to Sky',
+      description:
+        'Discover the best restaurants, hotels, adventures, and attractions across the Sea to Sky corridor. Curated guides for Squamish, Whistler, and Pemberton.',
+      publisher: {
+        '@id': 'https://bestseatosky.com/#organization',
+      },
+      potentialAction: {
+        '@type': 'SearchAction',
+        target: {
+          '@type': 'EntryPoint',
+          urlTemplate: 'https://bestseatosky.com/?q={search_term_string}',
+        },
+        'query-input': 'required name=search_term_string',
+      },
+      inLanguage: 'en-CA',
+    },
+    {
+      '@type': 'Organization',
+      '@id': 'https://bestseatosky.com/#organization',
+      name: 'Best Sea to Sky',
+      url: 'https://bestseatosky.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://bestseatosky.com/logo.png',
+        width: 600,
+        height: 60,
+      },
+      founder: {
+        '@type': 'Person',
+        name: 'Rick Judson',
+      },
+      foundingLocation: {
+        '@type': 'Place',
+        name: 'Squamish, British Columbia, Canada',
+      },
+      description:
+        'A locally curated directory and guide to the Sea to Sky corridor — Squamish, Whistler, and Pemberton.',
+      email: 'hello@bestseatosky.com',
+      sameAs: [],
+    },
+  ],
+};
+
 export default async function HomePage() {
   const categories = await getCategories();
   const featuredListings = await getListings({ featured: true, limit: 6 });
 
   return (
     <>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
+
       {/* HERO */}
       <section className="relative overflow-hidden bg-gradient-to-br from-[#0f2318] via-[#1a3a2a] to-[#0f2318] px-6 py-20 md:py-24 text-center">
         {/* Pattern overlay */}
@@ -40,8 +95,18 @@ export default async function HomePage() {
         />
 
         <div className="relative z-10 max-w-3xl mx-auto">
+          <p className="text-emerald-400 text-sm font-semibold tracking-[3px] uppercase mb-5">
+            CURATED BY LOCALS
+          </p>
+
           <h1 className="font-serif font-bold text-white text-4xl md:text-5xl leading-tight mb-6">
-            Don&apos;t Just Visit the Sea to Sky. Experience it Like a Local.
+            The Local&apos;s Guide to the{' '}
+            <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-200 bg-clip-text text-transparent">
+              Sea to Sky Corridor
+            </span>
+            <span className="block text-2xl md:text-3xl mt-2 text-slate-300 font-normal">
+              Squamish, Whistler &amp; Pemberton
+            </span>
           </h1>
 
           <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
@@ -75,7 +140,7 @@ export default async function HomePage() {
       <section className="bg-emerald-50 border-y border-emerald-100 px-6 py-10">
         <div className="max-w-5xl mx-auto">
           <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 text-center mb-8">
-            Why People Trust This Guide
+            Why Locals Trust This Sea to Sky Directory
           </h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
             <div className="text-center">
@@ -100,7 +165,7 @@ export default async function HomePage() {
       {/* FEATURED LISTINGS */}
       {featuredListings.length > 0 && (
         <section className="max-w-7xl mx-auto px-6 py-16">
-          <h2 className="font-serif text-3xl text-slate-900 mb-2">Places Worth the Drive</h2>
+          <h2 className="font-serif text-3xl text-slate-900 mb-2">Top-Rated Places in Squamish, Whistler &amp; Pemberton</h2>
           <p className="text-slate-500 mb-8">Local favourites handpicked from across the corridor</p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {featuredListings.map((listing) => (
@@ -112,7 +177,7 @@ export default async function HomePage() {
 
       {/* BROWSE BY CATEGORY */}
       <section className="max-w-7xl mx-auto px-6 pb-20">
-        <h2 className="font-serif text-3xl text-slate-900 mb-2">Explore the Corridor</h2>
+        <h2 className="font-serif text-3xl text-slate-900 mb-2">Explore the Sea to Sky Corridor by Category</h2>
         <p className="text-slate-500 mb-8">Browse by what you&apos;re looking for</p>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -150,7 +215,7 @@ export default async function HomePage() {
 
       {/* LOCAL GUIDES */}
       <section className="max-w-7xl mx-auto px-6 py-16">
-        <h2 className="font-serif text-3xl text-slate-900 mb-2">Local Guides &amp; Itineraries</h2>
+        <h2 className="font-serif text-3xl text-slate-900 mb-2">Sea to Sky Travel Guides &amp; Local Itineraries</h2>
         <p className="text-slate-500 mb-8">Insider knowledge you won&apos;t find in a brochure</p>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {[

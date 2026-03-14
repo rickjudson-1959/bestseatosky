@@ -247,6 +247,46 @@ export async function submitListingRequest(
   return data;
 }
 
+export async function getGuidesForListing(
+  categoryId: string,
+  townId: string,
+  tagIds: string[],
+): Promise<SeoPage[]> {
+  const townQuery = supabase
+    .from('seo_pages')
+    .select('*')
+    .eq('status', 'published')
+    .eq('category_id', categoryId)
+    .eq('town_id', townId)
+    .limit(5);
+
+  const tagQuery = tagIds.length > 0
+    ? supabase
+        .from('seo_pages')
+        .select('*')
+        .eq('status', 'published')
+        .in('tag_id', tagIds)
+        .limit(3)
+    : null;
+
+  const [{ data: byTown }, tagResult] = await Promise.all([
+    townQuery,
+    tagQuery ?? Promise.resolve({ data: null }),
+  ]);
+  const byTag = (tagResult.data || []) as SeoPage[];
+
+  const seen = new Set<string>();
+  const results: SeoPage[] = [];
+  for (const guide of [...(byTown || []), ...byTag]) {
+    if (!seen.has(guide.slug)) {
+      seen.add(guide.slug);
+      results.push(guide as SeoPage);
+    }
+    if (results.length >= 4) break;
+  }
+  return results;
+}
+
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   const { data, error } = await supabase
     .from('blog_posts')
