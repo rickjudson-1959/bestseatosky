@@ -8,36 +8,32 @@ import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
 
 export const metadata: Metadata = {
-  title: 'Best Restaurants in Squamish (2026) — A Local\'s Guide',
+  title: 'Best Restaurants in Pemberton (2026) — A Local\'s Guide',
   description:
-    'Skip the tourist traps. Here are the best restaurants in Squamish, hand-picked by locals who actually live here. From post-hike fuel to date night spots.',
-  alternates: { canonical: '/eat/squamish' },
+    'Pemberton\'s food scene is small but mighty. Here are the restaurants worth the drive past Whistler — farm-to-table dining, great bakeries, and proper pub food.',
+  alternates: { canonical: '/eat/pemberton' },
   openGraph: {
-    title: 'Best Restaurants in Squamish (2026) — A Local\'s Guide',
+    title: 'Best Restaurants in Pemberton (2026) — A Local\'s Guide',
     description:
-      'Skip the tourist traps. Here are the best restaurants in Squamish, hand-picked by locals who actually live here. From post-hike fuel to date night spots.',
-    url: 'https://bestseatosky.com/eat/squamish',
+      'Pemberton\'s food scene is small but mighty. Here are the restaurants worth the drive past Whistler — farm-to-table dining, great bakeries, and proper pub food.',
+    url: 'https://bestseatosky.com/eat/pemberton',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Restaurants in Squamish (2026) — A Local\'s Guide',
+    title: 'Best Restaurants in Pemberton (2026) — A Local\'s Guide',
     description:
-      'Skip the tourist traps. Here are the best restaurants in Squamish, hand-picked by locals who actually live here. From post-hike fuel to date night spots.',
+      'Pemberton\'s food scene is small but mighty. Here are the restaurants worth the drive past Whistler — farm-to-table dining, great bakeries, and proper pub food.',
   },
 };
 
 // --- Curated editorial content ---
 
 const TOP_PICKS: { name: string; take: string }[] = [
-  { name: 'The Broken Seal', take: 'Best cocktails in town, small plates worth the wait' },
-  { name: 'Backcountry Brewing', take: 'Post-hike beer and pizza, always packed for a reason' },
-  { name: 'Saha Eatery', take: 'Middle Eastern flavors, fresh ingredients, friendly owners' },
-  { name: 'Smoke Bluff Coffee House', take: 'Best coffee, cozy vibe, climber central' },
-  { name: 'Taka Ramen & Sushi', take: 'Solid ramen, great lunch spot' },
-  { name: 'Green Olive Market and Cafe', take: 'Healthy lunch, good coffee, local favorite' },
-  { name: 'Festal Cafe', take: 'Brunch done right' },
-  { name: 'The Ledge', take: 'Breakfast with a view of the Chief' },
+  { name: 'Mile One Eating House', take: 'Farm-to-table pioneer — the reason food lovers drive past Whistler' },
+  { name: 'The Pony', take: 'Classic Pemberton gathering spot, solid pub fare and cold beer' },
+  { name: 'Blackbird Bakery', take: 'Best pastries and coffee in town, worth the stop alone' },
+  { name: 'Grimm\'s Deli & Gourmet', take: 'Great sandwiches and local goods — a Pemberton institution' },
 ];
 
 const BEST_BY_CATEGORY: {
@@ -46,46 +42,34 @@ const BEST_BY_CATEGORY: {
   picks: { name: string; desc: string }[];
 }[] = [
   {
-    title: 'Best Post-Hike',
+    title: 'Best After a Day Out',
     emoji: '🥾',
     picks: [
-      { name: 'Backcountry Brewing', desc: 'Cold beer and wood-fired pizza after the Chief — the Squamish post-hike ritual' },
-      { name: 'Taka Ramen & Sushi', desc: 'A big bowl of ramen hits different after a long day on the trails' },
-      { name: 'Smoke Bluff Coffee House', desc: 'Quick refuel with great coffee and a pastry before the drive home' },
-      { name: 'The Ledge', desc: 'Hearty breakfast or lunch with solid portions to recover on' },
+      { name: 'The Pony', desc: 'Cold beer, hearty pub food, and the kind of atmosphere where muddy boots are welcome' },
+      { name: 'Mile One Eating House', desc: 'If you want to reward yourself properly after Joffre Lakes or Nairn Falls' },
     ],
   },
   {
     title: 'Best for Brunch',
     emoji: '🥞',
     picks: [
-      { name: 'Festal Cafe', desc: 'The go-to brunch spot in Squamish — always consistent, always a line on weekends' },
-      { name: 'The Ledge', desc: 'Breakfast with views of the Stawamus Chief, hard to beat the setting' },
-      { name: 'Green Olive Market and Cafe', desc: 'Light, fresh, good for a healthy start to a big day outside' },
+      { name: 'Blackbird Bakery', desc: 'Fresh pastries, great coffee, and a relaxed small-town morning vibe' },
+      { name: 'Mile One Eating House', desc: 'Weekend brunch with farm-fresh ingredients from the Pemberton Valley' },
     ],
   },
   {
     title: 'Best Date Night',
     emoji: '🕯️',
     picks: [
-      { name: 'The Broken Seal', desc: 'Craft cocktails, dim lighting, small plates — Squamish\'s best evening out' },
-      { name: 'Saha Eatery', desc: 'Intimate space, unique flavors, feels special without trying too hard' },
+      { name: 'Mile One Eating House', desc: 'The best dinner in Pemberton, full stop — seasonal menu, local ingredients, thoughtful wine list' },
     ],
   },
   {
-    title: 'Best Coffee',
+    title: 'Best Coffee & Bakeries',
     emoji: '☕',
     picks: [
-      { name: 'Smoke Bluff Coffee House', desc: 'The local favorite, no contest — half of Squamish starts their day here' },
-      { name: 'Green Olive Market and Cafe', desc: 'Solid espresso with a side of people-watching on Cleveland Ave' },
-      { name: 'Festal Cafe', desc: 'Good drip coffee and the pastry game is strong' },
-    ],
-  },
-  {
-    title: 'Best Breweries',
-    emoji: '🍺',
-    picks: [
-      { name: 'Backcountry Brewing', desc: 'The flagship Squamish brewery — great taproom, rotating seasonals, and legit pizza' },
+      { name: 'Blackbird Bakery', desc: 'The go-to morning stop — locals line up for the fresh bread and pastries' },
+      { name: 'Grimm\'s Deli & Gourmet', desc: 'Good coffee plus sandwiches and local specialty goods to take home' },
     ],
   },
 ];
@@ -115,28 +99,25 @@ function Stars({ rating }: { rating: number }) {
 
 // --- Page ---
 
-export default async function SquamishEatPage() {
+export default async function PembertonEatPage() {
   const category = await getCategoryBySlug('eat');
-  const listings = await getListings({ categorySlug: 'eat', townSlug: 'squamish' });
+  const listings = await getListings({ categorySlug: 'eat', townSlug: 'pemberton' });
   const tags = category ? await getTagsByCategory(category.id) : [];
 
-  // Sort by rating for the full list
   const sortedListings = [...listings].sort(
     (a, b) => (b.google_rating || 0) - (a.google_rating || 0)
   );
 
-  // Match curated picks to real listings
   const topPicks = TOP_PICKS.map((pick) => ({
     ...pick,
     listing: findListing(listings, pick.name),
   }));
 
-  // Build schema
   const schema = {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
-    name: 'Best Restaurants in Squamish (2026)',
-    description: 'Hand-picked by locals — the best restaurants in Squamish, BC.',
+    name: 'Best Restaurants in Pemberton (2026)',
+    description: 'Hand-picked by locals — the best restaurants in Pemberton, BC.',
     numberOfItems: sortedListings.length,
     itemListElement: sortedListings.slice(0, 20).map((listing, i) => ({
       '@type': 'ListItem',
@@ -166,12 +147,12 @@ export default async function SquamishEatPage() {
         <span>›</span>
         <Link href="/eat" className="hover:text-slate-600 transition-colors">Eat</Link>
         <span>›</span>
-        <span className="text-slate-600">Squamish</span>
+        <span className="text-slate-600">Pemberton</span>
       </nav>
 
       {/* Header */}
       <h1 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">
-        Best Restaurants in Squamish — A Local&apos;s Guide
+        Best Restaurants in Pemberton — A Local&apos;s Guide
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
@@ -181,12 +162,13 @@ export default async function SquamishEatPage() {
       {/* Intro */}
       <div className="prose prose-slate max-w-none mb-10">
         <p className="text-slate-600 leading-relaxed text-base">
-          Squamish has quietly become one of the best food towns between Vancouver and Whistler.
-          Forget the generic highway stops — these are the spots locals actually eat at, whether
-          you&apos;re starving after the Chief or looking for a proper dinner.
+          Pemberton&apos;s food scene is small but mighty. Most visitors blow right through on
+          their way to Joffre Lakes — their loss. The restaurants here punch well above their
+          weight, with farm-to-table ingredients from the valley and a laid-back atmosphere
+          you won&apos;t find in Whistler.
         </p>
         <p className="text-slate-600 leading-relaxed text-base">
-          We live here. We&apos;ve eaten everywhere. This is the real list.
+          It&apos;s a short list because Pemberton is a small town. Every spot on it is here for a reason.
         </p>
       </div>
 
@@ -205,12 +187,10 @@ export default async function SquamishEatPage() {
 
           const inner = (
             <div className="flex gap-5 bg-white rounded-2xl overflow-hidden border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-md transition-all">
-              {/* Rank */}
               <div className="hidden sm:flex items-center justify-center w-14 shrink-0 bg-slate-50 border-r border-slate-100">
                 <span className="font-serif text-2xl font-bold text-slate-300">{i + 1}</span>
               </div>
 
-              {/* Image */}
               <div className="w-32 sm:w-40 shrink-0 bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden">
                 {listing?.featured_image_url ? (
                   <FallbackImage
@@ -227,7 +207,6 @@ export default async function SquamishEatPage() {
                 )}
               </div>
 
-              {/* Content */}
               <div className="flex-1 py-4 pr-5">
                 <div className="flex items-start justify-between gap-2 mb-1">
                   <h3 className="font-serif text-lg font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-tight">
@@ -338,7 +317,7 @@ export default async function SquamishEatPage() {
       {/* ============ FULL LIST ============ */}
       <div className="border-t border-slate-200 pt-12 mb-16">
         <h2 className="font-serif text-2xl font-bold text-slate-900 mb-2">
-          All Squamish Restaurants
+          All Pemberton Restaurants
         </h2>
         <p className="text-sm text-slate-500 mb-8">
           The complete list, filterable by type. Sorted by rating.
@@ -365,7 +344,7 @@ export default async function SquamishEatPage() {
         <p className="text-sm text-slate-500 mb-6">
           Local restaurant picks, must-do trails, and insider tips — delivered to your inbox.
         </p>
-        <NewsletterSignup source="eat-squamish" />
+        <NewsletterSignup source="eat-pemberton" />
       </div>
 
       {/* BreadcrumbList Schema */}
@@ -378,7 +357,7 @@ export default async function SquamishEatPage() {
             itemListElement: [
               { '@type': 'ListItem', position: 1, name: 'Home', item: 'https://bestseatosky.com' },
               { '@type': 'ListItem', position: 2, name: 'Eat', item: 'https://bestseatosky.com/eat' },
-              { '@type': 'ListItem', position: 3, name: 'Squamish Restaurants', item: 'https://bestseatosky.com/eat/squamish' },
+              { '@type': 'ListItem', position: 3, name: 'Pemberton Restaurants', item: 'https://bestseatosky.com/eat/pemberton' },
             ],
           }),
         }}

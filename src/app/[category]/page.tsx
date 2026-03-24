@@ -122,6 +122,18 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           >
             See Squamish restaurants <span className="text-amber-600">&rarr;</span>
           </Link>
+          <Link
+            href="/eat/whistler"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 hover:border-amber-300 hover:text-amber-800 transition-colors shadow-sm"
+          >
+            See Whistler restaurants <span className="text-amber-600">&rarr;</span>
+          </Link>
+          <Link
+            href="/eat/pemberton"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 hover:border-amber-300 hover:text-amber-800 transition-colors shadow-sm"
+          >
+            See Pemberton restaurants <span className="text-amber-600">&rarr;</span>
+          </Link>
         </div>
       )}
 
