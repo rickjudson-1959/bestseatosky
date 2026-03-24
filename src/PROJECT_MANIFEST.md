@@ -1,6 +1,6 @@
 # Best Sea to Sky — Project Manifest
 
-**Last updated:** 2026-03-11
+**Last updated:** 2026-03-16
 **Live URL:** https://bestseatosky.com
 **Repo:** https://github.com/rickjudson-1959/bestseatosky
 **Hosting:** Vercel (auto-deploy from `main`)
@@ -80,16 +80,21 @@ src/
 │   ├── methodology/
 │   │   └── page.tsx            # How We Rank (ranking methodology)
 │   ├── contact/
-│   │   └── page.tsx            # Contact page
+│   │   ├── page.tsx            # Contact page (info cards + form)
+│   │   └── ContactForm.tsx     # Contact form (client component, Resend email via /api/contact)
 │   ├── terms/
 │   │   └── page.tsx            # Terms of use page
 │   ├── privacy/
 │   │   └── page.tsx            # Privacy policy page
 │   └── api/
+│       ├── contact/
+│       │   └── route.ts        # POST /api/contact — contact form submission + Resend email
 │       ├── get-listed/
 │       │   └── route.ts        # POST /api/get-listed — listing request + Resend email
-│       └── search/
-│           └── route.ts        # GET /api/search?q= — name search endpoint
+│       ├── search/
+│       │   └── route.ts        # GET /api/search?q= — name search endpoint
+│       └── subscribe/
+│           └── route.ts        # POST /api/subscribe — newsletter signup, Supabase subscribers table, welcome email + admin notification via Resend
 ├── components/
 │   ├── GoogleAnalytics.tsx     # GA4 client component (G-E25R61BYD9, afterInteractive)
 │   ├── Header.tsx              # Sticky nav with category links, Guides, Blog, Get Listed CTA, mobile hamburger menu
@@ -97,7 +102,9 @@ src/
 │   ├── SearchBar.tsx           # Debounced live search (client component)
 │   ├── ListingCard.tsx         # Listing preview card with image/gradient (featured badge + green border for featured)
 │   ├── SocialProof.tsx         # VisitorTestimonials (full section) + TrustStrip (compact bar)
-│   └── NewsletterSignup.tsx    # Newsletter signup form (client component)
+│   ├── NewsletterSignup.tsx    # Newsletter signup form (client component, default + compact variants, posts to /api/subscribe)
+│   ├── FaqSection.tsx          # Accordion FAQ component (client component, expandable Q&A)
+│   └── FeaturedInGuides.tsx    # "Featured in" guide links on listing detail pages (internal linking)
 ├── lib/
 │   ├── supabase.ts             # Supabase client + type definitions (incl. ListingRequest)
 │   ├── data.ts                 # Data fetching functions (incl. submitListingRequest)
@@ -108,7 +115,15 @@ src/
 public/
 ├── icon.svg                    # Custom SVG icon (favicon, header logo, footer logo)
 ├── og-default.svg              # OG image source (1200x630, dark green)
-└── og-default.png              # OG image for social sharing (converted from SVG)
+├── og-default.jpg              # OG image for social sharing (referenced by layout.tsx)
+├── og-default.png              # OG image for social sharing (PNG variant)
+├── og-eat.jpg                  # Category OG image for Eat
+├── og-stay.jpg                 # Category OG image for Stay
+├── og-play.jpg                 # Category OG image for Play
+├── og-visit.jpg                # Category OG image for Visit
+├── og-shop.jpg                 # Category OG image for Shop
+├── og-services.jpg             # Category OG image for Services
+└── images/listings/            # Listing-specific images (headshots, logos, working photos)
 ```
 
 ---
@@ -127,6 +142,7 @@ public/
 | **seo_pages** | id, slug, title, meta_description, h1_text, intro_content, category_id, tag_id, town_id, schema_json, canonical_url, status |
 | **blog_posts** | id, slug, title, meta_description, featured_image, excerpt, content, author, status, published_at |
 | **listing_requests** | id, business_name, contact_name, email, phone, website, category_id (FK), town_id (FK), message, status, created_at, updated_at |
+| **subscribers** | id, email (unique), source, created_at |
 
 ### Categories
 
@@ -156,6 +172,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 | `getGuideListings(page)` | Listing[] | Guide pages |
 | `getBlogPosts()` | BlogPost[] | Blog index |
 | `getBlogPostBySlug(slug)` | BlogPost \| null | Blog post page |
+| `getGuidesForListing(catId, townId, tagIds)` | SeoPage[] | Listing detail page ("Featured in" guides) |
 | `submitListingRequest(request)` | ListingRequest | Get Listed API route |
 
 ---
@@ -178,7 +195,12 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Get Listed form** at `/get-listed` — business submission form with category/town dropdowns, validates and inserts into `listing_requests` table, sends email notification via Resend to rjudson@protonmail.com
 - **UTM tracking** on outbound links — "Get Directions" and "Visit Website" links on listing detail pages include utm_source=bestseatosky, utm_medium=directory, utm_campaign={category}, utm_content={listing-slug}
 - **Google Analytics** (G-E25R61BYD9) — loaded via GoogleAnalytics client component on all pages
-- **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags
+- **Newsletter signup** — email capture with "Get the Free Guide" CTA, stores in `subscribers` table (Supabase), sends welcome email with Sea to Sky trip planner via Resend, admin notification on new subscriber; default + compact variants
+- **Contact form** at `/contact` — name, email, subject, message fields with validation, sends via `/api/contact` + Resend to rjudson@protonmail.com
+- **FAQ accordion** — reusable expandable Q&A component used on guide and content pages, with FAQPage schema.org markup
+- **"Featured in" guides** — listing detail pages show links to guide pages that include the listing (internal linking via `getGuidesForListing`)
+- **Category-specific OG images** — og-eat.jpg, og-stay.jpg, etc. for social sharing per category
+- **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags, SearchAction schema, BreadcrumbList schema
 - **Mobile hamburger menu** — animated 3-bar toggle in header, full-width dropdown nav, auto-closes on link tap
 - **Image fallback:** gradient + emoji when no photo available
 - **Featured listings** — visual differentiation with emerald border, green tint, and "★ Featured" badge; sorted to top of category pages

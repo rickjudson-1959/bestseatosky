@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { getListingBySlug, getRelatedListings, getCrossCategoryListings, getGuidesForListing } from '@/lib/data';
 import { buildUTMUrl } from '@/lib/utm';
 import FeaturedInGuides from '@/components/FeaturedInGuides';
+import FallbackImage from '@/components/FallbackImage';
+import FaqSection from '@/components/FaqSection';
 
 const CAT_STYLES: Record<string, { gradient: string; bg: string; text: string; border: string; accent: string }> = {
   eat: { gradient: 'from-orange-500 to-red-600', bg: 'bg-orange-50', text: 'text-amber-700', border: 'border-orange-200', accent: 'bg-amber-700' },
@@ -229,10 +231,11 @@ export default async function ListingPage({ params }: Props) {
       {/* Hero Image */}
       <div className={`h-64 md:h-80 rounded-2xl overflow-hidden bg-gradient-to-br ${styles.gradient} relative mb-10`}>
         {listing.featured_image_url ? (
-          <img
+          <FallbackImage
             src={listing.featured_image_url}
             alt={listing.name}
             className="w-full h-full object-cover"
+            fallbackEmoji={CAT_ICONS[catSlug]}
           />
         ) : (
           <div className="w-full h-full flex items-center justify-center">
@@ -270,11 +273,10 @@ export default async function ListingPage({ params }: Props) {
           </div>
 
           {/* Description */}
-          <div className="prose prose-slate max-w-none mb-8">
-            <p className="text-slate-600 leading-relaxed text-base">
-              {listing.description || listing.short_description}
-            </p>
-          </div>
+          <div
+            className="prose prose-slate max-w-none mb-8 text-slate-600 leading-relaxed text-base"
+            dangerouslySetInnerHTML={{ __html: listing.description || listing.short_description || '' }}
+          />
 
           {/* Tags */}
           {tags.length > 0 && (
@@ -376,11 +378,12 @@ export default async function ListingPage({ params }: Props) {
                   <div className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-md transition-all">
                     <div className={`h-32 bg-gradient-to-br ${rStyles.gradient} relative overflow-hidden`}>
                       {related.featured_image_url ? (
-                        <img
+                        <FallbackImage
                           src={related.featured_image_url}
                           alt={related.name}
                           className="w-full h-full object-cover"
                           loading="lazy"
+                          fallbackEmoji={CAT_ICONS[rCatSlug]}
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
@@ -424,11 +427,12 @@ export default async function ListingPage({ params }: Props) {
                   <div className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-md transition-all">
                     <div className={`h-36 bg-gradient-to-br ${iStyles.gradient} relative overflow-hidden`}>
                       {item.featured_image_url ? (
-                        <img
+                        <FallbackImage
                           src={item.featured_image_url}
                           alt={item.name}
                           className="w-full h-full object-cover"
                           loading="lazy"
+                          fallbackEmoji={CAT_ICONS[iCatSlug]}
                         />
                       ) : (
                         <div className="w-full h-full flex items-center justify-center">
@@ -460,6 +464,29 @@ export default async function ListingPage({ params }: Props) {
             })}
           </div>
         </div>
+      )}
+
+      {/* FAQ Section */}
+      {listing.faq_json && Array.isArray(listing.faq_json) && listing.faq_json.length > 0 && (
+        <FaqSection faqs={listing.faq_json} />
+      )}
+
+      {/* FAQ Schema */}
+      {listing.faq_json && Array.isArray(listing.faq_json) && listing.faq_json.length > 0 && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'FAQPage',
+              mainEntity: listing.faq_json.map((faq: { question: string; answer: string }) => ({
+                '@type': 'Question',
+                name: faq.question,
+                acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+              })),
+            }),
+          }}
+        />
       )}
 
       {/* BreadcrumbList Schema */}

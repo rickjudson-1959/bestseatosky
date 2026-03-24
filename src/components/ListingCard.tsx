@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import { Listing } from '@/lib/supabase';
+import FallbackImage from './FallbackImage';
 
 const CAT_STYLES: Record<string, { bg: string; text: string; border: string; gradient: string }> = {
   eat: { bg: 'bg-orange-50', text: 'text-amber-700', border: 'border-orange-200', gradient: 'from-orange-500 to-red-600' },
@@ -61,11 +62,12 @@ export default function ListingCard({ listing }: { listing: Listing }) {
         {/* Image / Gradient Header */}
         <div className={`h-44 bg-gradient-to-br ${styles.gradient} relative overflow-hidden`}>
           {listing.featured_image_url ? (
-            <img
+            <FallbackImage
               src={listing.featured_image_url}
               alt={listing.name}
               className="w-full h-full object-cover"
               loading="lazy"
+              fallbackEmoji={CAT_ICONS[catSlug]}
             />
           ) : (
             <div className="w-full h-full flex items-center justify-center">

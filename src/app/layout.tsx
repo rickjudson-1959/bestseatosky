@@ -28,6 +28,11 @@ export const metadata: Metadata = {
     'Discover the best restaurants, hotels, adventures, and attractions across the Sea to Sky corridor. Curated guides for Squamish, Whistler, and Pemberton.',
   keywords: [
     'Sea to Sky',
+    'Best Sea to Sky',
+    'bestseatosky',
+    'best seatosky',
+    'bestsea tosky',
+    'best sea tosky',
     'Squamish',
     'Whistler',
     'Pemberton',

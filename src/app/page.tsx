@@ -31,6 +31,14 @@ const jsonLd = {
       '@id': 'https://bestseatosky.com/#website',
       url: 'https://bestseatosky.com',
       name: 'Best Sea to Sky',
+      alternateName: [
+        'BestSeaToSky',
+        'Bestseatosky',
+        'Best Seatosky',
+        'Bestsea Tosky',
+        'Best Sea Tosky',
+        'Best SeaToSky',
+      ],
       description:
         'Discover the best restaurants, hotels, adventures, and attractions across the Sea to Sky corridor. Curated guides for Squamish, Whistler, and Pemberton.',
       publisher: {
@@ -50,6 +58,14 @@ const jsonLd = {
       '@type': 'Organization',
       '@id': 'https://bestseatosky.com/#organization',
       name: 'Best Sea to Sky',
+      alternateName: [
+        'BestSeaToSky',
+        'Bestseatosky',
+        'Best Seatosky',
+        'Bestsea Tosky',
+        'Best Sea Tosky',
+        'Best SeaToSky',
+      ],
       url: 'https://bestseatosky.com',
       logo: {
         '@type': 'ImageObject',

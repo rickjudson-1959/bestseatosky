@@ -1,6 +1,7 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import { getCategoryBySlug, getListings, getTagsByCategory, getTowns } from '@/lib/data';
+import Link from 'next/link';
 import ListingCard from '@/components/ListingCard';
 import FilterBar from './FilterBar';
 import NewsletterSignup from '@/components/NewsletterSignup';
@@ -34,8 +35,12 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const category = await getCategoryBySlug(categorySlug);
   if (!category) return {};
 
-  const title = `Best Places to ${CAT_VERBS[category.slug] || category.name} in Sea to Sky`;
-  const description = `Discover the best ${category.description?.toLowerCase() || 'places'} across Squamish, Whistler, and Pemberton in the Sea to Sky corridor.`;
+  const title = category.slug === 'eat'
+    ? 'Best Restaurants in Squamish, Whistler & Pemberton | Sea to Sky Dining Guide'
+    : `Best Places to ${CAT_VERBS[category.slug] || category.name} in Sea to Sky`;
+  const description = category.slug === 'eat'
+    ? '225+ locally-curated restaurants across Squamish, Whistler, and Pemberton. Skip the tourist traps — find where locals actually eat.'
+    : `Discover the best ${category.description?.toLowerCase() || 'places'} across Squamish, Whistler, and Pemberton in the Sea to Sky corridor.`;
   const ogImage = `https://bestseatosky.com/og-${category.slug}.jpg`;
 
   return {
@@ -97,12 +102,28 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       {/* Page Header */}
       <div className="mb-8">
         <h1 className="font-serif text-3xl md:text-4xl text-slate-900 mb-2">
-          Best Places to {CAT_VERBS[categorySlug] || category.name}
+          {categorySlug === 'eat'
+            ? 'Best Restaurants in Squamish, Whistler & Pemberton'
+            : `Best Places to ${CAT_VERBS[categorySlug] || category.name}`}
         </h1>
         <p className="text-slate-500">
-          {listings.length} places across the Sea to Sky corridor
+          {categorySlug === 'eat'
+            ? `${listings.length}+ locally-curated restaurants across the Sea to Sky corridor`
+            : `${listings.length} places across the Sea to Sky corridor`}
         </p>
       </div>
+
+      {/* Town Guide Links (eat only) */}
+      {categorySlug === 'eat' && (
+        <div className="flex flex-wrap gap-3 mb-8">
+          <Link
+            href="/eat/squamish"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 hover:border-amber-300 hover:text-amber-800 transition-colors shadow-sm"
+          >
+            See Squamish restaurants <span className="text-amber-600">&rarr;</span>
+          </Link>
+        </div>
+      )}
 
       {/* Trust Strip */}
       <div className="mb-8">

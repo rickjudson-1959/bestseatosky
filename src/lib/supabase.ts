@@ -58,6 +58,7 @@ export type Listing = {
   featured_image_url: string;
   images: string[];
   status: string;
+  faq_json: { question: string; answer: string }[] | null;
   featured: boolean;
   created_at: string;
   updated_at: string;

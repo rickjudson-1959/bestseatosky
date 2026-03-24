@@ -5,6 +5,7 @@ import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
 import FaqSection from '@/components/FaqSection';
+import FallbackImage from '@/components/FallbackImage';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -160,11 +161,12 @@ export default async function GuidePage({ params }: Props) {
                 {/* Image */}
                 <div className="w-32 sm:w-40 shrink-0 bg-gradient-to-br from-emerald-500 to-green-600 relative overflow-hidden">
                   {listing.featured_image_url ? (
-                    <img
+                    <FallbackImage
                       src={listing.featured_image_url}
                       alt={listing.name}
                       className="w-full h-full object-cover"
                       loading="lazy"
+                      fallbackEmoji={catIcon}
                     />
                   ) : (
                     <div className="w-full h-full flex items-center justify-center">
