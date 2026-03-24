@@ -70,6 +70,8 @@ const BEST_BY_CATEGORY: {
     picks: [
       { name: 'The Broken Seal', desc: 'Craft cocktails, dim lighting, small plates — Squamish\'s best evening out' },
       { name: 'Saha Eatery', desc: 'Intimate space, unique flavors, feels special without trying too hard' },
+      { name: 'Nightingale Restaurant', desc: 'Cozy neighbourhood spot with a seasonal menu and a great wine list' },
+      { name: 'Norman Rudy\'s', desc: 'Waterfront dining on the Mamquam Blind Channel — sunset views and solid food' },
     ],
   },
   {
@@ -79,6 +81,7 @@ const BEST_BY_CATEGORY: {
       { name: 'Smoke Bluff Coffee House', desc: 'The local favorite, no contest — half of Squamish starts their day here' },
       { name: 'Green Olive Market and Cafe', desc: 'Solid espresso with a side of people-watching on Cleveland Ave' },
       { name: 'Festal Cafe', desc: 'Good drip coffee and the pastry game is strong' },
+      { name: 'The Ledge', desc: 'Reliable morning coffee with a view — pairs well with their breakfast menu' },
     ],
   },
   {
@@ -86,6 +89,8 @@ const BEST_BY_CATEGORY: {
     emoji: '🍺',
     picks: [
       { name: 'Backcountry Brewing', desc: 'The flagship Squamish brewery — great taproom, rotating seasonals, and legit pizza' },
+      { name: 'A-Frame Brewing', desc: 'Small-batch craft beer in a relaxed industrial space — the locals\' brewery' },
+      { name: 'Howe Sound Brewing', desc: 'The OG Squamish brewery with a huge lodge-style brewpub and reliable pints' },
     ],
   },
 ];
