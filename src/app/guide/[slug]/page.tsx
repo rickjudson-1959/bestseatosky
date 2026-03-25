@@ -6,6 +6,7 @@ import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
 import FaqSection from '@/components/FaqSection';
 import FallbackImage from '@/components/FallbackImage';
+import AffiliateCard from '@/components/AffiliateCard';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -137,6 +138,18 @@ export default async function GuidePage({ params }: Props) {
       <div className="mb-10">
         <TrustStrip />
       </div>
+
+      {/* Affiliate Card (hiking guides) */}
+      {slug.startsWith('best-hikes') && (
+        <div className="mb-10">
+          <AffiliateCard
+            title="Gear Up for Your Hike"
+            description="Heading out on the trails? Make sure you've got the right footwear."
+            linkText="Shop Hiking Boots"
+            linkUrl="https://amzn.to/4bCVgtS"
+          />
+        </div>
+      )}
 
       {/* Numbered Listings */}
       <div className="flex flex-col gap-6 mb-16">

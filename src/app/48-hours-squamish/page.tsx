@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import AffiliateCard from '@/components/AffiliateCard';
 
 export const metadata: Metadata = {
   title: '48 Hours in Squamish — A Local\'s Itinerary for First-Timers',
@@ -118,6 +119,15 @@ export default function FortyEightHoursSquamishPage() {
           Here&apos;s how to spend 48 hours the way a local would — early mornings, hidden trails,
           and the restaurants we actually eat at.
         </p>
+      </div>
+
+      <div className="mb-12">
+        <AffiliateCard
+          title="Gear Up for Your Hike"
+          description="Heading out on the trails? Make sure you've got the right footwear."
+          linkText="Shop Hiking Boots"
+          linkUrl="https://amzn.to/4bCVgtS"
+        />
       </div>
 
       <div className="flex flex-col gap-12 mb-16">
