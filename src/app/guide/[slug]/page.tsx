@@ -163,6 +163,18 @@ export default async function GuidePage({ params }: Props) {
         </div>
       )}
 
+      {/* Affiliate Card (mountain biking guides) */}
+      {slug.startsWith('best-mountain-biking') && (
+        <div className="mb-10">
+          <AffiliateCard
+            title="Gear Up for the Trails"
+            description="Squamish trails demand the right kit. Don't hit the dirt without it."
+            linkText="Shop Mountain Bike Gear"
+            linkUrl="https://amzn.to/40TLb7e"
+          />
+        </div>
+      )}
+
       {/* Numbered Listings */}
       <div className="flex flex-col gap-6 mb-16">
         {listings.map((listing, i) => {
