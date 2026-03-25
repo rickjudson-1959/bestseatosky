@@ -4,6 +4,48 @@ import Link from 'next/link';
 import { getBlogPostBySlug, getAllSeoPages } from '@/lib/data';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import FaqSection from '@/components/FaqSection';
+import AffiliateCard from '@/components/AffiliateCard';
+
+type AffiliateConfig = { title: string; description: string; linkText: string; linkUrl: string };
+
+function getBlogAffiliateCards(slug: string): AffiliateConfig[] {
+  const cards: AffiliateConfig[] = [];
+
+  if (slug.includes('whistler-winter') || slug.includes('skiing')) {
+    cards.push({
+      title: 'Hit the Slopes Ready',
+      description: 'Whistler Blackcomb demands the right gear. Get kitted out before your first run.',
+      linkText: 'Shop Ski & Snowboard Gear',
+      linkUrl: 'https://amzn.to/3PvFlq1',
+    });
+  }
+
+  if (slug.includes('squamish') && (slug.includes('hike') || slug.includes('48-hours'))) {
+    cards.push({
+      title: 'Gear Up for Your Hike',
+      description: 'Heading out on the trails? Make sure you\'ve got the right footwear.',
+      linkText: 'Shop Hiking Boots',
+      linkUrl: 'https://amzn.to/4bCVgtS',
+    });
+    cards.push({
+      title: 'Pack Right for the Trail',
+      description: 'A good backpack makes all the difference on Sea to Sky trails.',
+      linkText: 'Shop Hiking & Climbing Packs',
+      linkUrl: 'https://amzn.to/47ILWUv',
+    });
+  }
+
+  if (slug.includes('road-trip')) {
+    cards.push({
+      title: 'Gear Up for Your Hike',
+      description: 'Heading out on the trails? Make sure you\'ve got the right footwear.',
+      linkText: 'Shop Hiking Boots',
+      linkUrl: 'https://amzn.to/4bCVgtS',
+    });
+  }
+
+  return cards.slice(0, 2);
+}
 
 type Props = {
   params: Promise<{ slug: string }>;
@@ -116,6 +158,15 @@ export default async function BlogPostPage({ params }: Props) {
           prose-img:rounded-xl"
         dangerouslySetInnerHTML={{ __html: post.content }}
       />
+
+      {/* Affiliate Cards */}
+      {getBlogAffiliateCards(slug).length > 0 && (
+        <div className="flex flex-col gap-4 mb-12">
+          {getBlogAffiliateCards(slug).map((card) => (
+            <AffiliateCard key={card.linkUrl} {...card} />
+          ))}
+        </div>
+      )}
 
       {/* Related Guides */}
       {relatedGuides.length > 0 && (
