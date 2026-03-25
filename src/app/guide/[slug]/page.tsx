@@ -249,6 +249,18 @@ export default async function GuidePage({ params }: Props) {
         <p className="text-slate-500 text-center py-12">No listings found for this guide yet.</p>
       )}
 
+      {/* Affiliate Card — backpacks (hiking + climbing guides) */}
+      {(slug.startsWith('best-hikes') || slug.startsWith('best-rock-climbing')) && (
+        <div className="mb-10">
+          <AffiliateCard
+            title="Pack Right for the Trail"
+            description="A good backpack makes all the difference on Sea to Sky trails."
+            linkText="Shop Hiking & Climbing Packs"
+            linkUrl="https://amzn.to/47ILWUv"
+          />
+        </div>
+      )}
+
       {/* FAQ Section */}
       {page.faq_json && Array.isArray(page.faq_json) && page.faq_json.length > 0 && (
         <FaqSection faqs={page.faq_json} />

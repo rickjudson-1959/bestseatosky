@@ -164,6 +164,15 @@ export default function FortyEightHoursSquamishPage() {
         ))}
       </div>
 
+      <div className="mb-12">
+        <AffiliateCard
+          title="Pack Right for the Trail"
+          description="A good backpack makes all the difference on Sea to Sky trails."
+          linkText="Shop Hiking & Climbing Packs"
+          linkUrl="https://amzn.to/47ILWUv"
+        />
+      </div>
+
       <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 mb-12">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">Before You Go</h2>
         <ul className="space-y-2 text-sm text-slate-600">
