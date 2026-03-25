@@ -113,6 +113,7 @@ src/
 │   ├── FaqSection.tsx          # Accordion FAQ component (client component, expandable Q&A)
 │   ├── FallbackImage.tsx       # Image component with graceful emoji fallback on error
 │   ├── TagFilterGrid.tsx       # Shared tag-only filter + listing grid (used by town guide pages)
+│   ├── AffiliateCard.tsx       # Reusable affiliate product card (title, desc, linkText, linkUrl, disclaimer; rel="nofollow sponsored")
 │   └── FeaturedInGuides.tsx    # "Featured in" guide links on listing detail pages (internal linking)
 ├── lib/
 │   ├── supabase.ts             # Supabase client + type definitions (incl. ListingRequest)
@@ -217,6 +218,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Town restaurant guides** — curated `/eat/squamish`, `/eat/whistler`, `/eat/pemberton` pages with editorial top picks, best-by-category sections, and full filterable grids; linked from `/eat` page
 - **Listing FAQs** — listings with `faq_json` data render accordion FAQ section + FAQPage schema markup on detail pages
 - **HTML descriptions** — listing detail pages render description as HTML for rich content (bold, lists, etc.)
+- **Affiliate cards** — reusable `AffiliateCard` component with `rel="nofollow sponsored"` links and Amazon Associates disclaimer. Slug-based conditional rendering on guide pages (hiking→boots, climbing→gear, MTB→bike gear, skiing→ski gear), blog posts (slug pattern matching, max 2 per post), and static content pages (48-hours-squamish, ski-season). Affiliate links: hiking boots, backpacks, climbing gear, MTB gear, ski gear
 - **5 static content pages** — neighbourhood guides (Squamish, Whistler), seasonal (ski, patios), itinerary (48hrs Squamish)
 - **Dynamic meta descriptions** — listing pages generate unique descriptions from name, town, rating, review count
 - **Outcome-focused B2B copy** — Get Listed and Advertise pages use warm local voice, not SaaS jargon
