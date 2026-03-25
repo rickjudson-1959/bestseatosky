@@ -1,6 +1,6 @@
 # Best Sea to Sky — Project Manifest
 
-**Last updated:** 2026-03-16
+**Last updated:** 2026-03-25
 **Live URL:** https://bestseatosky.com
 **Repo:** https://github.com/rickjudson-1959/bestseatosky
 **Hosting:** Vercel (auto-deploy from `main`)
@@ -48,7 +48,14 @@ src/
 │   │   ├── page.tsx            # Category listing page (eat, stay, play, etc.)
 │   │   ├── FilterBar.tsx       # Client-side town + tag filtering
 │   │   └── [slug]/
-│   │       └── page.tsx        # Listing detail (OG tags, related, cross-category, UTM links, claim link)
+│   │       └── page.tsx        # Listing detail (OG tags, related, cross-category, UTM links, claim link, FAQ support)
+│   ├── eat/
+│   │   ├── squamish/
+│   │   │   └── page.tsx        # Curated Squamish restaurant guide (top picks, best-by-category, full grid)
+│   │   ├── whistler/
+│   │   │   └── page.tsx        # Curated Whistler restaurant guide (top picks, best-by-category, full grid)
+│   │   └── pemberton/
+│   │       └── page.tsx        # Curated Pemberton restaurant guide (top picks, best-by-category, full grid)
 │   ├── advertise/
 │   │   └── page.tsx            # Advertise page (3 pricing tiers, CTAs)
 │   ├── blog/
@@ -104,6 +111,8 @@ src/
 │   ├── SocialProof.tsx         # VisitorTestimonials (full section) + TrustStrip (compact bar)
 │   ├── NewsletterSignup.tsx    # Newsletter signup form (client component, default + compact variants, posts to /api/subscribe)
 │   ├── FaqSection.tsx          # Accordion FAQ component (client component, expandable Q&A)
+│   ├── FallbackImage.tsx       # Image component with graceful emoji fallback on error
+│   ├── TagFilterGrid.tsx       # Shared tag-only filter + listing grid (used by town guide pages)
 │   └── FeaturedInGuides.tsx    # "Featured in" guide links on listing detail pages (internal linking)
 ├── lib/
 │   ├── supabase.ts             # Supabase client + type definitions (incl. ListingRequest)
@@ -137,7 +146,7 @@ public/
 | **categories** | id, slug, name, description, icon, display_order |
 | **towns** | id, slug, name, description, latitude, longitude, display_order |
 | **tags** | id, slug, name, category_id |
-| **listings** | id, slug, name, description, short_description, category_id, town_id, address, phone, email, website, hours, price_level, google_rating, google_review_count, google_place_id, featured_image_url, images, featured, status, meta_title, meta_description, schema_type, schema_json |
+| **listings** | id, slug, name, description, short_description, category_id, town_id, address, phone, email, website, hours, price_level, google_rating, google_review_count, google_place_id, featured_image_url, images, featured, status, meta_title, meta_description, schema_type, schema_json, faq_json |
 | **listing_tags** | listing_id, tag_id (junction table) |
 | **seo_pages** | id, slug, title, meta_description, h1_text, intro_content, category_id, tag_id, town_id, schema_json, canonical_url, status |
 | **blog_posts** | id, slug, title, meta_description, featured_image, excerpt, content, author, status, published_at |
@@ -205,6 +214,9 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Image fallback:** gradient + emoji when no photo available
 - **Featured listings** — visual differentiation with emerald border, green tint, and "★ Featured" badge; sorted to top of category pages
 - **Social proof** — VisitorTestimonials on homepage + guide index; TrustStrip on category pages + guide detail pages
+- **Town restaurant guides** — curated `/eat/squamish`, `/eat/whistler`, `/eat/pemberton` pages with editorial top picks, best-by-category sections, and full filterable grids; linked from `/eat` page
+- **Listing FAQs** — listings with `faq_json` data render accordion FAQ section + FAQPage schema markup on detail pages
+- **HTML descriptions** — listing detail pages render description as HTML for rich content (bold, lists, etc.)
 - **5 static content pages** — neighbourhood guides (Squamish, Whistler), seasonal (ski, patios), itinerary (48hrs Squamish)
 - **Dynamic meta descriptions** — listing pages generate unique descriptions from name, town, rating, review count
 - **Outcome-focused B2B copy** — Get Listed and Advertise pages use warm local voice, not SaaS jargon
@@ -243,6 +255,16 @@ These are standalone pages with hardcoded local content, separate from the `/gui
 | `/neighbourhood/whistler` | Neighbourhood | Village vs Creekside comparison |
 
 All linked from: homepage "Local Guides" section, footer Guides column, and cross-linked between each other.
+
+### Town Restaurant Guides (curated, data-driven)
+
+| Route | Description |
+|-------|-------------|
+| `/eat/squamish` | Squamish restaurant guide — 8 top picks, 5 category sections (Post-Hike, Brunch, Date Night, Coffee, Breweries), full filterable grid |
+| `/eat/whistler` | Whistler restaurant guide — 10 top picks, 5 category sections (Apres-Ski, Brunch, Date Night, Coffee, Sushi), full filterable grid |
+| `/eat/pemberton` | Pemberton restaurant guide — 4 top picks, 4 category sections (After a Day Out, Brunch, Date Night, Coffee & Bakeries), full filterable grid |
+
+Static routes that override `[category]/[slug]` dynamic routing. Curated editorial content matched to DB listings by name. Internal-linked from `/eat` page.
 
 ---
 
