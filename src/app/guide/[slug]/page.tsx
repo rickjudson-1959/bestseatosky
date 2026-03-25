@@ -151,6 +151,18 @@ export default async function GuidePage({ params }: Props) {
         </div>
       )}
 
+      {/* Affiliate Card (climbing guides) */}
+      {slug.startsWith('best-rock-climbing') && (
+        <div className="mb-10">
+          <AffiliateCard
+            title="Gear Up for Your Climb"
+            description="Heading to the Chief or the Smoke Bluffs? Make sure you've got the right gear."
+            linkText="Shop Climbing Gear"
+            linkUrl="https://amzn.to/4sJHYDa"
+          />
+        </div>
+      )}
+
       {/* Numbered Listings */}
       <div className="flex flex-col gap-6 mb-16">
         {listings.map((listing, i) => {
