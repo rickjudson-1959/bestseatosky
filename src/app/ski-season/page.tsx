@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import AffiliateCard from '@/components/AffiliateCard';
 
 export const metadata: Metadata = {
   title: 'Ski Season Survival Guide — How to Do Whistler Without Going Broke or Losing Your Mind',
@@ -108,6 +109,15 @@ export default function SkiSeasonPage() {
             </div>
           </div>
         ))}
+      </div>
+
+      <div className="mb-12">
+        <AffiliateCard
+          title="Hit the Slopes Ready"
+          description="Whistler Blackcomb demands the right gear. Get kitted out before your first run."
+          linkText="Shop Ski & Snowboard Gear"
+          linkUrl="https://amzn.to/3PvFlq1"
+        />
       </div>
 
       <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 mb-12">

@@ -175,6 +175,18 @@ export default async function GuidePage({ params }: Props) {
         </div>
       )}
 
+      {/* Affiliate Card (skiing guides) */}
+      {slug.startsWith('best-skiing') && (
+        <div className="mb-10">
+          <AffiliateCard
+            title="Hit the Slopes Ready"
+            description="Whistler Blackcomb demands the right gear. Get kitted out before your first run."
+            linkText="Shop Ski & Snowboard Gear"
+            linkUrl="https://amzn.to/3PvFlq1"
+          />
+        </div>
+      )}
+
       {/* Numbered Listings */}
       <div className="flex flex-col gap-6 mb-16">
         {listings.map((listing, i) => {
