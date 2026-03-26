@@ -141,6 +141,12 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       {categorySlug === 'stay' && (
         <div className="flex flex-wrap gap-3 mb-8">
           <Link
+            href="/stay/squamish"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 hover:border-indigo-300 hover:text-indigo-800 transition-colors shadow-sm"
+          >
+            Where to stay in Squamish <span className="text-indigo-600">&rarr;</span>
+          </Link>
+          <Link
             href="/stay/whistler"
             className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 hover:border-indigo-300 hover:text-indigo-800 transition-colors shadow-sm"
           >
