@@ -210,7 +210,7 @@ export default async function WhistlerStayPage() {
           title="Quick Pick: Compare All Whistler Hotels"
           description="Not sure where to start? Compare prices across all booking sites in one search."
           linkText="Compare Whistler Hotel Prices on Trivago"
-          linkUrl="TRIVAGO_AFFILIATE_LINK"
+          linkUrl="https://www.awin1.com/cread.php?awinmid=66030&awinaffid=2823352&ued=https%3A%2F%2Fwww.trivago.ca%2F%3Fsearch%3DWhistler%252C%2BBC"
           disclaimerText="This is an affiliate link. Best Sea to Sky may earn a commission at no extra cost to you."
         />
       </div>
@@ -315,7 +315,7 @@ export default async function WhistlerStayPage() {
           title="Ready to Book?"
           description="Compare Whistler hotel prices across every major booking site in one search."
           linkText="Compare Whistler Hotel Prices on Trivago"
-          linkUrl="TRIVAGO_AFFILIATE_LINK"
+          linkUrl="https://www.awin1.com/cread.php?awinmid=66030&awinaffid=2823352&ued=https%3A%2F%2Fwww.trivago.ca%2F%3Fsearch%3DWhistler%252C%2BBC"
           disclaimerText="This is an affiliate link. Best Sea to Sky may earn a commission at no extra cost to you."
         />
       </div>
