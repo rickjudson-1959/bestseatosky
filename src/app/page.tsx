@@ -330,11 +330,11 @@ export default async function HomePage() {
               <ul className="text-sm text-slate-600 space-y-1.5">
                 <li className="flex items-start gap-2">
                   <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                  <span>Best hotels and lodges in Whistler</span>
+                  <Link href="/stay/whistler" className="hover:text-emerald-700 transition-colors underline decoration-emerald-200 underline-offset-2">Best hotels and lodges in Whistler</Link>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                  <span>Local-favourite restaurants and bars</span>
+                  <Link href="/eat/whistler" className="hover:text-emerald-700 transition-colors underline decoration-emerald-200 underline-offset-2">Local-favourite restaurants and bars</Link>
                 </li>
                 <li className="flex items-start gap-2">
                   <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>

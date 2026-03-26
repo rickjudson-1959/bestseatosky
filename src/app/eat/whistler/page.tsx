@@ -342,13 +342,20 @@ export default async function WhistlerEatPage() {
         <TagFilterGrid listings={sortedListings} tags={tags} />
       </div>
 
-      {/* Back to all restaurants */}
-      <div className="text-center mb-12">
+      {/* Cross-links */}
+      <div className="flex flex-wrap justify-center gap-4 mb-12">
         <Link
           href="/eat"
           className="inline-flex items-center gap-2 text-amber-700 font-semibold hover:text-amber-800 transition-colors"
         >
           ← See all Sea to Sky restaurants
+        </Link>
+        <span className="text-slate-300">|</span>
+        <Link
+          href="/stay/whistler"
+          className="inline-flex items-center gap-2 text-indigo-700 font-semibold hover:text-indigo-800 transition-colors"
+        >
+          Where to stay in Whistler →
         </Link>
       </div>
 

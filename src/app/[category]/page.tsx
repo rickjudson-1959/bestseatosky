@@ -113,7 +113,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         </p>
       </div>
 
-      {/* Town Guide Links (eat only) */}
+      {/* Town Guide Links (eat) */}
       {categorySlug === 'eat' && (
         <div className="flex flex-wrap gap-3 mb-8">
           <Link
@@ -133,6 +133,18 @@ export default async function CategoryPage({ params, searchParams }: Props) {
             className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 hover:border-amber-300 hover:text-amber-800 transition-colors shadow-sm"
           >
             See Pemberton restaurants <span className="text-amber-600">&rarr;</span>
+          </Link>
+        </div>
+      )}
+
+      {/* Town Guide Links (stay) */}
+      {categorySlug === 'stay' && (
+        <div className="flex flex-wrap gap-3 mb-8">
+          <Link
+            href="/stay/whistler"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 hover:border-indigo-300 hover:text-indigo-800 transition-colors shadow-sm"
+          >
+            Where to stay in Whistler <span className="text-indigo-600">&rarr;</span>
           </Link>
         </div>
       )}
