@@ -118,8 +118,9 @@ export default async function HomePage() {
           </p>
 
           <h1 className="font-serif font-bold text-white text-4xl md:text-5xl leading-tight mb-6">
-            The Local&apos;s Guide to the{' '}
-            <span className="bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-200 bg-clip-text text-transparent">
+            <span className="block">The Local&apos;s Guide</span>
+            <span className="block">to the</span>
+            <span className="block bg-gradient-to-r from-emerald-300 via-emerald-400 to-emerald-200 bg-clip-text text-transparent">
               Sea to Sky Corridor
             </span>
             <span className="block text-2xl md:text-3xl mt-2 text-slate-300 font-normal">
