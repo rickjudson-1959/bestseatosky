@@ -54,6 +54,10 @@ export async function POST(request: NextRequest) {
               Thanks for subscribing! Here are the local picks to get you started:
             </p>
 
+            <a href="https://bestseatosky.com/downloads/sea-to-sky-trip-planner.pdf" style="display: inline-block; background: #047857; color: white; text-decoration: none; padding: 14px 28px; border-radius: 12px; font-size: 15px; font-weight: bold; margin-bottom: 24px;">
+              Download Your Sea to Sky Trip Planner (PDF) &darr;
+            </a>
+
             <h2 style="font-size: 17px; color: #0f172a; margin-bottom: 8px;">Where to Eat</h2>
             <ul style="font-size: 14px; color: #475569; line-height: 1.8; padding-left: 20px; margin-bottom: 20px;">
               <li><strong>Squamish:</strong> Howe Sound Brewing, Locavore, Crabapple Caf&eacute;</li>
