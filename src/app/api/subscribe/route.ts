@@ -90,6 +90,27 @@ export async function POST(request: NextRequest) {
       console.error('Welcome email failed:', emailError);
     }
 
+    // Add to Brevo contact list
+    if (process.env.BREVO_API_KEY && process.env.BREVO_LIST_ID) {
+      try {
+        await fetch('https://api.brevo.com/v3/contacts', {
+          method: 'POST',
+          headers: {
+            'api-key': process.env.BREVO_API_KEY,
+            'Content-Type': 'application/json',
+            Accept: 'application/json',
+          },
+          body: JSON.stringify({
+            email: trimmedEmail,
+            listIds: [Number(process.env.BREVO_LIST_ID)],
+            updateEnabled: true,
+          }),
+        });
+      } catch (brevoError) {
+        console.error('Brevo sync failed:', brevoError);
+      }
+    }
+
     // Notify you of new subscriber
     try {
       await resend.emails.send({
