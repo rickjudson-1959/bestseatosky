@@ -20,6 +20,7 @@ export async function POST(request: NextRequest) {
     }
 
     // Store subscriber in database
+    let isNewSubscriber = true;
     const { error: dbError } = await supabase.from('subscribers').insert({
       email: trimmedEmail,
       source: source || 'website',
@@ -28,14 +29,15 @@ export async function POST(request: NextRequest) {
     if (dbError) {
       // Duplicate email — still a success from the user's perspective
       if (dbError.code === '23505') {
-        return NextResponse.json({ success: true });
+        isNewSubscriber = false;
+      } else {
+        console.error('Subscriber insert error:', dbError);
       }
-      console.error('Subscriber insert error:', dbError);
-      // Don't fail — still send the welcome email
+      // Don't fail — still send the welcome email and sync to Brevo
     }
 
-    // Send welcome email with lead magnet
-    try {
+    // Send welcome email with lead magnet (new subscribers only)
+    if (isNewSubscriber) try {
       await resend.emails.send({
         from: 'Best Sea to Sky <noreply@bestseatosky.com>',
         to: trimmedEmail,
@@ -90,10 +92,10 @@ export async function POST(request: NextRequest) {
       console.error('Welcome email failed:', emailError);
     }
 
-    // Add to Brevo contact list
+    // Add to Brevo contact list (always — handles both new and existing contacts)
     if (process.env.BREVO_API_KEY && process.env.BREVO_LIST_ID) {
       try {
-        await fetch('https://api.brevo.com/v3/contacts', {
+        const brevoRes = await fetch('https://api.brevo.com/v3/contacts', {
           method: 'POST',
           headers: {
             'api-key': process.env.BREVO_API_KEY,
@@ -106,9 +108,17 @@ export async function POST(request: NextRequest) {
             updateEnabled: true,
           }),
         });
+        const brevoBody = await brevoRes.text();
+        if (!brevoRes.ok) {
+          console.error(`Brevo API error (${brevoRes.status}):`, brevoBody);
+        } else {
+          console.log(`Brevo sync OK for ${trimmedEmail}:`, brevoBody);
+        }
       } catch (brevoError) {
-        console.error('Brevo sync failed:', brevoError);
+        console.error('Brevo sync failed (network):', brevoError);
       }
+    } else {
+      console.warn('Brevo env vars missing — BREVO_API_KEY:', !!process.env.BREVO_API_KEY, 'BREVO_LIST_ID:', !!process.env.BREVO_LIST_ID);
     }
 
     // Notify you of new subscriber
