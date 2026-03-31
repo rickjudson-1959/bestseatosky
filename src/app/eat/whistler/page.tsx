@@ -177,7 +177,7 @@ export default async function WhistlerEatPage() {
       </p>
 
       {/* Intro */}
-      <div className="prose prose-slate max-w-none mb-10">
+      <div className="prose prose-slate max-w-none mb-10 space-y-4">
         <p className="text-slate-600 leading-relaxed text-base">
           Whistler has more restaurants per capita than almost anywhere in BC — and half of them
           are tourist traps charging resort prices for mediocre food. This guide is the other half.

@@ -188,7 +188,7 @@ export default async function WhistlerStayPage() {
       </p>
 
       {/* Intro */}
-      <div className="prose prose-slate max-w-none mb-10">
+      <div className="prose prose-slate max-w-none mb-10 space-y-4">
         <p className="text-slate-600 leading-relaxed text-base">
           Whistler has everything from luxury ski-in/ski-out resorts to cozy budget lodges.
           Where you stay depends on what you&apos;re here for — skiing, summer hiking, village

@@ -184,7 +184,7 @@ export default async function SquamishStayPage() {
       </p>
 
       {/* Intro */}
-      <div className="prose prose-slate max-w-none mb-10">
+      <div className="prose prose-slate max-w-none mb-10 space-y-4">
         <p className="text-slate-600 leading-relaxed text-base">
           Squamish isn&apos;t just a pit stop on the way to Whistler anymore. Whether you&apos;re
           here to climb the Chief, mountain bike the trails, or just eat and drink your way through

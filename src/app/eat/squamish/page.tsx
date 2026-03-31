@@ -184,7 +184,7 @@ export default async function SquamishEatPage() {
       </p>
 
       {/* Intro */}
-      <div className="prose prose-slate max-w-none mb-10">
+      <div className="prose prose-slate max-w-none mb-10 space-y-4">
         <p className="text-slate-600 leading-relaxed text-base">
           Squamish has quietly become one of the best food towns between Vancouver and Whistler.
           Forget the generic highway stops — these are the spots locals actually eat at, whether

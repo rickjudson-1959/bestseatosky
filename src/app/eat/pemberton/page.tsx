@@ -160,7 +160,7 @@ export default async function PembertonEatPage() {
       </p>
 
       {/* Intro */}
-      <div className="prose prose-slate max-w-none mb-10">
+      <div className="prose prose-slate max-w-none mb-10 space-y-4">
         <p className="text-slate-600 leading-relaxed text-base">
           Pemberton&apos;s food scene is small but mighty. Most visitors blow right through on
           their way to Joffre Lakes — their loss. The restaurants here punch well above their

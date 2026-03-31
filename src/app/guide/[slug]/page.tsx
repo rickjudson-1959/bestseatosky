@@ -127,10 +127,12 @@ export default async function GuidePage({ params }: Props) {
       </p>
 
       {page.intro_content && (
-        <div className="prose prose-slate max-w-none mb-10">
-          <p className="text-slate-600 leading-relaxed text-base">
-            {page.intro_content}
-          </p>
+        <div className="prose prose-slate max-w-none mb-10 space-y-4">
+          {page.intro_content.split('\n').filter(Boolean).map((para, i) => (
+            <p key={i} className="text-slate-600 leading-relaxed text-base">
+              {para}
+            </p>
+          ))}
         </div>
       )}
 
