@@ -44,10 +44,14 @@ export default function AdvertisePage() {
           <h1 className="font-serif font-bold text-white text-4xl md:text-5xl leading-tight mb-6">
             Be the Place Visitors Find Before They Even Leave the House.
           </h1>
-          <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-4">
             You know what it&apos;s like — someone drives through town, eats at the wrong place, and
             never comes back. We make sure the right visitors find you first. The ones who are already
             planning their corridor trip and looking for exactly what you offer.
+          </p>
+          <p className="text-base text-slate-400 leading-relaxed max-w-2xl mx-auto mb-10">
+            With 65+ newsletter subscribers and growing traffic across Squamish, Whistler, and Pemberton,
+            Best Sea to Sky puts your business in front of the people actively planning their next visit.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
             <Link
@@ -128,30 +132,162 @@ export default function AdvertisePage() {
           </div>
         </div>
 
-        {/* Pricing CTA */}
-        <div className="bg-emerald-50 rounded-2xl p-8 md:p-10 border border-emerald-100 text-center">
-          <h2 className="font-serif text-2xl font-bold text-slate-900 mb-3">
-            Ready to Get Found by the Right People?
-          </h2>
-          <p className="text-sm text-slate-600 mb-6 max-w-lg mx-auto">
-            Start with a free <strong>Local Starter</strong> listing. Want to be the first place
-            visitors see? Become a <strong>Corridor Leader</strong> ($49/mo). Want to be the reason
-            people plan their trip? Become a <strong>Destination Partner</strong> ($149/mo).
-          </p>
-          <div className="flex flex-col sm:flex-row gap-3 justify-center">
+        {/* Pricing Tiers */}
+        <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-center">
+          Choose Your Visibility Level
+        </h2>
+        <p className="text-slate-500 text-center mb-10 max-w-xl mx-auto">
+          Start free and upgrade when you&apos;re ready. Every tier builds on the one below it.
+        </p>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
+          {/* Tier 1: Local Starter */}
+          <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200">
+            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">Local Starter</h3>
+            <div className="font-serif text-3xl font-bold text-slate-900 mb-1">Free</div>
+            <p className="text-sm text-slate-400 mb-5">Get on the map</p>
+            <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Basic listing with name, address, hours, and contact info</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Included in category and town pages</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Google rating and reviews displayed</span>
+              </li>
+            </ul>
             <Link
               href="/get-listed"
-              className="px-6 py-3 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors"
+              className="block w-full text-center py-3 rounded-xl bg-slate-100 text-slate-800 text-sm font-bold hover:bg-slate-200 transition-colors"
             >
-              See Pricing &amp; Get Listed
-            </Link>
-            <Link
-              href="/contact"
-              className="px-6 py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors"
-            >
-              Talk to Us First
+              Get Listed Free
             </Link>
           </div>
+
+          {/* Tier 2: Corridor Leader */}
+          <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200">
+            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">Corridor Leader</h3>
+            <div className="font-serif text-3xl font-bold text-slate-900 mb-1">$49<span className="text-base font-normal text-slate-400">/mo</span></div>
+            <p className="text-sm text-slate-400 mb-5">Stand out from the crowd</p>
+            <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Everything in Local Starter</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Featured badge and priority placement on category pages</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Enhanced listing with photos and custom description</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Included in relevant &quot;Best Of&quot; guide pages</span>
+              </li>
+            </ul>
+            <a
+              href="mailto:hello@bestseatosky.com?subject=Corridor%20Leader%20Inquiry"
+              className="block w-full text-center py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors"
+            >
+              Get Started
+            </a>
+          </div>
+
+          {/* Tier 3: Destination Partner */}
+          <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200">
+            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">Sponsored Guide</h3>
+            <div className="font-serif text-3xl font-bold text-slate-900 mb-1">$149<span className="text-base font-normal text-slate-400">/mo</span></div>
+            <p className="text-sm text-slate-400 mb-5">Be the reason people plan their trip</p>
+            <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Everything in Corridor Leader</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Sponsored placement in guide pages and blog posts</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Featured in our newsletter to 65+ subscribers</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Cross-linked from related town and category pages</span>
+              </li>
+            </ul>
+            <a
+              href="mailto:hello@bestseatosky.com?subject=Sponsored%20Guide%20Inquiry"
+              className="block w-full text-center py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors"
+            >
+              Get Started
+            </a>
+          </div>
+
+          {/* Tier 4: Local Partner (Premium) */}
+          <div className="relative bg-emerald-50/50 rounded-2xl p-6 md:p-8 border-2 border-emerald-400 ring-1 ring-emerald-200">
+            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
+              <span className="bg-emerald-700 text-white text-xs font-bold uppercase tracking-wide px-4 py-1 rounded-full">
+                Best Value
+              </span>
+            </div>
+            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1 mt-2">Local Partner</h3>
+            <div className="font-serif text-3xl font-bold text-emerald-800 mb-1">$299<span className="text-base font-normal text-slate-400">/mo</span></div>
+            <p className="text-sm text-slate-400 mb-5">The full partnership — maximum visibility</p>
+            <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Everything in Sponsored Guide</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Dedicated blog post written about your business</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Monthly social media promotion on Facebook and Instagram</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Homepage banner placement</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Priority position on relevant guide pages</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>&quot;Local Partner&quot; badge on your listing</span>
+              </li>
+              <li className="flex items-start gap-2">
+                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
+                <span>Quarterly analytics report — listing views, clicks, and trends</span>
+              </li>
+            </ul>
+            <a
+              href="mailto:hello@bestseatosky.com?subject=Local%20Partner%20Inquiry"
+              className="block w-full text-center py-3.5 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors"
+            >
+              Become a Partner
+            </a>
+          </div>
+        </div>
+
+        {/* Bottom CTA */}
+        <div className="text-center">
+          <p className="text-sm text-slate-500 mb-4">Not sure which tier is right for you?</p>
+          <Link
+            href="/contact"
+            className="px-6 py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors"
+          >
+            Talk to Us First
+          </Link>
         </div>
       </section>
     </>
