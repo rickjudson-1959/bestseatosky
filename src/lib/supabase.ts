@@ -98,6 +98,17 @@ export type ListingRequest = {
   updated_at: string;
 };
 
+export type AuditRequest = {
+  id: string;
+  business_name: string;
+  contact_name: string;
+  email: string;
+  website: string;
+  source: string;
+  status: string;
+  created_at: string;
+};
+
 export type SeoPage = {
   id: string;
   slug: string;

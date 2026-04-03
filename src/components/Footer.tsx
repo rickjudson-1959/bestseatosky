@@ -41,13 +41,19 @@ const FOOTER_LINKS = {
     { label: 'Whistler Neighbourhoods', href: '/neighbourhood/whistler' },
     { label: 'All Guides', href: '/guide' },
   ],
+  'For Businesses': [
+    { label: 'Get Listed (Free)', href: '/get-listed' },
+    { label: 'Advertise', href: '/advertise' },
+    { label: 'Free SEO Audit', href: '/local-seo-audit' },
+    { label: 'Contact Us', href: '/contact' },
+  ],
 };
 
 export default function Footer() {
   return (
     <footer className="bg-slate-900 pt-16 pb-12 px-6 text-slate-400">
       <div className="max-w-7xl mx-auto">
-        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-5 gap-10 mb-12">
+        <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-10 mb-12">
           {Object.entries(FOOTER_LINKS).map(([section, links]) => (
             <div key={section}>
               <h4 className="font-serif text-base text-white mb-4">{section}</h4>
