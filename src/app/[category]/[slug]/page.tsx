@@ -120,10 +120,22 @@ export default async function ListingPage({ params }: Props) {
   const styles = CAT_STYLES[catSlug] || CAT_STYLES.eat;
   const tags = listing.listing_tags?.map((lt) => lt.tags) || [];
 
+  // Show clean domain for website display (strip protocol, query params, trailing slash)
+  const cleanWebsite = listing.website
+    ? (() => {
+        try {
+          const url = new URL(listing.website);
+          return (url.hostname + url.pathname).replace(/\/$/, '').replace(/^www\./, '');
+        } catch {
+          return listing.website;
+        }
+      })()
+    : null;
+
   const details = [
     { label: 'Address', value: listing.address, icon: '📍' },
     ...(listing.phone ? [{ label: 'Phone', value: listing.phone, icon: '📞' }] : []),
-    ...(listing.website ? [{ label: 'Website', value: listing.website, icon: '🌐' }] : []),
+    ...(cleanWebsite ? [{ label: 'Website', value: cleanWebsite, icon: '🌐' }] : []),
     ...(listing.email ? [{ label: 'Email', value: listing.email, icon: '✉️' }] : []),
   ];
 
