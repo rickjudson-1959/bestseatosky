@@ -42,26 +42,44 @@ const TIERS = [
     ],
     cta: 'Become a Corridor Leader',
     href: 'https://buy.stripe.com/5kQaEX9Zx84OftsaROabK00',
-    style: 'border-emerald-300 ring-2 ring-emerald-100',
-    buttonStyle: 'bg-emerald-700 text-white hover:bg-emerald-800',
-    popular: true,
+    style: 'border-slate-200',
+    buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
   },
   {
-    name: 'The Destination Partner',
+    name: 'The Sponsored Guide',
     price: '$149',
     period: '/mo',
     description: 'Be the reason visitors plan their trip to the corridor',
     features: [
       'Everything in Corridor Leader, plus:',
-      'Top spot in the guides people bookmark before their trip',
-      'Written up in our blog — your story, told well',
-      'Shared with our social media audience',
-      'Monthly check-in so you know what\'s working',
+      'Sponsored placement in guide pages and blog posts',
+      'Featured in our newsletter to 65+ subscribers',
+      'Cross-linked from related town and category pages',
     ],
-    cta: 'Partner With Us',
+    cta: 'Get Started',
     href: 'https://buy.stripe.com/3cI00j8Vt84Ogxw8JGabK01',
     style: 'border-slate-200',
     buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
+  },
+  {
+    name: 'The Local Partner',
+    price: '$299',
+    period: '/mo',
+    description: 'The full partnership — maximum visibility across the platform',
+    features: [
+      'Everything in Sponsored Guide, plus:',
+      'Dedicated blog post written about your business',
+      'Monthly social media promotion on Facebook & Instagram',
+      'Homepage banner placement',
+      'Priority position on relevant guide pages',
+      '"Local Partner" badge on your listing',
+      'Quarterly analytics report — views, clicks, and trends',
+    ],
+    cta: 'Become a Partner',
+    href: 'mailto:hello@bestseatosky.com?subject=Local%20Partner%20Inquiry',
+    style: 'border-emerald-400 border-2 ring-1 ring-emerald-200 bg-emerald-50/30',
+    buttonStyle: 'bg-emerald-700 text-white hover:bg-emerald-800',
+    popular: true,
   },
 ];
 
@@ -98,7 +116,7 @@ const FAQS = [
   },
   {
     q: 'Can I cancel anytime?',
-    a: 'Yes. Corridor Leader ($49/mo) and Destination Partner ($149/mo) are both month-to-month. No contracts, no penalties. Cancel whenever and your listing just goes back to free.',
+    a: 'Yes. All paid tiers — Corridor Leader ($49/mo), Sponsored Guide ($149/mo), and Local Partner ($299/mo) — are month-to-month. No contracts, no penalties. Cancel whenever and your listing just goes back to free.',
   },
   {
     q: 'Who actually sees my listing?',
@@ -200,7 +218,7 @@ export default async function GetListedPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 mb-12">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
             {TIERS.map((tier) => (
               <div
                 key={tier.name}
@@ -247,49 +265,57 @@ export default async function GetListedPage() {
           </div>
 
           {/* Comparison Table */}
-          <div className="bg-white rounded-2xl border border-slate-200 overflow-hidden">
+          <div className="bg-white rounded-2xl border border-slate-200 overflow-x-auto">
             <table className="w-full text-sm">
               <thead>
                 <tr className="border-b border-slate-100">
                   <th className="text-left py-4 px-5 font-semibold text-slate-900">Feature</th>
-                  <th className="text-center py-4 px-4 font-semibold text-slate-900">Local Starter</th>
-                  <th className="text-center py-4 px-4 font-semibold text-emerald-700 bg-emerald-50/50">Corridor Leader</th>
-                  <th className="text-center py-4 px-4 font-semibold text-slate-900">Destination Partner</th>
+                  <th className="text-center py-4 px-3 font-semibold text-slate-900">Local Starter</th>
+                  <th className="text-center py-4 px-3 font-semibold text-slate-900">Corridor Leader</th>
+                  <th className="text-center py-4 px-3 font-semibold text-slate-900">Sponsored Guide</th>
+                  <th className="text-center py-4 px-3 font-semibold text-emerald-700 bg-emerald-50/50">Local Partner</th>
                 </tr>
               </thead>
               <tbody>
                 {[
-                  ['Found when visitors search your town', true, true, true],
-                  ['Your real Google stars shown', true, true, true],
-                  ['One-click to your website, phone, map', true, true, true],
-                  ['Update your info anytime', true, true, true],
-                  ['Featured badge — visitors know you\'re legit', false, true, true],
-                  ['First name visitors see in your category', false, true, true],
-                  ['Spotlighted on the homepage', false, true, true],
-                  ['Included in guides visitors bookmark', false, true, true],
-                  ['Top spot in guides people plan trips with', false, false, true],
-                  ['Your story told in our blog', false, false, true],
-                  ['Shared with our social audience', false, false, true],
-                  ['Monthly check-in on what\'s working', false, false, true],
-                ].map(([feature, free, featured, sponsored], i) => (
+                  ['Found when visitors search your town', true, true, true, true],
+                  ['Your real Google stars shown', true, true, true, true],
+                  ['One-click to your website, phone, map', true, true, true, true],
+                  ['Update your info anytime', true, true, true, true],
+                  ['Featured badge & priority placement', false, true, true, true],
+                  ['Enhanced listing with photos', false, true, true, true],
+                  ['Included in "Best Of" guide pages', false, true, true, true],
+                  ['Sponsored placement in guides & blog', false, false, true, true],
+                  ['Featured in newsletter (65+ subscribers)', false, false, true, true],
+                  ['Cross-linked from town & category pages', false, false, true, true],
+                  ['Dedicated blog post about your business', false, false, false, true],
+                  ['Monthly social media promotion', false, false, false, true],
+                  ['Homepage banner placement', false, false, false, true],
+                  ['"Local Partner" badge on listing', false, false, false, true],
+                  ['Quarterly analytics report', false, false, false, true],
+                ].map(([feature, free, leader, sponsored, partner], i) => (
                   <tr key={i} className="border-b border-slate-50 last:border-0">
                     <td className="py-3 px-5 text-slate-600">{feature as string}</td>
-                    <td className="text-center py-3 px-4">
+                    <td className="text-center py-3 px-3">
                       {free ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">—</span>}
                     </td>
-                    <td className="text-center py-3 px-4 bg-emerald-50/30">
-                      {featured ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">—</span>}
+                    <td className="text-center py-3 px-3">
+                      {leader ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">—</span>}
                     </td>
-                    <td className="text-center py-3 px-4">
+                    <td className="text-center py-3 px-3">
                       {sponsored ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">—</span>}
+                    </td>
+                    <td className="text-center py-3 px-3 bg-emerald-50/30">
+                      {partner ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">—</span>}
                     </td>
                   </tr>
                 ))}
                 <tr className="bg-slate-50">
                   <td className="py-4 px-5 font-semibold text-slate-900">Investment</td>
-                  <td className="text-center py-4 px-4 font-bold text-slate-900">Free forever</td>
-                  <td className="text-center py-4 px-4 font-bold text-emerald-700 bg-emerald-50/50">$49/mo</td>
-                  <td className="text-center py-4 px-4 font-bold text-slate-900">$149/mo</td>
+                  <td className="text-center py-4 px-3 font-bold text-slate-900">Free forever</td>
+                  <td className="text-center py-4 px-3 font-bold text-slate-900">$49/mo</td>
+                  <td className="text-center py-4 px-3 font-bold text-slate-900">$149/mo</td>
+                  <td className="text-center py-4 px-3 font-bold text-emerald-700 bg-emerald-50/50">$299/mo</td>
                 </tr>
               </tbody>
             </table>
