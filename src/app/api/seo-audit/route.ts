@@ -22,8 +22,7 @@ export async function POST(request: NextRequest) {
       business_name: business_name.trim(),
       contact_name: contact_name.trim(),
       email: email.trim().toLowerCase(),
-      website: website.trim(),
-      source: source || 'seo-audit',
+      website_url: website.trim(),
     });
 
     if (dbError) {

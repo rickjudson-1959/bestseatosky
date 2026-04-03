@@ -103,10 +103,11 @@ export type AuditRequest = {
   business_name: string;
   contact_name: string;
   email: string;
-  website: string;
-  source: string;
+  website_url: string | null;
   status: string;
+  audit_result: string | null;
   created_at: string;
+  updated_at: string;
 };
 
 export type SeoPage = {
