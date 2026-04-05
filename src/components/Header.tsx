@@ -13,6 +13,7 @@ const NAV_ITEMS = [
   { slug: 'services', label: 'Services' },
   { slug: 'guide', label: 'Guides' },
   { slug: 'blog', label: 'Blog' },
+  { slug: 'chat', label: 'Trip Planner' },
 ];
 
 export default function Header() {

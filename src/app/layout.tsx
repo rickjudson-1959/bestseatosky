@@ -3,6 +3,7 @@ import { DM_Serif_Display, Source_Sans_3 } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
+import ChatWidget from '@/components/ChatWidget';
 import './globals.css';
 
 const dmSerif = DM_Serif_Display({
@@ -91,6 +92,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <ChatWidget />
       </body>
     </html>
   );
