@@ -1,6 +1,6 @@
 # Best Sea to Sky — Project Manifest
 
-**Last updated:** 2026-03-25
+**Last updated:** 2026-04-06
 **Live URL:** https://bestseatosky.com
 **Repo:** https://github.com/rickjudson-1959/bestseatosky
 **Hosting:** Vercel (auto-deploy from `main`)
@@ -57,7 +57,7 @@ src/
 │   │   └── pemberton/
 │   │       └── page.tsx        # Curated Pemberton restaurant guide (top picks, best-by-category, full grid)
 │   ├── advertise/
-│   │   └── page.tsx            # Advertise page (3 pricing tiers, CTAs)
+│   │   └── page.tsx            # Advertise page (value props, stats, links to /get-listed for pricing)
 │   ├── blog/
 │   │   ├── page.tsx            # Blog index (post cards with title, excerpt, date)
 │   │   └── [slug]/
@@ -78,7 +78,7 @@ src/
 │   │   └── whistler/
 │   │       └── page.tsx        # Village vs Creekside comparison
 │   ├── get-listed/
-│   │   ├── page.tsx            # Get Listed page (server component, fetches categories/towns)
+│   │   ├── page.tsx            # Get Listed conversion page (hero, stats, testimonials, 3-tier pricing, comparison table, FAQs, form)
 │   │   └── GetListedForm.tsx   # Get Listed form (client component, status states)
 │   ├── about/
 │   │   └── page.tsx            # About page
@@ -201,8 +201,8 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Enhanced Schema.org JSON-LD** on detail pages: full PostalAddress (locality, BC, CA), canonical url, sameAs, image; aggregateRating only renders when review count > 0
 - **Open Graph & Twitter cards** on listing detail pages (title, description, image, canonical url) and guide pages (default OG image at `public/og-default.png`)
 - **Claim your listing** — "Is this your business?" mailto link on listing sidebar (hello@bestseatosky.com)
-- **Advertise page** at `/advertise` — 3 pricing tiers (Claimed free, Featured $49/mo, Sponsored $149/mo) with Stripe checkout for paid tiers
-- **Get Listed form** at `/get-listed` — business submission form with category/town dropdowns, validates and inserts into `listing_requests` table, sends email notification via Resend to rjudson@protonmail.com
+- **Advertise page** at `/advertise` — value prop persuasion page (3 benefits, platform stats, pricing summary), links to `/get-listed` for tiers and signup
+- **Get Listed page** at `/get-listed` — full conversion landing page: hero, social proof stats (859+ businesses, 50K+ reviews, 27+ guides, 6 towns), B2B testimonials, 3-tier pricing cards (Local Starter free, Corridor Leader $49/mo, Destination Partner $149/mo), feature comparison table, FAQs, and submission form. Stripe checkout for paid tiers. Inserts into `listing_requests` table, sends email notification via Resend
 - **UTM tracking** on outbound links — "Get Directions" and "Visit Website" links on listing detail pages include utm_source=bestseatosky, utm_medium=directory, utm_campaign={category}, utm_content={listing-slug}
 - **Google Analytics** (G-E25R61BYD9) — loaded via GoogleAnalytics client component on all pages
 - **Newsletter signup** — email capture with "Get the Free Guide" CTA, stores in `subscribers` table (Supabase), sends welcome email with Sea to Sky trip planner via Resend, admin notification on new subscriber; default + compact variants
@@ -220,6 +220,8 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **HTML descriptions** — listing detail pages render description as HTML for rich content (bold, lists, etc.)
 - **Affiliate cards** — reusable `AffiliateCard` component with `rel="nofollow sponsored"` links and Amazon Associates disclaimer. Slug-based conditional rendering on guide pages (hiking→boots, climbing→gear, MTB→bike gear, skiing→ski gear), blog posts (slug pattern matching, max 2 per post), and static content pages (48-hours-squamish, ski-season). Affiliate links: hiking boots, backpacks, climbing gear, MTB gear, ski gear
 - **5 static content pages** — neighbourhood guides (Squamish, Whistler), seasonal (ski, patios), itinerary (48hrs Squamish)
+- **Canonical tags** — site-wide via `alternates.canonical` in page metadata; filtered pages canonicalize to parent
+- **Newsletter + lead magnet** — email capture component on homepage, category, blog index, and guide index pages; subscribers receive "Sea to Sky Trip Planner" welcome email with curated local picks via Resend; stored in `subscribers` table
 - **Dynamic meta descriptions** — listing pages generate unique descriptions from name, town, rating, review count
 - **Outcome-focused B2B copy** — Get Listed and Advertise pages use warm local voice, not SaaS jargon
 
@@ -315,7 +317,8 @@ npm run lint     # Run ESLint
 | **Namecheap** | Domain registrar for .com and .ca |
 | **Vercel** | Hosting, auto-deploy from GitHub |
 | **Supabase** | Database, API, auth (PostgreSQL) |
-| **Resend** | Transactional email (Get Listed notifications) |
+| **Resend** | Transactional email (Get Listed notifications, subscriber welcome emails) |
+| **Stripe** | Payment processing (Corridor Leader, Destination Partner tiers) |
 
 ---
 
