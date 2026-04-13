@@ -189,6 +189,19 @@ export default async function GuidePage({ params }: Props) {
         </div>
       )}
 
+      {/* Affiliate Card (stay/accommodation guides) */}
+      {(/hotel|stay|accommodation|lodge/.test(slug)) && (
+        <div className="mb-10">
+          <AffiliateCard
+            title="Compare Sea to Sky Hotels"
+            description="Not sure where to start? Compare prices across all booking sites in one search."
+            linkText="Compare Hotel Prices on Trivago"
+            linkUrl="https://www.awin1.com/cread.php?awinmid=66030&awinaffid=2823352&ued=https%3A%2F%2Fwww.trivago.ca%2F%3Fsearch%3DSea%2Bto%2BSky%252C%2BBC"
+            disclaimerText="This is an affiliate link. Best Sea to Sky may earn a commission at no extra cost to you."
+          />
+        </div>
+      )}
+
       {/* Numbered Listings */}
       <div className="flex flex-col gap-6 mb-16">
         {listings.map((listing, i) => {
