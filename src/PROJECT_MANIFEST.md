@@ -206,7 +206,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **UTM tracking** on outbound links — "Get Directions" and "Visit Website" links on listing detail pages include utm_source=bestseatosky, utm_medium=directory, utm_campaign={category}, utm_content={listing-slug}
 - **Google Analytics** (G-E25R61BYD9) — loaded via GoogleAnalytics client component on all pages
 - **Newsletter signup** — email capture with "Get the Free Guide" CTA, stores in `subscribers` table (Supabase), sends welcome email with Sea to Sky trip planner via Resend, admin notification on new subscriber; default + compact variants
-- **Contact form** at `/contact` — name, email, subject, message fields with validation, sends via `/api/contact` + Resend to rjudson@protonmail.com
+- **Contact form** at `/contact` — name, email, subject, message fields with validation, sends via `/api/contact` + Resend to hello@bestseatosky.com
 - **FAQ accordion** — reusable expandable Q&A component used on guide and content pages, with FAQPage schema.org markup
 - **"Featured in" guides** — listing detail pages show links to guide pages that include the listing (internal linking via `getGuidesForListing`)
 - **Category-specific OG images** — og-eat.jpg, og-stay.jpg, etc. for social sharing per category

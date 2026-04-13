@@ -129,7 +129,7 @@ export async function POST(request: NextRequest) {
     try {
       await resend.emails.send({
         from: 'Best Sea to Sky <noreply@bestseatosky.com>',
-        to: 'rjudson@protonmail.com',
+        to: 'hello@bestseatosky.com',
         subject: `New subscriber: ${trimmedEmail}`,
         html: `
           <h2>New Newsletter Subscriber</h2>

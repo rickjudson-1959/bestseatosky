@@ -21,7 +21,7 @@ export async function POST(request: NextRequest) {
 
     await resend.emails.send({
       from: 'Best Sea to Sky <noreply@bestseatosky.com>',
-      to: 'rjudson@protonmail.com',
+      to: 'hello@bestseatosky.com',
       replyTo: email.trim(),
       subject: `Contact Form: ${subject.trim()}`,
       html: `
