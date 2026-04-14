@@ -1,6 +1,6 @@
 # Best Sea to Sky — Project Manifest
 
-**Last updated:** 2026-04-06
+**Last updated:** 2026-04-14
 **Live URL:** https://bestseatosky.com
 **Repo:** https://github.com/rickjudson-1959/bestseatosky
 **Hosting:** Vercel (auto-deploy from `main`)
@@ -15,7 +15,8 @@
 - **Styling:** Tailwind CSS v4
 - **Database:** Supabase (PostgreSQL)
 - **Fonts:** DM Serif Display (headings), Source Sans 3 (body)
-- **Email:** Resend (transactional email notifications)
+- **Email:** Resend (transactional email notifications) + Brevo (subscriber list sync)
+- **AI:** Anthropic Claude API (trip planner chatbot)
 - **React Compiler:** Enabled
 
 ---
@@ -56,8 +57,13 @@ src/
 │   │   │   └── page.tsx        # Curated Whistler restaurant guide (top picks, best-by-category, full grid)
 │   │   └── pemberton/
 │   │       └── page.tsx        # Curated Pemberton restaurant guide (top picks, best-by-category, full grid)
+│   ├── stay/
+│   │   ├── squamish/
+│   │   │   └── page.tsx        # Curated Squamish accommodation guide (areas, top picks, Trivago affiliate)
+│   │   └── whistler/
+│   │       └── page.tsx        # Curated Whistler accommodation guide (areas, top picks, Trivago affiliate)
 │   ├── advertise/
-│   │   └── page.tsx            # Advertise page (value props, stats, links to /get-listed for pricing)
+│   │   └── page.tsx            # Advertise page (4-tier pricing cards, value props, stats)
 │   ├── blog/
 │   │   ├── page.tsx            # Blog index (post cards with title, excerpt, date)
 │   │   └── [slug]/
@@ -77,8 +83,13 @@ src/
 │   │   │   └── page.tsx        # Downtown vs Garibaldi Highlands comparison
 │   │   └── whistler/
 │   │       └── page.tsx        # Village vs Creekside comparison
+│   ├── chat/
+│   │   └── page.tsx            # AI trip planner chatbot full page (/chat)
+│   ├── local-seo-audit/
+│   │   ├── page.tsx            # Free local SEO audit landing page
+│   │   └── AuditForm.tsx       # SEO audit form (client component)
 │   ├── get-listed/
-│   │   ├── page.tsx            # Get Listed conversion page (hero, stats, testimonials, 3-tier pricing, comparison table, FAQs, form)
+│   │   ├── page.tsx            # Get Listed conversion page (hero, stats, testimonials, 4-tier pricing, comparison table, FAQs, form)
 │   │   └── GetListedForm.tsx   # Get Listed form (client component, status states)
 │   ├── about/
 │   │   └── page.tsx            # About page
@@ -94,14 +105,18 @@ src/
 │   ├── privacy/
 │   │   └── page.tsx            # Privacy policy page
 │   └── api/
+│       ├── chat/
+│       │   └── route.ts        # POST /api/chat — AI trip planner (Claude API, streaming responses)
 │       ├── contact/
 │       │   └── route.ts        # POST /api/contact — contact form submission + Resend email
 │       ├── get-listed/
 │       │   └── route.ts        # POST /api/get-listed — listing request + Resend email
 │       ├── search/
 │       │   └── route.ts        # GET /api/search?q= — name search endpoint
+│       ├── seo-audit/
+│       │   └── route.ts        # POST /api/seo-audit — SEO audit request, stores in Supabase, Resend notification
 │       └── subscribe/
-│           └── route.ts        # POST /api/subscribe — newsletter signup, Supabase subscribers table, welcome email + admin notification via Resend
+│           └── route.ts        # POST /api/subscribe — newsletter signup, Supabase subscribers table, Brevo sync, welcome email with trip planner PDF + admin notification via Resend
 ├── components/
 │   ├── GoogleAnalytics.tsx     # GA4 client component (G-E25R61BYD9, afterInteractive)
 │   ├── Header.tsx              # Sticky nav with category links, Guides, Blog, Get Listed CTA, mobile hamburger menu
@@ -110,6 +125,8 @@ src/
 │   ├── ListingCard.tsx         # Listing preview card with image/gradient (featured badge + green border for featured)
 │   ├── SocialProof.tsx         # VisitorTestimonials (full section) + TrustStrip (compact bar)
 │   ├── NewsletterSignup.tsx    # Newsletter signup form (client component, default + compact variants, posts to /api/subscribe)
+│   ├── ChatUI.tsx              # AI trip planner chat interface (client component, streaming)
+│   ├── ChatWidget.tsx          # Floating chat widget (client component, bottom-right overlay)
 │   ├── FaqSection.tsx          # Accordion FAQ component (client component, expandable Q&A)
 │   ├── FallbackImage.tsx       # Image component with graceful emoji fallback on error
 │   ├── TagFilterGrid.tsx       # Shared tag-only filter + listing grid (used by town guide pages)
@@ -127,6 +144,8 @@ public/
 ├── og-default.svg              # OG image source (1200x630, dark green)
 ├── og-default.jpg              # OG image for social sharing (referenced by layout.tsx)
 ├── og-default.png              # OG image for social sharing (PNG variant)
+├── downloads/
+│   └── sea-to-sky-trip-planner.pdf  # Lead magnet PDF attached to welcome email
 ├── og-eat.jpg                  # Category OG image for Eat
 ├── og-stay.jpg                 # Category OG image for Stay
 ├── og-play.jpg                 # Category OG image for Play
@@ -201,11 +220,13 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Enhanced Schema.org JSON-LD** on detail pages: full PostalAddress (locality, BC, CA), canonical url, sameAs, image; aggregateRating only renders when review count > 0
 - **Open Graph & Twitter cards** on listing detail pages (title, description, image, canonical url) and guide pages (default OG image at `public/og-default.png`)
 - **Claim your listing** — "Is this your business?" mailto link on listing sidebar (hello@bestseatosky.com)
-- **Advertise page** at `/advertise` — value prop persuasion page (3 benefits, platform stats, pricing summary), links to `/get-listed` for tiers and signup
-- **Get Listed page** at `/get-listed` — full conversion landing page: hero, social proof stats (859+ businesses, 50K+ reviews, 27+ guides, 6 towns), B2B testimonials, 3-tier pricing cards (Local Starter free, Corridor Leader $49/mo, Destination Partner $149/mo), feature comparison table, FAQs, and submission form. Stripe checkout for paid tiers. Inserts into `listing_requests` table, sends email notification via Resend
+- **Advertise page** at `/advertise` — 4-tier pricing cards (Local Starter free, Corridor Leader $49/mo, Sponsored Guide $149/mo, Local Partner $299/mo), value props, platform stats
+- **Get Listed page** at `/get-listed` — full conversion landing page: hero, social proof stats, B2B testimonials, 4-tier pricing cards (Local Starter free, Corridor Leader $49/mo, Sponsored Guide $149/mo, Local Partner $299/mo), feature comparison table, FAQs, and submission form. Stripe checkout for paid tiers. Inserts into `listing_requests` table, sends email notification via Resend
 - **UTM tracking** on outbound links — "Get Directions" and "Visit Website" links on listing detail pages include utm_source=bestseatosky, utm_medium=directory, utm_campaign={category}, utm_content={listing-slug}
 - **Google Analytics** (G-E25R61BYD9) — loaded via GoogleAnalytics client component on all pages
-- **Newsletter signup** — email capture with "Get the Free Guide" CTA, stores in `subscribers` table (Supabase), sends welcome email with Sea to Sky trip planner via Resend, admin notification on new subscriber; default + compact variants
+- **AI trip planner** — chatbot at `/chat` + floating widget site-wide; Claude API with streaming responses, recommends listings/guides with internal links
+- **Local SEO audit** at `/local-seo-audit` — free audit request form for corridor businesses, stores in Supabase, sends notification via Resend
+- **Newsletter signup** — email capture with "Get the Free Guide" CTA, stores in `subscribers` table (Supabase), syncs to Brevo contact list, sends welcome email with trip planner PDF via Resend, admin notification on new subscriber; default + compact variants
 - **Contact form** at `/contact` — name, email, subject, message fields with validation, sends via `/api/contact` + Resend to hello@bestseatosky.com
 - **FAQ accordion** — reusable expandable Q&A component used on guide and content pages, with FAQPage schema.org markup
 - **"Featured in" guides** — listing detail pages show links to guide pages that include the listing (internal linking via `getGuidesForListing`)
@@ -218,7 +239,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Town restaurant guides** — curated `/eat/squamish`, `/eat/whistler`, `/eat/pemberton` pages with editorial top picks, best-by-category sections, and full filterable grids; linked from `/eat` page
 - **Listing FAQs** — listings with `faq_json` data render accordion FAQ section + FAQPage schema markup on detail pages
 - **HTML descriptions** — listing detail pages render description as HTML for rich content (bold, lists, etc.)
-- **Affiliate cards** — reusable `AffiliateCard` component with `rel="nofollow sponsored"` links and Amazon Associates disclaimer. Slug-based conditional rendering on guide pages (hiking→boots, climbing→gear, MTB→bike gear, skiing→ski gear), blog posts (slug pattern matching, max 2 per post), and static content pages (48-hours-squamish, ski-season). Affiliate links: hiking boots, backpacks, climbing gear, MTB gear, ski gear
+- **Affiliate cards** — reusable `AffiliateCard` component with `rel="nofollow sponsored"` links. Slug-based conditional rendering on guide pages (hiking→boots, climbing→gear, MTB→bike gear, skiing→ski gear, stay/hotel/accommodation/lodge→Trivago), blog posts (slug pattern matching, max 2 per post), town stay pages (Trivago), and static content pages (48-hours-squamish, ski-season). Affiliate links: hiking boots, backpacks, climbing gear, MTB gear, ski gear, Trivago hotel comparison
 - **5 static content pages** — neighbourhood guides (Squamish, Whistler), seasonal (ski, patios), itinerary (48hrs Squamish)
 - **Canonical tags** — site-wide via `alternates.canonical` in page metadata; filtered pages canonicalize to parent
 - **Newsletter + lead magnet** — email capture component on homepage, category, blog index, and guide index pages; subscribers receive "Sea to Sky Trip Planner" welcome email with curated local picks via Resend; stored in `subscribers` table
@@ -270,6 +291,15 @@ All linked from: homepage "Local Guides" section, footer Guides column, and cros
 
 Static routes that override `[category]/[slug]` dynamic routing. Curated editorial content matched to DB listings by name. Internal-linked from `/eat` page.
 
+### Town Stay Guides (curated, data-driven)
+
+| Route | Description |
+|-------|-------------|
+| `/stay/squamish` | Squamish accommodation guide — area breakdowns, top picks, Trivago affiliate card |
+| `/stay/whistler` | Whistler accommodation guide — area breakdowns, top picks, Trivago affiliate card |
+
+Static routes with curated editorial content. Internal-linked from `/stay` page. Trivago affiliate links via Awin.
+
 ---
 
 ## Category Color Scheme
@@ -292,6 +322,9 @@ Static routes that override `[category]/[slug]` dynamic routing. Curated editori
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
 | `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase public API key |
 | `RESEND_API_KEY` | Resend API key for email notifications |
+| `ANTHROPIC_API_KEY` | Anthropic API key for trip planner chatbot |
+| `BREVO_API_KEY` | Brevo API key for subscriber list sync |
+| `BREVO_LIST_ID` | Brevo contact list ID |
 
 Set in both `.env.local` (local) and Vercel dashboard (production/preview/development).
 
@@ -317,8 +350,11 @@ npm run lint     # Run ESLint
 | **Namecheap** | Domain registrar for .com and .ca |
 | **Vercel** | Hosting, auto-deploy from GitHub |
 | **Supabase** | Database, API, auth (PostgreSQL) |
-| **Resend** | Transactional email (Get Listed notifications, subscriber welcome emails) |
-| **Stripe** | Payment processing (Corridor Leader, Destination Partner tiers) |
+| **Resend** | Transactional email (Get Listed, contact, audit, subscriber welcome emails) |
+| **Stripe** | Payment processing (Corridor Leader, Sponsored Guide tiers) |
+| **Brevo** | Email marketing — subscriber list sync on signup |
+| **Anthropic Claude API** | AI trip planner chatbot (streaming) |
+| **Awin / Trivago** | Affiliate hotel comparison links on stay pages and guide pages |
 
 ---
 
