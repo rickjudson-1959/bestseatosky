@@ -8,7 +8,7 @@ export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 const PLACEHOLDER_BASE = `${supabaseUrl}/storage/v1/object/public/Images`;
 
 export function getPlaceholderImage(categorySlug: string): string {
-  const valid = ['eat', 'stay', 'play', 'shop', 'visit'];
+  const valid = ['eat', 'stay', 'play', 'shop', 'visit', 'services'];
   const slug = valid.includes(categorySlug) ? categorySlug : 'visit';
   return `${PLACEHOLDER_BASE}/placeholder-${slug}.jpeg`;
 }
