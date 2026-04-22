@@ -231,6 +231,7 @@ export default async function GuidePage({ params }: Props) {
                     className="w-full h-full object-cover"
                     loading="lazy"
                     fallbackEmoji={catIcon}
+                    placeholderUrl={getPlaceholderImage(catSlug)}
                   />
                 </div>
 

@@ -214,6 +214,7 @@ export default async function WhistlerEatPage() {
                   className="w-full h-full object-cover"
                   loading="lazy"
                   fallbackEmoji="🍽️"
+                  placeholderUrl={getPlaceholderImage('eat')}
                 />
               </div>
 

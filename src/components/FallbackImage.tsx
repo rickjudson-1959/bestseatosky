@@ -6,18 +6,20 @@ export default function FallbackImage({
   src,
   alt,
   fallbackEmoji,
+  placeholderUrl,
   className = '',
   loading,
 }: {
   src: string;
   alt: string;
   fallbackEmoji?: string;
+  placeholderUrl?: string;
   className?: string;
   loading?: 'lazy' | 'eager';
 }) {
-  const [failed, setFailed] = useState(false);
+  const [stage, setStage] = useState<'original' | 'placeholder' | 'emoji'>('original');
 
-  if (failed) {
+  if (stage === 'emoji') {
     return (
       <div className="w-full h-full flex items-center justify-center">
         <span className="text-6xl opacity-20 saturate-0 brightness-200">
@@ -27,13 +29,21 @@ export default function FallbackImage({
     );
   }
 
+  const imgSrc = stage === 'placeholder' && placeholderUrl ? placeholderUrl : src;
+
   return (
     <img
-      src={src}
+      src={imgSrc}
       alt={alt}
       className={className}
       loading={loading}
-      onError={() => setFailed(true)}
+      onError={() => {
+        if (stage === 'original' && placeholderUrl) {
+          setStage('placeholder');
+        } else {
+          setStage('emoji');
+        }
+      }}
     />
   );
 }

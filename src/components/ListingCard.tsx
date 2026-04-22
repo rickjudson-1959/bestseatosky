@@ -67,6 +67,7 @@ export default function ListingCard({ listing }: { listing: Listing }) {
             className="w-full h-full object-cover"
             loading="lazy"
             fallbackEmoji={CAT_ICONS[catSlug]}
+            placeholderUrl={getPlaceholderImage(catSlug)}
           />
           <div className={`absolute top-3 left-3 ${styles.bg} rounded-full px-3 py-1 text-xs font-semibold ${styles.text} uppercase tracking-wide`}>
             {listing.towns?.name || 'Sea to Sky'}

@@ -198,6 +198,7 @@ export default async function PembertonEatPage() {
                   className="w-full h-full object-cover"
                   loading="lazy"
                   fallbackEmoji="🍽️"
+                  placeholderUrl={getPlaceholderImage('eat')}
                 />
               </div>
 

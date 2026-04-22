@@ -223,6 +223,7 @@ export default async function SquamishEatPage() {
                   className="w-full h-full object-cover"
                   loading="lazy"
                   fallbackEmoji="🍽️"
+                  placeholderUrl={getPlaceholderImage('eat')}
                 />
               </div>
 

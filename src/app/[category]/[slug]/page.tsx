@@ -248,6 +248,7 @@ export default async function ListingPage({ params }: Props) {
           alt={listing.name}
           className="w-full h-full object-cover"
           fallbackEmoji={CAT_ICONS[catSlug]}
+          placeholderUrl={getPlaceholderImage(catSlug)}
         />
         <div className="absolute bottom-6 left-6">
           <span className={`${styles.bg} rounded-full px-4 py-1.5 text-xs font-semibold ${styles.text} uppercase tracking-wide`}>
@@ -388,6 +389,7 @@ export default async function ListingPage({ params }: Props) {
                         className="w-full h-full object-cover"
                         loading="lazy"
                         fallbackEmoji={CAT_ICONS[rCatSlug]}
+                        placeholderUrl={getPlaceholderImage(rCatSlug)}
                       />
                     </div>
                     <div className="p-3">
@@ -429,6 +431,7 @@ export default async function ListingPage({ params }: Props) {
                         className="w-full h-full object-cover"
                         loading="lazy"
                         fallbackEmoji={CAT_ICONS[iCatSlug]}
+                        placeholderUrl={getPlaceholderImage(iCatSlug)}
                       />
                       <div className="absolute top-2 left-2">
                         <span className={`${iStyles.bg} rounded-full px-2.5 py-1 text-[10px] font-semibold ${iStyles.text} uppercase tracking-wide`}>

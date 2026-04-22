@@ -270,6 +270,7 @@ export default async function WhistlerStayPage() {
                         className="w-full h-full object-cover"
                         loading="lazy"
                         fallbackEmoji="🏔️"
+                        placeholderUrl={getPlaceholderImage('stay')}
                       />
                     </div>
                     <div className="flex-1 min-w-0">
