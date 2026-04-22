@@ -233,7 +233,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Category-specific OG images** — og-eat.jpg, og-stay.jpg, etc. for social sharing per category
 - **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags, SearchAction schema, BreadcrumbList schema
 - **Mobile hamburger menu** — animated 3-bar toggle in header, full-width dropdown nav, auto-closes on link tap
-- **Image fallback:** gradient + emoji when no photo available
+- **Image fallback:** category placeholder image from Supabase Storage when no featured photo; emoji fallback if placeholder also fails. Helper: `getPlaceholderImage(categorySlug)` in `lib/supabase.ts`
 - **Featured listings** — visual differentiation with emerald border, green tint, and "★ Featured" badge; sorted to top of category pages
 - **Social proof** — VisitorTestimonials on homepage + guide index; TrustStrip on category pages + guide detail pages
 - **Town restaurant guides** — curated `/eat/squamish`, `/eat/whistler`, `/eat/pemberton` pages with editorial top picks, best-by-category sections, and full filterable grids; linked from `/eat` page
