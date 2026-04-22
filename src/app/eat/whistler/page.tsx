@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getListings, getTagsByCategory, getCategoryBySlug } from '@/lib/data';
-import { Listing } from '@/lib/supabase';
+import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import FallbackImage from '@/components/FallbackImage';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
@@ -208,19 +208,13 @@ export default async function WhistlerEatPage() {
               </div>
 
               <div className="w-32 sm:w-40 shrink-0 bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden">
-                {listing?.featured_image_url ? (
-                  <FallbackImage
-                    src={listing.featured_image_url}
-                    alt={pick.name}
-                    className="w-full h-full object-cover"
-                    loading="lazy"
-                    fallbackEmoji="🍽️"
-                  />
-                ) : (
-                  <div className="w-full h-full flex items-center justify-center">
-                    <span className="text-4xl opacity-20 saturate-0 brightness-200">🍽️</span>
-                  </div>
-                )}
+                <FallbackImage
+                  src={listing?.featured_image_url || getPlaceholderImage('eat')}
+                  alt={pick.name}
+                  className="w-full h-full object-cover"
+                  loading="lazy"
+                  fallbackEmoji="🍽️"
+                />
               </div>
 
               <div className="flex-1 py-4 pr-5">
@@ -284,21 +278,15 @@ export default async function WhistlerEatPage() {
 
                 const inner = (
                   <div className="flex items-start gap-4 bg-white rounded-xl p-4 border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-md transition-all">
-                    {listing?.featured_image_url ? (
-                      <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-orange-500 to-red-600">
-                        <FallbackImage
-                          src={listing.featured_image_url}
-                          alt={pick.name}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          fallbackEmoji="🍽️"
-                        />
-                      </div>
-                    ) : (
-                      <div className="w-16 h-16 rounded-lg shrink-0 bg-gradient-to-br from-orange-500 to-red-600 flex items-center justify-center">
-                        <span className="text-2xl opacity-20 saturate-0 brightness-200">🍽️</span>
-                      </div>
-                    )}
+                    <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-orange-500 to-red-600">
+                      <FallbackImage
+                        src={listing?.featured_image_url || getPlaceholderImage('eat')}
+                        alt={pick.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        fallbackEmoji="🍽️"
+                      />
+                    </div>
                     <div className="flex-1 min-w-0">
                       <div className="flex items-center gap-2 mb-1">
                         <h4 className="font-serif font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">

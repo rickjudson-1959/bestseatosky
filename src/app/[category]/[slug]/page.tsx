@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getListingBySlug, getRelatedListings, getCrossCategoryListings, getGuidesForListing } from '@/lib/data';
+import { getPlaceholderImage } from '@/lib/supabase';
 import { buildUTMUrl } from '@/lib/utm';
 import FeaturedInGuides from '@/components/FeaturedInGuides';
 import FallbackImage from '@/components/FallbackImage';
@@ -242,20 +243,12 @@ export default async function ListingPage({ params }: Props) {
 
       {/* Hero Image */}
       <div className={`h-64 md:h-80 rounded-2xl overflow-hidden bg-gradient-to-br ${styles.gradient} relative mb-10`}>
-        {listing.featured_image_url ? (
-          <FallbackImage
-            src={listing.featured_image_url}
-            alt={listing.name}
-            className="w-full h-full object-cover"
-            fallbackEmoji={CAT_ICONS[catSlug]}
-          />
-        ) : (
-          <div className="w-full h-full flex items-center justify-center">
-            <span className="text-8xl opacity-15 saturate-0 brightness-200">
-              {CAT_ICONS[catSlug]}
-            </span>
-          </div>
-        )}
+        <FallbackImage
+          src={listing.featured_image_url || getPlaceholderImage(catSlug)}
+          alt={listing.name}
+          className="w-full h-full object-cover"
+          fallbackEmoji={CAT_ICONS[catSlug]}
+        />
         <div className="absolute bottom-6 left-6">
           <span className={`${styles.bg} rounded-full px-4 py-1.5 text-xs font-semibold ${styles.text} uppercase tracking-wide`}>
             {listing.towns?.name || 'Sea to Sky'}
@@ -389,21 +382,13 @@ export default async function ListingPage({ params }: Props) {
                 <Link key={related.id} href={`/${rCatSlug}/${related.slug}`} className="group">
                   <div className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-md transition-all">
                     <div className={`h-32 bg-gradient-to-br ${rStyles.gradient} relative overflow-hidden`}>
-                      {related.featured_image_url ? (
-                        <FallbackImage
-                          src={related.featured_image_url}
-                          alt={related.name}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          fallbackEmoji={CAT_ICONS[rCatSlug]}
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <span className="text-4xl opacity-15 saturate-0 brightness-200">
-                            {CAT_ICONS[rCatSlug]}
-                          </span>
-                        </div>
-                      )}
+                      <FallbackImage
+                        src={related.featured_image_url || getPlaceholderImage(rCatSlug)}
+                        alt={related.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        fallbackEmoji={CAT_ICONS[rCatSlug]}
+                      />
                     </div>
                     <div className="p-3">
                       <h3 className="font-serif text-sm font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-tight line-clamp-1">
@@ -438,21 +423,13 @@ export default async function ListingPage({ params }: Props) {
                 <Link key={item.id} href={`/${iCatSlug}/${item.slug}`} className="group">
                   <div className="bg-white rounded-xl overflow-hidden border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-md transition-all">
                     <div className={`h-36 bg-gradient-to-br ${iStyles.gradient} relative overflow-hidden`}>
-                      {item.featured_image_url ? (
-                        <FallbackImage
-                          src={item.featured_image_url}
-                          alt={item.name}
-                          className="w-full h-full object-cover"
-                          loading="lazy"
-                          fallbackEmoji={CAT_ICONS[iCatSlug]}
-                        />
-                      ) : (
-                        <div className="w-full h-full flex items-center justify-center">
-                          <span className="text-4xl opacity-15 saturate-0 brightness-200">
-                            {CAT_ICONS[iCatSlug]}
-                          </span>
-                        </div>
-                      )}
+                      <FallbackImage
+                        src={item.featured_image_url || getPlaceholderImage(iCatSlug)}
+                        alt={item.name}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                        fallbackEmoji={CAT_ICONS[iCatSlug]}
+                      />
                       <div className="absolute top-2 left-2">
                         <span className={`${iStyles.bg} rounded-full px-2.5 py-1 text-[10px] font-semibold ${iStyles.text} uppercase tracking-wide`}>
                           {item.categories?.name || iCatSlug}

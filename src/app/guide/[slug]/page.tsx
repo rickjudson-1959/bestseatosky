@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
+import { getPlaceholderImage } from '@/lib/supabase';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
 import FaqSection from '@/components/FaqSection';
@@ -224,21 +225,13 @@ export default async function GuidePage({ params }: Props) {
 
                 {/* Image */}
                 <div className="w-32 sm:w-40 shrink-0 bg-gradient-to-br from-emerald-500 to-green-600 relative overflow-hidden">
-                  {listing.featured_image_url ? (
-                    <FallbackImage
-                      src={listing.featured_image_url}
-                      alt={listing.name}
-                      className="w-full h-full object-cover"
-                      loading="lazy"
-                      fallbackEmoji={catIcon}
-                    />
-                  ) : (
-                    <div className="w-full h-full flex items-center justify-center">
-                      <span className="text-4xl opacity-20 saturate-0 brightness-200">
-                        {catIcon}
-                      </span>
-                    </div>
-                  )}
+                  <FallbackImage
+                    src={listing.featured_image_url || getPlaceholderImage(catSlug)}
+                    alt={listing.name}
+                    className="w-full h-full object-cover"
+                    loading="lazy"
+                    fallbackEmoji={catIcon}
+                  />
                 </div>
 
                 {/* Content */}

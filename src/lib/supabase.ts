@@ -5,6 +5,14 @@ const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!;
 
 export const supabase = createClient(supabaseUrl, supabaseAnonKey);
 
+const PLACEHOLDER_BASE = `${supabaseUrl}/storage/v1/object/public/Images`;
+
+export function getPlaceholderImage(categorySlug: string): string {
+  const valid = ['eat', 'stay', 'play', 'shop', 'visit'];
+  const slug = valid.includes(categorySlug) ? categorySlug : 'visit';
+  return `${PLACEHOLDER_BASE}/placeholder-${slug}.jpeg`;
+}
+
 // Type definitions matching our database schema
 export type Category = {
   id: string;

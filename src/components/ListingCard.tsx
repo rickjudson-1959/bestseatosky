@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { Listing } from '@/lib/supabase';
+import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import FallbackImage from './FallbackImage';
 
 const CAT_STYLES: Record<string, { bg: string; text: string; border: string; gradient: string }> = {
@@ -61,21 +61,13 @@ export default function ListingCard({ listing }: { listing: Listing }) {
       }`}>
         {/* Image / Gradient Header */}
         <div className={`h-44 bg-gradient-to-br ${styles.gradient} relative overflow-hidden`}>
-          {listing.featured_image_url ? (
-            <FallbackImage
-              src={listing.featured_image_url}
-              alt={listing.name}
-              className="w-full h-full object-cover"
-              loading="lazy"
-              fallbackEmoji={CAT_ICONS[catSlug]}
-            />
-          ) : (
-            <div className="w-full h-full flex items-center justify-center">
-              <span className="text-6xl opacity-20 saturate-0 brightness-200">
-                {CAT_ICONS[catSlug]}
-              </span>
-            </div>
-          )}
+          <FallbackImage
+            src={listing.featured_image_url || getPlaceholderImage(catSlug)}
+            alt={listing.name}
+            className="w-full h-full object-cover"
+            loading="lazy"
+            fallbackEmoji={CAT_ICONS[catSlug]}
+          />
           <div className={`absolute top-3 left-3 ${styles.bg} rounded-full px-3 py-1 text-xs font-semibold ${styles.text} uppercase tracking-wide`}>
             {listing.towns?.name || 'Sea to Sky'}
           </div>
