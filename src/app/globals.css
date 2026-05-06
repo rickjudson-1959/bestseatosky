@@ -31,11 +31,13 @@
 .prose h2 {
   margin-top: 2em;
   margin-bottom: 0.75em;
+  font-weight: 700;
 }
 
 .prose h3 {
   margin-top: 1.5em;
   margin-bottom: 0.5em;
+  font-weight: 700;
 }
 
 /* Utility for line clamping */
