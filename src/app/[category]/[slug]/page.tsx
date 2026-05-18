@@ -1,7 +1,8 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
-import { getListingBySlug, getRelatedListings, getCrossCategoryListings, getGuidesForListing } from '@/lib/data';
+import { getListingBySlug, getRelatedListings, getCrossCategoryListings, getGuidesForListing, getListingFeatures } from '@/lib/data';
+import { FEATURE_BY_SLUG } from '@/lib/features';
 import { getPlaceholderImage } from '@/lib/supabase';
 import { buildUTMUrl } from '@/lib/utm';
 import FeaturedInGuides from '@/components/FeaturedInGuides';
@@ -143,11 +144,12 @@ export default async function ListingPage({ params }: Props) {
 
   const tagIds = tags.map((t) => t.id);
 
-  // Fetch related listings and guides
-  const [relatedListings, crossCategoryListings, featuredGuides] = await Promise.all([
+  // Fetch related listings, guides, and features
+  const [relatedListings, crossCategoryListings, featuredGuides, features] = await Promise.all([
     getRelatedListings(listing.id, listing.town_id, listing.category_id),
     getCrossCategoryListings(listing.id, listing.town_id, listing.category_id),
     getGuidesForListing(listing.category_id, listing.town_id, tagIds),
+    getListingFeatures(listing.id),
   ]);
 
   // Build enriched schema markup
@@ -293,7 +295,7 @@ export default async function ListingPage({ params }: Props) {
 
           {/* Tags */}
           {tags.length > 0 && (
-            <div className="flex gap-2 flex-wrap mb-10">
+            <div className="flex gap-2 flex-wrap mb-6">
               {tags.map((tag) => (
                 <span
                   key={tag.id}
@@ -302,6 +304,30 @@ export default async function ListingPage({ params }: Props) {
                   {tag.name}
                 </span>
               ))}
+            </div>
+          )}
+
+          {/* Features */}
+          {features.length > 0 && (
+            <div className="mb-10">
+              <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">
+                Features
+              </div>
+              <div className="flex gap-2 flex-wrap">
+                {features.map((f) => {
+                  const def = FEATURE_BY_SLUG[f.feature_slug];
+                  return (
+                    <Link
+                      key={f.id}
+                      href={`/${catSlug}/with/${f.feature_slug}`}
+                      className="inline-flex items-center gap-1.5 bg-white border border-slate-200 text-slate-700 text-sm font-semibold rounded-full px-3 py-1.5 hover:border-emerald-300 hover:text-emerald-800 transition-colors"
+                    >
+                      <span>{def?.icon ?? '✨'}</span>
+                      <span>{f.feature_name}</span>
+                    </Link>
+                  );
+                })}
+              </div>
             </div>
           )}
 

@@ -1,5 +1,6 @@
 import { MetadataRoute } from 'next';
 import { supabase } from '@/lib/supabase';
+import { getAllCategoryFeaturePaths } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
 
@@ -58,5 +59,13 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...listingPages, ...guidePages, ...blogPages];
+  const featurePaths = await getAllCategoryFeaturePaths();
+  const featurePages: MetadataRoute.Sitemap = featurePaths.map(({ categorySlug, featureSlug }) => ({
+    url: `${baseUrl}/${categorySlug}/with/${featureSlug}`,
+    lastModified: new Date(),
+    changeFrequency: 'weekly' as const,
+    priority: 0.7,
+  }));
+
+  return [...staticPages, ...listingPages, ...guidePages, ...blogPages, ...featurePages];
 }

@@ -1,9 +1,10 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getCategoryBySlug, getListings, getTagsByCategory, getTowns } from '@/lib/data';
+import { getCategoryBySlug, getListings, getTagsByCategory, getTowns, getFeaturesAvailableInCategory } from '@/lib/data';
 import Link from 'next/link';
 import ListingCard from '@/components/ListingCard';
 import FilterBar from './FilterBar';
+import FeaturePills from '@/components/FeaturePills';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
 
@@ -88,10 +89,11 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const category = await getCategoryBySlug(categorySlug);
   if (!category) notFound();
 
-  const [listings, tags, towns] = await Promise.all([
+  const [listings, tags, towns, features] = await Promise.all([
     getListings({ categorySlug }),
     getTagsByCategory(category.id),
     getTowns(),
+    getFeaturesAvailableInCategory(categorySlug),
   ]);
 
   // Client-side filtering is handled by FilterBar
@@ -159,6 +161,9 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       <div className="mb-8">
         <TrustStrip />
       </div>
+
+      {/* Feature filter pills */}
+      <FeaturePills categorySlug={categorySlug} features={features} />
 
       {/* Filters + Grid */}
       <FilterBar

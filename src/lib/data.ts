@@ -1,4 +1,4 @@
-import { supabase, Category, Town, Tag, Listing, SeoPage, BlogPost, ListingRequest } from './supabase';
+import { supabase, Category, Town, Tag, Listing, SeoPage, BlogPost, ListingRequest, ListingFeature } from './supabase';
 
 export async function getCategories(): Promise<Category[]> {
   const { data, error } = await supabase
@@ -285,6 +285,104 @@ export async function getGuidesForListing(
     if (results.length >= 4) break;
   }
   return results;
+}
+
+export async function getListingFeatures(listingId: string): Promise<ListingFeature[]> {
+  const { data, error } = await supabase
+    .from('listing_features')
+    .select('*')
+    .eq('listing_id', listingId);
+  if (error) return [];
+  return data || [];
+}
+
+export async function getFeaturesAvailableInCategory(
+  categorySlug: string,
+): Promise<{ slug: string; name: string; count: number }[]> {
+  const cat = await getCategoryBySlug(categorySlug);
+  if (!cat) return [];
+
+  const { data: listingIds } = await supabase
+    .from('listings')
+    .select('id')
+    .eq('status', 'published')
+    .eq('category_id', cat.id);
+  if (!listingIds || listingIds.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from('listing_features')
+    .select('feature_slug, feature_name')
+    .in('listing_id', listingIds.map((l) => l.id));
+  if (error || !data) return [];
+
+  const counts = new Map<string, { slug: string; name: string; count: number }>();
+  for (const row of data as Pick<ListingFeature, 'feature_slug' | 'feature_name'>[]) {
+    const existing = counts.get(row.feature_slug);
+    if (existing) existing.count += 1;
+    else counts.set(row.feature_slug, { slug: row.feature_slug, name: row.feature_name, count: 1 });
+  }
+  return Array.from(counts.values()).sort((a, b) => b.count - a.count);
+}
+
+export async function getListingsByFeature(
+  categorySlug: string,
+  featureSlug: string,
+): Promise<Listing[]> {
+  const cat = await getCategoryBySlug(categorySlug);
+  if (!cat) return [];
+
+  const { data: matches } = await supabase
+    .from('listing_features')
+    .select('listing_id')
+    .eq('feature_slug', featureSlug);
+  if (!matches || matches.length === 0) return [];
+
+  const { data, error } = await supabase
+    .from('listings')
+    .select('*, categories(*), towns(*), listing_tags(tags(*))')
+    .eq('status', 'published')
+    .eq('category_id', cat.id)
+    .in('id', matches.map((m) => m.listing_id))
+    .order('featured', { ascending: false })
+    .order('google_rating', { ascending: false });
+
+  if (error) return [];
+  return data || [];
+}
+
+export async function getAllCategoryFeaturePaths(): Promise<{ categorySlug: string; featureSlug: string }[]> {
+  const { data: catData } = await supabase
+    .from('categories')
+    .select('id, slug');
+  if (!catData) return [];
+
+  const { data: listingData } = await supabase
+    .from('listings')
+    .select('id, category_id')
+    .eq('status', 'published');
+  if (!listingData) return [];
+
+  const { data: featureData } = await supabase
+    .from('listing_features')
+    .select('listing_id, feature_slug');
+  if (!featureData) return [];
+
+  const catById = new Map(catData.map((c) => [c.id, c.slug]));
+  const listingCat = new Map(listingData.map((l) => [l.id, l.category_id]));
+
+  const pairs = new Set<string>();
+  for (const row of featureData) {
+    const catId = listingCat.get(row.listing_id);
+    if (!catId) continue;
+    const catSlug = catById.get(catId);
+    if (!catSlug) continue;
+    pairs.add(`${catSlug}|${row.feature_slug}`);
+  }
+
+  return Array.from(pairs).map((p) => {
+    const [categorySlug, featureSlug] = p.split('|');
+    return { categorySlug, featureSlug };
+  });
 }
 
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {

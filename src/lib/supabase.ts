@@ -75,6 +75,13 @@ export type Listing = {
   listing_tags?: { tags: Tag }[];
 };
 
+export type ListingFeature = {
+  id: string;
+  listing_id: string;
+  feature_slug: string;
+  feature_name: string;
+};
+
 export type BlogPost = {
   id: string;
   slug: string;
