@@ -52,3 +52,35 @@ npm run faqs -- --regenerate --slug fergies-cafe
 
 Re-run if it fails partway — by default it only touches listings whose
 `faq_json` is still `NULL`, so it's resumable.
+
+## `generate-listing-features.mjs`
+
+Detects which of the 9 canonical features apply to each published
+listing (via Anthropic) and upserts rows into the `listing_features`
+table. The site's `FeaturePills` filter and `/[category]/with/[feature]`
+programmatic pages light up as soon as rows exist.
+
+Uses the same env vars as the FAQ script. Same fail-fast service-role
+check — won't run if your key is anon.
+
+### Running
+
+```sh
+# Process every listing that has no feature rows yet.
+npm run features
+
+# Smoke test:
+npm run features -- --limit 5 --dry-run
+
+# Single listing or category:
+npm run features -- --slug fergies-cafe
+npm run features -- --category eat --limit 25
+
+# Overwrite features for a listing (wipes existing rows first):
+npm run features -- --regenerate --slug fergies-cafe
+```
+
+Resumable — by default it skips any listing that already has at least
+one row in `listing_features`. Use `--regenerate` to force a rewrite.
+Run `db/migrations/20260518_listing_features.sql` in Supabase first
+if you haven't already.

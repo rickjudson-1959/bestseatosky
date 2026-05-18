@@ -7,7 +7,8 @@
     "build": "next build",
     "start": "next start",
     "lint": "eslint",
-    "faqs": "node --env-file=.env.local scripts/generate-listing-faqs.mjs"
+    "faqs": "node --env-file=.env.local scripts/generate-listing-faqs.mjs",
+    "features": "node --env-file=.env.local scripts/generate-listing-features.mjs"
   },
   "dependencies": {
     "@supabase/supabase-js": "^2.95.3",
