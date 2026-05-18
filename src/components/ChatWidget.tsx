@@ -10,7 +10,7 @@ export default function ChatWidget() {
     <>
       {/* Chat Window */}
       {open && (
-        <div className="fixed bottom-20 right-4 sm:right-6 z-50 w-[360px] sm:w-[400px] h-[500px] bg-slate-50 rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden">
+        <div className="fixed bottom-20 left-4 right-4 sm:left-auto sm:right-6 z-50 sm:w-[400px] h-[500px] max-h-[calc(100vh-6rem)] bg-slate-50 rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden">
           {/* Header */}
           <div className="bg-emerald-700 px-4 py-3 flex items-center justify-between shrink-0">
             <div className="flex items-center gap-2">
