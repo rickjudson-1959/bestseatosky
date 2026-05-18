@@ -97,13 +97,14 @@ export default async function BlogPostPage({ params }: Props) {
     day: 'numeric',
   });
 
+  const canonicalUrl = `https://bestseatosky.com/blog/${post.slug}`;
   const schema = {
     '@context': 'https://schema.org',
-    '@type': 'Article',
+    '@type': 'BlogPosting',
     headline: post.title,
     description: post.meta_description || post.excerpt,
     author: {
-      '@type': 'Organization',
+      '@type': 'Person',
       name: post.author || 'Best Sea to Sky',
     },
     datePublished: post.published_at,
@@ -112,8 +113,15 @@ export default async function BlogPostPage({ params }: Props) {
       '@type': 'Organization',
       name: 'Best Sea to Sky',
       url: 'https://bestseatosky.com',
+      logo: {
+        '@type': 'ImageObject',
+        url: 'https://bestseatosky.com/icon.svg',
+      },
     },
-    mainEntityOfPage: `https://bestseatosky.com/blog/${post.slug}`,
+    mainEntityOfPage: {
+      '@type': 'WebPage',
+      '@id': canonicalUrl,
+    },
     ...(post.featured_image && { image: post.featured_image }),
   };
 

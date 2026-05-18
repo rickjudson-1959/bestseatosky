@@ -93,6 +93,41 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
         <ChatWidget />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Best Sea to Sky',
+              url: 'https://bestseatosky.com',
+              logo: 'https://bestseatosky.com/icon.svg',
+              description:
+                'Your free guide to 850+ places across Squamish, Whistler & Pemberton',
+              sameAs: [
+                'https://www.facebook.com/bestseatosky',
+                'https://www.instagram.com/bestseatosky',
+              ],
+            }),
+          }}
+        />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebSite',
+              name: 'Best Sea to Sky',
+              url: 'https://bestseatosky.com',
+              potentialAction: {
+                '@type': 'SearchAction',
+                target:
+                  'https://bestseatosky.com/search?q={search_term_string}',
+                'query-input': 'required name=search_term_string',
+              },
+            }),
+          }}
+        />
       </body>
     </html>
   );
