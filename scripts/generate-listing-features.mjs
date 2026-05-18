@@ -37,18 +37,29 @@ if (!SUPABASE_URL || !SERVICE_ROLE_KEY || !ANTHROPIC_API_KEY) {
   process.exit(1);
 }
 
-// Fail-fast if the supplied key isn't actually service_role.
-try {
-  const payload = JSON.parse(Buffer.from(SERVICE_ROLE_KEY.split('.')[1], 'base64url').toString());
-  if (payload.role !== 'service_role') {
+assertServiceRoleKey(SERVICE_ROLE_KEY);
+
+function assertServiceRoleKey(key) {
+  // New-style Supabase API keys: sb_secret_* (service role) / sb_publishable_* (anon).
+  if (key.startsWith('sb_secret_')) return;
+  if (key.startsWith('sb_publishable_')) {
+    console.error(
+      'SUPABASE_SERVICE_ROLE_KEY is a publishable key. Use the secret key (sb_secret_...) from Supabase → Project Settings → API. Aborting.',
+    );
+    process.exit(1);
+  }
+  // Legacy JWT-style keys.
+  try {
+    const payload = JSON.parse(Buffer.from(key.split('.')[1], 'base64url').toString());
+    if (payload.role === 'service_role') return;
     console.error(
       `SUPABASE_SERVICE_ROLE_KEY has role="${payload.role}". The script needs the service_role key (Supabase → Project Settings → API). Aborting.`,
     );
     process.exit(1);
+  } catch {
+    console.error('SUPABASE_SERVICE_ROLE_KEY is not a recognized format (expected sb_secret_* or a JWT). Aborting.');
+    process.exit(1);
   }
-} catch {
-  console.error('Could not decode SUPABASE_SERVICE_ROLE_KEY as JWT. Aborting.');
-  process.exit(1);
 }
 
 const FEATURES = [
@@ -83,20 +94,31 @@ const args = parseArgs(process.argv);
 const supabase = createClient(SUPABASE_URL, SERVICE_ROLE_KEY);
 const anthropic = new Anthropic({ apiKey: ANTHROPIC_API_KEY });
 
-const SYSTEM_PROMPT = `You analyze a local business listing from Best Sea to Sky (a Squamish/Whistler/Pemberton directory) and decide which of a fixed list of features apply.
+const SYSTEM_PROMPT = `You analyze a local business listing from Best Sea to Sky (a Squamish/Whistler/Pemberton directory in British Columbia) and decide which of a fixed list of features apply.
 
-Only return features supported by the provided info. Do NOT assume. If something isn't mentioned, leave it out — most restaurants WILL have wifi or takeout, but unless the listing data hints at it, do not assert it. Err on the side of fewer, more confident features.
+Two kinds of evidence are acceptable:
+  STRONG  — the listing text or tags explicitly mention or strongly imply the feature.
+  TYPICAL — the feature is overwhelmingly typical for a business of this category/style (use sparingly, only when there is essentially no doubt).
 
-Specifically:
-- "outdoor-seating": only if the text mentions patio, deck, terrace, beer garden, outdoor seating, or a tag/category implying it.
-- "kid-friendly": only if the text mentions family, kids menu, child-friendly, playground, or similar.
-- "dog-friendly": only if text mentions dogs welcome, pet-friendly, dog-friendly patio, etc.
-- "wheelchair-accessible": only if text mentions step-free, accessible entrance, wheelchair accessible, ramp, etc.
-- "free-parking": only if text mentions free parking, complimentary parking, ample parking.
-- "wifi": only if text explicitly mentions wifi or free Wi-Fi.
-- "takeout": only if text mentions takeout, take-away, to-go, order ahead, online ordering for pickup.
-- "delivery": only if text mentions delivery, Uber Eats, DoorDash, SkipTheDishes, or similar.
-- "reservations-required": only if text mentions reservations required, by reservation only, must book ahead. NOT for places that merely accept reservations.
+Per-feature guidance:
+
+- "outdoor-seating": STRONG only — patio, deck, terrace, beer garden, garden seating, outdoor seating, alfresco, rooftop, sidewalk seating. Do not infer from "summer destination" or generic mountain scenery.
+
+- "kid-friendly": STRONG only — family, kids menu, child-friendly, playground, family restaurant. Casual cafes and bakeries DO NOT default to kid-friendly. Fine-dining and bars are never kid-friendly without explicit support.
+
+- "dog-friendly": STRONG only — dogs welcome, pet-friendly, dog-friendly patio. Do not assume.
+
+- "wheelchair-accessible": STRONG only — step-free, accessible entrance, wheelchair accessible, ramp. Do not assume.
+
+- "free-parking": STRONG only — free parking, complimentary parking, ample parking, large parking lot. In Whistler Village, paid parking is the norm — do NOT assert free-parking unless it's stated.
+
+- "wifi": TYPICAL is acceptable for: cafes/coffee shops/cafés, casual restaurants, hotels/lodges, breweries, bakeries with seating. NOT typical for: takeout windows, food trucks, fast-food chains, fine-dining-only spots, retail without seating.
+
+- "takeout": TYPICAL is acceptable for: cafes/coffee shops/bakeries, casual restaurants, pizzerias, fast-casual spots, breweries with food, asian quick-service. NOT typical for: fine-dining tasting menus, sit-down-only bars without a kitchen, hotels.
+
+- "delivery": STRONG only — delivery, Uber Eats, DoorDash, SkipTheDishes, in-house delivery. Do not assume just because takeout exists.
+
+- "reservations-required": STRONG only — reservations required, by reservation only, must book ahead, prix-fixe by reservation. DO NOT use for places that merely "accept reservations" or "recommend reservations."
 
 Return STRICT JSON, no prose, no markdown fences, in this exact shape:
 {"features": ["slug1", "slug2", ...]}

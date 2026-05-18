@@ -32,6 +32,29 @@ if (!SUPABASE_URL || !SERVICE_ROLE_KEY || !ANTHROPIC_API_KEY) {
   process.exit(1);
 }
 
+assertServiceRoleKey(SERVICE_ROLE_KEY);
+
+function assertServiceRoleKey(key) {
+  if (key.startsWith('sb_secret_')) return;
+  if (key.startsWith('sb_publishable_')) {
+    console.error(
+      'SUPABASE_SERVICE_ROLE_KEY is a publishable key. Use the secret key (sb_secret_...) from Supabase → Project Settings → API. Aborting.',
+    );
+    process.exit(1);
+  }
+  try {
+    const payload = JSON.parse(Buffer.from(key.split('.')[1], 'base64url').toString());
+    if (payload.role === 'service_role') return;
+    console.error(
+      `SUPABASE_SERVICE_ROLE_KEY has role="${payload.role}". The script needs the service_role key. Aborting.`,
+    );
+    process.exit(1);
+  } catch {
+    console.error('SUPABASE_SERVICE_ROLE_KEY is not a recognized format (expected sb_secret_* or a JWT). Aborting.');
+    process.exit(1);
+  }
+}
+
 function parseArgs(argv) {
   const args = { limit: null, category: null, slug: null, regenerate: false, dryRun: false };
   for (let i = 2; i < argv.length; i++) {
