@@ -18,6 +18,40 @@ const CAT_ICONS: Record<string, string> = {
   services: '🧭',
 };
 
+const GUIDE_YEAR = '2026';
+
+// Keyword-rich suffix for the meta <title>. Match longest prefix first.
+const GUIDE_TITLE_SUFFIXES: Array<{ test: (slug: string) => boolean; suffix: string }> = [
+  { test: (s) => s.startsWith('best-restaurants-'), suffix: 'Ranked by Real Reviews' },
+  { test: (s) => s.startsWith('best-cafes-'), suffix: 'Top Coffee Shops & Roasters' },
+  { test: (s) => s.startsWith('best-breweries-'), suffix: 'Top Craft Beer Spots' },
+  { test: (s) => s.startsWith('best-hotels-'), suffix: 'Top-Rated Stays' },
+  { test: (s) => s.startsWith('best-camping-'), suffix: 'Top Campgrounds' },
+  { test: (s) => s.startsWith('best-hikes-'), suffix: 'Top Trails Guide' },
+  { test: (s) => s.startsWith('best-mountain-biking-'), suffix: 'Top Trails & Bike Park Guide' },
+  { test: (s) => s.startsWith('best-skiing-'), suffix: 'Top Slopes & Resorts' },
+  { test: (s) => s.startsWith('best-rock-climbing-'), suffix: 'Top Routes & Crags' },
+  { test: (s) => s.startsWith('best-attractions-'), suffix: 'Top Sights & Tours' },
+  { test: (s) => s.startsWith('best-parks-'), suffix: 'Top Outdoor Spots' },
+  { test: (s) => s.startsWith('best-waterfalls-'), suffix: 'Top Falls to Visit' },
+  { test: (s) => s.startsWith('best-shopping-'), suffix: 'Top Stores & Boutiques' },
+  { test: (s) => s.startsWith('things-to-do-'), suffix: 'Complete Local Guide' },
+];
+
+function stripGuideTitleSuffix(title: string): string {
+  return title
+    .replace(/\s*\|\s*Best Sea to Sky\s*$/i, '')
+    .replace(/\s*\(\d{4}\)\s*$/i, '')
+    .trim();
+}
+
+function buildGuideMetaTitle(slug: string, dbTitle: string): string {
+  const base = stripGuideTitleSuffix(dbTitle);
+  const match = GUIDE_TITLE_SUFFIXES.find((m) => m.test(slug));
+  const suffix = match?.suffix ?? 'Sea to Sky Local Guide';
+  return `${base} (${GUIDE_YEAR}) | ${suffix}`;
+}
+
 type Props = {
   params: Promise<{ slug: string }>;
 };
@@ -29,21 +63,22 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
   const url = `https://bestseatosky.com/guide/${slug}`;
   const ogImage = 'https://bestseatosky.com/og-default.jpg';
+  const metaTitle = buildGuideMetaTitle(slug, page.title);
 
   return {
-    title: page.title,
+    title: { absolute: metaTitle },
     description: page.meta_description,
     alternates: { canonical: page.canonical_url || `/guide/${slug}` },
     openGraph: {
-      title: page.title,
+      title: metaTitle,
       description: page.meta_description,
       url,
       type: 'website',
-      images: [{ url: ogImage, alt: page.title }],
+      images: [{ url: ogImage, alt: metaTitle }],
     },
     twitter: {
       card: 'summary_large_image',
-      title: page.title,
+      title: metaTitle,
       description: page.meta_description,
       images: [ogImage],
     },
