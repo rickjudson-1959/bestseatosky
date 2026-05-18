@@ -194,14 +194,22 @@ async function fetchTargets() {
 
   if (args.regenerate) return rows;
 
-  // Skip listings that already have any feature row.
-  const ids = rows.map((r) => r.id);
-  const { data: existing, error: exErr } = await supabase
-    .from('listing_features')
-    .select('listing_id')
-    .in('listing_id', ids);
-  if (exErr) throw exErr;
-  const seen = new Set((existing || []).map((r) => r.listing_id));
+  // Skip listings that already have any feature row. Pull every existing
+  // row (table is small) instead of using .in() with 800+ UUIDs, which
+  // would overflow Supabase's URL length limit.
+  const seen = new Set();
+  const PAGE = 1000;
+  let from = 0;
+  while (true) {
+    const { data, error } = await supabase
+      .from('listing_features')
+      .select('listing_id')
+      .range(from, from + PAGE - 1);
+    if (error) throw error;
+    for (const row of data || []) seen.add(row.listing_id);
+    if (!data || data.length < PAGE) break;
+    from += PAGE;
+  }
   return rows.filter((r) => !seen.has(r.id));
 }
 
