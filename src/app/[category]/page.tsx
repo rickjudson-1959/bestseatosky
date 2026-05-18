@@ -1,10 +1,11 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
-import { getCategoryBySlug, getListings, getTagsByCategory, getTowns, getFeaturesAvailableInCategory } from '@/lib/data';
+import { getCategoryBySlug, getListings, getTagsByCategory, getTowns, getFeaturesAvailableInCategory, getCuisineCounts } from '@/lib/data';
 import Link from 'next/link';
 import ListingCard from '@/components/ListingCard';
 import FilterBar from './FilterBar';
 import FeaturePills from '@/components/FeaturePills';
+import CuisinePills from '@/components/CuisinePills';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
 
@@ -89,11 +90,12 @@ export default async function CategoryPage({ params, searchParams }: Props) {
   const category = await getCategoryBySlug(categorySlug);
   if (!category) notFound();
 
-  const [listings, tags, towns, features] = await Promise.all([
+  const [listings, tags, towns, features, cuisineCounts] = await Promise.all([
     getListings({ categorySlug }),
     getTagsByCategory(category.id),
     getTowns(),
     getFeaturesAvailableInCategory(categorySlug),
+    categorySlug === 'eat' ? getCuisineCounts() : Promise.resolve({} as Record<string, number>),
   ]);
 
   // Client-side filtering is handled by FilterBar
@@ -161,6 +163,9 @@ export default async function CategoryPage({ params, searchParams }: Props) {
       <div className="mb-8">
         <TrustStrip />
       </div>
+
+      {/* Browse by cuisine (eat only) */}
+      {categorySlug === 'eat' && <CuisinePills counts={cuisineCounts} />}
 
       {/* Feature filter pills */}
       <FeaturePills categorySlug={categorySlug} features={features} />

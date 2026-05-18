@@ -385,6 +385,41 @@ export async function getAllCategoryFeaturePaths(): Promise<{ categorySlug: stri
   });
 }
 
+async function getAllEatListings(): Promise<Listing[]> {
+  const cat = await getCategoryBySlug('eat');
+  if (!cat) return [];
+  const { data, error } = await supabase
+    .from('listings')
+    .select('*, categories(*), towns(*), listing_tags(tags(*))')
+    .eq('status', 'published')
+    .eq('category_id', cat.id);
+  if (error) return [];
+  return data || [];
+}
+
+export async function getListingsForCuisine(cuisineSlug: string): Promise<Listing[]> {
+  const { CUISINE_BY_SLUG, listingMatchesCuisine } = await import('./cuisines');
+  const cuisine = CUISINE_BY_SLUG[cuisineSlug];
+  if (!cuisine) return [];
+  const eat = await getAllEatListings();
+  return eat
+    .filter((l) => listingMatchesCuisine(l, cuisine))
+    .sort((a, b) => {
+      if (a.featured !== b.featured) return a.featured ? -1 : 1;
+      return (b.google_rating || 0) - (a.google_rating || 0);
+    });
+}
+
+export async function getCuisineCounts(): Promise<Record<string, number>> {
+  const { CUISINES, listingMatchesCuisine } = await import('./cuisines');
+  const eat = await getAllEatListings();
+  const counts: Record<string, number> = {};
+  for (const c of CUISINES) {
+    counts[c.slug] = eat.filter((l) => listingMatchesCuisine(l, c)).length;
+  }
+  return counts;
+}
+
 export async function getBlogPostBySlug(slug: string): Promise<BlogPost | null> {
   const { data, error } = await supabase
     .from('blog_posts')

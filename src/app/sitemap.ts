@@ -1,6 +1,6 @@
 import { MetadataRoute } from 'next';
 import { supabase } from '@/lib/supabase';
-import { getAllCategoryFeaturePaths } from '@/lib/data';
+import { getAllCategoryFeaturePaths, getCuisineCounts } from '@/lib/data';
 
 export const dynamic = 'force-dynamic';
 
@@ -67,5 +67,15 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: 0.7,
   }));
 
-  return [...staticPages, ...listingPages, ...guidePages, ...blogPages, ...featurePages];
+  const cuisineCounts = await getCuisineCounts();
+  const cuisinePages: MetadataRoute.Sitemap = Object.entries(cuisineCounts)
+    .filter(([, count]) => count > 0)
+    .map(([slug]) => ({
+      url: `${baseUrl}/eat/cuisine/${slug}`,
+      lastModified: new Date(),
+      changeFrequency: 'weekly' as const,
+      priority: 0.75,
+    }));
+
+  return [...staticPages, ...listingPages, ...guidePages, ...blogPages, ...featurePages, ...cuisinePages];
 }
