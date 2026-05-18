@@ -7,6 +7,7 @@ import { buildUTMUrl } from '@/lib/utm';
 import FeaturedInGuides from '@/components/FeaturedInGuides';
 import FallbackImage from '@/components/FallbackImage';
 import FaqSection from '@/components/FaqSection';
+import OpenStatusBadge from '@/components/OpenStatusBadge';
 
 const CAT_STYLES: Record<string, { gradient: string; bg: string; text: string; border: string; accent: string }> = {
   eat: { gradient: 'from-orange-500 to-red-600', bg: 'bg-orange-50', text: 'text-amber-700', border: 'border-orange-200', accent: 'bg-amber-700' },
@@ -153,7 +154,7 @@ export default async function ListingPage({ params }: Props) {
   const schemaTypeMap: Record<string, string> = {
     eat: 'Restaurant',
     stay: 'LodgingBusiness',
-    play: 'TouristAttraction',
+    play: 'SportsActivityLocation',
     visit: 'TouristAttraction',
     shop: 'Store',
     services: 'LocalBusiness',
@@ -276,6 +277,12 @@ export default async function ListingPage({ params }: Props) {
             )}
             {listing.google_rating && <span className="text-slate-200">|</span>}
             <PriceLevel level={listing.price_level || 0} />
+            {listing.hours && Object.keys(listing.hours).length > 0 && (
+              <>
+                <span className="text-slate-200">|</span>
+                <OpenStatusBadge hours={listing.hours} />
+              </>
+            )}
           </div>
 
           {/* Description */}
