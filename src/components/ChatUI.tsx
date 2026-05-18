@@ -102,7 +102,7 @@ export default function ChatUI({ variant = 'full' }: { variant?: 'full' | 'widge
         {messages.map((msg, i) => (
           <div key={i} className={`flex ${msg.role === 'user' ? 'justify-end' : 'justify-start'}`}>
             <div
-              className={`max-w-[85%] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
+              className={`max-w-[85%] break-words [overflow-wrap:anywhere] rounded-2xl px-4 py-2.5 text-sm leading-relaxed ${
                 msg.role === 'user'
                   ? 'bg-emerald-700 text-white rounded-br-md'
                   : 'bg-white border border-slate-200 text-slate-700 rounded-bl-md'
