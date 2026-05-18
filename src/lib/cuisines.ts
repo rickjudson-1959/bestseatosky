@@ -13,16 +13,25 @@ export type CuisineDef = {
 
 export const CUISINES: CuisineDef[] = [
   {
+    slug: 'thai',
+    name: 'Thai',
+    icon: '🥡',
+    patterns: ['thai ', ' thai', 'pad thai', 'tom yum', 'tom kha', 'thaï'],
+  },
+  {
+    slug: 'japanese-sushi',
+    name: 'Japanese & Sushi',
+    icon: '🍣',
+    patterns: [
+      'japanese', 'ramen', 'izakaya', 'yakitori', 'tempura', 'donburi', 'soba', 'udon',
+      'sushi', 'sashimi', 'omakase', 'maki ',
+    ],
+  },
+  {
     slug: 'italian',
     name: 'Italian',
     icon: '🍝',
     patterns: ['italian', 'italiano', 'trattoria', 'ristorante', 'osteria', 'gelato', 'gelateria'],
-  },
-  {
-    slug: 'japanese',
-    name: 'Japanese',
-    icon: '🍱',
-    patterns: ['japanese', 'ramen', 'izakaya', 'yakitori', 'tempura', 'donburi', 'soba', 'udon'],
   },
   {
     slug: 'mexican',
@@ -31,16 +40,28 @@ export const CUISINES: CuisineDef[] = [
     patterns: ['mexican', 'taqueria', 'taquería', 'taco', 'burrito', 'tamale', 'cantina'],
   },
   {
+    slug: 'vietnamese',
+    name: 'Vietnamese',
+    icon: '🍜',
+    patterns: ['vietnamese', 'pho ', ' pho', 'banh mi', 'bánh mì', 'vermicelli'],
+  },
+  {
+    slug: 'greek',
+    name: 'Greek',
+    icon: '🥙',
+    patterns: ['greek', 'gyro', 'gyros', 'souvlaki', 'tzatziki', 'spanakopita', 'moussaka'],
+  },
+  {
+    slug: 'korean',
+    name: 'Korean',
+    icon: '🍲',
+    patterns: ['korean', 'bibimbap', 'bulgogi', 'kimchi', 'korean bbq', 'k-bbq', 'kbbq'],
+  },
+  {
     slug: 'indian',
     name: 'Indian',
     icon: '🍛',
     patterns: ['indian', 'curry', 'tandoori', 'tandoor', 'naan', 'biryani', 'masala', 'dosa'],
-  },
-  {
-    slug: 'thai',
-    name: 'Thai',
-    icon: '🥡',
-    patterns: ['thai ', ' thai', 'pad thai', 'tom yum', 'tom kha', 'thaï'],
   },
   {
     slug: 'chinese',
@@ -67,28 +88,19 @@ export const CUISINES: CuisineDef[] = [
     patterns: ['pizza', 'pizzeria', 'wood-fired', 'wood fired'],
   },
   {
-    slug: 'sushi',
-    name: 'Sushi',
-    icon: '🍣',
-    patterns: ['sushi', 'sashimi', 'omakase', 'maki '],
-  },
-  {
     slug: 'brunch',
-    name: 'Brunch',
+    name: 'Brunch & Breakfast',
     icon: '🥞',
     patterns: ['brunch', 'breakfast', 'eggs benedict', 'all-day breakfast', 'all day breakfast'],
   },
   {
-    slug: 'bakery',
-    name: 'Bakery',
+    slug: 'bakery-coffee',
+    name: 'Bakery & Coffee',
     icon: '🥐',
-    patterns: ['bakery', 'bake shop', 'pâtisserie', 'patisserie', 'boulangerie', 'croissant', 'sourdough'],
-  },
-  {
-    slug: 'coffee',
-    name: 'Coffee',
-    icon: '☕',
-    patterns: ['coffee', 'café', ' cafe', 'cafe ', 'espresso', 'roastery', 'roasters', 'coffeehouse', 'coffee house'],
+    patterns: [
+      'bakery', 'bake shop', 'pâtisserie', 'patisserie', 'boulangerie', 'croissant', 'sourdough',
+      'coffee', 'café', ' cafe', 'cafe ', 'espresso', 'roastery', 'roasters', 'coffeehouse', 'coffee house',
+    ],
   },
 ];
 
