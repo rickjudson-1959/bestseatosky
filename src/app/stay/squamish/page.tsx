@@ -260,7 +260,7 @@ export default async function SquamishStayPage() {
 
                 const inner = (
                   <div className="flex items-start gap-4 bg-white rounded-xl p-4 border border-slate-100 hover:border-slate-200 shadow-sm hover:shadow-md transition-all">
-                    <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 bg-gradient-to-br from-indigo-500 to-purple-600">
+                    <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative bg-gradient-to-br from-indigo-500 to-purple-600">
                       <FallbackImage
                         src={listing?.featured_image_url || getPlaceholderImage('stay')}
                         alt={pick.name}

@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 import { getCategories, getListings } from '@/lib/data';
 import ListingCard from '@/components/ListingCard';
 import SearchBar from '@/components/SearchBar';
@@ -103,11 +104,14 @@ export default async function HomePage() {
       {/* HERO */}
       <section className="relative overflow-hidden px-6 py-20 md:py-24 text-center">
         {/* Background image */}
-        <img
+        <Image
           src="/images/hero-sea-to-sky.jpg"
           alt=""
           aria-hidden="true"
-          className="absolute inset-0 w-full h-full object-cover"
+          fill
+          priority
+          sizes="100vw"
+          className="object-cover"
         />
         {/* Dark overlay for text readability */}
         <div className="absolute inset-0 bg-black/50" />

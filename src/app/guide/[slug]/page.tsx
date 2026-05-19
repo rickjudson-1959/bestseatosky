@@ -5,7 +5,8 @@ import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
 import { getPlaceholderImage } from '@/lib/supabase';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
-import FaqSection from '@/components/FaqSection';
+import dynamic from 'next/dynamic';
+const FaqSection = dynamic(() => import('@/components/FaqSection'));
 import FallbackImage from '@/components/FallbackImage';
 import AffiliateCard from '@/components/AffiliateCard';
 

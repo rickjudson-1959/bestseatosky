@@ -24,7 +24,7 @@ export default function Header() {
     <header className="bg-white border-b border-slate-100 sticky top-0 z-50 backdrop-blur-md">
       <div className="max-w-7xl mx-auto px-6 flex items-center justify-between h-16">
         <Link href="/" className="flex items-center gap-2.5">
-          <img src="/icon.svg" alt="Best Sea to Sky" className="w-9 h-9" />
+          <img src="/icon.svg" alt="Best Sea to Sky" width={36} height={36} className="w-9 h-9" />
           <span className="font-serif text-xl font-bold text-slate-900">
             Best<span className="text-emerald-700">SeaToSky</span>
           </span>

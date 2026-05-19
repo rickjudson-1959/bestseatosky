@@ -59,15 +59,24 @@ function computeStatus(hours: Hours): { open: boolean; label: string } | null {
 }
 
 export default function OpenStatusBadge({ hours }: { hours: Hours | null | undefined }) {
-  const [status, setStatus] = useState<{ open: boolean; label: string } | null>(null);
+  const [mounted, setMounted] = useState(false);
+  const [, forceTick] = useState(0);
 
   useEffect(() => {
-    if (!hours) return;
-    setStatus(computeStatus(hours));
-    const id = setInterval(() => setStatus(computeStatus(hours)), 60_000);
-    return () => clearInterval(id);
-  }, [hours]);
+    // Deferring to mount avoids SSR/client hydration mismatches from
+    // computing "now" during render.
+    // eslint-disable-next-line react-hooks/set-state-in-effect
+    setMounted(true);
+  }, []);
 
+  useEffect(() => {
+    if (!hours || !mounted) return;
+    const id = setInterval(() => forceTick((n) => n + 1), 60_000);
+    return () => clearInterval(id);
+  }, [hours, mounted]);
+
+  if (!mounted || !hours) return null;
+  const status = computeStatus(hours);
   if (!status) return null;
 
   return (

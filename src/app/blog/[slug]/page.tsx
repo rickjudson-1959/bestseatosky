@@ -1,9 +1,11 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
+import Image from 'next/image';
 import { getBlogPostBySlug, getAllSeoPages } from '@/lib/data';
 import NewsletterSignup from '@/components/NewsletterSignup';
-import FaqSection from '@/components/FaqSection';
+import dynamic from 'next/dynamic';
+const FaqSection = dynamic(() => import('@/components/FaqSection'));
 import AffiliateCard from '@/components/AffiliateCard';
 
 type AffiliateConfig = { title: string; description: string; linkText: string; linkUrl: string };
@@ -149,11 +151,14 @@ export default async function BlogPostPage({ params }: Props) {
 
       {/* Featured Image */}
       {post.featured_image && (
-        <div className="rounded-2xl overflow-hidden mb-10">
-          <img
+        <div className="rounded-2xl overflow-hidden mb-10 aspect-[3/2] relative">
+          <Image
             src={post.featured_image}
             alt={post.title}
-            className="w-full h-auto object-cover"
+            fill
+            className="object-cover"
+            sizes="(max-width: 768px) 100vw, 768px"
+            priority
           />
         </div>
       )}

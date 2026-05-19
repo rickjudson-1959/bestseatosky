@@ -74,7 +74,7 @@ export default function Footer() {
 
         <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
           <div className="flex items-center gap-2.5">
-            <img src="/icon.svg" alt="Best Sea to Sky" className="w-8 h-8" />
+            <img src="/icon.svg" alt="Best Sea to Sky" width={32} height={32} className="w-8 h-8" />
             <span className="font-serif text-base text-slate-200">BestSeaToSky</span>
           </div>
           <p className="text-xs text-slate-600">

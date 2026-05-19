@@ -7,7 +7,8 @@ import { getPlaceholderImage } from '@/lib/supabase';
 import { buildUTMUrl } from '@/lib/utm';
 import FeaturedInGuides from '@/components/FeaturedInGuides';
 import FallbackImage from '@/components/FallbackImage';
-import FaqSection from '@/components/FaqSection';
+import dynamic from 'next/dynamic';
+const FaqSection = dynamic(() => import('@/components/FaqSection'));
 import OpenStatusBadge from '@/components/OpenStatusBadge';
 
 const CAT_STYLES: Record<string, { gradient: string; bg: string; text: string; border: string; accent: string }> = {
@@ -249,9 +250,11 @@ export default async function ListingPage({ params }: Props) {
         <FallbackImage
           src={listing.featured_image_url || getPlaceholderImage(catSlug)}
           alt={listing.name}
-          className="w-full h-full object-cover"
+          className="object-cover"
           fallbackEmoji={CAT_ICONS[catSlug]}
           placeholderUrl={getPlaceholderImage(catSlug)}
+          priority
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 90vw, 1280px"
         />
         <div className="absolute bottom-6 left-6">
           <span className={`${styles.bg} rounded-full px-4 py-1.5 text-xs font-semibold ${styles.text} uppercase tracking-wide`}>
