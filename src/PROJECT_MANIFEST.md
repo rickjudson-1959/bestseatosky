@@ -1,6 +1,6 @@
 # Best Sea to Sky — Project Manifest
 
-**Last updated:** 2026-04-14
+**Last updated:** 2026-05-19
 **Live URL:** https://bestseatosky.com
 **Repo:** https://github.com/rickjudson-1959/bestseatosky
 **Hosting:** Vercel (auto-deploy from `main`)
@@ -46,17 +46,23 @@ src/
 │   ├── robots.ts               # Robots.txt config
 │   ├── not-found.tsx           # Custom 404 page
 │   ├── [category]/
-│   │   ├── page.tsx            # Category listing page (eat, stay, play, etc.)
+│   │   ├── page.tsx            # Category listing page (eat, stay, play, etc.) — town/tag filters, feature pills, cuisine pills (eat only)
 │   │   ├── FilterBar.tsx       # Client-side town + tag filtering
-│   │   └── [slug]/
-│   │       └── page.tsx        # Listing detail (OG tags, related, cross-category, UTM links, claim link, FAQ support)
+│   │   ├── [slug]/
+│   │   │   └── page.tsx        # Listing detail (subtyped schema, open/closed badge, feature badges, FAQ, related, UTM links)
+│   │   └── with/
+│   │       └── [feature]/
+│   │           └── page.tsx    # Programmatic /[category]/with/[feature] filter pages (e.g. /eat/with/takeout)
 │   ├── eat/
 │   │   ├── squamish/
 │   │   │   └── page.tsx        # Curated Squamish restaurant guide (top picks, best-by-category, full grid)
 │   │   ├── whistler/
 │   │   │   └── page.tsx        # Curated Whistler restaurant guide (top picks, best-by-category, full grid)
-│   │   └── pemberton/
-│   │       └── page.tsx        # Curated Pemberton restaurant guide (top picks, best-by-category, full grid)
+│   │   ├── pemberton/
+│   │   │   └── page.tsx        # Curated Pemberton restaurant guide (top picks, best-by-category, full grid)
+│   │   └── cuisine/
+│   │       └── [type]/
+│   │           └── page.tsx    # Programmatic cuisine pages (e.g. /eat/cuisine/italian)
 │   ├── stay/
 │   │   ├── squamish/
 │   │   │   └── page.tsx        # Curated Squamish accommodation guide (areas, top picks, Trivago affiliate)
@@ -126,18 +132,32 @@ src/
 │   ├── SocialProof.tsx         # VisitorTestimonials (full section) + TrustStrip (compact bar)
 │   ├── NewsletterSignup.tsx    # Newsletter signup form (client component, default + compact variants, posts to /api/subscribe)
 │   ├── ChatUI.tsx              # AI trip planner chat interface (client component, streaming)
-│   ├── ChatWidget.tsx          # Floating chat widget (client component, bottom-right overlay)
-│   ├── FaqSection.tsx          # Accordion FAQ component (client component, expandable Q&A)
-│   ├── FallbackImage.tsx       # Image component with graceful emoji fallback on error
+│   ├── ChatWidget.tsx          # Floating chat widget (dynamic-imported in root layout, mobile-fluid width, dvh height)
+│   ├── FaqSection.tsx          # Accordion FAQ component (client; dynamic-imported wherever used)
+│   ├── FallbackImage.tsx       # next/image wrapper (fill mode) with placeholder + emoji fallback on error
+│   ├── OpenStatusBadge.tsx     # Open / Closed pill on listing detail (America/Vancouver, refreshes each minute)
+│   ├── FeaturePills.tsx        # Feature filter pills row on category pages (links to /[cat]/with/[feature])
+│   ├── CuisinePills.tsx        # "Browse by cuisine" pill row on /eat (links to /eat/cuisine/[type])
 │   ├── TagFilterGrid.tsx       # Shared tag-only filter + listing grid (used by town guide pages)
 │   ├── AffiliateCard.tsx       # Reusable affiliate product card (title, desc, linkText, linkUrl, disclaimer; rel="nofollow sponsored")
 │   └── FeaturedInGuides.tsx    # "Featured in" guide links on listing detail pages (internal linking)
 ├── lib/
-│   ├── supabase.ts             # Supabase client + type definitions (incl. ListingRequest)
-│   ├── data.ts                 # Data fetching functions (incl. submitListingRequest)
+│   ├── supabase.ts             # Supabase client + type definitions (incl. ListingFeature)
+│   ├── data.ts                 # Data fetching functions (listings, features, cuisines)
+│   ├── features.ts             # Canonical feature catalog (9 features) + helpers
+│   ├── cuisines.ts             # Canonical cuisine catalog (14 cuisines) + keyword matcher
 │   └── utm.ts                  # buildUTMUrl() — appends UTM params to outbound links
 ├── middleware.ts               # Domain redirect (→ bestseatosky.com)
 └── PROJECT_MANIFEST.md         # This file
+
+db/
+└── migrations/
+    └── 20260518_listing_features.sql  # Run in Supabase SQL editor before features script
+
+scripts/
+├── README.md                          # Setup + usage for both scripts
+├── generate-listing-faqs.mjs          # npm run faqs — Anthropic-generated FAQs into listings.faq_json
+└── generate-listing-features.mjs      # npm run features — Anthropic-detected feature rows into listing_features
 
 public/
 ├── icon.svg                    # Custom SVG icon (favicon, header logo, footer logo)
@@ -168,6 +188,7 @@ public/
 | **tags** | id, slug, name, category_id |
 | **listings** | id, slug, name, description, short_description, category_id, town_id, address, phone, email, website, hours, price_level, google_rating, google_review_count, google_place_id, featured_image_url, images, featured, status, meta_title, meta_description, schema_type, schema_json, faq_json |
 | **listing_tags** | listing_id, tag_id (junction table) |
+| **listing_features** | id, listing_id (FK), feature_slug, feature_name, created_at; unique(listing_id, feature_slug); public read RLS |
 | **seo_pages** | id, slug, title, meta_description, h1_text, intro_content, category_id, tag_id, town_id, schema_json, canonical_url, status |
 | **blog_posts** | id, slug, title, meta_description, featured_image, excerpt, content, author, status, published_at |
 | **listing_requests** | id, business_name, contact_name, email, phone, website, category_id (FK), town_id (FK), message, status, created_at, updated_at |
@@ -203,6 +224,12 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 | `getBlogPostBySlug(slug)` | BlogPost \| null | Blog post page |
 | `getGuidesForListing(catId, townId, tagIds)` | SeoPage[] | Listing detail page ("Featured in" guides) |
 | `submitListingRequest(request)` | ListingRequest | Get Listed API route |
+| `getListingFeatures(listingId)` | ListingFeature[] | Listing detail (feature badges) |
+| `getFeaturesAvailableInCategory(slug)` | {slug, name, count}[] | Category page filter pills |
+| `getListingsByFeature(catSlug, featureSlug)` | Listing[] | `/[category]/with/[feature]` pages |
+| `getAllCategoryFeaturePaths()` | {categorySlug, featureSlug}[] | Sitemap generation |
+| `getCuisineCounts()` | Record<slug, count> | /eat browse-by-cuisine row + sitemap |
+| `getListingsForCuisine(slug)` | Listing[] | `/eat/cuisine/[type]` pages |
 
 ---
 
@@ -231,7 +258,15 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **FAQ accordion** — reusable expandable Q&A component used on guide and content pages, with FAQPage schema.org markup
 - **"Featured in" guides** — listing detail pages show links to guide pages that include the listing (internal linking via `getGuidesForListing`)
 - **Category-specific OG images** — og-eat.jpg, og-stay.jpg, etc. for social sharing per category
-- **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags, SearchAction schema, BreadcrumbList schema
+- **SEO:** dynamic sitemap, robots.txt, JSON-LD schema markup, meta tags, SearchAction schema, BreadcrumbList schema, sitewide Organization + WebSite schema in root layout
+- **Schema subtypes by category** — listing detail JSON-LD uses Restaurant (eat, with servesCuisine from tags), LodgingBusiness (stay), SportsActivityLocation (play), TouristAttraction (visit), Store (shop), LocalBusiness (services). Includes geo, openingHoursSpecification, amenityFeature, aggregateRating where available.
+- **BlogPosting schema** on `/blog/[slug]` (Person author, Organization publisher with logo ImageObject, mainEntityOfPage WebPage)
+- **Programmatic feature filter pages** at `/[category]/with/[feature]` for 9 features (kid-friendly, dog-friendly, outdoor-seating, wheelchair-accessible, free-parking, wifi, takeout, delivery, reservations-required). Surfaced via `FeaturePills` row on category pages and as badges on listing detail. Sitemap entries auto-generated for every (category, feature) pair with data.
+- **Programmatic cuisine pages** at `/eat/cuisine/[type]` for 14 cuisines (Thai, Japanese & Sushi, Italian, Mexican, Vietnamese, Greek, Korean, Indian, Chinese, Canadian, Seafood, Pizza, Brunch & Breakfast, Bakery & Coffee). Matcher uses keyword patterns against name + description + tag names (no dedicated cuisine column). Each page has keyword-rich meta title ("Best Italian Restaurants in Squamish, Whistler & Pemberton").
+- **Open/closed badge** on listing detail pages — `OpenStatusBadge` client component reads `listing.hours`, computes status in America/Vancouver time, handles overnight-spanning hours, refreshes each minute, mounts client-only to avoid hydration mismatch
+- **Keyword-rich guide titles** — `/guide/[slug]` pages render meta titles in the form `<Base> (2026) | <Keyword suffix>` (e.g., "Best Restaurants in Squamish (2026) | Ranked by Real Reviews"). Slug → suffix map in `guide/[slug]/page.tsx`. H1 still uses clean base title.
+- **AI-generated listing FAQs** — populated via `npm run faqs` script (Anthropic API → `listings.faq_json`). Site renders accordion + FAQPage schema wherever `faq_json` is set. Resumable.
+- **AI-detected listing features** — populated via `npm run features` script (Anthropic API → `listing_features` table). Conservative prompt allows TYPICAL evidence for wifi/takeout based on category, STRONG-only for everything else.
 - **Mobile hamburger menu** — animated 3-bar toggle in header, full-width dropdown nav, auto-closes on link tap
 - **Image fallback:** category placeholder image from Supabase Storage when no featured photo; emoji fallback if placeholder also fails. Helper: `getPlaceholderImage(categorySlug)` in `lib/supabase.ts`
 - **Featured listings** — visual differentiation with emerald border, green tint, and "★ Featured" badge; sorted to top of category pages
@@ -245,6 +280,17 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Newsletter + lead magnet** — email capture component on homepage, category, blog index, and guide index pages; subscribers receive "Sea to Sky Trip Planner" welcome email with curated local picks via Resend; stored in `subscribers` table
 - **Dynamic meta descriptions** — listing pages generate unique descriptions from name, town, rating, review count
 - **Outcome-focused B2B copy** — Get Listed and Advertise pages use warm local voice, not SaaS jargon
+
+---
+
+## Performance
+
+- **next/image everywhere** — `FallbackImage` wraps `next/image` (fill mode). Homepage hero, blog featured image, and listing detail hero all use `priority` + tuned `sizes`. Listing-card grids lazy by default.
+- **Image optimization config** in `next.config.ts`: `remotePatterns` for `lh3.googleusercontent.com`, `places.googleapis.com`, and the Supabase public storage bucket; AVIF/WebP output; 30-day `minimumCacheTTL`; mobile-tuned `deviceSizes`.
+- **Cache headers** — long-lived immutable caching for `/_next/static/*` and public images (svg/jpg/png/webp/avif/ico/gif). `/_next/image` responses get 30d browser / 1y edge with SWR.
+- **Code-split client components** — `FaqSection` and `ChatWidget` are imported with `next/dynamic` so their JS only ships on pages that use them.
+- **Deferred analytics** — Google Analytics loads with `strategy="lazyOnload"` so it doesn't compete with hydration.
+- **Hero JPG recompression** — homepage hero compressed in-place (393 KB → 76 KB) before `next/image` further transcodes to AVIF/WebP.
 
 ---
 
@@ -320,9 +366,10 @@ Static routes with curated editorial content. Internal-linked from `/stay` page.
 | Variable | Purpose |
 |----------|---------|
 | `NEXT_PUBLIC_SUPABASE_URL` | Supabase project URL |
-| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase public API key |
+| `NEXT_PUBLIC_SUPABASE_ANON_KEY` | Supabase public API key (publishable / anon) |
+| `SUPABASE_SERVICE_ROLE_KEY` | Supabase service-role key (LOCAL ONLY, never on Vercel) — used by `npm run faqs` / `npm run features` |
 | `RESEND_API_KEY` | Resend API key for email notifications |
-| `ANTHROPIC_API_KEY` | Anthropic API key for trip planner chatbot |
+| `ANTHROPIC_API_KEY` | Anthropic API key for trip planner chatbot + data-generation scripts |
 | `BREVO_API_KEY` | Brevo API key for subscriber list sync |
 | `BREVO_LIST_ID` | Brevo contact list ID |
 
@@ -333,11 +380,15 @@ Set in both `.env.local` (local) and Vercel dashboard (production/preview/develo
 ## Scripts
 
 ```bash
-npm run dev      # Start dev server (localhost:3000)
-npm run build    # Production build
-npm run start    # Start production server
-npm run lint     # Run ESLint
+npm run dev       # Start dev server (localhost:3000)
+npm run build     # Production build
+npm run start     # Start production server
+npm run lint      # Run ESLint
+npm run faqs      # One-off: generate FAQs for listings missing faq_json (requires .env.local with service-role key + Anthropic key)
+npm run features  # One-off: detect features for listings missing rows in listing_features (same env requirements)
 ```
+
+Both data-generation scripts are resumable, support `--limit / --category / --slug / --regenerate / --dry-run`, and fail-fast if `SUPABASE_SERVICE_ROLE_KEY` is the anon/publishable key. See `scripts/README.md` for full setup.
 
 ---
 
