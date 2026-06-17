@@ -28,8 +28,44 @@ Keep responses concise and helpful. Use markdown for links. Always suggest relev
 
 Do NOT answer questions unrelated to the Sea to Sky corridor, travel, or British Columbia. Politely redirect off-topic questions.`;
 
+// In-memory rate limiter: 10 requests per IP per hour.
+// Note: resets per serverless instance — adequate protection for a small site.
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+const RATE_LIMIT = 10;
+const RATE_WINDOW_MS = 60 * 60 * 1000;
+
+function isRateLimited(ip: string): boolean {
+  const now = Date.now();
+  const entry = rateLimitMap.get(ip);
+
+  if (!entry || now > entry.resetAt) {
+    rateLimitMap.set(ip, { count: 1, resetAt: now + RATE_WINDOW_MS });
+    return false;
+  }
+
+  if (entry.count >= RATE_LIMIT) return true;
+
+  entry.count++;
+  return false;
+}
+
 export async function POST(request: NextRequest) {
   try {
+    const ip =
+      request.headers.get('x-forwarded-for')?.split(',')[0]?.trim() ||
+      request.headers.get('x-real-ip') ||
+      'unknown';
+
+    if (isRateLimited(ip)) {
+      return new Response(
+        JSON.stringify({
+          error:
+            "You've reached the limit for free Trip Planner chats. Visit bestseatosky.com/guide for our full directory.",
+        }),
+        { status: 429, headers: { 'Content-Type': 'application/json' } }
+      );
+    }
+
     const { messages } = await request.json();
 
     if (!messages || !Array.isArray(messages) || messages.length === 0) {
@@ -55,7 +91,7 @@ export async function POST(request: NextRequest) {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify({
-        model: 'claude-haiku-4-5',
+        model: 'claude-haiku-4-5-20251001',
         max_tokens: 500,
         system: SYSTEM_PROMPT,
         stream: true,

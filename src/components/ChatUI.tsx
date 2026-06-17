@@ -68,7 +68,12 @@ export default function ChatUI({ variant = 'full' }: { variant?: 'full' | 'widge
       });
 
       if (!res.ok) {
-        setMessages([...newMessages, { role: 'assistant', content: "Sorry, I couldn't process that. Please try again." }]);
+        const errorData = await res.json().catch(() => ({}));
+        const errorMsg =
+          res.status === 429 && errorData.error
+            ? errorData.error
+            : "Sorry, I couldn't process that. Please try again.";
+        setMessages([...newMessages, { role: 'assistant', content: errorMsg }]);
         setIsStreaming(false);
         return;
       }
