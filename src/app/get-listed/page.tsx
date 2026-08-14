@@ -47,7 +47,7 @@ const TIERS = [
   },
   {
     name: 'The Sponsored Guide',
-    price: '$149',
+    price: '$99',
     period: '/mo',
     description: 'Be the reason visitors plan their trip to the corridor',
     features: [
@@ -57,13 +57,13 @@ const TIERS = [
       'Cross-linked from related town and category pages',
     ],
     cta: 'Get Started',
-    href: 'https://buy.stripe.com/3cI00j8Vt84Ogxw8JGabK01',
+    href: 'https://buy.stripe.com/3cIdR97Rpfxg0yy0daabK03',
     style: 'border-slate-200',
     buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
   },
   {
     name: 'The Local Partner',
-    price: '$299',
+    price: '$149',
     period: '/mo',
     description: 'The full partnership — maximum visibility across the platform',
     features: [
@@ -116,7 +116,7 @@ const FAQS = [
   },
   {
     q: 'Can I cancel anytime?',
-    a: 'Yes. All paid tiers — Corridor Leader ($49/mo), Sponsored Guide ($149/mo), and Local Partner ($299/mo) — are month-to-month. No contracts, no penalties. Cancel whenever and your listing just goes back to free.',
+    a: 'Yes. All paid tiers — Corridor Leader ($49/mo), Sponsored Guide ($99/mo), and Local Partner ($149/mo) — are month-to-month. No contracts, no penalties. Cancel whenever and your listing just goes back to free.',
   },
   {
     q: 'Who actually sees my listing?',
@@ -314,8 +314,8 @@ export default async function GetListedPage() {
                   <td className="py-4 px-5 font-semibold text-slate-900">Investment</td>
                   <td className="text-center py-4 px-3 font-bold text-slate-900">Free forever</td>
                   <td className="text-center py-4 px-3 font-bold text-slate-900">$49/mo</td>
-                  <td className="text-center py-4 px-3 font-bold text-slate-900">$149/mo</td>
-                  <td className="text-center py-4 px-3 font-bold text-emerald-700 bg-emerald-50/50">$299/mo</td>
+                  <td className="text-center py-4 px-3 font-bold text-slate-900">$99/mo</td>
+                  <td className="text-center py-4 px-3 font-bold text-emerald-700 bg-emerald-50/50">$149/mo</td>
                 </tr>
               </tbody>
             </table>
