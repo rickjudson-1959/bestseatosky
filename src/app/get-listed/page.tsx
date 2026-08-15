@@ -76,7 +76,7 @@ const TIERS = [
       'Quarterly analytics report — views, clicks, and trends',
     ],
     cta: 'Become a Partner',
-    href: 'mailto:hello@bestseatosky.com?subject=Local%20Partner%20Inquiry',
+    href: '/contact?subject=Local%20Partner%20Inquiry',
     style: 'border-emerald-400 border-2 ring-1 ring-emerald-200 bg-emerald-50/30',
     buttonStyle: 'bg-emerald-700 text-white hover:bg-emerald-800',
     popular: true,
@@ -246,22 +246,12 @@ export default async function GetListedPage() {
                   ))}
                 </ul>
                 {tier.cta ? (
-                  <>
-                    <a
-                      href={tier.href}
-                      className={`block w-full text-center py-3 rounded-xl text-sm font-bold transition-colors ${tier.buttonStyle}`}
-                    >
-                      {tier.cta}
-                    </a>
-                    {tier.href.startsWith('mailto:') && (
-                      <p className="text-xs text-slate-400 text-center mt-2">
-                        Or email us directly at{' '}
-                        <a href="mailto:hello@bestseatosky.com" className="underline hover:text-slate-600">
-                          hello@bestseatosky.com
-                        </a>
-                      </p>
-                    )}
-                  </>
+                  <a
+                    href={tier.href}
+                    className={`block w-full text-center py-3 rounded-xl text-sm font-bold transition-colors ${tier.buttonStyle}`}
+                  >
+                    {tier.cta}
+                  </a>
                 ) : (
                   <a
                     href="#get-started"

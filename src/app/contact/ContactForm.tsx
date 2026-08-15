@@ -5,7 +5,7 @@ import { useState, FormEvent } from 'react';
 
 type Status = 'idle' | 'submitting' | 'success' | 'error';
 
-export default function ContactForm() {
+export default function ContactForm({ defaultSubject = '' }: { defaultSubject?: string }) {
   const [status, setStatus] = useState<Status>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -98,6 +98,7 @@ export default function ContactForm() {
           id="subject"
           name="subject"
           required
+          defaultValue={defaultSubject}
           className="w-full px-4 py-3 rounded-xl border border-slate-200 bg-white text-slate-900 text-sm focus:outline-none focus:ring-2 focus:ring-emerald-500 focus:border-transparent"
           placeholder="What can we help with?"
         />

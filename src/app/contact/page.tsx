@@ -9,7 +9,13 @@ export const metadata: Metadata = {
   alternates: { canonical: '/contact' },
 };
 
-export default function ContactPage() {
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ subject?: string }>;
+}) {
+  const { subject } = await searchParams;
+
   return (
     <section className="max-w-3xl mx-auto px-6 py-8">
       <nav className="flex items-center gap-2 text-sm text-slate-400 mb-6">
@@ -68,7 +74,7 @@ export default function ContactPage() {
 
       <div className="border-t border-slate-200 pt-10">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-6">Send Us a Message</h2>
-        <ContactForm />
+        <ContactForm defaultSubject={subject || ''} />
       </div>
     </section>
   );
