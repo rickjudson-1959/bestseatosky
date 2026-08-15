@@ -3,7 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 
 export const metadata: Metadata = {
-  title: 'Horseshoe Bay: Mile Zero of the Sea to Sky Highway',
+  title: 'Sea to Sky Mile Zero: A Local\'s Guide to Horseshoe Bay',
   description:
     "Horseshoe Bay isn't just a ferry terminal — it's Mile Zero of the Sea to Sky Highway, with 80 years of history and the best fish and chips in the corridor.",
   alternates: { canonical: '/horseshoe-bay' },
