@@ -70,6 +70,7 @@ export default async function GuidesPage() {
             { href: '/ski-season', title: 'Ski Season Survival Guide', desc: 'How to do Whistler without going broke. Skip the lift lines, eat well without a second mortgage, and find the runs tourists miss.' },
             { href: '/best-patios', title: 'Best Patios in the Corridor', desc: '8 patios ranked by a local who has sat on every one — post-trail beers, sunset dinners, and hidden decks from Squamish to Pemberton.' },
             { href: '/horseshoe-bay', title: 'Sea to Sky Mile Zero', desc: 'Horseshoe Bay, the village at the start of the Sea to Sky Highway — 80 years of history, the best fish and chips in the corridor, and what to do with the hour before your ferry.' },
+            { href: '/trip-planner', title: 'Sea to Sky Trip Planner', desc: 'A free downloadable guide to Squamish, Whistler & Pemberton — where to eat, must-do trails, and local tips, all in one PDF.' },
             { href: '/neighbourhood/squamish', title: 'Squamish Neighbourhoods', desc: 'Downtown vs. Garibaldi Highlands — where to eat, stay, and explore based on your trip style.' },
             { href: '/neighbourhood/whistler', title: 'Whistler Neighbourhoods', desc: 'Village vs. Creekside — how to pick the right base for your trip and skip the crowds.' },
           ].map((g) => (
