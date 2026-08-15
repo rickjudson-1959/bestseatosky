@@ -246,12 +246,22 @@ export default async function GetListedPage() {
                   ))}
                 </ul>
                 {tier.cta ? (
-                  <a
-                    href={tier.href}
-                    className={`block w-full text-center py-3 rounded-xl text-sm font-bold transition-colors ${tier.buttonStyle}`}
-                  >
-                    {tier.cta}
-                  </a>
+                  <>
+                    <a
+                      href={tier.href}
+                      className={`block w-full text-center py-3 rounded-xl text-sm font-bold transition-colors ${tier.buttonStyle}`}
+                    >
+                      {tier.cta}
+                    </a>
+                    {tier.href.startsWith('mailto:') && (
+                      <p className="text-xs text-slate-400 text-center mt-2">
+                        Or email us directly at{' '}
+                        <a href="mailto:hello@bestseatosky.com" className="underline hover:text-slate-600">
+                          hello@bestseatosky.com
+                        </a>
+                      </p>
+                    )}
+                  </>
                 ) : (
                   <a
                     href="#get-started"
