@@ -75,7 +75,8 @@ export async function POST(request: NextRequest) {
       });
     }
 
-    const apiKey = process.env.ANTHROPIC_API_KEY;
+    const apiKey =
+      process.env.BESTSEATOSKY_API_KEY || process.env.ANTHROPIC_API_KEY;
     if (!apiKey) {
       return new Response(JSON.stringify({ error: 'Chat is not configured.' }), {
         status: 500,
