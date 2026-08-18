@@ -43,3 +43,10 @@ yarn-error.log*
 *.tsbuildinfo
 next-env.d.ts
 .env*.local
+carousel-photos/
+carousel-slides.zip
+START HERE.md
+BACKUP-post-text.md
+.claude/
+carousel-slides/
+archive/
