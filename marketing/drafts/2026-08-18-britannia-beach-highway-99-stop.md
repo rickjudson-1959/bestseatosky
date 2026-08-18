@@ -100,7 +100,9 @@ First comment: Full guide to Britannia Beach → bestseatosky.com/blog/britannia
 
 ## Media Notes
 
-**Your media** — this is a specific, real location (the mill building and the Howe Sound lookout are unmistakable and not something Blotato or stock photography can stand in for without breaking the "no stock imagery of a place we haven't actually been" rule).
+**Update (2026-08-18):** Rick has added 3 real photos to `~/bestseatosky/carousel-photos/Britannia Beach/` — `Howe Sound Lookout.jpg`, `BB Mine.jpg`, `BB Cafe's.jpg` — genuinely the location, so these clear the brand book's stock-photo rule and can be used for the static/carousel version of this post right away (attach directly in Blotato; this folder is local-only, not in the repo). He's also shooting his own photo/video at Britannia Beach this coming weekend, which should replace or supplement these for the Reel below once available.
+
+Until that footage exists, the Reel shot list stays open below — **Your media** (or hold the Reel until after the weekend shoot and post the carousel/photo version first using the 3 photos already on hand).
 
 Shot list for the Reel (vertical, phone is fine):
 

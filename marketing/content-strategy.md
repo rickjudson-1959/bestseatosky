@@ -55,6 +55,19 @@ Every draft must be labeled with one of:
   genuinely the real location — never a generic or lookalike mountain standing
   in for it). Use this sparingly; it's a fallback, not the default.
 
+### Rick's local photo library
+
+Rick keeps a real, growing photo/video library at `carousel-photos/<town>/` on
+his machine (e.g. `carousel-photos/Britannia Beach/`, `carousel-photos/chief/`,
+`carousel-photos/whistler/`, `carousel-photos/pemberton/`, `carousel-photos/
+horseshoe bay/`) — deliberately **not** committed to this repo (it's
+gitignored, kept out on purpose since it's a raw personal media dump). A
+routine running in this repo cannot see inside it. When drafting a post about
+a town this folder likely covers, say so explicitly in Media Notes — e.g.
+"Check `carousel-photos/<town>/` locally for existing photos before
+defaulting to a shot list or stock search" — rather than assuming a shot list
+or stock photo is needed from scratch. Rick will confirm what's actually
+there when he reviews the draft.
 Never draft a post assuming footage exists that hasn't been shot. If a strong
 idea needs media Rick doesn't have yet, mark it "Your media" (preferred),
 "Stock — search [place]" (acceptable fallback, real place only), or "Blotato
