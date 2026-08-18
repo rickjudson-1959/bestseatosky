@@ -35,3 +35,21 @@ See `src/PROJECT_MANIFEST.md` for full architecture, file structure, database sc
 ## Deploy
 
 Push to `main` and Vercel auto-deploys. No CI beyond Vercel's build step. No local build tools needed.
+
+## Folder Map (consolidated 2026-08-18)
+
+`/Users/richardsjudson/bestseatosky` is the **single** local copy of this
+project — a former duplicate clone at `~/Documents/bestseatosky` was deleted.
+If you ever see a reference to that path, it's stale.
+
+- **`marketing/`** — brand book, voice/content-strategy rules, and dated
+  drafts. Git-tracked. This is what the scheduled content-drafting routine
+  ("Best Sea to Sky - Content Drafts," Tue/Fri) reads and writes to.
+- **`carousel-photos/`, `carousel-slides/`** — Rick's real photo/video
+  library, organized by town. Gitignored (local-only, not deployed).
+- **`archive/`** — old working files consolidated from `~/Documents` on
+  2026-08-18 (media kit, campaign plan, past blog SQL, past FB post folders).
+  Gitignored, reference-only, not live code. See `archive/README.md` before
+  touching anything in there — in particular, never add a `CLAUDE.md` or
+  `.claude/` folder inside `archive/`, since Claude Code would auto-load it
+  and silently override these instructions.
