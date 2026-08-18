@@ -15,7 +15,7 @@ Everything in here is drawn from what already ships on bestseatosky.com. Where t
 Two rules govern everything that follows:
 
 1. **We sound like a neighbour, not a platform.** If a sentence could have come from a tourism board or a review aggregator, rewrite it.
-2. **We don't fake anything.** No paid placements dressed as recommendations, no stock imagery pretending to be the corridor, no claims we can't stand behind.
+2. **We don't fake anything.** No paid placements dressed as recommendations, no stock imagery standing in for a place it isn't, no claims we can't stand behind.
 
 ---
 
@@ -107,7 +107,7 @@ Notice what these have in common: short, plain words. A clear us-and-them. Concr
 
 - Never claim a business is "the best" without the review data to back it
 - Never run a paid placement without labelling it — affiliate links carry `rel="nofollow sponsored"`
-- Never use stock photography of mountains that aren't ours
+- Never use stock photography of a place that isn't actually the one being written about
 - Never write in the promotional register of a tourism board
 - Never use American spelling
 
@@ -284,11 +284,12 @@ Long-form pages use a `.prose` wrapper that sets 1.25em paragraph spacing and ge
 
 ### What we show
 
-Real places on this corridor, photographed as they are. The trailhead, the patio at 4pm, the actual dining room. Our credibility rests on having been there, and generic mountain stock photography quietly undermines it.
+Real places on this corridor, shown as they actually are. The trailhead, the patio at 4pm, the actual dining room. Our credibility rests on the place in the photo being the place in the text — generic mountain stock pretending to be somewhere it isn't quietly undermines that.
 
 ### Rules
 
-- **No stock imagery of mountains that aren't the Sea to Sky.** If you must use stock, use it for texture and abstraction, not for "here is a place."
+- **Stock imagery is fine when it's genuinely the place being written about** — e.g. a licensed Dreamstime photo of the actual Shannon Falls or the actual Stawamus Chief. Verify the location before using it; a caption should never claim a photo shows a spot it doesn't. Original photography is still preferred where you have it — it's more specific and it's free — but stock is an acceptable fallback, not a compromise, as long as it's the real place.
+- **No stock of a lookalike or generic mountain standing in for a specific Sea-to-Sky spot.** If you can't find or license a real photo of the actual location, use stock for texture and abstraction instead (a generic forest-path detail shot, a coffee cup, a highway line) rather than implying it's "here."
 - Prefer daylight and natural weather over heavy grading. Grey days are honest here.
 - Show people at human scale — small in the landscape, or genuinely mid-activity. Not posed.
 - Every image needs descriptive alt text. It's an accessibility requirement and it earns SEO.

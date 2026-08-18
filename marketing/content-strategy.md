@@ -49,10 +49,16 @@ Every draft must be labeled with one of:
   material it pulls from (e.g. a carousel built from an existing blog guide's
   list content, in brand colours, with a follow CTA on the last slide). Note
   where swapping in one real photo would outperform a fully generated cover.
+- **"Stock — search [place name]"** — suggest licensed stock (e.g. Dreamstime)
+  as a fallback when original footage isn't realistic to get. Name the exact
+  place/subject to search for (per the brand book: stock is fine only if it's
+  genuinely the real location — never a generic or lookalike mountain standing
+  in for it). Use this sparingly; it's a fallback, not the default.
 
 Never draft a post assuming footage exists that hasn't been shot. If a strong
-idea needs media Rick doesn't have yet, mark it "Your media" and describe the
-shot list — don't silently downgrade the idea to fit existing assets.
+idea needs media Rick doesn't have yet, mark it "Your media" (preferred),
+"Stock — search [place]" (acceptable fallback, real place only), or "Blotato
+can build" as fits — don't silently downgrade the idea to fit existing assets.
 
 ## Blog posts
 
