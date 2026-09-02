@@ -136,10 +136,37 @@ export default async function HomePage() {
             Stop scrolling through thousands of bot-written reviews and outdated tourist traps.
             Best Sea to Sky is the only directory curated by locals who have spent 20 years living,
             working, and exploring this corridor. We give you the straight goods on the best spots
-            from Vancouver to Whistler — no noise, no ads, just the best of the West Coast.
+            from Vancouver to Pemberton — no noise, no ads, just the best of the West Coast.
           </p>
 
           <SearchBar />
+
+          {/* Dual paths: Plan Your Trip + For Businesses */}
+          <div className="mt-8 mb-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5">
+              <p className="text-emerald-400 text-xs font-semibold tracking-[2px] uppercase mb-2">
+                Plan Your Trip
+              </p>
+              <p className="text-sm text-slate-300 mb-4 leading-relaxed">
+                Get local picks and corridor tips in your inbox.
+              </p>
+              <NewsletterSignup source="homepage-hero" variant="compact" />
+            </div>
+            <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 flex flex-col">
+              <p className="text-emerald-400 text-xs font-semibold tracking-[2px] uppercase mb-2">
+                For Businesses
+              </p>
+              <p className="text-sm text-slate-300 mb-4 leading-relaxed flex-1">
+                Get found by visitors already planning their Sea to Sky trip.
+              </p>
+              <Link
+                href="/get-listed"
+                className="inline-flex justify-center px-5 py-3 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors"
+              >
+                Get Listed
+              </Link>
+            </div>
+          </div>
 
           {/* Category Cards */}
           <div className="flex flex-wrap gap-3 justify-center">
