@@ -192,7 +192,7 @@ export default function AdvertisePage() {
               </li>
             </ul>
             <a
-              href="mailto:hello@bestseatosky.com?subject=Corridor%20Leader%20Inquiry"
+              href="https://buy.stripe.com/5kQaEX9Zx84OftsaROabK00"
               className="block w-full text-center py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors"
             >
               Get Started
@@ -223,7 +223,7 @@ export default function AdvertisePage() {
               </li>
             </ul>
             <a
-              href="mailto:hello@bestseatosky.com?subject=Town%20Spotlight%20Inquiry"
+              href="https://buy.stripe.com/3cIdR97Rpfxg0yy0daabK03"
               className="block w-full text-center py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors"
             >
               Get Started
@@ -271,7 +271,7 @@ export default function AdvertisePage() {
               </li>
             </ul>
             <a
-              href="mailto:hello@bestseatosky.com?subject=Sponsored%20Guide%20Inquiry"
+              href="https://buy.stripe.com/3cI00j8Vt84Ogxw8JGabK01"
               className="block w-full text-center py-3.5 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors"
             >
               Get Started
