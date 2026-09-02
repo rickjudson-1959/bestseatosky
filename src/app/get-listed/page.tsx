@@ -46,14 +46,14 @@ const TIERS = [
     buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
   },
   {
-    name: 'The Sponsored Guide',
+    name: 'The Town Spotlight',
     price: '$99',
     period: '/mo',
     description: 'Be the reason visitors plan their trip to the corridor',
     features: [
       'Everything in Corridor Leader, plus:',
       'Sponsored placement in guide pages and blog posts',
-      'Featured in our newsletter to 65+ subscribers',
+      'Featured in our newsletter to corridor trip-planners',
       'Cross-linked from related town and category pages',
     ],
     cta: 'Get Started',
@@ -62,17 +62,17 @@ const TIERS = [
     buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
   },
   {
-    name: 'The Local Partner',
+    name: 'The Sponsored Guide',
     price: '$149',
     period: '/mo',
     description: 'The full partnership — maximum visibility across the platform',
     features: [
-      'Everything in Sponsored Guide, plus:',
+      'Everything in Town Spotlight, plus:',
       'Dedicated blog post written about your business',
       'Monthly social media promotion on Facebook & Instagram',
       'Homepage banner placement',
       'Priority position on relevant guide pages',
-      '"Local Partner" badge on your listing',
+      '"Sponsored Guide" badge on your listing',
       'Quarterly analytics report — views, clicks, and trends',
     ],
     cta: 'Become a Partner',
@@ -116,7 +116,7 @@ const FAQS = [
   },
   {
     q: 'Can I cancel anytime?',
-    a: 'Yes. All paid tiers — Corridor Leader ($49/mo), Sponsored Guide ($99/mo), and Local Partner ($149/mo) — are month-to-month. No contracts, no penalties. Cancel whenever and your listing just goes back to free.',
+    a: 'Yes. All paid tiers — Corridor Leader ($49/mo), Town Spotlight ($99/mo), and Sponsored Guide ($149/mo) — are month-to-month. No contracts, no penalties. Cancel whenever and your listing just goes back to free.',
   },
   {
     q: 'Who actually sees my listing?',
@@ -272,8 +272,8 @@ export default async function GetListedPage() {
                   <th className="text-left py-4 px-5 font-semibold text-slate-900">Feature</th>
                   <th className="text-center py-4 px-3 font-semibold text-slate-900">Local Starter</th>
                   <th className="text-center py-4 px-3 font-semibold text-slate-900">Corridor Leader</th>
-                  <th className="text-center py-4 px-3 font-semibold text-slate-900">Sponsored Guide</th>
-                  <th className="text-center py-4 px-3 font-semibold text-emerald-700 bg-emerald-50/50">Local Partner</th>
+                  <th className="text-center py-4 px-3 font-semibold text-slate-900">Town Spotlight</th>
+                  <th className="text-center py-4 px-3 font-semibold text-emerald-700 bg-emerald-50/50">Sponsored Guide</th>
                 </tr>
               </thead>
               <tbody>
@@ -286,12 +286,12 @@ export default async function GetListedPage() {
                   ['Enhanced listing with photos', false, true, true, true],
                   ['Included in "Best Of" guide pages', false, true, true, true],
                   ['Sponsored placement in guides & blog', false, false, true, true],
-                  ['Featured in newsletter (65+ subscribers)', false, false, true, true],
+                  ['Featured in newsletter to corridor trip-planners', false, false, true, true],
                   ['Cross-linked from town & category pages', false, false, true, true],
                   ['Dedicated blog post about your business', false, false, false, true],
                   ['Monthly social media promotion', false, false, false, true],
                   ['Homepage banner placement', false, false, false, true],
-                  ['"Local Partner" badge on listing', false, false, false, true],
+                  ['"Sponsored Guide" badge on listing', false, false, false, true],
                   ['Quarterly analytics report', false, false, false, true],
                 ].map(([feature, free, leader, sponsored, partner], i) => (
                   <tr key={i} className="border-b border-slate-50 last:border-0">

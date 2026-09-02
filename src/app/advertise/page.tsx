@@ -50,7 +50,7 @@ export default function AdvertisePage() {
             planning their corridor trip and looking for exactly what you offer.
           </p>
           <p className="text-base text-slate-400 leading-relaxed max-w-2xl mx-auto mb-10">
-            With 65+ newsletter subscribers and growing traffic across Squamish, Whistler, and Pemberton,
+            With a growing newsletter of corridor trip-planners and rising traffic across Squamish, Whistler, and Pemberton,
             Best Sea to Sky puts your business in front of the people actively planning their next visit.
           </p>
           <div className="flex flex-col sm:flex-row gap-3 justify-center">
@@ -199,11 +199,11 @@ export default function AdvertisePage() {
             </a>
           </div>
 
-          {/* Tier 3: Destination Partner */}
+          {/* Tier 3: Town Spotlight */}
           <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200">
-            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">Sponsored Guide</h3>
-            <div className="font-serif text-3xl font-bold text-slate-900 mb-1">$149<span className="text-base font-normal text-slate-400">/mo</span></div>
-            <p className="text-sm text-slate-400 mb-5">Be the reason people plan their trip</p>
+            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">Town Spotlight</h3>
+            <div className="font-serif text-3xl font-bold text-slate-900 mb-1">$99<span className="text-base font-normal text-slate-400">/mo</span></div>
+            <p className="text-sm text-slate-400 mb-5">Own the spotlight in your town</p>
             <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
               <li className="flex items-start gap-2">
                 <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
@@ -215,7 +215,7 @@ export default function AdvertisePage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Featured in our newsletter to 65+ subscribers</span>
+                <span>Featured in our newsletter to corridor trip-planners</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
@@ -223,27 +223,27 @@ export default function AdvertisePage() {
               </li>
             </ul>
             <a
-              href="mailto:hello@bestseatosky.com?subject=Sponsored%20Guide%20Inquiry"
+              href="mailto:hello@bestseatosky.com?subject=Town%20Spotlight%20Inquiry"
               className="block w-full text-center py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors"
             >
               Get Started
             </a>
           </div>
 
-          {/* Tier 4: Local Partner (Premium) */}
+          {/* Tier 4: Sponsored Guide */}
           <div className="relative bg-emerald-50/50 rounded-2xl p-6 md:p-8 border-2 border-emerald-400 ring-1 ring-emerald-200">
             <div className="absolute -top-3 left-1/2 -translate-x-1/2">
               <span className="bg-emerald-700 text-white text-xs font-bold uppercase tracking-wide px-4 py-1 rounded-full">
                 Best Value
               </span>
             </div>
-            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1 mt-2">Local Partner</h3>
-            <div className="font-serif text-3xl font-bold text-emerald-800 mb-1">$299<span className="text-base font-normal text-slate-400">/mo</span></div>
-            <p className="text-sm text-slate-400 mb-5">The full partnership — maximum visibility</p>
+            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1 mt-2">Sponsored Guide</h3>
+            <div className="font-serif text-3xl font-bold text-emerald-800 mb-1">$149<span className="text-base font-normal text-slate-400">/mo</span></div>
+            <p className="text-sm text-slate-400 mb-5">Be the reason people plan their trip</p>
             <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
               <li className="flex items-start gap-2">
                 <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Everything in Sponsored Guide</span>
+                <span>Everything in Town Spotlight</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
@@ -263,7 +263,7 @@ export default function AdvertisePage() {
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>&quot;Local Partner&quot; badge on your listing</span>
+                <span>&quot;Sponsored Guide&quot; badge on your listing</span>
               </li>
               <li className="flex items-start gap-2">
                 <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
@@ -271,10 +271,10 @@ export default function AdvertisePage() {
               </li>
             </ul>
             <a
-              href="mailto:hello@bestseatosky.com?subject=Local%20Partner%20Inquiry"
+              href="mailto:hello@bestseatosky.com?subject=Sponsored%20Guide%20Inquiry"
               className="block w-full text-center py-3.5 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors"
             >
-              Become a Partner
+              Get Started
             </a>
           </div>
         </div>
