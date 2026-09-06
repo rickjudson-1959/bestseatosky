@@ -319,6 +319,7 @@ These are standalone pages with hardcoded local content, separate from the `/gui
 
 | Route | Type | Description |
 |-------|------|-------------|
+| `/guide/squamish-base-weekend` | Itinerary | Squamish-base weekend when Village rates spike (Chief, Shannon Falls, Whistler day trip) |
 | `/48-hours-squamish` | Itinerary | 2-day local's itinerary with timeline layout (14 stops) |
 | `/ski-season` | Seasonal | Whistler ski survival guide (lift lines, cheap eats, secret runs, accommodation, Highway 99) |
 | `/best-patios` | Seasonal | 8 ranked patios from Squamish to Pemberton |
