@@ -66,6 +66,7 @@ export default async function GuidesPage() {
         </div>
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
           {[
+            { href: '/guide/squamish-base-weekend', title: 'A Squamish base weekend', desc: 'When Whistler Village rates spike: sleep cheaper in Squamish, hike the Chief, day-trip the hill.' },
             { href: '/48-hours-squamish', title: '48 Hours in Squamish', desc: 'A local\'s itinerary for first-timers — 14 stops over 2 days, from early-morning coffee to hidden trails to the best dinner in town.' },
             { href: '/ski-season', title: 'Ski Season Survival Guide', desc: 'How to do Whistler without going broke. Skip the lift lines, eat well without a second mortgage, and find the runs tourists miss.' },
             { href: '/best-patios', title: 'Best Patios in the Corridor', desc: '8 patios ranked by a local who has sat on every one — post-trail beers, sunset dinners, and hidden decks from Squamish to Pemberton.' },
