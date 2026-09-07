@@ -204,9 +204,9 @@ export default async function HomePage() {
               <p className="text-xs text-slate-500">Real Google ratings. Hand-picked listings. Featured tiers never buy a higher star rating.</p>
             </div>
             <div className="text-center">
-              <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">Local</div>
-              <div className="text-sm font-semibold text-slate-900 mb-1">Neighbour-Built</div>
-              <p className="text-xs text-slate-500">Built by your neighbours, not a tech company in California</p>
+              <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">6</div>
+              <div className="text-sm font-semibold text-slate-900 mb-1">Corridor Towns</div>
+              <p className="text-xs text-slate-500">West Van to Pemberton, not just one resort town</p>
             </div>
           </div>
         </div>
