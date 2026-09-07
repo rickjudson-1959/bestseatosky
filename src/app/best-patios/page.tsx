@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'The Best Patios in the Sea to Sky (Where to Drink With a View After a Day on the Trails)',
+  title: 'Best Patios in the Sea to Sky Corridor?',
   description:
-    'You just hiked the Chief, or skied Whistler, or drove the whole corridor with the windows down. Now you need a patio, a cold beer, and a view. Eight local patio picks from Squamish to Pemberton.',
+    'Best patios in the Sea to Sky corridor? Howe Sound Brew Pub, Dusty\'s Bar & BBQ, and Backcountry Brewing lead this local shortlist from Squamish to Pemberton.',
   alternates: { canonical: '/best-patios' },
 };
 
@@ -80,39 +80,39 @@ const PATIOS = [
 
 const FAQS = [
   {
-    question: 'What are the best patios in the Sea to Sky corridor?',
+    question: 'Best patios in the Sea to Sky corridor?',
     answer:
-      'Howe Sound Brew Pub, Dusty\'s, and Backcountry lead. Then The Watershed Grill, Longhorn Saloon, Mile One Eating House, Mag\'s 99, and Rimrock Cafe. Pick by mood: post-hike pint, Village après, river dinner, or a Pemberton drive.',
+      'Howe Sound Brew Pub, Dusty\'s Bar & BBQ, and Backcountry Brewing lead this local shortlist from Squamish to Pemberton. Then come The Watershed Grill, Longhorn Saloon, Mile One Eating House, Mag\'s 99, and Rimrock Cafe. Pick by mood: post-hike pint, Village après, river dinner, or a Pemberton drive.',
   },
   {
-    question: 'Where should you go after hiking the Chief?',
+    question: 'Where should I go for a patio after hiking the Stawamus Chief?',
     answer:
-      'Stay in Squamish. Howe Sound Brew Pub for the upper deck, Backcountry Brewing if you have a dog, The Watershed Grill for a river dinner, or Mag\'s 99 for tacos.',
+      'Stay in Squamish. Howe Sound Brew Pub for the upper deck and a post-Chief pint, Backcountry Brewing if you have a dog, The Watershed Grill for a river dinner, or Mag\'s 99 for tacos and a cocktail. You already did the drive. Do not add a Village hop just to sit outside.',
   },
   {
     question: 'What is the best après-ski patio in Whistler?',
     answer:
-      'Dusty\'s in Creekside. Longhorn in the Village if you want loud. Honest weakness: the Village is packed and noisy on powder weekends.',
+      'Dusty\'s Bar & BBQ in Creekside. Ski boots are expected, the BBQ is the point, and the patio is the one Creekside locals actually use. Longhorn Saloon in the Village if you want loud and classic. Honest weakness: the Village is packed and noisy on powder weekends.',
   },
   {
-    question: 'Is there a patio worth driving to Pemberton?',
+    question: 'Is there a patio worth driving to Pemberton for?',
     answer:
-      'Yes. Mile One Eating House, about 35 minutes past Whistler. Patio season is spring through fall. Check hours before you go.',
+      'Yes. Mile One Eating House, about 35 minutes past Whistler, is the patio that makes the extra drive feel like the plan, not a detour. Farm-to-table, Mount Currie in the background, quieter than the Village. Patio season is spring through fall. Check hours before you go.',
   },
   {
-    question: 'Where should you go for a special dinner patio?',
+    question: 'Which Sea to Sky patios are best for a special dinner?',
     answer:
-      'The Watershed Grill in Squamish. In Whistler, Rimrock Cafe\'s summer terrace, and reserve ahead.',
+      'The Watershed Grill in Squamish for a proper river-and-mountain dinner. In Whistler, Rimrock Cafe\'s summer terrace is the special-occasion pick, and you should reserve ahead. Neither is trying to be a party patio.',
   },
   {
-    question: 'Which patios are dog-friendly?',
+    question: 'Can I bring my dog to Sea to Sky patios?',
     answer:
-      'Often the brewery yards. Backcountry Brewing is the one we call out as dog-friendly. Check first before you show up with a trail dog.',
+      'Often the brewery yards. Backcountry Brewing is the one we call out as dog-friendly. Howe Sound and other outdoor tables vary. Check first before you show up with a trail dog.',
   },
   {
-    question: 'When are patios too busy?',
+    question: 'When do Sea to Sky patios get too busy?',
     answer:
-      'Weekends fill around 4pm in summer. Bring a layer. Aim for a late lunch or an early dinner.',
+      'Weekends fill around 4pm in summer, especially after a Chief day or a Village ski day. Bring a layer. Aim for a late lunch or an early dinner if you want a seat without a wait.',
   },
 ];
 
@@ -141,7 +141,7 @@ export default function BestPatiosPage() {
       </nav>
 
       <h1 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">
-        The Best Patios in the Sea to Sky (Where to Drink With a View After a Day on the Trails)
+        Best Patios in the Sea to Sky Corridor?
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
@@ -150,24 +150,32 @@ export default function BestPatiosPage() {
 
       <div className="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 mb-12">
         <p className="text-base">
+          Best patios in the Sea to Sky corridor? Howe Sound Brew Pub, Dusty&apos;s Bar
+          &amp; BBQ, and Backcountry Brewing lead this local shortlist from Squamish to
+          Pemberton. Then come The Watershed Grill, Longhorn Saloon, Mile One Eating
+          House, Mag&apos;s 99, and Rimrock Cafe.
+        </p>
+        <p>
           You just hiked the Chief, or skied Whistler, or drove the whole corridor with the
           windows down. Now you need a patio, a cold beer, and a view that reminds you why
           you live here (or why you should). These are the patios worth planning your day around,
           from Squamish to Pemberton.
         </p>
         <p>
-          {LOCKED_CLAIM} This patio shortlist is the local-friend version of that promise.
+          {LOCKED_CLAIM}
         </p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          What are the best patios in the Sea to Sky corridor?
+          Best patios in the Sea to Sky corridor?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Howe Sound Brew Pub, Dusty&apos;s, and Backcountry lead. Then The Watershed Grill,
-          Longhorn Saloon, Mile One Eating House, Mag&apos;s 99, and Rimrock Cafe. Pick by mood:
-          post-hike pint, Village après, river dinner, or a Pemberton drive.
+          Howe Sound Brew Pub, Dusty&apos;s Bar &amp; BBQ, and Backcountry Brewing lead
+          this local shortlist from Squamish to Pemberton. Then come The Watershed Grill,
+          Longhorn Saloon, Mile One Eating House, Mag&apos;s 99, and Rimrock Cafe. Pick by
+          mood: post-hike pint, Village après, river dinner, or a Pemberton drive. The
+          ranked cards below keep Best for and Season on every pick.
         </p>
       </div>
 
@@ -199,15 +207,21 @@ export default function BestPatiosPage() {
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          Where should you go after hiking the Chief?
+          Where should I go for a patio after hiking the Stawamus Chief?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Stay in Squamish. Howe Sound Brew Pub for the upper deck, Backcountry Brewing if you
-          have a dog, The Watershed Grill for a river dinner, or Mag&apos;s 99 for tacos. Browse{' '}
-          <Link href="/eat/squamish" className="text-emerald-700 font-semibold hover:underline">
-            restaurants in Squamish
+          Stay in Squamish. Howe Sound Brew Pub for the upper deck and a post-Chief pint,
+          Backcountry Brewing if you have a dog, The Watershed Grill for a river dinner,
+          or Mag&apos;s 99 for tacos and a cocktail. You already did the drive. Do not add
+          a Village hop just to sit outside. Browse{' '}
+          <Link href="/guide/best-restaurants-squamish" className="text-emerald-700 font-semibold hover:underline">
+            the best restaurants in Squamish
           </Link>{' '}
-          if you want the wider eat list.
+          if you want the wider eat list, or fold the patio into{' '}
+          <Link href="/guide/squamish-base-weekend" className="text-emerald-700 font-semibold hover:underline">
+            a Squamish base weekend
+          </Link>
+          .
         </p>
       </div>
 
@@ -216,48 +230,55 @@ export default function BestPatiosPage() {
           What is the best après-ski patio in Whistler?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Dusty&apos;s in Creekside. Longhorn in the Village if you want loud. Honest weakness:
-          the Village is packed and noisy on powder weekends.
+          Dusty&apos;s Bar &amp; BBQ in Creekside. Ski boots are expected, the BBQ is the
+          point, and the patio is the one Creekside locals actually use. Longhorn Saloon
+          in the Village if you want loud and classic. Honest weakness: the Village is
+          packed and noisy on powder weekends.
         </p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          Is there a patio worth driving to Pemberton?
+          Is there a patio worth driving to Pemberton for?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Yes. Mile One Eating House, about 35 minutes past Whistler. Patio season is spring
+          Yes. Mile One Eating House, about 35 minutes past Whistler, is the patio that
+          makes the extra drive feel like the plan, not a detour. Farm-to-table, Mount
+          Currie in the background, quieter than the Village. Patio season is spring
           through fall. Check hours before you go.
         </p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          Where should you go for a special dinner patio?
+          Which Sea to Sky patios are best for a special dinner?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed">
-          The Watershed Grill in Squamish. In Whistler, Rimrock Cafe&apos;s summer terrace, and
-          reserve ahead.
+          The Watershed Grill in Squamish for a proper river-and-mountain dinner. In
+          Whistler, Rimrock Cafe&apos;s summer terrace is the special-occasion pick, and
+          you should reserve ahead. Neither is trying to be a party patio.
         </p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          Which patios are dog-friendly?
+          Can I bring my dog to Sea to Sky patios?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Often the brewery yards. Backcountry Brewing is the one we call out as dog-friendly.
-          Check first before you show up with a trail dog.
+          Often the brewery yards. Backcountry Brewing is the one we call out as
+          dog-friendly. Howe Sound and other outdoor tables vary. Check first before you
+          show up with a trail dog.
         </p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-12">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          When are patios too busy?
+          When do Sea to Sky patios get too busy?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Weekends fill around 4pm in summer. Bring a layer. Aim for a late lunch or an early
-          dinner.
+          Weekends fill around 4pm in summer, especially after a Chief day or a Village
+          ski day. Bring a layer. Aim for a late lunch or an early dinner if you want a
+          seat without a wait.
         </p>
       </div>
 
@@ -285,7 +306,7 @@ export default function BestPatiosPage() {
 
       <div className="flex flex-col sm:flex-row gap-3">
         <Link
-          href="/eat/squamish"
+          href="/guide/best-restaurants-squamish"
           className="px-6 py-3 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors text-center"
         >
           Squamish Restaurants
@@ -297,10 +318,10 @@ export default function BestPatiosPage() {
           Squamish Base Weekend
         </Link>
         <Link
-          href="/eat?tag=breweries"
+          href="/blog/squamish-vs-whistler-where-to-stay"
           className="px-6 py-3 rounded-xl border border-slate-200 text-slate-700 text-sm font-bold hover:bg-slate-50 transition-colors text-center"
         >
-          Corridor Breweries
+          Squamish vs Whistler
         </Link>
       </div>
     </section>

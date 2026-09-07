@@ -2,9 +2,9 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 
 export const metadata: Metadata = {
-  title: 'A Squamish base weekend (when Whistler Village rates are wild)',
+  title: 'Good Weekend Itinerary Based in Squamish for the Sea to Sky',
   description:
-    'Squamish base weekend when Whistler Village rates spike. Sleep cheaper, hike the Chief, day-trip the hill. Hand-picked Sea to Sky picks.',
+    'Looking for a good weekend itinerary based in Squamish for the Sea to Sky? Sleep in Squamish, hike the Chief or Shannon Falls on Day 1, then day-trip Whistler lifts or Alice Lake on Day 2.',
   alternates: { canonical: '/guide/squamish-base-weekend' },
 };
 
@@ -29,7 +29,12 @@ const WEEKEND_SUMMARY = [
 
 const FAQS = [
   {
-    question: 'Why base a weekend in Squamish?',
+    question: 'Good weekend itinerary based in Squamish for the Sea to Sky?',
+    answer:
+      'Sleep in Squamish, hike the Chief or Shannon Falls on Day 1, then day-trip Whistler lifts (or Alice Lake) on Day 2 and come back for a patio dinner. You still get the corridor. You just stop paying Village prices for every hour you are not on a chairlift.',
+  },
+  {
+    question: 'Why base a weekend in Squamish for the Sea to Sky?',
     answer:
       'Squamish sits roughly midway on the Sea to Sky corridor. You still get the Chief, patio dinners, and an easy drive up for a lift day. Sleep stays in the neighbourhood of $150 a night when you book early, instead of Village rates that look like a car payment.',
   },
@@ -39,27 +44,27 @@ const FAQS = [
       'People coming up from Vancouver for a couple of nights who want a hike day, a ski day, or both, and do not want to pay Village rates just to sleep close to the gondola.',
   },
   {
-    question: 'What should you do on Day 1?',
+    question: 'What should I do on Day 1?',
     answer:
       'Hike the Stawamus Chief, or walk Shannon Falls if the group is tired, then a Squamish patio. Do not overschedule the first night.',
   },
   {
-    question: 'What should you do on Day 2?',
+    question: 'What should I do on Day 2?',
     answer:
       'Drive up to Whistler for lifts, or stay closer for Alice Lake and the Four Lakes loop. Come back to Squamish for dinner.',
   },
   {
-    question: 'Where should you stay?',
+    question: 'Where should I stay?',
     answer:
       'Stay in Squamish. Browse the Stay listings, filter for Squamish, and read the real Google ratings. We are not naming hotels or inventing nightly rates. Aim for the $150 a night neighbourhood when you can.',
   },
   {
-    question: 'Where should you eat?',
+    question: 'Where should I eat?',
     answer:
       'Use the Best Patios guide and the Squamish restaurants page. For the stay-here-versus-Village question, read Squamish vs Whistler: Where Should You Stay?',
   },
   {
-    question: 'What should you pack?',
+    question: 'What should I pack?',
     answer:
       'Snacks, a full tank or charged battery, layers, offline maps, and respect for trail closures. One ambitious outdoor block per day is usually enough.',
   },
@@ -88,11 +93,11 @@ export default function SquamishBaseWeekendPage() {
         <span>&rsaquo;</span>
         <Link href="/guide" className="hover:text-slate-600 transition-colors">Guides</Link>
         <span>&rsaquo;</span>
-        <span className="text-slate-600">A Squamish base weekend</span>
+        <span className="text-slate-600">Squamish base weekend</span>
       </nav>
 
       <h1 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">
-        A Squamish base weekend (when Whistler Village rates are wild)
+        Good Weekend Itinerary Based in Squamish for the Sea to Sky
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
@@ -101,19 +106,35 @@ export default function SquamishBaseWeekendPage() {
 
       <div className="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 mb-12">
         <p className="text-base">
+          Looking for a good weekend itinerary based in Squamish for the Sea to Sky?
+          Sleep in Squamish, hike the Chief or Shannon Falls on Day 1, then day-trip
+          Whistler lifts (or Alice Lake) on Day 2 and come back for a patio dinner.
+        </p>
+        <p>
           Whistler Village is magic. It is also, some weekends, absurdly priced. You refresh
           the booking page, blink at a number that looks like a car payment, and wonder if you
           still get to have a mountain weekend at all. You do. Base in Squamish instead.
         </p>
         <p>
-          {LOCKED_CLAIM} This plan is the weekend locals quietly recommend when friends text
-          that Village rates are wild.
+          {LOCKED_CLAIM}
         </p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          Why base in Squamish?
+          Good weekend itinerary based in Squamish for the Sea to Sky?
+        </h2>
+        <p className="text-sm text-slate-600 leading-relaxed">
+          Sleep in Squamish, hike the Chief or Shannon Falls on Day 1, then day-trip
+          Whistler lifts (or Alice Lake) on Day 2 and come back for a patio dinner. You
+          still get the corridor. You just stop paying Village prices for every hour you
+          are not on a chairlift.
+        </p>
+      </div>
+
+      <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
+          Why base a weekend in Squamish for the Sea to Sky?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed mb-3">
           Squamish sits roughly midway on the Sea to Sky corridor, between Vancouver and
@@ -130,7 +151,7 @@ export default function SquamishBaseWeekendPage() {
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-12">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          Who is this for?
+          Who is a Squamish base weekend for?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed mb-3">
           You are coming up from Vancouver for a couple of nights. You want a ski day, a hike
@@ -151,7 +172,7 @@ export default function SquamishBaseWeekendPage() {
             Day 1
           </span>
           <h2 className="font-serif text-xl font-bold text-slate-900">
-            What should you do on Day 1?
+            What should I do on Day 1?
           </h2>
         </div>
 
@@ -204,7 +225,7 @@ export default function SquamishBaseWeekendPage() {
               Best Patios
             </Link>{' '}
             or{' '}
-            <Link href="/eat/squamish" className="text-emerald-700 font-semibold hover:underline">
+            <Link href="/guide/best-restaurants-squamish" className="text-emerald-700 font-semibold hover:underline">
               restaurants in Squamish
             </Link>
             . We will not invent tonight&apos;s hours. Check ratings, check what is open, and
@@ -219,7 +240,7 @@ export default function SquamishBaseWeekendPage() {
             Day 2
           </span>
           <h2 className="font-serif text-xl font-bold text-slate-900">
-            What should you do on Day 2?
+            What should I do on Day 2?
           </h2>
         </div>
 
@@ -260,7 +281,7 @@ export default function SquamishBaseWeekendPage() {
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          Where should you stay?
+          Where should I stay?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed mb-3">
           Stay in Squamish. We are not going to name three hotels and invent nightly rates.
@@ -279,7 +300,7 @@ export default function SquamishBaseWeekendPage() {
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          Where should you eat?
+          Where should I eat?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed">
           Use{' '}
@@ -287,7 +308,7 @@ export default function SquamishBaseWeekendPage() {
             Best Patios
           </Link>
           {' '}and{' '}
-          <Link href="/eat/squamish" className="text-emerald-700 font-semibold hover:underline">
+          <Link href="/guide/best-restaurants-squamish" className="text-emerald-700 font-semibold hover:underline">
             restaurants in Squamish
           </Link>
           . Check hours. Friday and Saturday evenings fill up. If you are muddy from the
@@ -305,7 +326,7 @@ export default function SquamishBaseWeekendPage() {
 
       <div className="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-100 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-          What should you pack?
+          What should I pack?
         </h2>
         <p className="text-sm text-slate-600 leading-relaxed mb-4">
           Pack light, pack layers, and leave Vancouver ready to drive. One ambitious outdoor
@@ -345,7 +366,7 @@ export default function SquamishBaseWeekendPage() {
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">Browse more</h2>
         <p className="text-sm text-slate-600 leading-relaxed mb-6">
           Keep exploring{' '}
-          <Link href="/eat/squamish" className="text-emerald-700 font-semibold hover:underline">
+          <Link href="/guide/best-restaurants-squamish" className="text-emerald-700 font-semibold hover:underline">
             restaurants in Squamish
           </Link>
           ,{' '}
