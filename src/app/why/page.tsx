@@ -114,9 +114,9 @@ export default function WhyPage() {
           <p>
             That&apos;s what Best Sea to Sky exists for. We&apos;re not a global platform trying to
             cover every city on earth. We&apos;re a single-corridor directory built by people who
-            have lived here for 20 years — for people who want to experience the corridor the way
-            we do. Every listing is hand-picked. Every guide is locally curated. Zero ads in our
-            results. No pay-to-rank. Just the straight goods.
+            live here — for people who want to experience the corridor the way we do. Every listing
+            is hand-picked. Every guide is locally curated. Zero ads in our results. No pay-to-rank.
+            Just the straight goods.
           </p>
         </div>
 

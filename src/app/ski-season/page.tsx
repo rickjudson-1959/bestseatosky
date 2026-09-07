@@ -80,9 +80,8 @@ export default function SkiSeasonPage() {
         <p className="text-base">
           Whistler Blackcomb is one of the best ski resorts on the planet. It&apos;s also one
           of the most expensive, most crowded, and most frustrating if you don&apos;t know the
-          tricks. This guide is everything we&apos;ve learned from 20 winters on the corridor —
-          how to ski more, spend less, eat well, and avoid the mistakes that turn a great trip
-          into an expensive headache.
+          tricks. This guide is how to ski more, spend less, eat well, and avoid the mistakes
+          that turn a great trip into an expensive headache.
         </p>
       </div>
 
