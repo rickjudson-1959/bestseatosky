@@ -132,12 +132,26 @@ export default async function HomePage() {
             </span>
           </h1>
 
-          <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
+          <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-8">
             Stop scrolling through thousands of bot-written reviews and outdated tourist traps.
             Best Sea to Sky is the local Sea to Sky corridor directory (Vancouver to Pemberton)
             with hand-picked listings and real Google ratings, no pay-to-rank. Straight goods
             on the best spots from locals who live here.
           </p>
+
+          {/* 15s website sizzle — dual CTA is in-video; no tenure claims */}
+          <div className="mb-10 mx-auto max-w-3xl rounded-2xl overflow-hidden border border-white/15 shadow-2xl bg-black/40 aspect-video">
+            <video
+              className="h-full w-full object-cover"
+              controls
+              playsInline
+              preload="metadata"
+              poster="/images/hero-sea-to-sky.jpg"
+              aria-label="Best Sea to Sky 15 second website sizzle"
+            >
+              <source src="/videos/bss-sizzle-15s.mp4" type="video/mp4" />
+            </video>
+          </div>
 
           <SearchBar />
 
