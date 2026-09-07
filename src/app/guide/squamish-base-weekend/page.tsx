@@ -8,6 +8,9 @@ export const metadata: Metadata = {
   alternates: { canonical: '/guide/squamish-base-weekend' },
 };
 
+const LOCKED_CLAIM =
+  'Best Sea to Sky is the local Sea to Sky corridor directory (Vancouver to Pemberton) with hand-picked listings and real Google ratings, no pay-to-rank.';
+
 const PACKING_TIPS = [
   'Leave Vancouver with snacks and a full tank (or charged battery).',
   'Layers. Corridor weather argues with itself.',
@@ -24,9 +27,62 @@ const WEEKEND_SUMMARY = [
   'Keep plans loose enough that weather cannot ruin the trip.',
 ];
 
+const FAQS = [
+  {
+    question: 'Why base a weekend in Squamish?',
+    answer:
+      'Squamish sits roughly midway on the Sea to Sky corridor. You still get the Chief, patio dinners, and an easy drive up for a lift day. Sleep stays in the neighbourhood of $150 a night when you book early, instead of Village rates that look like a car payment.',
+  },
+  {
+    question: 'Who is a Squamish base weekend for?',
+    answer:
+      'People coming up from Vancouver for a couple of nights who want a hike day, a ski day, or both, and do not want to pay Village rates just to sleep close to the gondola.',
+  },
+  {
+    question: 'What should you do on Day 1?',
+    answer:
+      'Hike the Stawamus Chief, or walk Shannon Falls if the group is tired, then a Squamish patio. Do not overschedule the first night.',
+  },
+  {
+    question: 'What should you do on Day 2?',
+    answer:
+      'Drive up to Whistler for lifts, or stay closer for Alice Lake and the Four Lakes loop. Come back to Squamish for dinner.',
+  },
+  {
+    question: 'Where should you stay?',
+    answer:
+      'Stay in Squamish. Browse the Stay listings, filter for Squamish, and read the real Google ratings. We are not naming hotels or inventing nightly rates. Aim for the $150 a night neighbourhood when you can.',
+  },
+  {
+    question: 'Where should you eat?',
+    answer:
+      'Use the Best Patios guide and the Squamish restaurants page. For the stay-here-versus-Village question, read Squamish vs Whistler: Where Should You Stay?',
+  },
+  {
+    question: 'What should you pack?',
+    answer:
+      'Snacks, a full tank or charged battery, layers, offline maps, and respect for trail closures. One ambitious outdoor block per day is usually enough.',
+  },
+];
+
 export default function SquamishBaseWeekendPage() {
+  const faqSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: { '@type': 'Answer', text: faq.answer },
+    })),
+  };
+
   return (
     <section className="max-w-4xl mx-auto px-6 py-8">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(faqSchema) }}
+      />
+
       <nav className="flex items-center gap-2 text-sm text-slate-400 mb-6">
         <Link href="/" className="hover:text-slate-600 transition-colors">Home</Link>
         <span>&rsaquo;</span>
@@ -47,52 +103,46 @@ export default function SquamishBaseWeekendPage() {
         <p className="text-base">
           Whistler Village is magic. It is also, some weekends, absurdly priced. You refresh
           the booking page, blink at a number that looks like a car payment, and wonder if you
-          still get to have a mountain weekend at all.
-        </p>
-        <p className="text-base">
-          You do. Base in Squamish instead.
+          still get to have a mountain weekend at all. You do. Base in Squamish instead.
         </p>
         <p>
+          {LOCKED_CLAIM} This plan is the weekend locals quietly recommend when friends text
+          that Village rates are wild.
+        </p>
+      </div>
+
+      <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
+          Why base in Squamish?
+        </h2>
+        <p className="text-sm text-slate-600 leading-relaxed mb-3">
           Squamish sits roughly midway on the Sea to Sky corridor, between Vancouver and
           Pemberton. You still get Chief trails, waterfall mist, patio dinners, and an easy
-          drive up for a lift day or a quieter lake morning. Your sleep just costs less of
-          your weekend budget. Think roughly in the neighbourhood of $150 a night for a solid
-          stay, depending on season and how early you book. Village rates can blow past that
-          without blinking. We will not pretend every listing hits that number. The point is
-          the pattern: Squamish as your home base, Whistler (or the quieter lakes) as your
-          day trip.
+          drive up for a lift day. Your sleep just costs less of the weekend budget.
         </p>
-        <p>
-          This is the weekend locals quietly recommend when friends text &quot;Village is wild
-          this weekend, help.&quot;
+        <p className="text-sm text-slate-600 leading-relaxed">
+          Think roughly in the neighbourhood of $150 a night for a solid stay, depending on
+          season and how early you book. Village rates can blow past that without blinking. We
+          will not pretend every listing hits that number. The point is the pattern: Squamish
+          as your home base, Whistler (or the quieter lakes) as your day trip.
         </p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-12">
-        <h2 className="font-serif text-xl font-bold text-slate-900 mb-4">Who this is for</h2>
-        <div className="space-y-4 text-sm text-slate-600 leading-relaxed">
-          <p>
-            You are coming up from Vancouver for a couple of nights. You want a ski day, a
-            hike day, or a mix of both. You do not want to pay Village rates just to sleep
-            close to the gondola.
-          </p>
-          <p>
-            Maybe you are chasing powder on the hill and a patio after. Maybe it is shoulder
-            season and you want Shannon Falls spray and a lake swim without the alpine circus.
-            Maybe you just want the corridor without feeling like you financed someone
-            else&apos;s mortgage.
-          </p>
-          <p>
-            This guide is for that trip. One base in Squamish. Daylight spent where the views
-            (and lifts) are. Night back in a town that still feels like a town.
-          </p>
-          <p>
-            Best Sea to Sky covers the whole corridor from Vancouver to Pemberton. Places here
-            are hand-picked by locals, tied to real Google ratings, and never pay-to-rank. So
-            when we say &quot;base here,&quot; we mean it as people who actually drive this
-            highway.
-          </p>
-        </div>
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
+          Who is this for?
+        </h2>
+        <p className="text-sm text-slate-600 leading-relaxed mb-3">
+          You are coming up from Vancouver for a couple of nights. You want a ski day, a hike
+          day, or a mix of both. You do not want to pay Village rates just to sleep close to
+          the gondola.
+        </p>
+        <p className="text-sm text-slate-600 leading-relaxed">
+          Maybe you are chasing powder on the hill and a patio after. Maybe it is shoulder
+          season and you want Shannon Falls spray and a lake swim without the alpine circus.
+          One base in Squamish. Daylight spent where the views (and lifts) are. Night back in
+          a town that still feels like a town.
+        </p>
       </div>
 
       <div className="mb-12">
@@ -101,17 +151,16 @@ export default function SquamishBaseWeekendPage() {
             Day 1
           </span>
           <h2 className="font-serif text-xl font-bold text-slate-900">
-            Arrive Squamish, get outside, eat outside
+            What should you do on Day 1?
           </h2>
         </div>
 
-        <div className="space-y-4 text-sm text-slate-600 leading-relaxed mb-6">
-          <p>
-            Roll in from Vancouver. Traffic on Highway 99 can be a character of its own on
-            Friday afternoons, so leave with a bit of buffer if you can. Once you hit
-            Squamish, park the car and stretch.
-          </p>
-        </div>
+        <p className="text-sm text-slate-600 leading-relaxed mb-6">
+          Hike the Chief, or walk Shannon Falls, then a patio. Roll in from Vancouver. Traffic
+          on Highway 99 can be a character of its own on Friday afternoons, so leave with a bit
+          of buffer if you can. Once you hit Squamish, park the car and stretch. Do not
+          overschedule Day 1.
+        </p>
 
         <div className="flex flex-col gap-5 mb-6">
           <div className="bg-white rounded-xl p-5 md:p-6 border border-slate-100">
@@ -145,25 +194,21 @@ export default function SquamishBaseWeekendPage() {
           </div>
         </div>
 
-        <p className="text-sm text-slate-600 leading-relaxed mb-6">
-          Either way, do not overschedule Day 1. You drove. You arrived. Let Squamish do the
-          rest.
-        </p>
-
         <div className="bg-slate-50 rounded-xl p-5 md:p-6 border border-slate-100">
           <h3 className="font-serif text-base font-bold text-slate-900 mb-2">
             Evening: patio, please
           </h3>
-          <p className="text-sm text-slate-600 leading-relaxed mb-3">
+          <p className="text-sm text-slate-600 leading-relaxed">
             Squamish does patios well. Browse{' '}
             <Link href="/best-patios" className="text-emerald-700 font-semibold hover:underline">
               Best Patios
             </Link>{' '}
-            for current picks. We will not invent tonight&apos;s hours. Check ratings, check
-            what is open, and pick a spot that matches your vibe.
-          </p>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            Sleep in Squamish. That is the whole move.
+            or{' '}
+            <Link href="/eat/squamish" className="text-emerald-700 font-semibold hover:underline">
+              restaurants in Squamish
+            </Link>
+            . We will not invent tonight&apos;s hours. Check ratings, check what is open, and
+            pick a spot that matches your vibe. Sleep in Squamish. That is the whole move.
           </p>
         </div>
       </div>
@@ -174,13 +219,13 @@ export default function SquamishBaseWeekendPage() {
             Day 2
           </span>
           <h2 className="font-serif text-xl font-bold text-slate-900">
-            Drive up, play, come back
+            What should you do on Day 2?
           </h2>
         </div>
 
         <p className="text-sm text-slate-600 leading-relaxed mb-6">
-          Wake up without Village parking stress. Coffee in Squamish. Then decide your day
-          based on weather and mood.
+          Whistler lifts, or Alice Lake and the Four Lakes loop. Wake up without Village
+          parking stress. Coffee in Squamish. Then decide based on weather and mood.
         </p>
 
         <div className="flex flex-col gap-5 mb-6">
@@ -214,58 +259,58 @@ export default function SquamishBaseWeekendPage() {
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
-            <span className="font-serif text-lg font-bold text-emerald-700">1</span>
-          </div>
-          <div className="flex-1">
-            <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-              Where to stay (without inventing hotels)
-            </h2>
-            <p className="text-sm text-slate-600 leading-relaxed mb-3">
-              We are not going to name three hotels and invent nightly rates. Start here:{' '}
-              <Link href="/stay" className="text-emerald-700 font-semibold hover:underline">
-                Stay
-              </Link>
-              . Filter for Squamish, read the real ratings, and pick something that fits
-              your budget and style.
-            </p>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Rough budgeting tip: aim for that ~$150/night neighbourhood when you can, and
-              book earlier for peak weekends.
-            </p>
-          </div>
-        </div>
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
+          Where should you stay?
+        </h2>
+        <p className="text-sm text-slate-600 leading-relaxed mb-3">
+          Stay in Squamish. We are not going to name three hotels and invent nightly rates.
+          Start here:{' '}
+          <Link href="/stay" className="text-emerald-700 font-semibold hover:underline">
+            Stay
+          </Link>
+          . Filter for Squamish, read the real ratings, and pick something that fits your
+          budget and style.
+        </p>
+        <p className="text-sm text-slate-600 leading-relaxed">
+          Rough budgeting tip: aim for that ~$150/night neighbourhood when you can, and book
+          earlier for peak weekends.
+        </p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
-        <div className="flex items-start gap-4">
-          <div className="w-10 h-10 rounded-xl bg-emerald-50 flex items-center justify-center shrink-0">
-            <span className="font-serif text-lg font-bold text-emerald-700">2</span>
-          </div>
-          <div className="flex-1">
-            <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
-              Eat and patio pointers
-            </h2>
-            <p className="text-sm text-slate-600 leading-relaxed mb-3">
-              Use{' '}
-              <Link href="/best-patios" className="text-emerald-700 font-semibold hover:underline">
-                Best Patios
-              </Link>
-              . Real Google ratings. Hand-picked by locals. No pay-to-rank.
-            </p>
-            <p className="text-sm text-slate-600 leading-relaxed">
-              Practical notes: Check hours. Friday and Saturday evenings fill up. If you are
-              muddy from the Chief, own it. Squamish gets it.
-            </p>
-          </div>
-        </div>
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
+          Where should you eat?
+        </h2>
+        <p className="text-sm text-slate-600 leading-relaxed">
+          Use{' '}
+          <Link href="/best-patios" className="text-emerald-700 font-semibold hover:underline">
+            Best Patios
+          </Link>
+          {' '}and{' '}
+          <Link href="/eat/squamish" className="text-emerald-700 font-semibold hover:underline">
+            restaurants in Squamish
+          </Link>
+          . Check hours. Friday and Saturday evenings fill up. If you are muddy from the
+          Chief, own it. Squamish gets it. If you are still weighing a Village hotel night
+          against this plan, read{' '}
+          <Link
+            href="/blog/squamish-vs-whistler-where-to-stay"
+            className="text-emerald-700 font-semibold hover:underline"
+          >
+            Squamish vs Whistler: Where Should You Stay?
+          </Link>
+          .
+        </p>
       </div>
 
       <div className="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-100 mb-8">
-        <h2 className="font-serif text-xl font-bold text-slate-900 mb-4">
-          Soft packing and pacing tips
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
+          What should you pack?
         </h2>
+        <p className="text-sm text-slate-600 leading-relaxed mb-4">
+          Pack light, pack layers, and leave Vancouver ready to drive. One ambitious outdoor
+          block per day is usually enough.
+        </p>
         <ul className="space-y-2 text-sm text-slate-600">
           {PACKING_TIPS.map((tip) => (
             <li key={tip} className="flex items-start gap-2">
@@ -300,14 +345,29 @@ export default function SquamishBaseWeekendPage() {
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">Browse more</h2>
         <p className="text-sm text-slate-600 leading-relaxed mb-6">
           Keep exploring{' '}
-          <Link href="/" className="text-emerald-700 font-semibold hover:underline">
-            Best Sea to Sky
-          </Link>{' '}
-          or read{' '}
+          <Link href="/eat/squamish" className="text-emerald-700 font-semibold hover:underline">
+            restaurants in Squamish
+          </Link>
+          ,{' '}
+          <Link href="/stay/whistler" className="text-emerald-700 font-semibold hover:underline">
+            hotels in Whistler
+          </Link>
+          ,{' '}
+          <Link href="/best-patios" className="text-emerald-700 font-semibold hover:underline">
+            Best Patios
+          </Link>
+          ,{' '}
+          <Link
+            href="/blog/squamish-vs-whistler-where-to-stay"
+            className="text-emerald-700 font-semibold hover:underline"
+          >
+            Squamish vs Whistler
+          </Link>
+          , or{' '}
           <Link href="/48-hours-squamish" className="text-emerald-700 font-semibold hover:underline">
             48 Hours in Squamish
-          </Link>{' '}
-          for a tighter first-timer loop.
+          </Link>
+          .
         </p>
       </div>
 
