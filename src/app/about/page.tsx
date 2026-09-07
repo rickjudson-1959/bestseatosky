@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'About Us',
   description:
-    'Best Sea to Sky is a locally curated directory for the Sea to Sky corridor — from West Vancouver to Pemberton. Built by a Squamish local who got tired of the tourist noise.',
+    'Best Sea to Sky is the local Sea to Sky corridor directory (Vancouver to Pemberton) with hand-picked listings and real Google ratings, no pay-to-rank.',
   alternates: { canonical: '/about' },
 };
 
@@ -21,7 +21,7 @@ export default function AboutPage() {
         The Story Behind Best Sea to Sky
       </h1>
       <p className="text-slate-500 text-lg mb-10">
-        A local directory built for the people who live, work, and play in this corridor.
+        Best Sea to Sky is the local Sea to Sky corridor directory (Vancouver to Pemberton) with hand-picked listings and real Google ratings, no pay-to-rank. Built for people who live, work, and play here.
       </p>
 
       <div className="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 space-y-6">
@@ -46,8 +46,9 @@ export default function AboutPage() {
         <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">A Local&apos;s Perspective</h2>
         <p>
           I found a need for a service that cut through the tourist traps and offered the straight
-          goods on the places we actually go. Best Sea to Sky is a local directory built for the
-          people who live, work, and play in this corridor.
+          goods on the places we actually go. Best Sea to Sky is the local Sea to Sky corridor
+          directory (Vancouver to Pemberton) with hand-picked listings and real Google ratings, no
+          pay-to-rank. It is built for the people who live, work, and play in this corridor.
         </p>
         <ul className="list-disc pl-5 space-y-2">
           <li>
@@ -85,9 +86,9 @@ export default function AboutPage() {
             Whistler, Pemberton, and everywhere in between.
           </li>
           <li>
-            <strong>Real reviews, not paid placements.</strong> Every listing shows its actual Google
-            rating and review count. We don&apos;t manufacture reviews or let businesses buy higher
-            star ratings.
+            <strong>Real Google ratings, no pay-to-rank.</strong> Every listing shows its actual
+            Google rating and review count. We don&apos;t manufacture reviews or let businesses buy
+            higher star ratings. Featured and Sponsored tiers add visibility, not fake stars.
           </li>
           <li>
             <strong>859+ verified listings.</strong> From fine dining to food trucks, luxury lodges
@@ -112,7 +113,8 @@ export default function AboutPage() {
           <Link href="/get-listed" className="text-emerald-700 font-semibold hover:underline">
             Featured and Sponsored tiers
           </Link>{' '}
-          with priority placement and additional promotion.
+          with priority placement and additional promotion. Those tiers never change Google ratings
+          or buy a higher place in rating-ranked lists.
         </p>
 
         <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">Get in Touch</h2>

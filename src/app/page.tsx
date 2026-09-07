@@ -134,9 +134,9 @@ export default async function HomePage() {
 
           <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-10">
             Stop scrolling through thousands of bot-written reviews and outdated tourist traps.
-            Best Sea to Sky is the only directory curated by locals who have spent 20 years living,
-            working, and exploring this corridor. We give you the straight goods on the best spots
-            from Vancouver to Pemberton — no noise, no ads, just the best of the West Coast.
+            Best Sea to Sky is the local Sea to Sky corridor directory (Vancouver to Pemberton)
+            with hand-picked listings and real Google ratings, no pay-to-rank. Straight goods
+            on the best spots from locals who live here.
           </p>
 
           <SearchBar />
@@ -199,9 +199,9 @@ export default async function HomePage() {
               <p className="text-xs text-slate-500">Every business vetted by people who live and eat and hike here</p>
             </div>
             <div className="text-center">
-              <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">Zero</div>
-              <div className="text-sm font-semibold text-slate-900 mb-1">Ads in Our Rankings</div>
-              <p className="text-xs text-slate-500">You&apos;re here because you&apos;re good, not because you paid</p>
+              <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">No</div>
+              <div className="text-sm font-semibold text-slate-900 mb-1">Pay-to-Rank</div>
+              <p className="text-xs text-slate-500">Real Google ratings. Hand-picked listings. Featured tiers never buy a higher star rating.</p>
             </div>
             <div className="text-center">
               <div className="font-serif text-3xl font-bold text-emerald-700 mb-1">20+</div>
