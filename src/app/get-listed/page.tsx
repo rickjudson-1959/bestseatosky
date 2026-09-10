@@ -1,87 +1,14 @@
 import { Metadata } from 'next';
-import Link from 'next/link';
 import { getCategories, getTowns } from '@/lib/data';
 import GetListedForm from './GetListedForm';
+import PricingLadder from '@/components/PricingLadder';
 
 export const metadata: Metadata = {
   title: 'Get Listed | Put Your Business in Front of Sea to Sky Visitors',
   description:
-    'Your listing appears alongside top-rated businesses, ranked by real Google reviews. Free to get started — 859+ businesses already listed on Best Sea to Sky.',
+    'Your listing appears alongside top-rated businesses, ranked by real Google reviews. Free to get started. 859+ businesses already listed on Best Sea to Sky.',
   alternates: { canonical: '/get-listed' },
 };
-
-const TIERS = [
-  {
-    name: 'The Local Starter',
-    price: 'Free',
-    period: '',
-    description: 'Get your name in front of people who are already planning a corridor trip',
-    features: [
-      'Show up alongside the best in your category',
-      'Your real Google stars and reviews, front and centre',
-      'Address, phone, and website — one click to your door',
-      'Found when visitors search your town',
-      'Claim and update your info whenever you want',
-    ],
-    cta: null,
-    href: '#get-started',
-    style: 'border-slate-200',
-    buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
-  },
-  {
-    name: 'The Corridor Leader',
-    price: '$49',
-    period: '/mo',
-    description: 'Be the first name visitors see when they\'re planning their trip',
-    features: [
-      'Everything in Local Starter, plus:',
-      'A Featured badge — visitors know you\'re the real deal',
-      'First thing people see on your category page',
-      'Spotlighted on the homepage for new visitors',
-      'Included in our "best of" guides that locals share',
-    ],
-    cta: 'Become a Corridor Leader',
-    href: 'https://buy.stripe.com/5kQaEX9Zx84OftsaROabK00',
-    style: 'border-slate-200',
-    buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
-  },
-  {
-    name: 'The Town Spotlight',
-    price: '$99',
-    period: '/mo',
-    description: 'Be the reason visitors plan their trip to the corridor',
-    features: [
-      'Everything in Corridor Leader, plus:',
-      'Sponsored placement in guide pages and blog posts',
-      'Featured in our newsletter to corridor trip-planners',
-      'Cross-linked from related town and category pages',
-    ],
-    cta: 'Get Started',
-    href: 'https://buy.stripe.com/3cIdR97Rpfxg0yy0daabK03',
-    style: 'border-slate-200',
-    buttonStyle: 'bg-slate-900 text-white hover:bg-slate-800',
-  },
-  {
-    name: 'The Sponsored Guide',
-    price: '$149',
-    period: '/mo',
-    description: 'The full partnership — maximum visibility across the platform',
-    features: [
-      'Everything in Town Spotlight, plus:',
-      'Dedicated blog post written about your business',
-      'Monthly social media promotion on Facebook & Instagram',
-      'Homepage banner placement',
-      'Priority position on relevant guide pages',
-      '"Sponsored Guide" badge on your listing',
-      'Quarterly analytics report — views, clicks, and trends',
-    ],
-    cta: 'Become a Sponsored Guide',
-    href: 'https://buy.stripe.com/3cI00j8Vt84Ogxw8JGabK01',
-    style: 'border-emerald-400 border-2 ring-1 ring-emerald-200 bg-emerald-50/30',
-    buttonStyle: 'bg-emerald-700 text-white hover:bg-emerald-800',
-    popular: true,
-  },
-];
 
 const TESTIMONIALS = [
   {
@@ -90,7 +17,7 @@ const TESTIMONIALS = [
     location: 'Squamish',
   },
   {
-    quote: 'The people who find us here are already packed and ready to go. They\'re not browsing — they\'re booking. That\'s the difference.',
+    quote: 'The people who find us here are already packed and ready to go. They\'re not browsing, they\'re booking. That\'s the difference.',
     name: 'Adventure Tour Operator',
     location: 'Whistler',
   },
@@ -104,11 +31,11 @@ const TESTIMONIALS = [
 const FAQS = [
   {
     q: 'Is the free listing really free?',
-    a: 'Yes — forever. No credit card, no hidden fees, no "free trial" that turns into a bill. Your business gets listed with your Google stars, address, phone, and website at zero cost.',
+    a: 'Yes, forever. No credit card, no hidden fees, no "free trial" that turns into a bill. Your business gets listed with your Google stars, address, phone, and website at zero cost.',
   },
   {
     q: 'How is this different from Google Maps or Yelp?',
-    a: 'Google shows every gas station and ATM between here and Pemberton. We only show the places locals would actually recommend. Your listing appears in curated guides, ranked by real reviews, and seen by people who are specifically planning a Sea to Sky trip — not just searching "restaurants near me" from their couch in Toronto.',
+    a: 'Google shows every gas station and ATM between here and Pemberton. We only show the places locals would actually recommend. Your listing appears in curated guides, ranked by real reviews, and seen by people who are specifically planning a Sea to Sky trip, not just searching "restaurants near me" from their couch in Toronto.',
   },
   {
     q: 'What happens when I become a Corridor Leader?',
@@ -116,15 +43,15 @@ const FAQS = [
   },
   {
     q: 'Can I cancel anytime?',
-    a: 'Yes. All paid tiers — Corridor Leader ($49/mo), Town Spotlight ($99/mo), and Sponsored Guide ($149/mo) — are month-to-month. No contracts, no penalties. Cancel whenever and your listing just goes back to free.',
+    a: 'Yes. All paid tiers (Corridor Leader $49/mo, Town Spotlight $99/mo, and Sponsored Guide $149/mo) are month-to-month. No contracts, no penalties. Cancel whenever and your listing just goes back to free.',
   },
   {
     q: 'Who actually sees my listing?',
-    a: 'People who are actively planning a trip to Squamish, Whistler, or Pemberton. They\'re searching for the best restaurants, trails, hotels, and things to do — and finding our guides. These aren\'t random clicks. These are people who are going to show up.',
+    a: 'People who are actively planning a trip to Squamish, Whistler, or Pemberton. They\'re searching for the best restaurants, trails, hotels, and things to do, and finding our guides. These aren\'t random clicks. These are people who are going to show up.',
   },
   {
     q: 'My business is already on your site. How do I claim it?',
-    a: 'Find your listing and click "Claim This Listing" in the sidebar. We\'ll verify you\'re the owner and give you the keys — update your description, add photos, fix your hours. It\'s your listing.',
+    a: 'Find your listing and click "Claim This Listing" in the sidebar. We\'ll verify you\'re the owner and give you the keys: update your description, add photos, fix your hours. It\'s your listing.',
   },
 ];
 
@@ -149,7 +76,7 @@ export default async function GetListedPage() {
             The Visitors Are Already Looking for You. Let&apos;s Make Sure They Find You.
           </h1>
           <p className="text-lg text-slate-300 leading-relaxed max-w-xl mx-auto mb-10">
-            859+ corridor businesses are already listed — from Squamish breweries to Whistler
+            859+ corridor businesses are already listed, from Squamish breweries to Whistler
             lodges to Pemberton adventure outfits. Getting your name in front of trip-planners
             takes 30 seconds, and it&apos;s free.
           </p>
@@ -159,6 +86,12 @@ export default async function GetListedPage() {
           >
             Get Your Free Listing
           </a>
+          <div className="mt-10 text-left">
+            <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-3 text-center">
+              Free, $49, $99, or $149 / month
+            </p>
+            <PricingLadder variant="compact" theme="dark" freeHref="#get-started" />
+          </div>
         </div>
       </section>
 
@@ -207,7 +140,7 @@ export default async function GetListedPage() {
       </section>
 
       {/* PRICING COMPARISON */}
-      <section className="px-6 py-20">
+      <section id="pricing" className="px-6 py-20">
         <div className="max-w-5xl mx-auto">
           <div className="text-center mb-12">
             <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 mb-3">
@@ -218,50 +151,8 @@ export default async function GetListedPage() {
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
-            {TIERS.map((tier) => (
-              <div
-                key={tier.name}
-                className={`bg-white rounded-2xl p-7 border ${tier.style} flex flex-col relative`}
-              >
-                {tier.popular && (
-                  <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-                    <span className="bg-emerald-700 text-white text-xs font-bold px-3 py-1 rounded-full uppercase tracking-wide">
-                      Most Popular
-                    </span>
-                  </div>
-                )}
-                <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">{tier.name}</h3>
-                <p className="text-xs text-slate-400 mb-4">{tier.description}</p>
-                <div className="mb-5">
-                  <span className="text-3xl font-bold text-slate-900">{tier.price}</span>
-                  {tier.period && <span className="text-sm text-slate-400">{tier.period}</span>}
-                </div>
-                <ul className="flex flex-col gap-3 mb-8 flex-1">
-                  {tier.features.map((feature) => (
-                    <li key={feature} className="flex items-start gap-2 text-sm text-slate-600">
-                      <span className="text-emerald-600 mt-0.5 shrink-0">&#10003;</span>
-                      {feature}
-                    </li>
-                  ))}
-                </ul>
-                {tier.cta ? (
-                  <a
-                    href={tier.href}
-                    className={`block w-full text-center py-3 rounded-xl text-sm font-bold transition-colors ${tier.buttonStyle}`}
-                  >
-                    {tier.cta}
-                  </a>
-                ) : (
-                  <a
-                    href="#get-started"
-                    className={`block w-full text-center py-3 rounded-xl text-sm font-bold transition-colors ${tier.buttonStyle}`}
-                  >
-                    Get Started Free
-                  </a>
-                )}
-              </div>
-            ))}
+          <div className="mb-12">
+            <PricingLadder freeHref="#get-started" />
           </div>
 
           {/* Comparison Table */}
@@ -297,16 +188,16 @@ export default async function GetListedPage() {
                   <tr key={i} className="border-b border-slate-50 last:border-0">
                     <td className="py-3 px-5 text-slate-600">{feature as string}</td>
                     <td className="text-center py-3 px-3">
-                      {free ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">—</span>}
+                      {free ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">-</span>}
                     </td>
                     <td className="text-center py-3 px-3">
-                      {leader ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">—</span>}
+                      {leader ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">-</span>}
                     </td>
                     <td className="text-center py-3 px-3">
-                      {sponsored ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">—</span>}
+                      {sponsored ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">-</span>}
                     </td>
                     <td className="text-center py-3 px-3 bg-emerald-50/30">
-                      {partner ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">—</span>}
+                      {partner ? <span className="text-emerald-600">&#10003;</span> : <span className="text-slate-200">-</span>}
                     </td>
                   </tr>
                 ))}
@@ -352,14 +243,14 @@ export default async function GetListedPage() {
           <div className="bg-slate-50 rounded-2xl p-6 md:p-8 border border-slate-100 mb-8">
             <p className="text-sm text-slate-600 leading-relaxed mb-4">
               On the big platforms, your business is just another pin between a gas station and
-              an ATM. Here, you&apos;re listed alongside the spots that locals actually recommend —
+              an ATM. Here, you&apos;re listed alongside the spots that locals actually recommend:
               the brewery with the best patio, the trail guide everyone trusts, the hotel
               that people drive two hours to stay at.
             </p>
             <p className="text-sm text-slate-600 leading-relaxed mb-4">
               <strong className="text-slate-900">That&apos;s the company you keep on Best Sea to Sky.</strong>{' '}
               Every listing is vetted by people who live in the corridor. We don&apos;t list
-              everything — we list the best. And we think your business belongs here.
+              everything. We list the best. And we think your business belongs here.
             </p>
             <p className="text-sm text-slate-700 font-semibold">
               30 seconds. Free forever. Upgrade if and when it makes sense.

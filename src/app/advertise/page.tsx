@@ -1,10 +1,11 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import PricingLadder from '@/components/PricingLadder';
 
 export const metadata: Metadata = {
   title: 'Advertise | Be the Place Visitors Find First',
   description:
-    'Be the restaurant, hotel, or adventure company that corridor visitors find before they even leave the house. 859+ local businesses listed — free to start.',
+    'Be the restaurant, hotel, or adventure company that corridor visitors find before they even leave the house. 859+ local businesses listed, free to start.',
   alternates: { canonical: '/advertise' },
 };
 
@@ -12,17 +13,17 @@ const VALUE_PROPS = [
   {
     title: 'Be the Place They Find First',
     description:
-      'When someone googles "best restaurants in Squamish," you want to be in that answer — not buried under 200 pins between a gas station and a Tim Hortons. On Best Sea to Sky, your business shows up in a curated list alongside the corridor\'s best. The people reading it are already planning their trip. They just need to know your name.',
+      'When someone googles "best restaurants in Squamish," you want to be in that answer, not buried under 200 pins between a gas station and a Tim Hortons. On Best Sea to Sky, your business shows up in a curated list alongside the corridor\'s best. The people reading it are already planning their trip. They just need to know your name.',
   },
   {
     title: 'More Hikers at Your Tables. More Guests in Your Rooms.',
     description:
-      'Everyone who visits Best Sea to Sky is planning a trip to the corridor right now. They\'re not casually browsing a global site — they\'re looking for exactly the kind of place you run, in exactly the town you\'re in. That means the people who find you here are ready to walk through your door, not just scroll past your pin.',
+      'Everyone who visits Best Sea to Sky is planning a trip to the corridor right now. They\'re not casually browsing a global site. They\'re looking for exactly the kind of place you run, in exactly the town you\'re in. That means the people who find you here are ready to walk through your door, not just scroll past your pin.',
   },
   {
     title: 'You\'re Known by the Company You Keep',
     description:
-      'Your listing sits alongside places that locals actually recommend — the brewery with the best patio in Squamish, the lodge that Whistler regulars swear by, the trail guide everyone trusts. No fake reviews, no pay-to-rank schemes. When your business appears on Best Sea to Sky, people know you earned that spot.',
+      'Your listing sits alongside places that locals actually recommend: the brewery with the best patio in Squamish, the lodge that Whistler regulars swear by, the trail guide everyone trusts. No fake reviews, no pay-to-rank schemes. When your business appears on Best Sea to Sky, people know you earned that spot.',
   },
 ];
 
@@ -45,7 +46,7 @@ export default function AdvertisePage() {
             Be the Place Visitors Find Before They Even Leave the House.
           </h1>
           <p className="text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto mb-4">
-            You know what it&apos;s like — someone drives through town, eats at the wrong place, and
+            You know what it&apos;s like: someone drives through town, eats at the wrong place, and
             never comes back. We make sure the right visitors find you first. The ones who are already
             planning their corridor trip and looking for exactly what you offer.
           </p>
@@ -61,11 +62,17 @@ export default function AdvertisePage() {
               Get Your Free Listing
             </Link>
             <a
-              href="#value"
+              href="#pricing"
               className="px-8 py-4 rounded-xl bg-white/10 text-white text-sm font-bold hover:bg-white/20 transition-colors"
             >
-              See How It Works
+              See pricing
             </a>
+          </div>
+          <div className="mt-10 text-left">
+            <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-3 text-center">
+              Free, $49, $99, or $149 / month
+            </p>
+            <PricingLadder variant="compact" theme="dark" />
           </div>
         </div>
       </section>
@@ -133,149 +140,16 @@ export default function AdvertisePage() {
         </div>
 
         {/* Pricing Tiers */}
-        <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-center">
-          Choose Your Visibility Level
-        </h2>
-        <p className="text-slate-500 text-center mb-10 max-w-xl mx-auto">
-          Start free and upgrade when you&apos;re ready. Every tier builds on the one below it.
-        </p>
+        <div id="pricing">
+          <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 mb-3 text-center">
+            Choose Your Visibility Level
+          </h2>
+          <p className="text-slate-500 text-center mb-10 max-w-xl mx-auto">
+            Start free and upgrade when you&apos;re ready. Every tier builds on the one below it.
+          </p>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-16">
-          {/* Tier 1: Local Starter */}
-          <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200">
-            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">Local Starter</h3>
-            <div className="font-serif text-3xl font-bold text-slate-900 mb-1">Free</div>
-            <p className="text-sm text-slate-400 mb-5">Get on the map</p>
-            <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Basic listing with name, address, hours, and contact info</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Included in category and town pages</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Google rating and reviews displayed</span>
-              </li>
-            </ul>
-            <Link
-              href="/get-listed"
-              className="block w-full text-center py-3 rounded-xl bg-slate-100 text-slate-800 text-sm font-bold hover:bg-slate-200 transition-colors"
-            >
-              Get Listed Free
-            </Link>
-          </div>
-
-          {/* Tier 2: Corridor Leader */}
-          <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200">
-            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">Corridor Leader</h3>
-            <div className="font-serif text-3xl font-bold text-slate-900 mb-1">$49<span className="text-base font-normal text-slate-400">/mo</span></div>
-            <p className="text-sm text-slate-400 mb-5">Stand out from the crowd</p>
-            <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Everything in Local Starter</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Featured badge and priority placement on category pages</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Enhanced listing with photos and custom description</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Included in relevant &quot;Best Of&quot; guide pages</span>
-              </li>
-            </ul>
-            <a
-              href="https://buy.stripe.com/5kQaEX9Zx84OftsaROabK00"
-              className="block w-full text-center py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors"
-            >
-              Get Started
-            </a>
-          </div>
-
-          {/* Tier 3: Town Spotlight */}
-          <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200">
-            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">Town Spotlight</h3>
-            <div className="font-serif text-3xl font-bold text-slate-900 mb-1">$99<span className="text-base font-normal text-slate-400">/mo</span></div>
-            <p className="text-sm text-slate-400 mb-5">Own the spotlight in your town</p>
-            <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Everything in Corridor Leader</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Sponsored placement in guide pages and blog posts</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Featured in our newsletter to corridor trip-planners</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Cross-linked from related town and category pages</span>
-              </li>
-            </ul>
-            <a
-              href="https://buy.stripe.com/3cIdR97Rpfxg0yy0daabK03"
-              className="block w-full text-center py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors"
-            >
-              Get Started
-            </a>
-          </div>
-
-          {/* Tier 4: Sponsored Guide */}
-          <div className="relative bg-emerald-50/50 rounded-2xl p-6 md:p-8 border-2 border-emerald-400 ring-1 ring-emerald-200">
-            <div className="absolute -top-3 left-1/2 -translate-x-1/2">
-              <span className="bg-emerald-700 text-white text-xs font-bold uppercase tracking-wide px-4 py-1 rounded-full">
-                Best Value
-              </span>
-            </div>
-            <h3 className="font-serif text-lg font-bold text-slate-900 mb-1 mt-2">Sponsored Guide</h3>
-            <div className="font-serif text-3xl font-bold text-emerald-800 mb-1">$149<span className="text-base font-normal text-slate-400">/mo</span></div>
-            <p className="text-sm text-slate-400 mb-5">Be the reason people plan their trip</p>
-            <ul className="space-y-2.5 text-sm text-slate-600 mb-6">
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Everything in Town Spotlight</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Dedicated blog post written about your business</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Monthly social media promotion on Facebook and Instagram</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Homepage banner placement</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Priority position on relevant guide pages</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>&quot;Sponsored Guide&quot; badge on your listing</span>
-              </li>
-              <li className="flex items-start gap-2">
-                <span className="text-emerald-600 mt-0.5 shrink-0 font-bold">&#10003;</span>
-                <span>Quarterly analytics report — listing views, clicks, and trends</span>
-              </li>
-            </ul>
-            <a
-              href="https://buy.stripe.com/3cI00j8Vt84Ogxw8JGabK01"
-              className="block w-full text-center py-3.5 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors"
-            >
-              Get Started
-            </a>
+          <div className="mb-16">
+            <PricingLadder />
           </div>
         </div>
 

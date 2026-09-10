@@ -7,6 +7,7 @@ import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
 import AffiliateCard from '@/components/AffiliateCard';
+import HubPageConversion from '@/components/HubPageConversion';
 
 export const metadata: Metadata = {
   title: 'Where to Stay in Whistler (2026) — Best Hotels & Lodges',
@@ -199,6 +200,14 @@ export default async function WhistlerStayPage() {
         </p>
       </div>
 
+      <HubPageConversion
+        townSlug="whistler"
+        townName="Whistler"
+        primaryCta={{ href: '#all-stays', label: 'Browse Whistler stays' }}
+        source="stay-whistler-hero"
+        omitCategory="stay"
+      />
+
       {/* Trust Strip */}
       <div className="mb-10">
         <TrustStrip />
@@ -316,7 +325,7 @@ export default async function WhistlerStayPage() {
       </div>
 
       {/* ============ FULL LIST ============ */}
-      <div className="border-t border-slate-200 pt-12 mb-16">
+      <div id="all-stays" className="border-t border-slate-200 pt-12 mb-16">
         <h2 className="font-serif text-2xl font-bold text-slate-900 mb-2">
           All Whistler Accommodation
         </h2>

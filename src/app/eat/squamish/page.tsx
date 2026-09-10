@@ -6,6 +6,7 @@ import FallbackImage from '@/components/FallbackImage';
 import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
+import HubPageConversion from '@/components/HubPageConversion';
 
 export const metadata: Metadata = {
   title: 'Best Restaurants in Squamish (2026) — A Local\'s Guide',
@@ -195,6 +196,14 @@ export default async function SquamishEatPage() {
         </p>
       </div>
 
+      <HubPageConversion
+        townSlug="squamish"
+        townName="Squamish"
+        primaryCta={{ href: '#all-restaurants', label: 'Browse Squamish restaurants' }}
+        source="eat-squamish-hero"
+        omitCategory="eat"
+      />
+
       {/* Trust Strip */}
       <div className="mb-10">
         <TrustStrip />
@@ -330,7 +339,7 @@ export default async function SquamishEatPage() {
       </div>
 
       {/* ============ FULL LIST ============ */}
-      <div className="border-t border-slate-200 pt-12 mb-16">
+      <div id="all-restaurants" className="border-t border-slate-200 pt-12 mb-16">
         <h2 className="font-serif text-2xl font-bold text-slate-900 mb-2">
           All Squamish Restaurants
         </h2>

@@ -7,6 +7,10 @@ import { getPlaceholderImage } from '@/lib/supabase';
 import { buildUTMUrl } from '@/lib/utm';
 import FeaturedInGuides from '@/components/FeaturedInGuides';
 import FallbackImage from '@/components/FallbackImage';
+import ListingNextStep from '@/components/ListingNextStep';
+import TownHubLinks from '@/components/TownHubLinks';
+import TripPlannerCapture from '@/components/TripPlannerCapture';
+import { getCategoryTownHubHref } from '@/lib/townHubs';
 import dynamic from 'next/dynamic';
 const FaqSection = dynamic(() => import('@/components/FaqSection'));
 import OpenStatusBadge from '@/components/OpenStatusBadge';
@@ -123,6 +127,7 @@ export default async function ListingPage({ params }: Props) {
   const catSlug = listing.categories?.slug || categorySlug;
   const styles = CAT_STYLES[catSlug] || CAT_STYLES.eat;
   const tags = listing.listing_tags?.map((lt) => lt.tags) || [];
+  const townHubHref = getCategoryTownHubHref(catSlug, listing.towns?.slug);
 
   // Show clean domain for website display (strip protocol, query params, trailing slash)
   const cleanWebsite = listing.website
@@ -241,9 +246,34 @@ export default async function ListingPage({ params }: Props) {
         <Link href="/" className="hover:text-slate-600 transition-colors">Home</Link>
         <span>›</span>
         <Link href={`/${catSlug}`} className="hover:text-slate-600 transition-colors capitalize">{catSlug}</Link>
+        {listing.towns?.name && (
+          <>
+            <span>›</span>
+            {townHubHref ? (
+              <Link
+                href={townHubHref}
+                className="hover:text-slate-600 transition-colors"
+              >
+                {listing.towns.name}
+              </Link>
+            ) : (
+              <span className="text-slate-500">{listing.towns.name}</span>
+            )}
+          </>
+        )}
         <span>›</span>
         <span className="text-slate-600">{listing.name}</span>
       </nav>
+
+      <ListingNextStep
+        listingName={listing.name}
+        categorySlug={catSlug}
+        listingSlug={listing.slug}
+        address={listing.address}
+        townSlug={listing.towns?.slug}
+        townName={listing.towns?.name}
+        accentClass={styles.accent}
+      />
 
       {/* Hero Image */}
       <div className={`h-64 md:h-80 rounded-2xl overflow-hidden bg-gradient-to-br ${styles.gradient} relative mb-10`}>
@@ -334,8 +364,14 @@ export default async function ListingPage({ params }: Props) {
             </div>
           )}
 
+          <TownHubLinks townSlug={listing.towns?.slug} townName={listing.towns?.name} />
+
           {/* Featured In Guides */}
           <FeaturedInGuides guides={featuredGuides} listingName={listing.name} />
+
+          <div className="mt-8">
+            <TripPlannerCapture source={`listing-${listing.slug}`} />
+          </div>
         </div>
 
         {/* Sidebar */}
