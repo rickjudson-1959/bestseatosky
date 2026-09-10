@@ -1,9 +1,12 @@
 import type { Metadata } from 'next';
+import dynamic from 'next/dynamic';
 import { DM_Serif_Display, Source_Sans_3 } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
+
+const ChatWidget = dynamic(() => import('@/components/ChatWidget'));
 
 const dmSerif = DM_Serif_Display({
   weight: '400',
@@ -91,6 +94,7 @@ export default function RootLayout({
         <Header />
         <main className="min-h-screen">{children}</main>
         <Footer />
+        <ChatWidget />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

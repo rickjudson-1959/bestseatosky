@@ -101,7 +101,7 @@ export default function ChatUI({ variant = 'full' }: { variant?: 'full' | 'widge
   const isWidget = variant === 'widget';
 
   return (
-    <div className={`flex flex-col ${isWidget ? 'h-full' : 'h-[calc(100vh-12rem)]'}`}>
+    <div className={`flex flex-col ${isWidget ? 'h-full' : 'h-[min(32rem,calc(100dvh-18rem))]'}`}>
       {/* Messages */}
       <div className="flex-1 overflow-y-auto px-4 py-4 space-y-3">
         {messages.map((msg, i) => (
