@@ -27,6 +27,12 @@ const nextConfig: NextConfig = {
     minimumCacheTTL: 60 * 60 * 24 * 30, // 30 days
   },
 
+  async redirects() {
+    return [
+      { source: '/pricing', destination: '/get-listed', permanent: true },
+    ];
+  },
+
   async headers() {
     return [
       {

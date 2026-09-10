@@ -17,6 +17,11 @@
       "has": [{ "type": "host", "value": "www.bestseatosky.ca" }],
       "destination": "https://bestseatosky.com/:path*",
       "permanent": true
+    },
+    {
+      "source": "/pricing",
+      "destination": "/get-listed",
+      "permanent": true
     }
   ]
 }
