@@ -30,6 +30,7 @@ const nextConfig: NextConfig = {
   async redirects() {
     return [
       { source: '/pricing', destination: '/get-listed', permanent: true },
+      { source: '/visit/helmers-organic-farm-squamish', destination: '/visit/helmers-organic-farm-pemberton', permanent: true },
     ];
   },
 
