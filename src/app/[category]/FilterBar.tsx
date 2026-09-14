@@ -116,7 +116,11 @@ export default function FilterBar({ listings, tags, towns, categorySlug, initial
       {/* Listing Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
         {filtered.map((listing) => (
-          <ListingCard key={listing.id} listing={listing} />
+          <ListingCard
+            key={listing.id}
+            listing={listing}
+            showGoogleRatingLabel={categorySlug === 'eat'}
+          />
         ))}
       </div>
 
