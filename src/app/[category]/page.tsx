@@ -218,7 +218,7 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           Get the Free Sea to Sky Trip Planner
         </h2>
         <p className="text-sm text-slate-500 mb-6">
-          Local restaurant picks, must-do trails, and insider tips, delivered to your inbox.
+          Local restaurant picks, must-do trails, and insider tips — delivered to your inbox.
         </p>
         <NewsletterSignup source={`category-${categorySlug}`} />
       </div>
