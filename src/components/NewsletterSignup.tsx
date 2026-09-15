@@ -67,7 +67,7 @@ export default function NewsletterSignup({ source = 'website', variant = 'defaul
           disabled={status === 'submitting'}
           className="px-5 py-3 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors disabled:opacity-50 shrink-0"
         >
-          {status === 'submitting' ? '...' : 'Subscribe'}
+          {status === 'submitting' ? '...' : 'Get the Planner'}
         </button>
         {status === 'error' && (
           <p className="text-red-600 text-xs mt-1 absolute">{errorMessage}</p>
@@ -96,7 +96,7 @@ export default function NewsletterSignup({ source = 'website', variant = 'defaul
           disabled={status === 'submitting'}
           className="px-6 py-3.5 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors disabled:opacity-50 shrink-0"
         >
-          {status === 'submitting' ? 'Subscribing...' : 'Get the Free Guide'}
+          {status === 'submitting' ? 'Sending...' : 'Get the Free Planner'}
         </button>
       </div>
       <p className="text-xs text-slate-400 mt-3">

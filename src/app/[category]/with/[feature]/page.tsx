@@ -8,7 +8,7 @@ import {
 } from '@/lib/data';
 import ListingCard from '@/components/ListingCard';
 import FeaturePills from '@/components/FeaturePills';
-import NewsletterSignup from '@/components/NewsletterSignup';
+import TripPlannerCapture from '@/components/TripPlannerCapture';
 import { TrustStrip } from '@/components/SocialProof';
 import { getFeature } from '@/lib/features';
 
@@ -107,16 +107,11 @@ export default async function FeatureFilterPage({ params }: Props) {
         </div>
       )}
 
-      {/* Newsletter Signup */}
-      <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 mt-12 text-center">
-        <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
-          Get the Free Sea to Sky Trip Planner
-        </h2>
-        <p className="text-sm text-slate-500 mb-6">
-          Local picks, must-do trails, and insider tips — delivered to your inbox.
-        </p>
-        <NewsletterSignup source={`feature-${categorySlug}-${featureSlug}`} />
-      </div>
+      <TripPlannerCapture
+        source={`feature-${categorySlug}-${featureSlug}`}
+        variant="default"
+        className="mt-12"
+      />
 
       {/* BreadcrumbList Schema */}
       <script

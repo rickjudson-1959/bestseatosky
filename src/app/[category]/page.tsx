@@ -5,7 +5,7 @@ import Link from 'next/link';
 import FilterBar from './FilterBar';
 import FeaturePills from '@/components/FeaturePills';
 import CuisinePills from '@/components/CuisinePills';
-import NewsletterSignup from '@/components/NewsletterSignup';
+import TripPlannerCapture from '@/components/TripPlannerCapture';
 import { TrustStrip } from '@/components/SocialProof';
 
 const EAT_TITLE = 'Best Restaurants in Squamish, Whistler & Pemberton';
@@ -191,6 +191,13 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         </div>
       )}
 
+      <TripPlannerCapture
+        source={`category-${categorySlug}`}
+        variant="default"
+        anchor
+        className="mb-8"
+      />
+
       {/* Trust Strip */}
       <div className="mb-8">
         <TrustStrip />
@@ -211,17 +218,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         initialTown={town}
         initialTag={tag}
       />
-
-      {/* Newsletter Signup */}
-      <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 mt-12 text-center">
-        <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
-          Get the Free Sea to Sky Trip Planner
-        </h2>
-        <p className="text-sm text-slate-500 mb-6">
-          Local restaurant picks, must-do trails, and insider tips — delivered to your inbox.
-        </p>
-        <NewsletterSignup source={`category-${categorySlug}`} />
-      </div>
 
       {/* BreadcrumbList Schema */}
       <script

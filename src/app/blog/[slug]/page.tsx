@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogPostBySlug, getAllSeoPages } from '@/lib/data';
-import NewsletterSignup from '@/components/NewsletterSignup';
+import TripPlannerCapture from '@/components/TripPlannerCapture';
 import dynamic from 'next/dynamic';
 const FaqSection = dynamic(() => import('@/components/FaqSection'));
 import AffiliateCard from '@/components/AffiliateCard';
@@ -207,17 +207,8 @@ export default async function BlogPostPage({ params }: Props) {
         <FaqSection faqs={post.faq_json} />
       )}
 
-      {/* Newsletter Signup */}
       <div className="border-t border-slate-100 pt-10 mt-10">
-        <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 text-center">
-          <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
-            Enjoying this? Get more local picks.
-          </h2>
-          <p className="text-sm text-slate-500 mb-6">
-            Free Sea to Sky Trip Planner — restaurant recs, trail guides, and insider tips from locals.
-          </p>
-          <NewsletterSignup source="blog" />
-        </div>
+        <TripPlannerCapture source="blog" variant="default" />
       </div>
 
       {/* BreadcrumbList Schema */}

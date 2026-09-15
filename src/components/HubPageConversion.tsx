@@ -34,12 +34,12 @@ export default function HubPageConversion({
             href="/trip-planner"
             className="inline-flex justify-center items-center px-5 py-3 rounded-xl bg-slate-50 text-slate-800 border border-slate-200 text-sm font-bold hover:bg-slate-100 transition-colors"
           >
-            Get the trip planner
+            See what&apos;s inside
           </Link>
         </div>
       </div>
       <TownHubLinks townSlug={townSlug} townName={townName} omitCategory={omitCategory} />
-      <TripPlannerCapture source={source} />
+      <TripPlannerCapture source={source} variant="default" anchor />
     </div>
   );
 }
