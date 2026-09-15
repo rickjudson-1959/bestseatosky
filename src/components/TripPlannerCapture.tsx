@@ -3,17 +3,39 @@ import NewsletterSignup from '@/components/NewsletterSignup';
 type Props = {
   source: string;
   variant?: 'compact' | 'default';
+  className?: string;
+  /** Set on the first/primary capture on a page so we never duplicate the id. */
+  anchor?: boolean;
 };
 
-export default function TripPlannerCapture({ source, variant = 'compact' }: Props) {
+const HEADING = 'Get the Free Sea to Sky Trip Planner';
+const DEFAULT_BLURB =
+  'Local picks for Squamish, Whistler, and Pemberton. Where to eat, what to do, and what to skip. Enter your email and we will send it.';
+const COMPACT_BLURB =
+  'Where to eat, stay, and stop across Squamish, Whistler, and Pemberton. Enter your email and we will send it.';
+
+export default function TripPlannerCapture({
+  source,
+  variant = 'compact',
+  className = '',
+  anchor = false,
+}: Props) {
+  const anchorProps = anchor ? { id: 'trip-planner' } : {};
+
   if (variant === 'default') {
     return (
-      <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 text-center">
-        <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
-          Get the free Sea to Sky trip planner
+      <div
+        {...anchorProps}
+        className={`scroll-mt-24 rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-8 md:p-10 text-center shadow-sm ${className}`}
+      >
+        <p className="text-xs font-semibold text-emerald-700 uppercase tracking-wider mb-2">
+          Free download
+        </p>
+        <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 mb-2">
+          {HEADING}
         </h2>
-        <p className="text-sm text-slate-500 mb-6">
-          Local picks for Squamish, Whistler, and Pemberton. Where to eat, what to do, and what to skip.
+        <p className="text-sm md:text-base text-slate-600 mb-6 max-w-xl mx-auto leading-relaxed">
+          {DEFAULT_BLURB}
         </p>
         <NewsletterSignup source={source} />
       </div>
@@ -21,15 +43,18 @@ export default function TripPlannerCapture({ source, variant = 'compact' }: Prop
   }
 
   return (
-    <div className="rounded-2xl border border-emerald-100 bg-emerald-50 p-5">
+    <div
+      {...anchorProps}
+      className={`scroll-mt-24 rounded-2xl border-2 border-emerald-200 bg-emerald-50 p-5 md:p-6 ${className}`}
+    >
       <p className="text-xs font-semibold text-emerald-700 uppercase tracking-wider mb-1">
-        Free trip planner
+        Free download
       </p>
-      <h3 className="font-serif text-lg font-bold text-slate-900 mb-1">
-        Get local picks in your inbox
+      <h3 className="font-serif text-xl font-bold text-slate-900 mb-1">
+        {HEADING}
       </h3>
-      <p className="text-sm text-slate-500 mb-4 leading-relaxed">
-        A short list of where to eat, stay, and stop, sent to your email.
+      <p className="text-sm text-slate-600 mb-4 leading-relaxed">
+        {COMPACT_BLURB}
       </p>
       <NewsletterSignup source={source} variant="compact" />
     </div>

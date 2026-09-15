@@ -159,10 +159,13 @@ export default async function HomePage() {
           <div className="mt-8 mb-10 grid grid-cols-1 sm:grid-cols-2 gap-4 max-w-2xl mx-auto text-left">
             <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5">
               <p className="text-emerald-400 text-xs font-semibold tracking-[2px] uppercase mb-2">
-                Plan Your Trip
+                Free Trip Planner
               </p>
+              <h2 className="font-serif text-lg font-bold text-white mb-2">
+                Get the Free Sea to Sky Trip Planner
+              </h2>
               <p className="text-sm text-slate-300 mb-4 leading-relaxed">
-                Get local picks and corridor tips in your inbox.
+                Local picks for Squamish, Whistler, and Pemberton. Enter your email and we will send it.
               </p>
               <NewsletterSignup source="homepage-hero" variant="compact" />
             </div>
@@ -324,12 +327,15 @@ export default async function HomePage() {
       {/* NEWSLETTER SIGNUP */}
       <section className="bg-gradient-to-br from-[#0f2318] via-[#1a3a2a] to-[#0f2318] px-6 py-16">
         <div className="max-w-xl mx-auto text-center">
+          <p className="text-emerald-300 text-xs font-semibold uppercase tracking-wider mb-2">
+            Free download
+          </p>
           <h2 className="font-serif text-2xl md:text-3xl text-white mb-3">
             Get the Free Sea to Sky Trip Planner
           </h2>
           <p className="text-slate-400 text-sm leading-relaxed mb-8">
-            Local restaurant picks, must-do trails, and insider tips for the corridor —
-            delivered straight to your inbox.
+            Local restaurant picks, must-do trails, and insider tips for the corridor,
+            delivered to your inbox.
           </p>
           <NewsletterSignup source="homepage" />
         </div>

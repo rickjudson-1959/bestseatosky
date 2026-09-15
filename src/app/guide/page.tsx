@@ -1,7 +1,7 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllSeoPages } from '@/lib/data';
-import NewsletterSignup from '@/components/NewsletterSignup';
+import TripPlannerCapture from '@/components/TripPlannerCapture';
 import { VisitorTestimonials } from '@/components/SocialProof';
 
 export const metadata: Metadata = {
@@ -131,16 +131,7 @@ export default async function GuidesPage() {
     <VisitorTestimonials />
 
     <section className="max-w-5xl mx-auto px-6 pb-8">
-      {/* Newsletter Signup */}
-      <div className="bg-white rounded-2xl p-8 border border-slate-200 mt-4 text-center">
-        <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
-          Get the Free Sea to Sky Trip Planner
-        </h2>
-        <p className="text-sm text-slate-500 mb-6">
-          Local restaurant picks, must-do trails, and insider tips — delivered to your inbox.
-        </p>
-        <NewsletterSignup source="guides-index" />
-      </div>
+      <TripPlannerCapture source="guides-index" variant="default" className="mt-4" />
     </section>
     </>
   );

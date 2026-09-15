@@ -31,7 +31,7 @@ export default function TripPlannerPage() {
       </p>
 
       <div className="mb-8">
-        <TripPlannerCapture source="trip-planner-hero" variant="default" />
+        <TripPlannerCapture source="trip-planner-hero" variant="default" anchor />
       </div>
 
       <div className="bg-white rounded-2xl p-8 border border-slate-200 mb-10">

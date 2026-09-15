@@ -3,7 +3,6 @@ import Link from 'next/link';
 import { getListings, getTagsByCategory, getCategoryBySlug } from '@/lib/data';
 import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import FallbackImage from '@/components/FallbackImage';
-import NewsletterSignup from '@/components/NewsletterSignup';
 import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
 import HubPageConversion from '@/components/HubPageConversion';
@@ -358,17 +357,6 @@ export default async function SquamishEatPage() {
         >
           ← See all Sea to Sky restaurants
         </Link>
-      </div>
-
-      {/* Newsletter Signup */}
-      <div className="bg-emerald-50 rounded-2xl p-8 border border-emerald-100 text-center">
-        <h2 className="font-serif text-xl font-bold text-slate-900 mb-2">
-          Get the Free Sea to Sky Trip Planner
-        </h2>
-        <p className="text-sm text-slate-500 mb-6">
-          Local restaurant picks, must-do trails, and insider tips — delivered to your inbox.
-        </p>
-        <NewsletterSignup source="eat-squamish" />
       </div>
 
       {/* BreadcrumbList Schema */}

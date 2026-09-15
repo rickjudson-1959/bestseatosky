@@ -3,7 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
 import { getPlaceholderImage } from '@/lib/supabase';
-import NewsletterSignup from '@/components/NewsletterSignup';
+import TripPlannerCapture from '@/components/TripPlannerCapture';
 import { TrustStrip } from '@/components/SocialProof';
 import dynamic from 'next/dynamic';
 const FaqSection = dynamic(() => import('@/components/FaqSection'));
@@ -346,16 +346,7 @@ export default async function GuidePage({ params }: Props) {
         </p>
       </div>
 
-      {/* Newsletter Signup */}
-      <div className="bg-white rounded-2xl p-8 border border-slate-200 mt-8">
-        <h2 className="font-serif text-xl font-bold text-slate-900 mb-2 text-center">
-          Want more local picks?
-        </h2>
-        <p className="text-sm text-slate-500 text-center mb-6">
-          Get the free Sea to Sky Trip Planner — restaurant recs, trail guides, and insider tips.
-        </p>
-        <NewsletterSignup source="guide" />
-      </div>
+      <TripPlannerCapture source="guide" variant="default" className="mt-8" />
 
       {/* BreadcrumbList Schema */}
       <script
