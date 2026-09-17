@@ -266,11 +266,15 @@ export async function getGuidesForListing(
     .is('tag_id', null)
     .limit(5);
 
+  // Same town + category as the listing — do not attach Whistler café guides
+  // to a Squamish café just because both have tag=cafes.
   const tagQuery = tagIds.length > 0
     ? supabase
         .from('seo_pages')
         .select('*')
         .eq('status', 'published')
+        .eq('town_id', townId)
+        .eq('category_id', categoryId)
         .in('tag_id', tagIds)
         .limit(3)
     : null;
@@ -284,6 +288,8 @@ export async function getGuidesForListing(
     (tagResult.data || []) as SeoPage[],
     (byTown || []) as SeoPage[],
     tagIds,
+    townId,
+    categoryId,
   );
 }
 
