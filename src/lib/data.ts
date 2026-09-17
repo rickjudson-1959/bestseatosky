@@ -1,4 +1,7 @@
 import { supabase, Category, Town, Tag, Listing, SeoPage, BlogPost, ListingRequest, ListingFeature } from './supabase';
+import { selectGuidesForListing } from './selectGuidesForListing';
+
+export { selectGuidesForListing } from './selectGuidesForListing';
 
 export async function getCategories(): Promise<Category[]> {
   const { data, error } = await supabase
@@ -252,12 +255,15 @@ export async function getGuidesForListing(
   townId: string,
   tagIds: string[],
 ): Promise<SeoPage[]> {
+  // Untagged town/category guides only (e.g. best-restaurants-squamish).
+  // Tagged guides like best-breweries-* must come from the tag query.
   const townQuery = supabase
     .from('seo_pages')
     .select('*')
     .eq('status', 'published')
     .eq('category_id', categoryId)
     .eq('town_id', townId)
+    .is('tag_id', null)
     .limit(5);
 
   const tagQuery = tagIds.length > 0
@@ -273,18 +279,12 @@ export async function getGuidesForListing(
     townQuery,
     tagQuery ?? Promise.resolve({ data: null }),
   ]);
-  const byTag = (tagResult.data || []) as SeoPage[];
 
-  const seen = new Set<string>();
-  const results: SeoPage[] = [];
-  for (const guide of [...(byTown || []), ...byTag]) {
-    if (!seen.has(guide.slug)) {
-      seen.add(guide.slug);
-      results.push(guide as SeoPage);
-    }
-    if (results.length >= 4) break;
-  }
-  return results;
+  return selectGuidesForListing(
+    (tagResult.data || []) as SeoPage[],
+    (byTown || []) as SeoPage[],
+    tagIds,
+  );
 }
 
 export async function getListingFeatures(listingId: string): Promise<ListingFeature[]> {
