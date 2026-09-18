@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import CallCta from '@/components/CallCta';
 
 const FOOTER_LINKS = {
   Restaurants: [
@@ -72,22 +73,26 @@ export default function Footer() {
           ))}
         </div>
 
-        <div className="border-t border-slate-800 pt-8 flex flex-col md:flex-row justify-between items-center gap-4">
-          <div className="flex items-center gap-2.5">
-            <img src="/icon.svg" alt="Best Sea to Sky" width={32} height={32} className="w-8 h-8" />
-            <span className="font-serif text-base text-slate-200">BestSeaToSky</span>
-          </div>
-          <p className="text-xs text-slate-600">
-            © {new Date().getFullYear()} Best Sea to Sky. Your guide to the best of the corridor.
-          </p>
-          <div className="flex gap-4">
-            <Link href="/get-listed" className="text-xs text-slate-600 hover:text-slate-400">Get Listed</Link>
-            <Link href="/about" className="text-xs text-slate-600 hover:text-slate-400">About</Link>
-            <Link href="/why" className="text-xs text-slate-600 hover:text-slate-400">Why Us</Link>
-            <Link href="/methodology" className="text-xs text-slate-600 hover:text-slate-400">How We Rank</Link>
-            <Link href="/terms" className="text-xs text-slate-600 hover:text-slate-400">Terms</Link>
-            <Link href="/privacy" className="text-xs text-slate-600 hover:text-slate-400">Privacy</Link>
-            <Link href="/contact" className="text-xs text-slate-600 hover:text-slate-400">Contact</Link>
+        <div className="border-t border-slate-800 pt-8 flex flex-col gap-8">
+          <CallCta variant="footer" />
+
+          <div className="flex flex-col md:flex-row justify-between items-center gap-4">
+            <div className="flex items-center gap-2.5">
+              <img src="/icon.svg" alt="Best Sea to Sky" width={32} height={32} className="w-8 h-8" />
+              <span className="font-serif text-base text-slate-200">BestSeaToSky</span>
+            </div>
+            <p className="text-xs text-slate-600">
+              © {new Date().getFullYear()} Best Sea to Sky. Your guide to the best of the corridor.
+            </p>
+            <div className="flex gap-4">
+              <Link href="/get-listed" className="text-xs text-slate-600 hover:text-slate-400">Get Listed</Link>
+              <Link href="/about" className="text-xs text-slate-600 hover:text-slate-400">About</Link>
+              <Link href="/why" className="text-xs text-slate-600 hover:text-slate-400">Why Us</Link>
+              <Link href="/methodology" className="text-xs text-slate-600 hover:text-slate-400">How We Rank</Link>
+              <Link href="/terms" className="text-xs text-slate-600 hover:text-slate-400">Terms</Link>
+              <Link href="/privacy" className="text-xs text-slate-600 hover:text-slate-400">Privacy</Link>
+              <Link href="/contact" className="text-xs text-slate-600 hover:text-slate-400">Contact</Link>
+            </div>
           </div>
         </div>
       </div>

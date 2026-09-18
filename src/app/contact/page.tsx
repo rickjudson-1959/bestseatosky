@@ -1,5 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
+import CallCta from '@/components/CallCta';
 import ContactForm from './ContactForm';
 
 export const metadata: Metadata = {
@@ -31,7 +32,9 @@ export default async function ContactPage({
         Have a question, suggestion, or correction? We&apos;d love to hear from you.
       </p>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-10 mb-12">
+      <div className="grid grid-cols-1 md:grid-cols-2 gap-10 mb-12">
+        <CallCta />
+
         <div className="bg-white rounded-2xl p-6 border border-slate-200">
           <h3 className="font-serif text-base font-bold text-slate-900 mb-2">Email Us</h3>
           <p className="text-sm text-slate-500 mb-3">
