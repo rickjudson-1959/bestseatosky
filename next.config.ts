@@ -16,8 +16,6 @@ const nextConfig: NextConfig = {
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [
-      { protocol: 'https', hostname: 'lh3.googleusercontent.com', pathname: '/**' },
-      { protocol: 'https', hostname: 'places.googleapis.com', pathname: '/**' },
       ...(SUPABASE_HOSTNAME
         ? [{ protocol: 'https' as const, hostname: SUPABASE_HOSTNAME, pathname: '/storage/v1/object/public/**' }]
         : []),
