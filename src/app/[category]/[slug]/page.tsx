@@ -33,7 +33,7 @@ const CAT_ICONS: Record<string, string> = {
   services: '🧭',
 };
 
-const HERO_POSITION: Record<string, string> = { 'harvest-hub-squamish': 'object-[88%_50%] md:object-center' };
+const HERO_POSITION: Record<string, string> = { 'harvest-hub-squamish': 'object-[88%_50%] md:object-[88%_70%]' };
 
 function normalizeListingImagePath(value: unknown): string {
   if (typeof value !== 'string') return '';
