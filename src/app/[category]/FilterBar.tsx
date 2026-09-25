@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo } from 'react';
+import { Fragment, useMemo, useState, type ReactNode } from 'react';
 import { Listing, Tag, Town } from '@/lib/supabase';
 import ListingCard from '@/components/ListingCard';
 
@@ -20,9 +20,22 @@ type Props = {
   categorySlug: string;
   initialTown?: string;
   initialTag?: string;
+  /** Full-width slot inserted after the first screen of listing cards. */
+  midContent?: ReactNode;
+  /** How many cards count as the first screen. Defaults to two desktop rows. */
+  midAfter?: number;
 };
 
-export default function FilterBar({ listings, tags, towns, categorySlug, initialTown, initialTag }: Props) {
+export default function FilterBar({
+  listings,
+  tags,
+  towns,
+  categorySlug,
+  initialTown,
+  initialTag,
+  midContent,
+  midAfter = 6,
+}: Props) {
   const [activeTown, setActiveTown] = useState(initialTown || 'all');
   const [activeTags, setActiveTags] = useState<string[]>(initialTag ? [initialTag] : []);
 
@@ -58,6 +71,9 @@ export default function FilterBar({ listings, tags, towns, categorySlug, initial
       return (b.google_rating || 0) - (a.google_rating || 0);
     });
   }, [listings, activeTown, activeTags]);
+
+  const midInsertAt =
+    midContent && filtered.length > 0 ? Math.min(midAfter, filtered.length) : 0;
 
   return (
     <>
@@ -115,12 +131,16 @@ export default function FilterBar({ listings, tags, towns, categorySlug, initial
 
       {/* Listing Grid */}
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-        {filtered.map((listing) => (
-          <ListingCard
-            key={listing.id}
-            listing={listing}
-            showGoogleRatingLabel={categorySlug === 'eat'}
-          />
+        {filtered.map((listing, index) => (
+          <Fragment key={listing.id}>
+            <ListingCard
+              listing={listing}
+              showGoogleRatingLabel={categorySlug === 'eat'}
+            />
+            {index + 1 === midInsertAt ? (
+              <div className="col-span-full">{midContent}</div>
+            ) : null}
+          </Fragment>
         ))}
       </div>
 

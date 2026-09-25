@@ -6,6 +6,8 @@ type Props = {
   className?: string;
   /** Set on the first/primary capture on a page so we never duplicate the id. */
   anchor?: boolean;
+  /** PDF link shown only after signup succeeds. */
+  successDownloadHref?: string;
 };
 
 const HEADING = 'Get the Free Sea to Sky Trip Planner';
@@ -19,6 +21,7 @@ export default function TripPlannerCapture({
   variant = 'compact',
   className = '',
   anchor = false,
+  successDownloadHref,
 }: Props) {
   const anchorProps = anchor ? { id: 'trip-planner' } : {};
 
@@ -37,7 +40,7 @@ export default function TripPlannerCapture({
         <p className="text-sm md:text-base text-slate-600 mb-6 max-w-xl mx-auto leading-relaxed">
           {DEFAULT_BLURB}
         </p>
-        <NewsletterSignup source={source} />
+        <NewsletterSignup source={source} successDownloadHref={successDownloadHref} />
       </div>
     );
   }
@@ -56,7 +59,7 @@ export default function TripPlannerCapture({
       <p className="text-sm text-slate-600 mb-4 leading-relaxed">
         {COMPACT_BLURB}
       </p>
-      <NewsletterSignup source={source} variant="compact" />
+      <NewsletterSignup source={source} variant="compact" successDownloadHref={successDownloadHref} />
     </div>
   );
 }

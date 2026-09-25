@@ -326,6 +326,12 @@ export default async function ListingPage({ params }: Props) {
             dangerouslySetInnerHTML={{ __html: listing.description || listing.short_description || '' }}
           />
 
+          {listing.slug === 'lukas-falls-squamish' ? (
+            <div className="mb-8">
+              <TripPlannerCapture source="lukas-falls-mid" variant="compact" />
+            </div>
+          ) : null}
+
           {/* Tags */}
           {tags.length > 0 && (
             <div className="flex gap-2 flex-wrap mb-6">
