@@ -3,6 +3,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
 import { getPlaceholderImage } from '@/lib/supabase';
+import { getListingImageAlt } from '@/lib/listingImage';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
 import { TrustStrip } from '@/components/SocialProof';
 import dynamic from 'next/dynamic';
@@ -263,7 +264,7 @@ export default async function GuidePage({ params }: Props) {
                 <div className="w-32 sm:w-40 shrink-0 bg-gradient-to-br from-emerald-500 to-green-600 relative overflow-hidden">
                   <FallbackImage
                     src={listing.featured_image_url || getPlaceholderImage(catSlug)}
-                    alt={listing.name}
+                    alt={getListingImageAlt(listing)}
                     className="w-full h-full object-cover"
                     loading="lazy"
                     fallbackEmoji={catIcon}

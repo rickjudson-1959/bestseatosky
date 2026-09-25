@@ -75,7 +75,7 @@ export default function PrivacyPage() {
         </p>
         <ul className="list-disc pl-5 space-y-1">
           <li><strong>Google Analytics</strong> — website analytics</li>
-          <li><strong>Google Places</strong> — business listing photos and data</li>
+          <li><strong>Google Places</strong>: publicly available business details such as addresses, hours, and ratings. Listing photos are not from Google.</li>
           <li><strong>Stripe</strong> — payment processing for advertising</li>
           <li><strong>Vercel</strong> — website hosting</li>
           <li><strong>Supabase</strong> — database hosting</li>

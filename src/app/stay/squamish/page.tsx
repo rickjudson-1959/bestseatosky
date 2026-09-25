@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getListings, getTagsByCategory, getCategoryBySlug } from '@/lib/data';
 import { Listing, getPlaceholderImage } from '@/lib/supabase';
+import { getListingImageAlt, isTownFallbackImage } from '@/lib/listingImage';
 import FallbackImage from '@/components/FallbackImage';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
 import { TrustStrip } from '@/components/SocialProof';
@@ -265,7 +266,7 @@ export default async function SquamishStayPage() {
                     <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative bg-gradient-to-br from-indigo-500 to-purple-600">
                       <FallbackImage
                         src={listing?.featured_image_url || getPlaceholderImage('stay')}
-                        alt={pick.name}
+                        alt={listing && isTownFallbackImage(listing.featured_image_url) ? getListingImageAlt(listing) : pick.name}
                         className="w-full h-full object-cover"
                         loading="lazy"
                         fallbackEmoji="🏔️"

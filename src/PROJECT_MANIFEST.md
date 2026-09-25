@@ -236,7 +236,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 ## Key Features
 
 - **859 listings** scraped via Apify from Google Places
-- **809 listings** have Google Places photos (lh3.googleusercontent.com)
+- **Listing photos** are owner-provided, licensed stock, or our own photography. Listings without their own photo use `/images/towns/<town>.jpg` in `featured_image_url`. Google Places photos were removed on 2026-09-25. Do not re-add Google photo hosts or scraping.
 - **859 AI-generated descriptions** via Claude Sonnet (unique, SEO-optimized, 2-3 sentences each)
 - **Live search** on homepage (debounced, searches by name)
 - **Filtering** on category pages (by town, by tag)
@@ -286,7 +286,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 ## Performance
 
 - **next/image everywhere** — `FallbackImage` wraps `next/image` (fill mode). Homepage hero, blog featured image, and listing detail hero all use `priority` + tuned `sizes`. Listing-card grids lazy by default.
-- **Image optimization config** in `next.config.ts`: `remotePatterns` for `lh3.googleusercontent.com`, `places.googleapis.com`, and the Supabase public storage bucket; AVIF/WebP output; 30-day `minimumCacheTTL`; mobile-tuned `deviceSizes`.
+- **Image optimization config** in `next.config.ts`: `remotePatterns` for the Supabase public storage bucket only (Google photo hosts were removed 2026-09-25); AVIF/WebP output; 30-day `minimumCacheTTL`; mobile-tuned `deviceSizes`.
 - **Cache headers** — long-lived immutable caching for `/_next/static/*` and public images (svg/jpg/png/webp/avif/ico/gif). `/_next/image` responses get 30d browser / 1y edge with SWR.
 - **Code-split client components** — `FaqSection` and `ChatWidget` are imported with `next/dynamic` so their JS only ships on pages that use them.
 - **Deferred analytics** — Google Analytics loads with `strategy="lazyOnload"` so it doesn't compete with hydration.
@@ -398,7 +398,7 @@ Both data-generation scripts are resumable, support `--limit / --category / --sl
 | Tool | Purpose |
 |------|---------|
 | **Apify** | Google Places scraper for listing data |
-| **Google Places API (New)** | Photo fetching (via fetch-photos.js in bestseatosky-files) |
+| **Google Places API (New)** | Not used for photos. Photo fetching was removed 2026-09-25. Do not re-add. |
 | **Namecheap** | Domain registrar for .com and .ca |
 | **Vercel** | Hosting, auto-deploy from GitHub |
 | **Supabase** | Database, API, auth (PostgreSQL) |

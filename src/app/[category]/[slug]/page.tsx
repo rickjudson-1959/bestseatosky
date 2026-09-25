@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getListingBySlug, getRelatedListings, getCrossCategoryListings, getGuidesForListing, getListingFeatures } from '@/lib/data';
 import { FEATURE_BY_SLUG } from '@/lib/features';
 import { getPlaceholderImage } from '@/lib/supabase';
+import { absoluteSiteImageUrl, getListingImageAlt, isTownFallbackImage, withAbsoluteSchemaImage } from '@/lib/listingImage';
 import { buildUTMUrl } from '@/lib/utm';
 import FeaturedInGuides from '@/components/FeaturedInGuides';
 import FallbackImage from '@/components/FallbackImage';
@@ -107,7 +108,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
       url,
       type: 'website',
       ...(listing.featured_image_url && {
-        images: [{ url: listing.featured_image_url, alt: listing.name }],
+        images: [{ url: listing.featured_image_url, alt: getListingImageAlt(listing) }],
       }),
     },
     twitter: {
@@ -246,7 +247,7 @@ export default async function ListingPage({ params }: Props) {
       },
     }),
     ...(listing.phone && { telephone: listing.phone }),
-    ...(listing.featured_image_url && { image: listing.featured_image_url }),
+    ...(listing.featured_image_url && { image: absoluteSiteImageUrl(listing.featured_image_url) }),
     ...(listing.website && { sameAs: [listing.website] }),
     priceRange,
   };
@@ -268,7 +269,7 @@ export default async function ListingPage({ params }: Props) {
     if (openingHours) baseSchema.openingHoursSpecification = openingHours;
   }
 
-  const schema = listing.schema_json || baseSchema;
+  const schema = withAbsoluteSchemaImage(listing.schema_json || baseSchema);
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-8">
@@ -310,7 +311,7 @@ export default async function ListingPage({ params }: Props) {
       <div className={`h-64 md:h-80 rounded-2xl overflow-hidden bg-gradient-to-br ${styles.gradient} relative mb-10`}>
         <FallbackImage
           src={listing.featured_image_url || getPlaceholderImage(catSlug)}
-          alt={listing.name}
+          alt={getListingImageAlt(listing)}
           className={heroPosition ? `object-cover ${heroPosition}` : 'object-cover'}
           fallbackEmoji={CAT_ICONS[catSlug]}
           placeholderUrl={getPlaceholderImage(catSlug)}
@@ -367,7 +368,13 @@ export default async function ListingPage({ params }: Props) {
                     <div key={src} className="rounded-xl overflow-hidden bg-slate-50 aspect-[4/3]">
                       <img
                         src={src}
-                        alt={logo ? `${listing.name} logo` : `${listing.name} photo ${i + 1}`}
+                        alt={
+                          logo
+                            ? `${listing.name} logo`
+                            : isTownFallbackImage(src)
+                              ? getListingImageAlt(listing, src)
+                              : `${listing.name} photo ${i + 1}`
+                        }
                         loading="lazy"
                         decoding="async"
                         className={logo ? 'object-contain p-4 w-full h-full' : 'object-cover w-full h-full'}
@@ -516,7 +523,7 @@ export default async function ListingPage({ params }: Props) {
                     <div className={`h-32 bg-gradient-to-br ${rStyles.gradient} relative overflow-hidden`}>
                       <FallbackImage
                         src={related.featured_image_url || getPlaceholderImage(rCatSlug)}
-                        alt={related.name}
+                        alt={getListingImageAlt(related)}
                         className="w-full h-full object-cover"
                         loading="lazy"
                         fallbackEmoji={CAT_ICONS[rCatSlug]}
@@ -558,7 +565,7 @@ export default async function ListingPage({ params }: Props) {
                     <div className={`h-36 bg-gradient-to-br ${iStyles.gradient} relative overflow-hidden`}>
                       <FallbackImage
                         src={item.featured_image_url || getPlaceholderImage(iCatSlug)}
-                        alt={item.name}
+                        alt={getListingImageAlt(item)}
                         className="w-full h-full object-cover"
                         loading="lazy"
                         fallbackEmoji={CAT_ICONS[iCatSlug]}

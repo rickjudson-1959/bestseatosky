@@ -1,5 +1,6 @@
 import { notFound } from 'next/navigation';
 import { Metadata } from 'next';
+import { absoluteSiteImageUrl } from '@/lib/listingImage';
 import Link from 'next/link';
 import Image from 'next/image';
 import { getBlogPostBySlug, getAllSeoPages } from '@/lib/data';
@@ -124,7 +125,7 @@ export default async function BlogPostPage({ params }: Props) {
       '@type': 'WebPage',
       '@id': canonicalUrl,
     },
-    ...(post.featured_image && { image: post.featured_image }),
+    ...(post.featured_image && { image: absoluteSiteImageUrl(post.featured_image) }),
   };
 
   return (

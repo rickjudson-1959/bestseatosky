@@ -2,6 +2,7 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getListings, getTagsByCategory, getCategoryBySlug } from '@/lib/data';
 import { Listing, getPlaceholderImage } from '@/lib/supabase';
+import { getListingImageAlt, isTownFallbackImage } from '@/lib/listingImage';
 import FallbackImage from '@/components/FallbackImage';
 import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
@@ -227,7 +228,7 @@ export default async function SquamishEatPage() {
               <div className="w-32 sm:w-40 shrink-0 bg-gradient-to-br from-orange-500 to-red-600 relative overflow-hidden">
                 <FallbackImage
                   src={listing?.featured_image_url || getPlaceholderImage('eat')}
-                  alt={pick.name}
+                  alt={listing && isTownFallbackImage(listing.featured_image_url) ? getListingImageAlt(listing) : pick.name}
                   className="w-full h-full object-cover"
                   loading="lazy"
                   fallbackEmoji="🍽️"
@@ -300,7 +301,7 @@ export default async function SquamishEatPage() {
                     <div className="w-16 h-16 rounded-lg overflow-hidden shrink-0 relative bg-gradient-to-br from-orange-500 to-red-600">
                       <FallbackImage
                         src={listing?.featured_image_url || getPlaceholderImage('eat')}
-                        alt={pick.name}
+                        alt={listing && isTownFallbackImage(listing.featured_image_url) ? getListingImageAlt(listing) : pick.name}
                         className="w-full h-full object-cover"
                         loading="lazy"
                         fallbackEmoji="🍽️"
