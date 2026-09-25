@@ -37,10 +37,10 @@ export default function TermsPage() {
 
         <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">2. Accuracy of Information</h2>
         <p>
-          Business listings, ratings, reviews, hours, and other data are sourced from third-party providers
-          including Google Places. We make reasonable efforts to keep information current but do not guarantee
-          its accuracy, completeness, or timeliness. Always confirm details directly with the business before
-          visiting.
+          Business details such as addresses, hours, phone numbers, and ratings may include information
+          from publicly available sources, including Google Places. We make reasonable efforts to keep
+          information current but do not guarantee its accuracy, completeness, or timeliness. Always confirm
+          details directly with the business before visiting.
         </p>
 
         <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">3. Third-Party Links</h2>
@@ -51,9 +51,10 @@ export default function TermsPage() {
 
         <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">4. Intellectual Property</h2>
         <p>
-          All content on the Site — including text, graphics, logos, and the site design — is owned by Best Sea
-          to Sky or its licensors and is protected by copyright and other intellectual property laws. Business
-          listing photos are sourced from Google Places and remain the property of their respective owners.
+          All content on the Site, including text, graphics, logos, and the site design, is owned by Best Sea
+          to Sky or its licensors and is protected by copyright and other intellectual property laws. Listing
+          photos are provided by the business owners, licensed stock, or our own photography. Some listings
+          show a representative photo of the town rather than the business.
         </p>
 
         <h2 className="font-serif text-xl font-bold text-slate-900 mt-8 mb-3">5. Limitation of Liability</h2>
