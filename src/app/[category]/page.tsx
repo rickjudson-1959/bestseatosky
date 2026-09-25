@@ -217,7 +217,16 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         categorySlug={categorySlug}
         initialTown={town}
         initialTag={tag}
+        midContent={
+          categorySlug === 'eat' ? (
+            <TripPlannerCapture source="eat-mid" variant="compact" />
+          ) : null
+        }
       />
+
+      {categorySlug === 'eat' ? (
+        <TripPlannerCapture source="eat-end" variant="compact" className="mt-12" />
+      ) : null}
 
       {/* BreadcrumbList Schema */}
       <script

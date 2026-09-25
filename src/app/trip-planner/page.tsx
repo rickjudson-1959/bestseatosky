@@ -31,12 +31,17 @@ export default function TripPlannerPage() {
       </p>
 
       <div className="mb-8">
-        <TripPlannerCapture source="trip-planner-hero" variant="default" anchor />
+        <TripPlannerCapture
+          source="trip-planner-hero"
+          variant="default"
+          anchor
+          successDownloadHref="/downloads/sea-to-sky-trip-planner.pdf"
+        />
       </div>
 
       <div className="bg-white rounded-2xl p-8 border border-slate-200 mb-10">
         <h2 className="font-serif text-lg font-bold text-slate-900 mb-4">What&apos;s inside</h2>
-        <ul className="space-y-3 text-sm text-slate-600 mb-6">
+        <ul className="space-y-3 text-sm text-slate-600">
           <li className="flex items-start gap-2">
             <span className="text-emerald-600 mt-0.5 shrink-0">&#10003;</span>
             <span><strong className="text-slate-700">Where to eat</strong> in Squamish, Whistler, and Pemberton</span>
@@ -50,12 +55,6 @@ export default function TripPlannerPage() {
             <span><strong className="text-slate-700">Local tips</strong> that make a real difference on the ground</span>
           </li>
         </ul>
-        <a
-          href="/downloads/sea-to-sky-trip-planner.pdf"
-          className="inline-block px-8 py-3.5 rounded-xl bg-slate-50 text-slate-800 border border-slate-200 text-sm font-bold hover:bg-slate-100 transition-colors"
-        >
-          Download the PDF now
-        </a>
       </div>
 
       <p className="text-sm text-slate-400">
