@@ -2,13 +2,20 @@
 'use no memo';
 
 import { useState, FormEvent } from 'react';
+import { trackSubscribeSuccess, type LeadType } from '@/lib/analytics';
 
 type Props = {
   source?: string;
   variant?: 'default' | 'compact';
+  /** Every capture on the site today is the free trip planner. */
+  leadType?: LeadType;
 };
 
-export default function NewsletterSignup({ source = 'website', variant = 'default' }: Props) {
+export default function NewsletterSignup({
+  source = 'website',
+  variant = 'default',
+  leadType = 'trip_planner',
+}: Props) {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
 
@@ -35,6 +42,7 @@ export default function NewsletterSignup({ source = 'website', variant = 'defaul
         return;
       }
 
+      trackSubscribeSuccess(source, leadType);
       setStatus('success');
     } catch {
       setStatus('error');
