@@ -30,7 +30,11 @@ function gtagEvent(eventName: string, params: Record<string, string>) {
   window.gtag('event', eventName, params);
 }
 
-/** Fire after /api/subscribe returns success. Does not include the email. */
+/**
+ * Fire after /api/subscribe returns success. Does not include the email.
+ * Names are the GA4 key events: subscribe_success, and trip_planner_complete
+ * when the free trip planner is what was delivered.
+ */
 export function trackSubscribeSuccess(formLocation: string, leadType: LeadType) {
   const params = {
     method: 'email',
@@ -38,8 +42,8 @@ export function trackSubscribeSuccess(formLocation: string, leadType: LeadType) 
     lead_type: leadType,
   };
 
-  gtagEvent('generate_lead', params);
+  gtagEvent('subscribe_success', params);
   if (leadType === 'trip_planner') {
-    gtagEvent('trip_planner_signup', params);
+    gtagEvent('trip_planner_complete', params);
   }
 }
