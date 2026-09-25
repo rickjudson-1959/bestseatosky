@@ -33,6 +33,35 @@ const CAT_ICONS: Record<string, string> = {
   services: '🧭',
 };
 
+const HERO_POSITION: Record<string, string> = { 'harvest-hub-squamish': 'object-[88%_50%] md:object-center' };
+
+function normalizeListingImagePath(value: unknown): string {
+  if (typeof value !== 'string') return '';
+  if (value.startsWith('https://www.bestseatosky.com/')) {
+    return value.slice('https://www.bestseatosky.com'.length);
+  }
+  if (value.startsWith('https://bestseatosky.com/')) {
+    return value.slice('https://bestseatosky.com'.length);
+  }
+  return value;
+}
+
+function listingGalleryPaths(images: unknown, featuredImageUrl: unknown): string[] {
+  if (!Array.isArray(images)) return [];
+  const featured = normalizeListingImagePath(featuredImageUrl);
+  const seen = new Set<string>();
+  const paths: string[] = [];
+  for (const entry of images) {
+    const path = normalizeListingImagePath(entry);
+    if (!path.startsWith('/images/')) continue;
+    if (path === featured) continue;
+    if (seen.has(path)) continue;
+    seen.add(path);
+    paths.push(path);
+  }
+  return paths;
+}
+
 type Props = {
   params: Promise<{ category: string; slug: string }>;
 };
@@ -149,6 +178,8 @@ export default async function ListingPage({ params }: Props) {
   ];
 
   const tagIds = tags.map((t) => t.id);
+  const gallery = listingGalleryPaths(listing.images, listing.featured_image_url);
+  const heroPosition = HERO_POSITION[listing.slug] ?? '';
 
   // Fetch related listings, guides, and features
   const [relatedListings, crossCategoryListings, featuredGuides, features] = await Promise.all([
@@ -280,7 +311,7 @@ export default async function ListingPage({ params }: Props) {
         <FallbackImage
           src={listing.featured_image_url || getPlaceholderImage(catSlug)}
           alt={listing.name}
-          className="object-cover"
+          className={heroPosition ? `object-cover ${heroPosition}` : 'object-cover'}
           fallbackEmoji={CAT_ICONS[catSlug]}
           placeholderUrl={getPlaceholderImage(catSlug)}
           priority
@@ -325,6 +356,28 @@ export default async function ListingPage({ params }: Props) {
             className="prose prose-slate max-w-none mb-8 text-slate-600 leading-relaxed text-base"
             dangerouslySetInnerHTML={{ __html: listing.description || listing.short_description || '' }}
           />
+
+          {gallery.length >= 2 ? (
+            <div className="mb-8">
+              <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Photos</h2>
+              <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
+                {gallery.map((src, i) => {
+                  const logo = src.endsWith('.png') || src.includes('logo');
+                  return (
+                    <div key={src} className="rounded-xl overflow-hidden bg-slate-50 aspect-[4/3]">
+                      <img
+                        src={src}
+                        alt={logo ? `${listing.name} logo` : `${listing.name} photo ${i + 1}`}
+                        loading="lazy"
+                        decoding="async"
+                        className={logo ? 'object-contain p-4 w-full h-full' : 'object-cover w-full h-full'}
+                      />
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ) : null}
 
           {listing.slug === 'lukas-falls-squamish' ? (
             <div className="mb-8">
