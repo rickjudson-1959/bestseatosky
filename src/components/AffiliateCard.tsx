@@ -11,7 +11,7 @@ export default function AffiliateCard({
   description,
   linkText,
   linkUrl,
-  disclaimerText = 'As an Amazon Associate, Best Sea to Sky earns from qualifying purchases.',
+  disclaimerText = 'This is an affiliate link. Best Sea to Sky may earn a commission at no extra cost to you.',
 }: Props) {
   return (
     <div className="bg-emerald-50/60 border border-emerald-200 rounded-2xl p-6 sm:p-8">

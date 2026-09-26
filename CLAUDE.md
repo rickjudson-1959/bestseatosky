@@ -19,11 +19,11 @@ See `src/PROJECT_MANIFEST.md` for full architecture, file structure, database sc
 - **Listings are database-driven.** All listing data (name, description, meta, images, FAQs) lives in Supabase `listings` table. Content changes to individual listings require Supabase SQL/dashboard updates, not code changes.
 - **Dynamic routes:** `[category]/page.tsx` for category pages, `[category]/[slug]/page.tsx` for listing detail pages.
 - **Static routes override dynamic.** Town guides at `eat/squamish/`, `eat/whistler/`, `eat/pemberton/` take precedence over `[category]/[slug]`.
-- **Shared components:** `TagFilterGrid` (tag-only filter + grid), `FallbackImage` (graceful image error handling), `FaqSection` (accordion FAQ), `AffiliateCard` (product callout with nofollow/sponsored links), `NewsletterSignup`, `TrustStrip`.
+- **Shared components:** `TagFilterGrid` (tag-only filter + grid), `FallbackImage` (graceful image error handling), `FaqSection` (accordion FAQ), `AffiliateCard` (Trivago hotel comparison callout with nofollow/sponsored links), `NewsletterSignup`, `TrustStrip`.
 - **Description field supports HTML.** Listing descriptions render via `dangerouslySetInnerHTML` — admin-controlled content only.
 - **FAQ support on listings.** Add `faq_json` (jsonb) to a listing record to render accordion + FAQPage schema. Format: `[{"question":"...","answer":"..."}]`.
 - **Category-specific overrides** in shared templates use `categorySlug === 'eat'` conditionals (meta title, H1, internal links).
-- **Affiliate cards** use slug-based conditionals. Guide pages match `slug.startsWith('best-hikes')`, `slug.startsWith('best-rock-climbing')`, etc. Blog posts use `getBlogAffiliateCards(slug)` with pattern matching (max 2 per post). All links use `rel="nofollow sponsored"`.
+- **Affiliate cards** are Trivago hotel comparison only. Guide pages match stay, hotel, accommodation, and lodge slugs. Town stay pages for Squamish and Whistler also render a Trivago card. All links use `rel="nofollow sponsored"`.
 
 ## Style
 

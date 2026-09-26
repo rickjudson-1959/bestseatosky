@@ -1,6 +1,6 @@
 import { Metadata } from 'next';
 import Link from 'next/link';
-import AffiliateCard from '@/components/AffiliateCard';
+import TripPlannerCapture from '@/components/TripPlannerCapture';
 
 export const metadata: Metadata = {
   title: '48 Hours in Squamish — A Local\'s Itinerary for First-Timers',
@@ -121,15 +121,6 @@ export default function FortyEightHoursSquamishPage() {
         </p>
       </div>
 
-      <div className="mb-12">
-        <AffiliateCard
-          title="Gear Up for Your Hike"
-          description="Heading out on the trails? Make sure you've got the right footwear."
-          linkText="Shop Hiking Boots"
-          linkUrl="https://amzn.to/4bCVgtS"
-        />
-      </div>
-
       <div className="flex flex-col gap-12 mb-16">
         {DAYS.map((day) => (
           <div key={day.day}>
@@ -164,14 +155,7 @@ export default function FortyEightHoursSquamishPage() {
         ))}
       </div>
 
-      <div className="mb-12">
-        <AffiliateCard
-          title="Pack Right for the Trail"
-          description="A good backpack makes all the difference on Sea to Sky trails."
-          linkText="Shop Hiking & Climbing Packs"
-          linkUrl="https://amzn.to/47ILWUv"
-        />
-      </div>
+      <TripPlannerCapture source="48-hours-squamish" variant="compact" className="mb-12" />
 
       <div className="bg-slate-50 rounded-2xl p-8 border border-slate-100 mb-12">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">Before You Go</h2>
