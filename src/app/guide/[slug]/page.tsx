@@ -179,54 +179,6 @@ export default async function GuidePage({ params }: Props) {
         <TrustStrip />
       </div>
 
-      {/* Affiliate Card (hiking guides) */}
-      {slug.startsWith('best-hikes') && (
-        <div className="mb-10">
-          <AffiliateCard
-            title="Gear Up for Your Hike"
-            description="Heading out on the trails? Make sure you've got the right footwear."
-            linkText="Shop Hiking Boots"
-            linkUrl="https://amzn.to/4bCVgtS"
-          />
-        </div>
-      )}
-
-      {/* Affiliate Card (climbing guides) */}
-      {slug.startsWith('best-rock-climbing') && (
-        <div className="mb-10">
-          <AffiliateCard
-            title="Gear Up for Your Climb"
-            description="Heading to the Chief or the Smoke Bluffs? Make sure you've got the right gear."
-            linkText="Shop Climbing Gear"
-            linkUrl="https://amzn.to/4sJHYDa"
-          />
-        </div>
-      )}
-
-      {/* Affiliate Card (mountain biking guides) */}
-      {slug.startsWith('best-mountain-biking') && (
-        <div className="mb-10">
-          <AffiliateCard
-            title="Gear Up for the Trails"
-            description="Squamish trails demand the right kit. Don't hit the dirt without it."
-            linkText="Shop Mountain Bike Gear"
-            linkUrl="https://amzn.to/40TLb7e"
-          />
-        </div>
-      )}
-
-      {/* Affiliate Card (skiing guides) */}
-      {slug.startsWith('best-skiing') && (
-        <div className="mb-10">
-          <AffiliateCard
-            title="Hit the Slopes Ready"
-            description="Whistler Blackcomb demands the right gear. Get kitted out before your first run."
-            linkText="Shop Ski & Snowboard Gear"
-            linkUrl="https://amzn.to/3PvFlq1"
-          />
-        </div>
-      )}
-
       {/* Affiliate Card (stay/accommodation guides) */}
       {(/hotel|stay|accommodation|lodge/.test(slug)) && (
         <div className="mb-10">
@@ -317,18 +269,6 @@ export default async function GuidePage({ params }: Props) {
 
       {listings.length === 0 && (
         <p className="text-slate-500 text-center py-12">No listings found for this guide yet.</p>
-      )}
-
-      {/* Affiliate Card — backpacks (hiking + climbing guides) */}
-      {(slug.startsWith('best-hikes') || slug.startsWith('best-rock-climbing')) && (
-        <div className="mb-10">
-          <AffiliateCard
-            title="Pack Right for the Trail"
-            description="A good backpack makes all the difference on Sea to Sky trails."
-            linkText="Shop Hiking & Climbing Packs"
-            linkUrl="https://amzn.to/47ILWUv"
-          />
-        </div>
       )}
 
       {/* FAQ Section */}

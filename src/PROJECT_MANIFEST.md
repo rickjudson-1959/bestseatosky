@@ -139,7 +139,7 @@ src/
 │   ├── FeaturePills.tsx        # Feature filter pills row on category pages (links to /[cat]/with/[feature])
 │   ├── CuisinePills.tsx        # "Browse by cuisine" pill row on /eat (links to /eat/cuisine/[type])
 │   ├── TagFilterGrid.tsx       # Shared tag-only filter + listing grid (used by town guide pages)
-│   ├── AffiliateCard.tsx       # Reusable affiliate product card (title, desc, linkText, linkUrl, disclaimer; rel="nofollow sponsored")
+│   ├── AffiliateCard.tsx       # Reusable affiliate card (title, desc, linkText, linkUrl, disclaimer; rel="nofollow sponsored"). Used for Trivago hotel comparison.
 │   └── FeaturedInGuides.tsx    # "Featured in" guide links on listing detail pages (internal linking)
 ├── lib/
 │   ├── supabase.ts             # Supabase client + type definitions (incl. ListingFeature)
@@ -274,7 +274,7 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Town restaurant guides** — curated `/eat/squamish`, `/eat/whistler`, `/eat/pemberton` pages with editorial top picks, best-by-category sections, and full filterable grids; linked from `/eat` page
 - **Listing FAQs** — listings with `faq_json` data render accordion FAQ section + FAQPage schema markup on detail pages
 - **HTML descriptions** — listing detail pages render description as HTML for rich content (bold, lists, etc.)
-- **Affiliate cards** — reusable `AffiliateCard` component with `rel="nofollow sponsored"` links. Slug-based conditional rendering on guide pages (hiking→boots, climbing→gear, MTB→bike gear, skiing→ski gear, stay/hotel/accommodation/lodge→Trivago), blog posts (slug pattern matching, max 2 per post), town stay pages (Trivago), and static content pages (48-hours-squamish, ski-season). Affiliate links: hiking boots, backpacks, climbing gear, MTB gear, ski gear, Trivago hotel comparison
+- **Affiliate cards:** reusable `AffiliateCard` component with `rel="nofollow sponsored"` links. Shown on guide pages whose slugs match stay, hotel, accommodation, or lodge, and on the Squamish and Whistler town stay pages. The only affiliate link is Trivago hotel comparison (via Awin).
 - **5 static content pages** — neighbourhood guides (Squamish, Whistler), seasonal (ski, patios), itinerary (48hrs Squamish)
 - **Canonical tags** — site-wide via `alternates.canonical` in page metadata; filtered pages canonicalize to parent
 - **Newsletter + lead magnet** — email capture component on homepage, category, blog index, and guide index pages; subscribers receive "Sea to Sky Trip Planner" welcome email with curated local picks via Resend; stored in `subscribers` table
