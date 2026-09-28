@@ -26,9 +26,11 @@ export default function ContactForm({ defaultSubject = '' }: { defaultSubject?: 
 
       const result = await res.json();
 
-      if (!res.ok) {
+      if (!res.ok || !result?.success) {
         setStatus('error');
-        setErrorMessage(result.error || 'Something went wrong. Please try again.');
+        setErrorMessage(
+          'Something went wrong. Please try again or email hello@bestseatosky.com.'
+        );
         return;
       }
 
