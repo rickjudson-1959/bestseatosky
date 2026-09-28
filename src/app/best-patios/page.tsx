@@ -221,6 +221,10 @@ export default function BestPatiosPage() {
           <Link href="/guide/squamish-base-weekend" className="text-emerald-700 font-semibold hover:underline">
             a Squamish base weekend
           </Link>
+          . For a full two-day plan with these patios, see{' '}
+          <Link href="/48-hours-squamish" className="text-emerald-700 font-semibold hover:underline">
+            48 Hours in Squamish
+          </Link>
           .
         </p>
       </div>
@@ -316,6 +320,12 @@ export default function BestPatiosPage() {
           className="px-6 py-3 rounded-xl bg-slate-900 text-white text-sm font-bold hover:bg-slate-800 transition-colors text-center"
         >
           Squamish Base Weekend
+        </Link>
+        <Link
+          href="/48-hours-squamish"
+          className="px-6 py-3 rounded-xl border border-slate-200 text-slate-700 text-sm font-bold hover:bg-slate-50 transition-colors text-center"
+        >
+          48 Hours in Squamish
         </Link>
         <Link
           href="/blog/squamish-vs-whistler-where-to-stay"
