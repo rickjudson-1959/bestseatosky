@@ -170,6 +170,12 @@ export default async function CategoryPage({ params, searchParams }: Props) {
           >
             See Pemberton restaurants <span className="text-amber-600">&rarr;</span>
           </Link>
+          <Link
+            href="/48-hours-squamish"
+            className="inline-flex items-center gap-1.5 px-4 py-2.5 bg-white border border-slate-200 rounded-xl text-sm font-semibold text-slate-800 hover:border-emerald-300 hover:text-emerald-800 transition-colors shadow-sm"
+          >
+            Weekend plan: 48 Hours in Squamish <span className="text-emerald-600">&rarr;</span>
+          </Link>
         </div>
       )}
 

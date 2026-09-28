@@ -195,6 +195,13 @@ export default async function SquamishEatPage() {
         <p className="text-slate-600 leading-relaxed text-base">
           We live here. We&apos;ve eaten everywhere. This is the real list.
         </p>
+        <p className="text-slate-600 leading-relaxed text-base">
+          Planning a weekend? See{' '}
+          <Link href="/48-hours-squamish" className="text-emerald-700 font-semibold hover:underline">
+            48 Hours in Squamish
+          </Link>
+          , our two-day plan with where to eat, where to stay, and which patios to try.
+        </p>
       </div>
 
       <HubPageConversion
