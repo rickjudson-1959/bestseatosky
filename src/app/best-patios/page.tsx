@@ -15,7 +15,7 @@ const PATIOS = [
   {
     name: 'Howe Sound Brew Pub',
     town: 'Squamish',
-    why: 'The original Sea to Sky patio. Craft beer brewed in-house, mountain views, and the kind of worn-in charm that only 25 years of post-trail pints can produce. Get a seat on the upper deck if you can.',
+    why: 'The original Sea to Sky patio. Craft beer brewed in-house, mountain views, and the kind of worn-in charm that a lot of post-trail pints leave behind. Get a seat on the upper deck if you can.',
     bestFor: 'Post-Chief celebration beers',
     season: 'Year-round (heated in winter)',
     rank: 1,

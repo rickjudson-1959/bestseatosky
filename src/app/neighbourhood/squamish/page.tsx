@@ -65,7 +65,7 @@ export default function SquamishNeighbourhoodPage() {
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
-        Updated March 2026 &middot; Written by a 20-year Squamish local
+        Updated March 2026
       </p>
 
       <div className="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 mb-12">
