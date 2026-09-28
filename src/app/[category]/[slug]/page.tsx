@@ -5,6 +5,7 @@ import { getListingBySlug, getRelatedListings, getCrossCategoryListings, getGuid
 import { FEATURE_BY_SLUG } from '@/lib/features';
 import { getPlaceholderImage } from '@/lib/supabase';
 import { absoluteSiteImageUrl, getListingImageAlt, isTownFallbackImage, withAbsoluteSchemaImage } from '@/lib/listingImage';
+import { hasRealRating, withoutUnratedAggregateRating } from '@/lib/rating';
 import { buildUTMUrl } from '@/lib/utm';
 import FeaturedInGuides from '@/components/FeaturedInGuides';
 import FallbackImage from '@/components/FallbackImage';
@@ -85,7 +86,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
     visit: 'attractions', shop: 'shops', services: 'services',
   };
   const locationStr = townName ? `in ${townName}` : 'in the Sea to Sky corridor';
-  const ratingStr = listing.google_rating
+  const ratingStr = hasRealRating(listing)
     ? ` -- rated ${listing.google_rating.toFixed(1)} stars from ${(listing.google_review_count || 0).toLocaleString()} Google reviews`
     : '';
   const similarStr = `similar ${catNoun[catSlug] || 'places'} in the Sea to Sky corridor`;
@@ -239,7 +240,7 @@ export default async function ListingPage({ params }: Props) {
         longitude: listing.longitude,
       },
     }),
-    ...(listing.google_rating && listing.google_review_count > 0 && {
+    ...(hasRealRating(listing) && {
       aggregateRating: {
         '@type': 'AggregateRating',
         ratingValue: listing.google_rating,
@@ -269,7 +270,9 @@ export default async function ListingPage({ params }: Props) {
     if (openingHours) baseSchema.openingHoursSpecification = openingHours;
   }
 
-  const schema = withAbsoluteSchemaImage(listing.schema_json || baseSchema);
+  const schema = withAbsoluteSchemaImage(
+    withoutUnratedAggregateRating(listing.schema_json || baseSchema, listing),
+  );
 
   return (
     <section className="max-w-7xl mx-auto px-6 py-8">
@@ -335,14 +338,16 @@ export default async function ListingPage({ params }: Props) {
 
           {/* Rating Row */}
           <div className="flex items-center gap-3 mb-6 flex-wrap">
-            {listing.google_rating && (
-              <div className="flex items-center gap-2">
-                <Stars rating={listing.google_rating} />
-                <span className="text-base font-bold text-slate-900">{listing.google_rating.toFixed(1)}</span>
-                <span className="text-sm text-slate-400">({listing.google_review_count?.toLocaleString()} reviews)</span>
-              </div>
+            {hasRealRating(listing) && (
+              <>
+                <div className="flex items-center gap-2">
+                  <Stars rating={listing.google_rating} />
+                  <span className="text-base font-bold text-slate-900">{listing.google_rating.toFixed(1)}</span>
+                  <span className="text-sm text-slate-400">({listing.google_review_count?.toLocaleString()} reviews)</span>
+                </div>
+                <span className="text-slate-200">|</span>
+              </>
             )}
-            {listing.google_rating && <span className="text-slate-200">|</span>}
             <PriceLevel level={listing.price_level || 0} />
             {listing.hours && Object.keys(listing.hours).length > 0 && (
               <>
@@ -534,7 +539,7 @@ export default async function ListingPage({ params }: Props) {
                       <h3 className="font-serif text-sm font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-tight line-clamp-1">
                         {related.name}
                       </h3>
-                      {related.google_rating && (
+                      {hasRealRating(related) && (
                         <div className="flex items-center gap-1 mt-1">
                           <Stars rating={related.google_rating} />
                           <span className="text-xs font-bold text-slate-700">{related.google_rating.toFixed(1)}</span>
@@ -581,7 +586,7 @@ export default async function ListingPage({ params }: Props) {
                       <h3 className="font-serif text-sm font-bold text-slate-900 group-hover:text-emerald-800 transition-colors leading-tight line-clamp-1">
                         {item.name}
                       </h3>
-                      {item.google_rating && (
+                      {hasRealRating(item) && (
                         <div className="flex items-center gap-1 mt-1">
                           <Stars rating={item.google_rating} />
                           <span className="text-xs font-bold text-slate-700">{item.google_rating.toFixed(1)}</span>

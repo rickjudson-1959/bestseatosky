@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getListings, getTagsByCategory, getCategoryBySlug } from '@/lib/data';
 import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import { getListingImageAlt, isTownFallbackImage } from '@/lib/listingImage';
+import { hasRealRating } from '@/lib/rating';
 import FallbackImage from '@/components/FallbackImage';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
 import { TrustStrip } from '@/components/SocialProof';
@@ -128,7 +129,7 @@ export default async function PembertonEatPage() {
         name: listing.name,
         description: listing.short_description || listing.description?.slice(0, 155),
         address: listing.address,
-        ...(listing.google_rating && listing.google_review_count > 0 && {
+        ...(hasRealRating(listing) && {
           aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: listing.google_rating,
@@ -211,7 +212,7 @@ export default async function PembertonEatPage() {
                     <span className="sm:hidden text-slate-400 font-sans text-sm mr-1.5">{i + 1}.</span>
                     {pick.name}
                   </h3>
-                  {listing?.google_rating && (
+                  {hasRealRating(listing) && (
                     <div className="flex items-center gap-1.5 shrink-0">
                       <Stars rating={listing.google_rating} />
                       <span className="text-sm font-bold text-slate-700">
@@ -280,7 +281,7 @@ export default async function PembertonEatPage() {
                         <h4 className="font-serif font-bold text-slate-900 group-hover:text-emerald-800 transition-colors">
                           {pick.name}
                         </h4>
-                        {listing?.google_rating && (
+                        {hasRealRating(listing) && (
                           <span className="text-xs font-bold text-slate-500">
                             ★ {listing.google_rating.toFixed(1)}
                           </span>

@@ -3,6 +3,7 @@ import Link from 'next/link';
 import { getListings, getTagsByCategory, getCategoryBySlug } from '@/lib/data';
 import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import { getListingImageAlt, isTownFallbackImage } from '@/lib/listingImage';
+import { hasRealRating } from '@/lib/rating';
 import FallbackImage from '@/components/FallbackImage';
 import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
@@ -156,7 +157,7 @@ export default async function WhistlerStayPage() {
         name: listing.name,
         description: listing.short_description || listing.description?.slice(0, 155),
         address: listing.address,
-        ...(listing.google_rating && listing.google_review_count > 0 && {
+        ...(hasRealRating(listing) && {
           aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: listing.google_rating,
@@ -287,7 +288,7 @@ export default async function WhistlerStayPage() {
                         <h4 className="font-serif font-bold text-slate-900 group-hover:text-indigo-800 transition-colors">
                           {pick.name}
                         </h4>
-                        {listing?.google_rating && (
+                        {hasRealRating(listing) && (
                           <span className="text-xs font-bold text-slate-500">
                             ★ {listing.google_rating.toFixed(1)}
                           </span>
