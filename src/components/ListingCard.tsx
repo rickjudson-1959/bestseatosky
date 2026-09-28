@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import { getListingImageAlt } from '@/lib/listingImage';
+import { hasRealRating } from '@/lib/rating';
 import FallbackImage from './FallbackImage';
 
 const CAT_STYLES: Record<string, { bg: string; text: string; border: string; gradient: string }> = {
@@ -59,6 +60,7 @@ export default function ListingCard({
   const tags = listing.listing_tags?.map((lt) => lt.tags) || [];
   const isFeatured = listing.featured === true;
   const googleRating = listing.google_rating || 0;
+  const showRating = hasRealRating(listing);
   const showGoogle = showGoogleRatingLabel && googleRating > 0;
 
   return (
@@ -86,19 +88,21 @@ export default function ListingCard({
               ★ Featured
             </div>
           )}
-          <div
-            className="absolute top-3 right-3 bg-black/60 rounded-full px-2.5 py-1 text-xs font-semibold text-white flex items-center gap-1 whitespace-nowrap"
-            aria-label={
-              showGoogle
-                ? `Google rating ${listing.google_rating?.toFixed(1)}`
-                : listing.google_rating
-                  ? `Rating ${listing.google_rating.toFixed(1)}`
-                  : 'No rating'
-            }
-          >
-            ★ {listing.google_rating?.toFixed(1) || '–'}
-            {showGoogle && <span className="font-medium opacity-90">Google</span>}
-          </div>
+          {showRating && (
+            <div
+              className="absolute top-3 right-3 bg-black/60 rounded-full px-2.5 py-1 text-xs font-semibold text-white flex items-center gap-1 whitespace-nowrap"
+              aria-label={
+                showGoogle
+                  ? `Google rating ${listing.google_rating?.toFixed(1)}`
+                  : listing.google_rating
+                    ? `Rating ${listing.google_rating.toFixed(1)}`
+                    : 'No rating'
+              }
+            >
+              ★ {listing.google_rating?.toFixed(1) || '–'}
+              {showGoogle && <span className="font-medium opacity-90">Google</span>}
+            </div>
+          )}
         </div>
 
         {/* Content */}
@@ -111,14 +115,16 @@ export default function ListingCard({
           </p>
 
           <div className="flex items-center justify-between mb-3">
-            <div className="flex items-center gap-1.5">
-              <Stars rating={googleRating} />
-              <span className="text-xs text-slate-400">
-                {showGoogle
-                  ? `Google (${(listing.google_review_count || 0).toLocaleString()})`
-                  : `(${(listing.google_review_count || 0).toLocaleString()})`}
-              </span>
-            </div>
+            {showRating && (
+              <div className="flex items-center gap-1.5">
+                <Stars rating={googleRating} />
+                <span className="text-xs text-slate-400">
+                  {showGoogle
+                    ? `Google (${(listing.google_review_count || 0).toLocaleString()})`
+                    : `(${(listing.google_review_count || 0).toLocaleString()})`}
+                </span>
+              </div>
+            )}
             <PriceLevel level={listing.price_level || 0} />
           </div>
 

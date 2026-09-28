@@ -4,6 +4,7 @@ import Link from 'next/link';
 import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
 import { getPlaceholderImage } from '@/lib/supabase';
 import { getListingImageAlt } from '@/lib/listingImage';
+import { hasRealRating, omitEmptyAggregateRatings } from '@/lib/rating';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
 import { TrustStrip } from '@/components/SocialProof';
 import dynamic from 'next/dynamic';
@@ -120,7 +121,7 @@ export default async function GuidePage({ params }: Props) {
 
   const listings = await getGuideListings(page);
 
-  const schema = page.schema_json || {
+  const schema = omitEmptyAggregateRatings(page.schema_json || {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: page.title,
@@ -134,7 +135,7 @@ export default async function GuidePage({ params }: Props) {
         name: listing.name,
         description: listing.short_description || listing.description?.slice(0, 155),
         address: listing.address,
-        ...(listing.google_rating && listing.google_review_count > 0 && {
+        ...(hasRealRating(listing) && {
           aggregateRating: {
             '@type': 'AggregateRating',
             ratingValue: listing.google_rating,
@@ -144,7 +145,7 @@ export default async function GuidePage({ params }: Props) {
         ...(listing.website && { url: listing.website }),
       },
     })),
-  };
+  });
 
   return (
     <section className="max-w-4xl mx-auto px-6 py-8">
@@ -234,7 +235,7 @@ export default async function GuidePage({ params }: Props) {
                     <PriceLevel level={listing.price_level || 0} />
                   </div>
 
-                  {listing.google_rating && (
+                  {hasRealRating(listing) && (
                     <div className="flex items-center gap-1.5 mb-2">
                       <Stars rating={listing.google_rating} />
                       <span className="text-sm font-bold text-slate-700">{listing.google_rating.toFixed(1)}</span>
