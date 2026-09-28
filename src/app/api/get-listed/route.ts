@@ -41,9 +41,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Failed to submit request. Please try again.' }, { status: 500 });
     }
 
-    // Send email notification
+    // Send email notification. Resend reports API and network failures as
+    // { error } instead of throwing; either case must not look like success.
     try {
-      await resend.emails.send({
+      const emailResult = await resend.emails.send({
         from: 'Best Sea to Sky <noreply@bestseatosky.com>',
         to: 'hello@bestseatosky.com',
         replyTo: email.trim(),
@@ -60,8 +61,20 @@ export async function POST(request: NextRequest) {
           </table>
         `,
       });
+
+      if (emailResult.error || !emailResult.data) {
+        console.error('Email notification failed:', emailResult.error ?? emailResult);
+        return NextResponse.json(
+          { success: false, error: 'Failed to send notification. Please try again.' },
+          { status: 502 }
+        );
+      }
     } catch (emailError) {
       console.error('Email notification failed:', emailError);
+      return NextResponse.json(
+        { success: false, error: 'Failed to send notification. Please try again.' },
+        { status: 500 }
+      );
     }
 
     return NextResponse.json({ success: true });
