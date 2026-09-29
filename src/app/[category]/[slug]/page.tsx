@@ -359,7 +359,7 @@ export default async function ListingPage({ params }: Props) {
             dangerouslySetInnerHTML={{ __html: listing.description || listing.short_description || '' }}
           />
 
-          {gallery.length >= 2 ? (
+          {gallery.length >= 1 ? (
             <div className="mb-8">
               <h2 className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-2">Photos</h2>
               <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
