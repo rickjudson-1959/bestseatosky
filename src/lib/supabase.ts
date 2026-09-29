@@ -55,7 +55,7 @@ export type Listing = {
   email: string;
   website: string;
   hours: Record<string, { open: string; close: string }>;
-  price_level: number;
+  price_level: number | null;
   google_rating: number;
   google_review_count: number;
   google_place_id: string;

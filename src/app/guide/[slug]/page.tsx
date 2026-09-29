@@ -5,6 +5,7 @@ import { getSeoPageBySlug, getGuideListings } from '@/lib/data';
 import { getPlaceholderImage } from '@/lib/supabase';
 import { getListingImageAlt } from '@/lib/listingImage';
 import { hasRealRating, omitEmptyAggregateRatings } from '@/lib/rating';
+import PriceLevel from '@/components/PriceLevel';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
 import { TrustStrip } from '@/components/SocialProof';
 import dynamic from 'next/dynamic';
@@ -98,17 +99,6 @@ function Stars({ rating }: { rating: number }) {
         >
           ★
         </span>
-      ))}
-    </span>
-  );
-}
-
-function PriceLevel({ level }: { level: number }) {
-  if (level === 0) return <span className="text-emerald-600 font-semibold text-xs">Free</span>;
-  return (
-    <span className="text-xs">
-      {[...Array(4)].map((_, i) => (
-        <span key={i} className={i < level ? 'text-slate-800 font-bold' : 'text-slate-300'}>$</span>
       ))}
     </span>
   );
@@ -232,7 +222,7 @@ export default async function GuidePage({ params }: Props) {
                       <span className="sm:hidden text-slate-400 font-sans text-sm mr-1.5">{i + 1}.</span>
                       {listing.name}
                     </h2>
-                    <PriceLevel level={listing.price_level || 0} />
+                    <PriceLevel level={listing.price_level} />
                   </div>
 
                   {hasRealRating(listing) && (
