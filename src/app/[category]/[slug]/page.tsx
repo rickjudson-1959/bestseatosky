@@ -5,7 +5,9 @@ import { getListingBySlug, getRelatedListings, getCrossCategoryListings, getGuid
 import { FEATURE_BY_SLUG } from '@/lib/features';
 import { getPlaceholderImage } from '@/lib/supabase';
 import { absoluteSiteImageUrl, getListingImageAlt, isTownFallbackImage, withAbsoluteSchemaImage } from '@/lib/listingImage';
+import { priceRangeLabel, withoutUnpricedPriceRange } from '@/lib/price';
 import { hasRealRating, withoutUnratedAggregateRating } from '@/lib/rating';
+import PriceLevel from '@/components/PriceLevel';
 import { buildUTMUrl } from '@/lib/utm';
 import FeaturedInGuides from '@/components/FeaturedInGuides';
 import FallbackImage from '@/components/FallbackImage';
@@ -141,17 +143,6 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-function PriceLevel({ level }: { level: number }) {
-  if (level === 0) return <span className="text-emerald-600 font-semibold text-sm">Free</span>;
-  return (
-    <span className="text-sm">
-      {[...Array(4)].map((_, i) => (
-        <span key={i} className={i < level ? 'text-slate-800 font-bold' : 'text-slate-300'}>$</span>
-      ))}
-    </span>
-  );
-}
-
 export default async function ListingPage({ params }: Props) {
   const { category: categorySlug, slug } = await params;
   const listing = await getListingBySlug(slug);
@@ -221,7 +212,9 @@ export default async function ListingPage({ params }: Props) {
     : undefined;
 
   const tagNames = tags.map((t) => t.name);
-  const priceRange = listing.price_level === 0 ? 'Free' : '$'.repeat(listing.price_level);
+  const priceRange = priceRangeLabel(listing.price_level);
+  const showPrice = priceRange !== null;
+  const showHours = Boolean(listing.hours && Object.keys(listing.hours).length > 0);
 
   const baseSchema: Record<string, unknown> = {
     '@context': 'https://schema.org',
@@ -253,7 +246,7 @@ export default async function ListingPage({ params }: Props) {
     ...(listing.phone && { telephone: listing.phone }),
     ...(listing.featured_image_url && { image: absoluteSiteImageUrl(listing.featured_image_url) }),
     ...(listing.website && { sameAs: [listing.website] }),
-    priceRange,
+    ...(priceRange ? { priceRange } : {}),
   };
 
   if (catSlug === 'eat') {
@@ -267,14 +260,16 @@ export default async function ListingPage({ params }: Props) {
     }
   } else if (catSlug === 'play' || catSlug === 'visit') {
     if (tagNames.length > 0) baseSchema.touristType = tagNames;
-    if (listing.price_level === 0) baseSchema.isAccessibleForFree = true;
     baseSchema.publicAccess = true;
   } else {
     if (openingHours) baseSchema.openingHoursSpecification = openingHours;
   }
 
   const schema = withAbsoluteSchemaImage(
-    withoutUnratedAggregateRating(listing.schema_json || baseSchema, listing),
+    withoutUnpricedPriceRange(
+      withoutUnratedAggregateRating(listing.schema_json || baseSchema, listing),
+      listing.price_level,
+    ),
   );
 
   return (
@@ -340,25 +335,23 @@ export default async function ListingPage({ params }: Props) {
           </h1>
 
           {/* Rating Row */}
-          <div className="flex items-center gap-3 mb-6 flex-wrap">
-            {hasRealRating(listing) && (
-              <>
+          {(hasRealRating(listing) || showPrice || showHours) && (
+            <div className="flex items-center gap-3 mb-6 flex-wrap">
+              {hasRealRating(listing) && (
                 <div className="flex items-center gap-2">
                   <Stars rating={listing.google_rating} />
                   <span className="text-base font-bold text-slate-900">{listing.google_rating.toFixed(1)}</span>
                   <span className="text-sm text-slate-400">({listing.google_review_count?.toLocaleString()} reviews)</span>
                 </div>
+              )}
+              {hasRealRating(listing) && (showPrice || showHours) && (
                 <span className="text-slate-200">|</span>
-              </>
-            )}
-            <PriceLevel level={listing.price_level || 0} />
-            {listing.hours && Object.keys(listing.hours).length > 0 && (
-              <>
-                <span className="text-slate-200">|</span>
-                <OpenStatusBadge hours={listing.hours} />
-              </>
-            )}
-          </div>
+              )}
+              {showPrice && <PriceLevel level={listing.price_level} size="sm" />}
+              {showPrice && showHours && <span className="text-slate-200">|</span>}
+              {showHours && listing.hours && <OpenStatusBadge hours={listing.hours} />}
+            </div>
+          )}
 
           {/* Description */}
           <div

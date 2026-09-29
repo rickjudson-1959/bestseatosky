@@ -1,8 +1,10 @@
 import Link from 'next/link';
 import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import { getListingImageAlt } from '@/lib/listingImage';
+import { hasRealPriceLevel } from '@/lib/price';
 import { hasRealRating } from '@/lib/rating';
 import FallbackImage from './FallbackImage';
+import PriceLevel from './PriceLevel';
 
 const CAT_STYLES: Record<string, { bg: string; text: string; border: string; gradient: string }> = {
   eat: { bg: 'bg-orange-50', text: 'text-amber-700', border: 'border-orange-200', gradient: 'from-orange-500 to-red-600' },
@@ -37,17 +39,6 @@ function Stars({ rating }: { rating: number }) {
   );
 }
 
-function PriceLevel({ level }: { level: number }) {
-  if (level === 0) return <span className="text-emerald-600 font-semibold text-xs">Free</span>;
-  return (
-    <span className="text-xs">
-      {[...Array(4)].map((_, i) => (
-        <span key={i} className={i < level ? 'text-slate-800 font-bold' : 'text-slate-300'}>$</span>
-      ))}
-    </span>
-  );
-}
-
 export default function ListingCard({
   listing,
   showGoogleRatingLabel = false,
@@ -61,6 +52,7 @@ export default function ListingCard({
   const isFeatured = listing.featured === true;
   const googleRating = listing.google_rating || 0;
   const showRating = hasRealRating(listing);
+  const showPrice = hasRealPriceLevel(listing.price_level);
   const showGoogle = showGoogleRatingLabel && googleRating > 0;
 
   return (
@@ -114,19 +106,21 @@ export default function ListingCard({
             {listing.short_description || listing.description}
           </p>
 
-          <div className="flex items-center justify-between mb-3">
-            {showRating && (
-              <div className="flex items-center gap-1.5">
-                <Stars rating={googleRating} />
-                <span className="text-xs text-slate-400">
-                  {showGoogle
-                    ? `Google (${(listing.google_review_count || 0).toLocaleString()})`
-                    : `(${(listing.google_review_count || 0).toLocaleString()})`}
-                </span>
-              </div>
-            )}
-            <PriceLevel level={listing.price_level || 0} />
-          </div>
+          {(showRating || showPrice) && (
+            <div className="flex items-center justify-between mb-3">
+              {showRating && (
+                <div className="flex items-center gap-1.5">
+                  <Stars rating={googleRating} />
+                  <span className="text-xs text-slate-400">
+                    {showGoogle
+                      ? `Google (${(listing.google_review_count || 0).toLocaleString()})`
+                      : `(${(listing.google_review_count || 0).toLocaleString()})`}
+                  </span>
+                </div>
+              )}
+              {showPrice && <PriceLevel level={listing.price_level} />}
+            </div>
+          )}
 
           {tags.length > 0 && (
             <div className="flex gap-1.5 flex-wrap">
