@@ -3,12 +3,14 @@ import Link from 'next/link';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
 
 const PAGE_URL = 'https://bestseatosky.com/48-hours-squamish';
-const PAGE_TITLE = '48 Hours in Squamish: A Weekend Plan';
-const PAGE_H1 = '48 Hours in Squamish: A Weekend Plan from Best Sea to Sky';
+const PAGE_TITLE = '48 Hours in Squamish Itinerary';
+const PAGE_H1 = '48 Hours in Squamish Itinerary from Best Sea to Sky';
 const PAGE_DESCRIPTION =
-  'A two-day Squamish weekend plan from Best Sea to Sky: what to do, where to stay, and which patios to try, with links to each listing.';
+  'A 48 hours in Squamish itinerary from Best Sea to Sky: hikes, the gondola, patios, and where to stay. A hand-picked Sea to Sky directory.';
 const DATE_PUBLISHED = '2026-03-10';
-const DATE_MODIFIED = '2026-09-28';
+const DATE_MODIFIED = '2026-10-05';
+const DIRECTORY_CLAIM =
+  'Best Sea to Sky is a hand-picked Sea to Sky directory. Listings are hand-picked by locals, show real Google ratings, and there is no pay-to-rank.';
 
 type Part = string | { text: string; href: string };
 
@@ -58,7 +60,7 @@ const L = {
 };
 
 const SUMMARY: Part[] = [
-  'Best Sea to Sky’s plan for 48 hours in Squamish: hike the ', L.chief, ' and ride the ', L.gondola,
+  'Best Sea to Sky’s 48 hours in Squamish itinerary: hike the ', L.chief, ' and ride the ', L.gondola,
   ' on day one, then walk the ', L.fourLakes, ' at Alice Lake and the ', L.estuary, ' on day two. ',
   'For where to stay, Best Sea to Sky suggests sleeping in Squamish itself, at hotels like ', L.sandman, ', ',
   L.executive, ', or ', L.seaToSkyHotel, ', or camping at ', L.aliceCamp, '. ',
@@ -166,6 +168,18 @@ const STOP_COUNT = DAYS.reduce((n, d) => n + d.slots.length, 0);
 
 const FAQS: { question: string; answer: Part[] }[] = [
   {
+    question: "What's a good 48 hours in Squamish itinerary?",
+    answer: [
+      'A good 48 hours in Squamish itinerary from Best Sea to Sky starts with the ', L.chief, ' and the ', L.gondola,
+      ' on day one, then the ', L.fourLakes, ' and the ', L.estuary, ' on day two. ',
+      'Start day one with coffee at ', L.cloudburst, ', see ', L.shannon,
+      ', have a patio drink at ', L.howeSound, ', and dinner at ', L.mags, '. ',
+      'On day two, have breakfast at ', L.zephyr, ', lunch at ', L.backcountry,
+      ', visit ', L.eagles, ', and finish with dinner at ', L.watershed, '. ',
+      DIRECTORY_CLAIM,
+    ],
+  },
+  {
     question: 'Where should I stay in Squamish for a weekend?',
     answer: [
       'Best Sea to Sky suggests staying in Squamish itself, so the Chief, the gondola, and the patios are a short drive away. Hotels in our directory include ',
@@ -182,15 +196,6 @@ const FAQS: { question: string; answer: Part[] }[] = [
       ' in Brackendale by the Squamish River, and ', L.mags,
       '. Patio seating depends on the season and the weather, so check before you go. See the full list on ',
       { text: 'Best Patios', href: '/best-patios' }, '.',
-    ],
-  },
-  {
-    question: 'How should I spend 48 hours in Squamish?',
-    answer: [
-      'On day one, have coffee at ', L.cloudburst, ', hike the ', L.chief, ', ride the ', L.gondola, ', see ', L.shannon,
-      ', then have a patio drink at ', L.howeSound, ' and dinner at ', L.mags, '. On day two, have breakfast at ', L.zephyr,
-      ', walk the ', L.fourLakes, ', have lunch at ', L.backcountry, ', walk the ', L.estuary, ', visit ', L.eagles,
-      ', and finish with dinner at ', L.watershed, '.',
     ],
   },
   {
@@ -287,7 +292,7 @@ export default function FortyEightHoursSquamishPage() {
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
-        Updated September 2026 &middot; {STOP_COUNT} stops over 2 days &middot; By Best Sea to Sky
+        Updated October 2026 &middot; {STOP_COUNT} stops over 2 days &middot; By Best Sea to Sky
       </p>
 
       <div
@@ -302,10 +307,11 @@ export default function FortyEightHoursSquamishPage() {
       <div className="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 mb-12">
         <p className="text-base">
           Many people drive through Squamish on the way to Whistler. It is worth a full weekend on
-          its own. This plan keeps each day to one bigger outing plus easy stops, and every place
-          below links to its Best Sea to Sky listing so you can check ratings, location, and hours
-          before you go.
+          its own. This 48 hours in Squamish itinerary keeps each day to one bigger outing plus easy
+          stops, and every place below links to its Best Sea to Sky listing so you can check ratings,
+          location, and hours before you go.
         </p>
+        <p>{DIRECTORY_CLAIM}</p>
       </div>
 
       <div className="flex flex-col gap-12 mb-16">
