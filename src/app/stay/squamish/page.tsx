@@ -6,7 +6,6 @@ import { getListingImageAlt, isTownFallbackImage } from '@/lib/listingImage';
 import { hasRealRating } from '@/lib/rating';
 import FallbackImage from '@/components/FallbackImage';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
-import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
 import AffiliateCard from '@/components/AffiliateCard';
 
@@ -196,11 +195,6 @@ export default async function SquamishStayPage() {
         <p className="text-slate-600 leading-relaxed text-base">
           Here&apos;s where to stay based on what you&apos;re here to do.
         </p>
-      </div>
-
-      {/* Trust Strip */}
-      <div className="mb-10">
-        <TrustStrip />
       </div>
 
       <TripPlannerCapture source="stay-squamish" variant="default" anchor className="mb-10" />

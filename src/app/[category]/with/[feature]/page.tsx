@@ -9,7 +9,6 @@ import {
 import ListingCard from '@/components/ListingCard';
 import FeaturePills from '@/components/FeaturePills';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
-import { TrustStrip } from '@/components/SocialProof';
 import { getFeature } from '@/lib/features';
 
 const CAT_VERBS: Record<string, string> = {
@@ -79,10 +78,6 @@ export default async function FeatureFilterPage({ params }: Props) {
           {listings.length} {listings.length === 1 ? 'place' : 'places'} across Squamish, Whistler, and Pemberton
           {' '}with {feature.name.toLowerCase()}.
         </p>
-      </div>
-
-      <div className="mb-8">
-        <TrustStrip />
       </div>
 
       <FeaturePills categorySlug={categorySlug} features={allFeatures} activeSlug={featureSlug} />

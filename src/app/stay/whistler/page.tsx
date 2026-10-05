@@ -5,7 +5,6 @@ import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import { getListingImageAlt, isTownFallbackImage } from '@/lib/listingImage';
 import { hasRealRating } from '@/lib/rating';
 import FallbackImage from '@/components/FallbackImage';
-import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
 import AffiliateCard from '@/components/AffiliateCard';
 import HubPageConversion from '@/components/HubPageConversion';
@@ -208,11 +207,6 @@ export default async function WhistlerStayPage() {
         source="stay-whistler-hero"
         omitCategory="stay"
       />
-
-      {/* Trust Strip */}
-      <div className="mb-10">
-        <TrustStrip />
-      </div>
 
       {/* ============ QUICK PICK — TRIVAGO ============ */}
       <div className="mb-16">

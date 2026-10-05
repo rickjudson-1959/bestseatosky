@@ -6,7 +6,6 @@ import { getCuisine, CUISINES } from '@/lib/cuisines';
 import ListingCard from '@/components/ListingCard';
 import CuisinePills from '@/components/CuisinePills';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
-import { TrustStrip } from '@/components/SocialProof';
 
 type Props = {
   params: Promise<{ type: string }>;
@@ -62,10 +61,6 @@ export default async function CuisinePage({ params }: Props) {
         <p className="text-slate-500">
           {listings.length} {listings.length === 1 ? 'spot' : 'spots'} across the Sea to Sky corridor.
         </p>
-      </div>
-
-      <div className="mb-8">
-        <TrustStrip />
       </div>
 
       <CuisinePills counts={counts} activeSlug={cuisine.slug} />
