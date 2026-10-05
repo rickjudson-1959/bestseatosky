@@ -2,7 +2,6 @@ import { Metadata } from 'next';
 import Link from 'next/link';
 import { getAllSeoPages } from '@/lib/data';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
-import { VisitorTestimonials } from '@/components/SocialProof';
 
 export const metadata: Metadata = {
   title: 'Sea to Sky Guides | Best Of Lists for Squamish, Whistler & Pemberton',
@@ -126,9 +125,6 @@ export default async function GuidesPage() {
         <p className="text-slate-500 text-center py-12">No guides published yet.</p>
       )}
     </section>
-
-    {/* Visitor Testimonials */}
-    <VisitorTestimonials />
 
     <section className="max-w-5xl mx-auto px-6 pb-8">
       <TripPlannerCapture source="guides-index" variant="default" className="mt-4" />

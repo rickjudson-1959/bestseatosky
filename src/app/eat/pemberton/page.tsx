@@ -6,7 +6,6 @@ import { getListingImageAlt, isTownFallbackImage } from '@/lib/listingImage';
 import { hasRealRating } from '@/lib/rating';
 import FallbackImage from '@/components/FallbackImage';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
-import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
 
 export const metadata: Metadata = {
@@ -172,11 +171,6 @@ export default async function PembertonEatPage() {
         <p className="text-slate-600 leading-relaxed text-base">
           It&apos;s a short list because Pemberton is a small town. Every spot on it is here for a reason.
         </p>
-      </div>
-
-      {/* Trust Strip */}
-      <div className="mb-10">
-        <TrustStrip />
       </div>
 
       <TripPlannerCapture source="eat-pemberton" variant="default" anchor className="mb-10" />

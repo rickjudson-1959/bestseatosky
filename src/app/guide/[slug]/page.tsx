@@ -7,7 +7,6 @@ import { getListingImageAlt } from '@/lib/listingImage';
 import { hasRealRating, omitEmptyAggregateRatings } from '@/lib/rating';
 import PriceLevel from '@/components/PriceLevel';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
-import { TrustStrip } from '@/components/SocialProof';
 import dynamic from 'next/dynamic';
 const FaqSection = dynamic(() => import('@/components/FaqSection'));
 import FallbackImage from '@/components/FallbackImage';
@@ -164,11 +163,6 @@ export default async function GuidePage({ params }: Props) {
           ))}
         </div>
       )}
-
-      {/* Trust Strip */}
-      <div className="mb-10">
-        <TrustStrip />
-      </div>
 
       {/* Affiliate Card (stay/accommodation guides) */}
       {(/hotel|stay|accommodation|lodge/.test(slug)) && (

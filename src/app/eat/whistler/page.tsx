@@ -5,7 +5,6 @@ import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import { getListingImageAlt, isTownFallbackImage } from '@/lib/listingImage';
 import { hasRealRating } from '@/lib/rating';
 import FallbackImage from '@/components/FallbackImage';
-import { TrustStrip } from '@/components/SocialProof';
 import TagFilterGrid from '@/components/TagFilterGrid';
 import HubPageConversion from '@/components/HubPageConversion';
 
@@ -197,11 +196,6 @@ export default async function WhistlerEatPage() {
         source="eat-whistler-hero"
         omitCategory="eat"
       />
-
-      {/* Trust Strip */}
-      <div className="mb-10">
-        <TrustStrip />
-      </div>
 
       {/* ============ OUR TOP PICKS ============ */}
       <h2 className="font-serif text-2xl font-bold text-slate-900 mb-6">Our Top Picks</h2>

@@ -6,7 +6,6 @@ import FilterBar from './FilterBar';
 import FeaturePills from '@/components/FeaturePills';
 import CuisinePills from '@/components/CuisinePills';
 import TripPlannerCapture from '@/components/TripPlannerCapture';
-import { TrustStrip } from '@/components/SocialProof';
 
 const EAT_TITLE = 'Best Restaurants in Squamish, Whistler & Pemberton';
 const EAT_OG_TITLE = 'Best Sea to Sky | Hand-Picked Restaurants in Squamish, Whistler & Pemberton';
@@ -203,11 +202,6 @@ export default async function CategoryPage({ params, searchParams }: Props) {
         anchor
         className="mb-8"
       />
-
-      {/* Trust Strip */}
-      <div className="mb-8">
-        <TrustStrip />
-      </div>
 
       {/* Browse by cuisine (eat only) */}
       {categorySlug === 'eat' && <CuisinePills counts={cuisineCounts} />}
