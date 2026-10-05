@@ -129,7 +129,6 @@ src/
 │   ├── Footer.tsx              # Footer with curated links, guides, Get Listed, contact, advertise
 │   ├── SearchBar.tsx           # Debounced live search (client component)
 │   ├── ListingCard.tsx         # Listing preview card with image/gradient (featured badge + green border for featured)
-│   ├── SocialProof.tsx         # VisitorTestimonials (full section) + TrustStrip (compact bar)
 │   ├── NewsletterSignup.tsx    # Newsletter signup form (client component, default + compact variants, posts to /api/subscribe)
 │   ├── ChatUI.tsx              # AI trip planner chat interface (client component, streaming)
 │   ├── ChatWidget.tsx          # Floating chat widget (dynamic-imported in root layout, mobile-fluid width, dvh height)
@@ -270,7 +269,6 @@ squamish, whistler, pemberton, britannia-beach, lions-bay, furry-creek
 - **Mobile hamburger menu** — animated 3-bar toggle in header, full-width dropdown nav, auto-closes on link tap
 - **Image fallback:** category placeholder image from Supabase Storage when no featured photo; emoji fallback if placeholder also fails. Helper: `getPlaceholderImage(categorySlug)` in `lib/supabase.ts`
 - **Featured listings** — visual differentiation with emerald border, green tint, and "★ Featured" badge; sorted to top of category pages
-- **Social proof** — VisitorTestimonials on homepage + guide index; TrustStrip on category pages + guide detail pages
 - **Town restaurant guides** — curated `/eat/squamish`, `/eat/whistler`, `/eat/pemberton` pages with editorial top picks, best-by-category sections, and full filterable grids; linked from `/eat` page
 - **Listing FAQs** — listings with `faq_json` data render accordion FAQ section + FAQPage schema markup on detail pages
 - **HTML descriptions** — listing detail pages render description as HTML for rich content (bold, lists, etc.)

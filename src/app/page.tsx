@@ -4,7 +4,6 @@ import { getCategories, getListings } from '@/lib/data';
 import ListingCard from '@/components/ListingCard';
 import SearchBar from '@/components/SearchBar';
 import NewsletterSignup from '@/components/NewsletterSignup';
-import { VisitorTestimonials } from '@/components/SocialProof';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -276,9 +275,6 @@ export default async function HomePage() {
           })}
         </div>
       </section>
-
-      {/* VISITOR TESTIMONIALS + PLATFORM STATS */}
-      <VisitorTestimonials />
 
       {/* LOCAL GUIDES */}
       <section className="max-w-7xl mx-auto px-6 py-16">
