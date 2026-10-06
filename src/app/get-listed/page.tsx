@@ -10,24 +10,6 @@ export const metadata: Metadata = {
   alternates: { canonical: '/get-listed' },
 };
 
-const TESTIMONIALS = [
-  {
-    quote: 'We started getting calls from people saying they found us on Best Sea to Sky. Within a month, we could tell the difference on a Thursday night.',
-    name: 'Local Restaurant Owner',
-    location: 'Squamish',
-  },
-  {
-    quote: 'The people who find us here are already packed and ready to go. They\'re not browsing, they\'re booking. That\'s the difference.',
-    name: 'Adventure Tour Operator',
-    location: 'Whistler',
-  },
-  {
-    quote: 'Being listed alongside the places locals actually recommend? That does more for our reputation than any ad we\'ve ever run.',
-    name: 'Boutique Hotel Manager',
-    location: 'Pemberton',
-  },
-];
-
 const FAQS = [
   {
     q: 'Is the free listing really free?',
@@ -113,28 +95,6 @@ export default async function GetListedPage() {
           <div>
             <div className="font-serif text-3xl font-bold text-slate-900">6</div>
             <div className="text-sm text-slate-500 mt-1">Corridor Towns</div>
-          </div>
-        </div>
-      </section>
-
-      {/* TESTIMONIALS */}
-      <section className="bg-slate-50 px-6 py-16">
-        <div className="max-w-5xl mx-auto">
-          <h2 className="font-serif text-2xl md:text-3xl font-bold text-slate-900 text-center mb-10">
-            What Business Owners Say
-          </h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
-            {TESTIMONIALS.map((t) => (
-              <div key={t.name} className="bg-white rounded-2xl p-6 border border-slate-200">
-                <p className="text-sm text-slate-600 leading-relaxed mb-5 italic">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-                <div>
-                  <div className="text-sm font-semibold text-slate-900">{t.name}</div>
-                  <div className="text-xs text-slate-400">{t.location}</div>
-                </div>
-              </div>
-            ))}
           </div>
         </div>
       </section>
