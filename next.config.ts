@@ -29,6 +29,12 @@ const nextConfig: NextConfig = {
     return [
       { source: '/pricing', destination: '/get-listed', permanent: true },
       { source: '/visit/helmers-organic-farm-squamish', destination: '/visit/helmers-organic-farm-pemberton', permanent: true },
+      // permanent: true emits 308. This merged listing needs a 301.
+      {
+        source: '/play/black-diamond-bike-rentals-whistler-2',
+        destination: '/play/black-diamond-bike-rentals-whistler',
+        statusCode: 301,
+      },
     ];
   },
 
