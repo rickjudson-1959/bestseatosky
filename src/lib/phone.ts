@@ -5,8 +5,19 @@ function phoneDigits(phone: string): string {
   return phone.replace(/\D/g, '');
 }
 
+/** Trailing ext / extension / x / #, not part of the dialed number. */
+const EXTENSION_PATTERN = /(?:extension|ext\.?|x|#)\s*(\d+)\s*$/i;
+
+function splitExtension(phone: string): { base: string; extension: string | null } {
+  const match = phone.match(EXTENSION_PATTERN);
+  if (!match || match.index == null) return { base: phone.trim(), extension: null };
+  const base = phone.slice(0, match.index).trim();
+  if (!base) return { base: phone.trim(), extension: null };
+  return { base, extension: match[1] };
+}
+
 function isSitePhone(phone: string): boolean {
-  const digits = phoneDigits(phone);
+  const digits = phoneDigits(splitExtension(phone).base);
   return digits === SITE_PHONE_DIGITS || digits === `1${SITE_PHONE_DIGITS}`;
 }
 
@@ -25,13 +36,16 @@ export function listingPhone(phone: string | null | undefined): string | null {
 export function listingTelHref(phone: string | null | undefined): string | null {
   const display = listingPhone(phone);
   if (!display) return null;
-  let digits = display.replace(/\D/g, '');
+  const { base, extension } = splitExtension(display);
+  let digits = base.replace(/\D/g, '');
   if (digits.length === 10) digits = `1${digits}`;
-  if (digits.length === 11 && digits.startsWith('1')) return `tel:+${digits}`;
-  if (display.trim().startsWith('+') && digits.length >= 8 && digits.length <= 15) {
-    return `tel:+${digits}`;
+  let href: string | null = null;
+  if (digits.length === 11 && digits.startsWith('1')) href = `tel:+${digits}`;
+  else if (base.trim().startsWith('+') && digits.length >= 8 && digits.length <= 15) {
+    href = `tel:+${digits}`;
   }
-  return null;
+  if (!href) return null;
+  return extension ? `${href},${extension}` : href;
 }
 
 function withoutTelephone<T>(value: T): T {
