@@ -18,14 +18,20 @@ export function listingPhone(phone: string | null | undefined): string | null {
   return trimmed;
 }
 
-/** tel: href for a listing's own phone. Null when there is nothing to dial. */
+/**
+ * tel: href in E.164. A 10-digit North American number becomes +1.
+ * Null when the listing has no dialable phone of its own.
+ */
 export function listingTelHref(phone: string | null | undefined): string | null {
   const display = listingPhone(phone);
   if (!display) return null;
-  const hasPlus = display.startsWith('+');
-  const digits = display.replace(/\D/g, '');
-  if (!digits) return null;
-  return hasPlus ? `tel:+${digits}` : `tel:${digits}`;
+  let digits = display.replace(/\D/g, '');
+  if (digits.length === 10) digits = `1${digits}`;
+  if (digits.length === 11 && digits.startsWith('1')) return `tel:+${digits}`;
+  if (display.trim().startsWith('+') && digits.length >= 8 && digits.length <= 15) {
+    return `tel:+${digits}`;
+  }
+  return null;
 }
 
 function withoutTelephone<T>(value: T): T {

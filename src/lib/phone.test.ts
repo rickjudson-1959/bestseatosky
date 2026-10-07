@@ -5,7 +5,8 @@ import { listingPhone, listingTelHref, withListingTelephone } from './phone';
 test('listing phone and tel href use only the listing number', () => {
   assert.equal(listingPhone('  +1 604-555-0100  '), '+1 604-555-0100');
   assert.equal(listingTelHref('+1 (604) 555-0100'), 'tel:+16045550100');
-  assert.equal(listingTelHref('604.555.0100'), 'tel:6045550100');
+  assert.equal(listingTelHref('604.555.0100'), 'tel:+16045550100');
+  assert.equal(listingTelHref('778-770-0275'), 'tel:+17787700275');
   assert.equal(listingPhone('   '), null);
   assert.equal(listingPhone(null), null);
   assert.equal(listingTelHref(undefined), null);

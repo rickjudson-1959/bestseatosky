@@ -6,9 +6,11 @@ import { isListingDetailPath } from '@/lib/listingRoutes';
 
 export default function FooterContact() {
   const pathname = usePathname();
+  const showCallBlock = !isListingDetailPath(pathname);
 
-  if (isListingDetailPath(pathname)) {
-    return (
+  return (
+    <div className="flex flex-col gap-8">
+      {showCallBlock ? <CallCta variant="footer" /> : null}
       <div>
         <h4 className="font-serif text-base text-white mb-2">Email Us</h4>
         <a
@@ -18,8 +20,6 @@ export default function FooterContact() {
           hello@bestseatosky.com
         </a>
       </div>
-    );
-  }
-
-  return <CallCta variant="footer" />;
+    </div>
+  );
 }
