@@ -17,6 +17,25 @@ test('listing phone and tel href use only the listing number', () => {
   assert.equal(listingTelHref('778.770.2931'), null);
 });
 
+test('extensions pause after the number and stay out of the dialed digits', () => {
+  const stored = '+1 604-898-4874 ext. 111';
+  assert.equal(listingPhone(stored), stored);
+  assert.equal(listingTelHref(stored), 'tel:+16048984874,111');
+  assert.equal(listingTelHref('604-898-4874 ext 111'), 'tel:+16048984874,111');
+  assert.equal(listingTelHref('604-898-4874 extension 111'), 'tel:+16048984874,111');
+  assert.equal(listingTelHref('604-898-4874 x111'), 'tel:+16048984874,111');
+  assert.equal(listingTelHref('604-898-4874 x 111'), 'tel:+16048984874,111');
+  assert.equal(listingTelHref('(604) 898-4874 #111'), 'tel:+16048984874,111');
+  assert.equal(listingTelHref('(604) 898-4874 # 111'), 'tel:+16048984874,111');
+
+  assert.equal(withListingTelephone({ '@type': 'Store' }, stored).telephone, stored);
+
+  assert.equal(listingPhone('+1 (778) 770-2931 ext. 111'), null);
+  assert.equal(listingTelHref('778-770-2931 ext 111'), null);
+  assert.equal(listingTelHref('+1 778-770-2931 x111'), null);
+  assert.equal(listingTelHref('778.770.2931 #111'), null);
+});
+
 test('JSON-LD telephone is the listing phone or omitted', () => {
   const stored = {
     '@type': 'LocalBusiness',
