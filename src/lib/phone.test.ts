@@ -10,6 +10,10 @@ test('listing phone and tel href use only the listing number', () => {
   assert.equal(listingPhone(null), null);
   assert.equal(listingTelHref(undefined), null);
   assert.equal(listingTelHref('call the shop'), null);
+  assert.equal(listingPhone('+1 (778) 770-2931'), null);
+  assert.equal(listingPhone('778-770-2931'), null);
+  assert.equal(listingPhone('+17787702931'), null);
+  assert.equal(listingTelHref('778.770.2931'), null);
 });
 
 test('JSON-LD telephone is the listing phone or omitted', () => {
@@ -30,6 +34,11 @@ test('JSON-LD telephone is the listing phone or omitted', () => {
 
   const omitted = withListingTelephone(stored, '  ');
   assert.equal('telephone' in omitted, false);
+  const siteNumber = withListingTelephone(
+    { ...stored, telephone: '+1 (778) 770-2931' },
+    '+1 (778) 770-2931',
+  );
+  assert.equal('telephone' in siteNumber, false);
   assert.equal(
     (omitted.contactPoint as { telephone?: string }).telephone,
     undefined,

@@ -1,8 +1,21 @@
-/** Trimmed listing phone, or null when the listing has no number. */
+/** Digits for the Best Sea to Sky business line. Never a listing's phone. */
+const SITE_PHONE_DIGITS = '7787702931';
+
+function phoneDigits(phone: string): string {
+  return phone.replace(/\D/g, '');
+}
+
+function isSitePhone(phone: string): boolean {
+  const digits = phoneDigits(phone);
+  return digits === SITE_PHONE_DIGITS || digits === `1${SITE_PHONE_DIGITS}`;
+}
+
+/** Trimmed listing phone, or null when the listing has no number of its own. */
 export function listingPhone(phone: string | null | undefined): string | null {
   if (typeof phone !== 'string') return null;
   const trimmed = phone.trim();
-  return trimmed ? trimmed : null;
+  if (!trimmed || isSitePhone(trimmed)) return null;
+  return trimmed;
 }
 
 /** tel: href for a listing's own phone. Null when there is nothing to dial. */
