@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import CallCta from '@/components/CallCta';
+import FooterContact from '@/components/FooterContact';
 
 const FOOTER_LINKS = {
   Restaurants: [
@@ -74,7 +74,7 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-slate-800 pt-8 flex flex-col gap-8">
-          <CallCta variant="footer" />
+          <FooterContact />
 
           <div className="flex flex-col md:flex-row justify-between items-center gap-4">
             <div className="flex items-center gap-2.5">

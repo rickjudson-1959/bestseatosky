@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { Listing, getPlaceholderImage } from '@/lib/supabase';
 import { getListingImageAlt } from '@/lib/listingImage';
+import { listingPhone, listingTelHref } from '@/lib/phone';
 import { hasRealPriceLevel } from '@/lib/price';
 import { hasRealRating } from '@/lib/rating';
 import FallbackImage from './FallbackImage';
@@ -54,14 +55,16 @@ export default function ListingCard({
   const showRating = hasRealRating(listing);
   const showPrice = hasRealPriceLevel(listing.price_level);
   const showGoogle = showGoogleRatingLabel && googleRating > 0;
+  const phone = listingPhone(listing.phone);
+  const phoneHref = listingTelHref(phone);
 
   return (
-    <Link href={`/${catSlug}/${listing.slug}`}>
-      <div className={`rounded-2xl overflow-hidden cursor-pointer transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl shadow-sm group ${
-        isFeatured
-          ? 'bg-emerald-50/40 border-2 border-emerald-300 hover:border-emerald-400 ring-1 ring-emerald-100'
-          : 'bg-white border border-slate-100 hover:border-slate-200'
-      }`}>
+    <div className={`rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl shadow-sm group ${
+      isFeatured
+        ? 'bg-emerald-50/40 border-2 border-emerald-300 hover:border-emerald-400 ring-1 ring-emerald-100'
+        : 'bg-white border border-slate-100 hover:border-slate-200'
+    }`}>
+      <Link href={`/${catSlug}/${listing.slug}`} className="block">
         {/* Image / Gradient Header */}
         <div className={`h-44 bg-gradient-to-br ${styles.gradient} relative overflow-hidden`}>
           <FallbackImage
@@ -135,7 +138,18 @@ export default function ListingCard({
             </div>
           )}
         </div>
-      </div>
-    </Link>
+      </Link>
+      {phone && phoneHref ? (
+        <div className="px-5 pb-5 -mt-2">
+          <a
+            href={phoneHref}
+            aria-label={`Call ${listing.name} at ${phone}`}
+            className="text-sm font-semibold text-emerald-700 hover:underline"
+          >
+            {phone}
+          </a>
+        </div>
+      ) : null}
+    </div>
   );
 }

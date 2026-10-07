@@ -1,5 +1,6 @@
 import Link from 'next/link';
 import Image from 'next/image';
+import { PHONE_DISPLAY } from '@/components/CallCta';
 import { getCategories, getListings } from '@/lib/data';
 import ListingCard from '@/components/ListingCard';
 import SearchBar from '@/components/SearchBar';
@@ -84,6 +85,7 @@ const jsonLd = {
       description:
         'A locally curated directory and guide to the Sea to Sky corridor — Squamish, Whistler, and Pemberton.',
       email: 'hello@bestseatosky.com',
+      telephone: PHONE_DISPLAY,
       sameAs: [],
     },
   ],

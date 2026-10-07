@@ -3,6 +3,7 @@ import dynamic from 'next/dynamic';
 import { DM_Serif_Display, Source_Sans_3 } from 'next/font/google';
 import Header from '@/components/Header';
 import Footer from '@/components/Footer';
+import OrganizationJsonLd from '@/components/OrganizationJsonLd';
 import GoogleAnalytics from '@/components/GoogleAnalytics';
 import './globals.css';
 
@@ -95,24 +96,7 @@ export default function RootLayout({
         <main className="min-h-screen">{children}</main>
         <Footer />
         <ChatWidget />
-        <script
-          type="application/ld+json"
-          dangerouslySetInnerHTML={{
-            __html: JSON.stringify({
-              '@context': 'https://schema.org',
-              '@type': 'Organization',
-              name: 'Best Sea to Sky',
-              url: 'https://bestseatosky.com',
-              logo: 'https://bestseatosky.com/icon.svg',
-              description:
-                'Your free guide to 850+ places across Squamish, Whistler & Pemberton',
-              sameAs: [
-                'https://www.facebook.com/bestseatosky',
-                'https://www.instagram.com/bestseatosky',
-              ],
-            }),
-          }}
-        />
+        <OrganizationJsonLd />
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{

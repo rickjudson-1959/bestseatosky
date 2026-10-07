@@ -6,6 +6,7 @@ import { FEATURE_BY_SLUG } from '@/lib/features';
 import { getPlaceholderImage } from '@/lib/supabase';
 import { absoluteSiteImageUrl, getListingImageAlt, isTownFallbackImage, withAbsoluteSchemaImage } from '@/lib/listingImage';
 import { priceRangeLabel, withoutUnpricedPriceRange } from '@/lib/price';
+import { listingPhone, listingTelHref, withListingTelephone } from '@/lib/phone';
 import { hasRealRating, withoutUnratedAggregateRating } from '@/lib/rating';
 import PriceLevel from '@/components/PriceLevel';
 import { buildUTMUrl } from '@/lib/utm';
@@ -166,9 +167,12 @@ export default async function ListingPage({ params }: Props) {
       })()
     : null;
 
-  const details = [
+  const phone = listingPhone(listing.phone);
+  const phoneHref = listingTelHref(phone);
+
+  const details: { label: string; value: string; icon: string; href?: string }[] = [
     { label: 'Address', value: listing.address, icon: '📍' },
-    ...(listing.phone ? [{ label: 'Phone', value: listing.phone, icon: '📞' }] : []),
+    ...(phone && phoneHref ? [{ label: 'Phone', value: phone, icon: '📞', href: phoneHref }] : []),
     ...(cleanWebsite ? [{ label: 'Website', value: cleanWebsite, icon: '🌐' }] : []),
     ...(listing.email ? [{ label: 'Email', value: listing.email, icon: '✉️' }] : []),
   ];
@@ -243,7 +247,6 @@ export default async function ListingPage({ params }: Props) {
         reviewCount: listing.google_review_count,
       },
     }),
-    ...(listing.phone && { telephone: listing.phone }),
     ...(listing.featured_image_url && { image: absoluteSiteImageUrl(listing.featured_image_url) }),
     ...(listing.website && { sameAs: [listing.website] }),
     ...(priceRange ? { priceRange } : {}),
@@ -265,11 +268,14 @@ export default async function ListingPage({ params }: Props) {
     if (openingHours) baseSchema.openingHoursSpecification = openingHours;
   }
 
-  const schema = withAbsoluteSchemaImage(
-    withoutUnpricedPriceRange(
-      withoutUnratedAggregateRating(listing.schema_json || baseSchema, listing),
-      listing.price_level,
+  const schema = withListingTelephone(
+    withAbsoluteSchemaImage(
+      withoutUnpricedPriceRange(
+        withoutUnratedAggregateRating(listing.schema_json || baseSchema, listing),
+        listing.price_level,
+      ),
     ),
+    listing.phone,
   );
 
   return (
@@ -453,10 +459,26 @@ export default async function ListingPage({ params }: Props) {
                   <div className="text-[10px] font-semibold text-slate-400 uppercase tracking-wider mb-0.5">
                     {item.label}
                   </div>
-                  <div className="text-sm text-slate-800">{item.value}</div>
+                  {item.href ? (
+                    <a href={item.href} className="text-sm font-semibold text-emerald-700 hover:underline">
+                      {item.value}
+                    </a>
+                  ) : (
+                    <div className="text-sm text-slate-800">{item.value}</div>
+                  )}
                 </div>
               </div>
             ))}
+
+            {phoneHref && phone && (
+              <a
+                href={phoneHref}
+                aria-label={`Call ${phone}`}
+                className={`block w-full text-center py-3.5 rounded-xl text-white text-sm font-bold mt-5 transition-opacity hover:opacity-90 ${styles.accent}`}
+              >
+                Call
+              </a>
+            )}
 
             {listing.address && (
               <a
@@ -466,7 +488,7 @@ export default async function ListingPage({ params }: Props) {
                 )}
                 target="_blank"
                 rel="noopener noreferrer"
-                className={`block w-full text-center py-3.5 rounded-xl text-white text-sm font-bold mt-5 transition-opacity hover:opacity-90 ${styles.accent}`}
+                className={`block w-full text-center py-3.5 rounded-xl text-white text-sm font-bold ${phoneHref ? 'mt-3' : 'mt-5'} transition-opacity hover:opacity-90 ${styles.accent}`}
               >
                 Get Directions →
               </a>
