@@ -27,6 +27,11 @@
       "source": "/visit/helmers-organic-farm-squamish",
       "destination": "/visit/helmers-organic-farm-pemberton",
       "permanent": true
+    },
+    {
+      "source": "/play/black-diamond-bike-rentals-whistler-2",
+      "destination": "/play/black-diamond-bike-rentals-whistler",
+      "statusCode": 301
     }
   ]
 }
