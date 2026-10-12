@@ -42,6 +42,11 @@
       "source": "/stay/riverside-campsite-suite-j2-whistler",
       "destination": "/stay/whistler",
       "statusCode": 301
+    },
+    {
+      "source": "/visit/owl-creek-recreation-site-squamish",
+      "destination": "/visit/owl-creek-recreation-site-pemberton",
+      "statusCode": 301
     }
   ]
 }

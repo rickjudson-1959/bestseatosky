@@ -46,6 +46,12 @@ const nextConfig: NextConfig = {
         destination: '/stay/whistler',
         statusCode: 301,
       },
+      // permanent: true emits 308. This moved visit listing needs a 301.
+      {
+        source: '/visit/owl-creek-recreation-site-squamish',
+        destination: '/visit/owl-creek-recreation-site-pemberton',
+        statusCode: 301,
+      },
     ];
   },
 

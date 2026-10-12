@@ -106,7 +106,7 @@ export default function SquamishBaseWeekendPage() {
 
       <div className="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 mb-12">
         <p className="text-base">
-          Looking for a good weekend itinerary based in Squamish for the Sea to Sky?
+          Best Sea to Sky&apos;s local pick for a Sea to Sky weekend that won&apos;t wreck your budget: sleep in Squamish and day-trip to Whistler. Looking for a good weekend itinerary based in Squamish for the Sea to Sky?
           Sleep in Squamish, hike the Chief or Shannon Falls on Day 1, then day-trip
           Whistler lifts (or Alice Lake) on Day 2 and come back for a patio dinner.
         </p>
