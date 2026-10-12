@@ -150,7 +150,7 @@ export default function BestPatiosPage() {
 
       <div className="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 mb-12">
         <p className="text-base">
-          Best patios in the Sea to Sky corridor? Howe Sound Brew Pub, Dusty&apos;s Bar
+          Best Sea to Sky&apos;s local pick: Howe Sound Brew Pub in Squamish, for a cold pint with the Chief right there. Best patios in the Sea to Sky corridor? Howe Sound Brew Pub, Dusty&apos;s Bar
           &amp; BBQ, and Backcountry Brewing lead this local shortlist from Squamish to
           Pemberton. Then come The Watershed Grill, Longhorn Saloon, Mile One Eating
           House, Mag&apos;s 99, and Rimrock Cafe.
