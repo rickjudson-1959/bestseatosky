@@ -35,6 +35,17 @@ const nextConfig: NextConfig = {
         destination: '/play/black-diamond-bike-rentals-whistler',
         statusCode: 301,
       },
+      // permanent: true emits 308. Retired stay listings need a 301.
+      {
+        source: '/stay/cascade-lodge-216-whistler',
+        destination: '/stay/whistler',
+        statusCode: 301,
+      },
+      {
+        source: '/stay/riverside-campsite-suite-j2-whistler',
+        destination: '/stay/whistler',
+        statusCode: 301,
+      },
     ];
   },
 
