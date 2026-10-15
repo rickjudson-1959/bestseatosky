@@ -23,6 +23,18 @@ const CAT_ICONS: Record<string, string> = {
 
 const GUIDE_YEAR = '2026';
 
+// Hand-picked extra entries shown under the intro on specific guides.
+const GUIDE_EXTRA_PICKS: Record<string, { name: string; href: string; text: string }[]> = {
+  'best-attractions-squamish': [
+    {
+      name: 'Canadian Coastal Sailing',
+      href: '/play/canadian-coastal-sailing-squamish',
+      text: '3-hour afternoon and sunset sails on Howe Sound from Squamish, plus private charters for groups up to 12.',
+    },
+  ],
+};
+
+
 // Keyword-rich suffix for the meta <title>. Match longest prefix first.
 const GUIDE_TITLE_SUFFIXES: Array<{ test: (slug: string) => boolean; suffix: string }> = [
   { test: (s) => s.startsWith('best-restaurants-'), suffix: 'Ranked by Real Reviews' },
@@ -163,6 +175,20 @@ export default async function GuidePage({ params }: Props) {
           ))}
         </div>
       )}
+
+      {GUIDE_EXTRA_PICKS[slug]?.length ? (
+        <div className="mb-10 space-y-2">
+          {GUIDE_EXTRA_PICKS[slug].map((pick) => (
+            <p key={pick.href} className="text-slate-600 leading-relaxed text-base">
+              Also in Squamish:{' '}
+              <Link href={pick.href} className="font-semibold text-emerald-800 hover:underline">
+                {pick.name}
+              </Link>
+              . {pick.text}
+            </p>
+          ))}
+        </div>
+      ) : null}
 
       {/* Affiliate Card (stay/accommodation guides) */}
       {(/hotel|stay|accommodation|lodge/.test(slug)) && (
