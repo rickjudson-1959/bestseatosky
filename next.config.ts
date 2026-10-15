@@ -52,6 +52,12 @@ const nextConfig: NextConfig = {
         destination: '/visit/owl-creek-recreation-site-pemberton',
         statusCode: 301,
       },
+      // permanent: true emits 308. This moved services listing needs a 301.
+      {
+        source: '/services/canadian-coastal-sailing-squamish',
+        destination: '/play/canadian-coastal-sailing-squamish',
+        statusCode: 301,
+      },
     ];
   },
 
