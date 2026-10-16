@@ -11,6 +11,7 @@ import dynamic from 'next/dynamic';
 const FaqSection = dynamic(() => import('@/components/FaqSection'));
 import FallbackImage from '@/components/FallbackImage';
 import AffiliateCard from '@/components/AffiliateCard';
+import { getListingOffer } from '@/lib/offers';
 
 const CAT_ICONS: Record<string, string> = {
   eat: '🍽️',
@@ -24,12 +25,20 @@ const CAT_ICONS: Record<string, string> = {
 const GUIDE_YEAR = '2026';
 
 // Hand-picked extra entries shown under the intro on specific guides.
-const GUIDE_EXTRA_PICKS: Record<string, { name: string; href: string; text: string }[]> = {
+const GUIDE_EXTRA_PICKS: Record<string, { name: string; href: string; text: string; label?: string }[]> = {
   'best-attractions-squamish': [
     {
       name: 'Canadian Coastal Sailing',
       href: '/play/canadian-coastal-sailing-squamish',
       text: '3-hour afternoon and sunset sails on Howe Sound from Squamish, plus private charters for groups up to 12.',
+    },
+  ],
+  'things-to-do-whistler': [
+    {
+      label: 'Also in Whistler',
+      name: 'Escape! Whistler',
+      href: '/visit/escape-whistler-whistler',
+      text: 'Escape rooms in Whistler. Use code BESTSEA2SKY for $5 off your booking. We may earn a commission if you book through this link or code.',
     },
   ],
 };
@@ -180,7 +189,7 @@ export default async function GuidePage({ params }: Props) {
         <div className="mb-10 space-y-2">
           {GUIDE_EXTRA_PICKS[slug].map((pick) => (
             <p key={pick.href} className="text-slate-600 leading-relaxed text-base">
-              Also in Squamish:{' '}
+              {pick.label || 'Also in Squamish'}:{' '}
               <Link href={pick.href} className="font-semibold text-emerald-800 hover:underline">
                 {pick.name}
               </Link>
@@ -255,6 +264,13 @@ export default async function GuidePage({ params }: Props) {
                     </div>
                   )}
 
+                  {getListingOffer(listing.slug) && (
+                    <p className="mb-2">
+                      <span className="inline-block rounded-full bg-amber-100 border border-amber-300 px-2.5 py-0.5 text-xs font-semibold text-amber-800">
+                        {getListingOffer(listing.slug)!.badge}
+                      </span>
+                    </p>
+                  )}
                   <p className="text-sm text-slate-500 line-clamp-2 leading-relaxed mb-2">
                     {listing.short_description || listing.description}
                   </p>
