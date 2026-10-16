@@ -19,6 +19,7 @@ import { getCategoryTownHubHref } from '@/lib/townHubs';
 import dynamic from 'next/dynamic';
 const FaqSection = dynamic(() => import('@/components/FaqSection'));
 import OpenStatusBadge from '@/components/OpenStatusBadge';
+import { getListingOffer } from '@/lib/offers';
 
 const CAT_STYLES: Record<string, { gradient: string; bg: string; text: string; border: string; accent: string }> = {
   eat: { gradient: 'from-orange-500 to-red-600', bg: 'bg-orange-50', text: 'text-amber-700', border: 'border-orange-200', accent: 'bg-amber-700' },
@@ -356,6 +357,19 @@ export default async function ListingPage({ params }: Props) {
               {showPrice && <PriceLevel level={listing.price_level} size="sm" />}
               {showPrice && showHours && <span className="text-slate-200">|</span>}
               {showHours && listing.hours && <OpenStatusBadge hours={listing.hours} />}
+            </div>
+          )}
+
+          {getListingOffer(listing.slug) && (
+            <div className="mb-8 rounded-2xl border-2 border-amber-300 bg-amber-50 p-5" id="offer">
+              <p className="text-xs font-semibold uppercase tracking-wider text-amber-700 mb-1">Best Sea to Sky offer</p>
+              <p className="text-lg font-bold text-slate-900">{getListingOffer(listing.slug)!.text}</p>
+              <p className="mt-2">
+                <span className="inline-block rounded-lg border border-dashed border-amber-500 bg-white px-3 py-1 font-mono text-base font-bold tracking-widest text-amber-800">
+                  {getListingOffer(listing.slug)!.code}
+                </span>
+              </p>
+              <p className="mt-3 text-xs text-slate-500">{getListingOffer(listing.slug)!.disclosure}</p>
             </div>
           )}
 
