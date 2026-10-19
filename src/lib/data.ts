@@ -180,7 +180,23 @@ export async function getCrossCategoryListings(
   return data || [];
 }
 
-export async function getGuideListings(page: SeoPage): Promise<Listing[]> {
+export type GuideListingOptions = {
+  /** Listing slugs to leave out of this guide (e.g. temporarily closed). */
+  excludeSlugs?: string[];
+  /** Sort listings with no rating after rated ones instead of first. */
+  nullsLast?: boolean;
+};
+
+export async function getGuideListings(
+  page: SeoPage,
+  options: GuideListingOptions = {},
+): Promise<Listing[]> {
+  const excludeFilter = options.excludeSlugs?.length
+    ? `(${options.excludeSlugs.map((s) => `"${s}"`).join(',')})`
+    : null;
+  const ratingOrder = options.nullsLast
+    ? { ascending: false, nullsFirst: false }
+    : { ascending: false };
   if (page.tag_id) {
     // Filter through listing_tags junction table
     const { data: taggedListingIds } = await supabase
@@ -199,8 +215,10 @@ export async function getGuideListings(page: SeoPage): Promise<Listing[]> {
     if (page.category_id) query = query.eq('category_id', page.category_id);
     if (page.town_id) query = query.eq('town_id', page.town_id);
 
+    if (excludeFilter) query = query.not('slug', 'in', excludeFilter);
+
     query = query
-      .order('google_rating', { ascending: false })
+      .order('google_rating', ratingOrder)
       .order('google_review_count', { ascending: false })
       .limit(15);
 
@@ -218,8 +236,10 @@ export async function getGuideListings(page: SeoPage): Promise<Listing[]> {
   if (page.category_id) query = query.eq('category_id', page.category_id);
   if (page.town_id) query = query.eq('town_id', page.town_id);
 
+  if (excludeFilter) query = query.not('slug', 'in', excludeFilter);
+
   query = query
-    .order('google_rating', { ascending: false })
+    .order('google_rating', ratingOrder)
     .order('google_review_count', { ascending: false })
     .limit(15);
 
