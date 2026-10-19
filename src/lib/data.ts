@@ -185,7 +185,23 @@ export type GuideListingOptions = {
   excludeSlugs?: string[];
   /** Sort listings with no rating after rated ones instead of first. */
   nullsLast?: boolean;
+  /**
+   * Extra category slugs to include alongside the page's own category.
+   * Used by the hikes guides to pull hiking-tagged listings from both play and visit.
+   */
+  extraCategorySlugs?: string[];
 };
+
+async function resolveGuideCategoryIds(
+  page: SeoPage,
+  extraCategorySlugs?: string[],
+): Promise<string[] | null> {
+  if (!page.category_id) return null;
+  if (!extraCategorySlugs?.length) return [page.category_id];
+  const { data } = await supabase.from('categories').select('id').in('slug', extraCategorySlugs);
+  const ids = new Set<string>([page.category_id, ...(data || []).map((c) => c.id as string)]);
+  return Array.from(ids);
+}
 
 export async function getGuideListings(
   page: SeoPage,
@@ -197,6 +213,7 @@ export async function getGuideListings(
   const ratingOrder = options.nullsLast
     ? { ascending: false, nullsFirst: false }
     : { ascending: false };
+  const categoryIds = await resolveGuideCategoryIds(page, options.extraCategorySlugs);
   if (page.tag_id) {
     // Filter through listing_tags junction table
     const { data: taggedListingIds } = await supabase
@@ -212,7 +229,7 @@ export async function getGuideListings(
       .eq('status', 'published')
       .in('id', taggedListingIds.map(t => t.listing_id));
 
-    if (page.category_id) query = query.eq('category_id', page.category_id);
+    if (categoryIds) query = query.in('category_id', categoryIds);
     if (page.town_id) query = query.eq('town_id', page.town_id);
 
     if (excludeFilter) query = query.not('slug', 'in', excludeFilter);
@@ -233,7 +250,7 @@ export async function getGuideListings(
     .select('*, categories(*), towns(*), listing_tags(tags(*))')
     .eq('status', 'published');
 
-  if (page.category_id) query = query.eq('category_id', page.category_id);
+  if (categoryIds) query = query.in('category_id', categoryIds);
   if (page.town_id) query = query.eq('town_id', page.town_id);
 
   if (excludeFilter) query = query.not('slug', 'in', excludeFilter);

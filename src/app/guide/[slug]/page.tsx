@@ -31,7 +31,14 @@ const DEFAULT_GUIDE_UPDATED_LABEL = 'February 2026';
 // a dateModified in schema, and any exclusions. Other guides are unchanged.
 const GUIDE_REFRESH: Record<
   string,
-  { updatedLabel: string; dateModified: string; excludeSlugs?: string[]; nullsLast?: boolean }
+  {
+    updatedLabel: string;
+    dateModified: string;
+    excludeSlugs?: string[];
+    nullsLast?: boolean;
+    /** Extra category slugs pulled into this guide (hikes guides only). */
+    extraCategorySlugs?: string[];
+  }
 > = {
   'best-skiing-whistler': {
     updatedLabel: 'October 19, 2026',
@@ -243,6 +250,130 @@ const GUIDE_REFRESH: Record<
     ],
     nullsLast: true,
   },
+  'best-attractions-whistler': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Google Maps showed "Temporarily closed" on Oct 19, 2026. Remove once reopened.
+      'whistler-blackcomb-peak-2-peak-gondola-whistler',
+      'meadow-park-whistler',
+      // Campground or recreation campsite, not an attraction.
+      'cal-cheak-recreation-site-whistler',
+      'camping-whistler-whistler',
+      // Located outside this town (town data issue).
+      'nairn-falls-provincial-park-whistler',
+      // Duplicate of another listing for the same attraction.
+      'whistler-village-stroll-whistler',
+      // Fewer than 10 Google reviews or unrated on Oct 19, 2026 (10-review minimum).
+      'big-timber-park-whistler',
+      'fairmont-chateau-whistler-park-whistler',
+    ],
+    nullsLast: true,
+  },
+  'best-attractions-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Google Maps showed "Temporarily closed" on Oct 19, 2026. Remove once reopened.
+      'railway-museum-of-british-columbia-squamish',
+      'lavendel-farm-squamish',
+      // Google Maps showed "Permanently closed" on Oct 19, 2026; no second source yet, so not archived.
+      'squamish-native-art-store-squamish',
+      'the-gallery-squamish',
+      'inspired-squamish-art-and-decor-gallery-squamish',
+      // Campground or recreation campsite, not an attraction.
+      'squamish-riverside-campsite-recreation-site-squamish',
+      // Located outside this town (town data issue).
+      'whistler-mountain-bike-park-squamish',
+      'nairn-falls-squamish',
+      'alexander-falls-view-point-squamish',
+      'alexander-falls-squamish',
+      'nairn-falls-squamish-2',
+      'keyhole-falls-squamish',
+      // Duplicate of another listing for the same attraction (Gondola Summit Lodge, Shannon Falls Viewpoint, Chief peaks and viewpoint, second Tantalus Lookout).
+      'first-peak-squamish',
+      'second-peak-squamish',
+      'the-squamishs-chief-viewpoint-squamish',
+      'tantalus-lookout-roadside-viewpoint-squamish',
+      'third-peak-squamish',
+      'sea-to-sky-gondola-summit-lodge-squamish',
+      'shannon-falls-viewpoint-squamish',
+      // Fewer than 10 Google reviews or unrated on Oct 19, 2026 (10-review minimum).
+      'ashlu-falls-squamish',
+      'dreamgreenstudio-squamish',
+      'maude-frickert-waterfall-squamish',
+      'estuary-chelem-trail-squamish',
+      'anissimoff-fine-art-art-in-bc-squamish',
+      'sorca-bike-skills-park-squamish',
+      'petgill-lake-squamish',
+    ],
+    nullsLast: true,
+  },
+  'best-shopping-whistler': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Google Maps showed "Permanently closed" on Oct 19, 2026; no second source yet, so not archived.
+      'cabin-fever-gifts-whistler',
+      // Fewer than 10 Google reviews or unrated on Oct 19, 2026 (10-review minimum).
+      'slcc-gallery-and-gift-shop-whistler',
+      'kabn-clothing-open-country-whistler',
+      'whistler-gift-services-whistler',
+      'whistler-arts-and-gifts-whistler',
+      'mt-waddington-outdoors-whistler',
+    ],
+    nullsLast: true,
+  },
+  'best-hikes-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Lift, not a trail (hiking-tagged visit listing; the Sea to Summit Trail is listed separately).
+      'sea-to-sky-gondola-squamish',
+      // Trail is near Pemberton/D'Arcy, not Squamish (town data issue).
+      'semaphore-lakes-trailhead-squamish',
+      'cool-creek-canyon-trail-squamish',
+      // Same place as stawamus-chief-trail-squamish (the Chief shows once).
+      'first-peak-squamish',
+      'second-peak-squamish',
+      'third-peak-squamish',
+      // Fewer than 10 Google reviews or unrated on Oct 19, 2026 (10-review minimum).
+      'estuary-chelem-trail-squamish',
+      'petgill-lake-squamish',
+    ],
+    nullsLast: true,
+    // Hikes guides also pull hiking-tagged listings from the visit category.
+    extraCategorySlugs: ['visit'],
+  },
+  'best-hikes-whistler': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Lift, not a trail (hiking-tagged visit listing).
+      'whistler-mountain-peak-chair-whistler',
+      // Fewer than 10 Google reviews on Oct 19, 2026 (10-review minimum).
+      'ascent-trail-whistler',
+      'fitzsimmons-accessible-nature-trail-whistler',
+      'valley-trail-whistler',
+    ],
+    nullsLast: true,
+    // Hikes guides also pull hiking-tagged listings from the visit category.
+    extraCategorySlugs: ['visit'],
+  },
+  'best-hikes-pemberton': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Same place as joffre-lakes-park-pemberton (on the Joffre Lakes trail).
+      'holloway-falls-pemberton',
+      // Fewer than 10 Google reviews on Oct 19, 2026 (10-review minimum).
+      'one-mile-lake-hill-pemberton',
+      'happy-trail-pemberton',
+    ],
+    nullsLast: true,
+    // Hikes guides also pull hiking-tagged listings from the visit category.
+    extraCategorySlugs: ['visit'],
+  },
   'best-restaurants-squamish': {
     updatedLabel: 'October 19, 2026',
     dateModified: '2026-10-19',
@@ -401,6 +532,7 @@ export default async function GuidePage({ params }: Props) {
   const listings = await getGuideListings(page, {
     excludeSlugs: refresh?.excludeSlugs,
     nullsLast: refresh?.nullsLast,
+    extraCategorySlugs: refresh?.extraCategorySlugs,
   });
 
   const schema = omitEmptyAggregateRatings(page.schema_json || {
