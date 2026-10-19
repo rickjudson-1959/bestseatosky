@@ -374,6 +374,75 @@ const GUIDE_REFRESH: Record<
     // Hikes guides also pull hiking-tagged listings from the visit category.
     extraCategorySlugs: ['visit'],
   },
+  'best-rock-climbing-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Fitness gym, not a climbing venue (mis-tagged rock-climbing).
+      'squamish-athletic-club-squamish',
+    ],
+    nullsLast: true,
+    extraCategorySlugs: ['visit'],
+  },
+  'best-mountain-biking-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Temporarily closed on Google, Oct 19, 2026.
+      'specialized-squamish-squamish',
+    ],
+    nullsLast: true,
+    extraCategorySlugs: ['services'],
+  },
+  'best-parks-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Same place as stawamus-chief-provincial-park-squamish (the Chief shows once).
+      'first-peak-squamish',
+      'second-peak-squamish',
+      'third-peak-squamish',
+      // Same place as shannon-falls-provincial-park-squamish.
+      'shannon-falls-viewpoint-squamish',
+      // Out of town (Whistler/Pemberton area, town data issue).
+      'whistler-mountain-bike-park-squamish',
+      'nairn-falls-squamish',
+      'alexander-falls-view-point-squamish',
+      // Trail inside Alice Lake Provincial Park (park listed separately).
+      'four-lakes-trail-squamish',
+      // A trail, not a park.
+      'ray-peters-trail-squamish',
+      // Campground; listed on the camping guide.
+      'squamish-riverside-campsite-recreation-site-squamish',
+      // Fewer than 10 Google reviews on Oct 19, 2026 (10-review minimum).
+      'sorca-bike-skills-park-squamish',
+    ],
+    nullsLast: true,
+  },
+  'best-waterfalls-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Fewer than 10 Google reviews on Oct 19, 2026 (10-review minimum).
+      'ashlu-falls-squamish',
+      // Out of town (Pemberton/Whistler area, town data issue).
+      'nairn-falls-squamish-2',
+      'alexander-falls-squamish',
+      'keyhole-falls-squamish',
+    ],
+    nullsLast: true,
+  },
+  'best-camping-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Below the Squamish 4.0 rating floor on Oct 19, 2026 (Karl's rule).
+      'squamish-valley-campground-squamish',
+      'klahanie-campground-squamish',
+    ],
+    nullsLast: true,
+    extraCategorySlugs: ['visit'],
+  },
   'best-restaurants-squamish': {
     updatedLabel: 'October 19, 2026',
     dateModified: '2026-10-19',
