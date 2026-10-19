@@ -59,6 +59,28 @@ const GUIDE_REFRESH: Record<
     ],
     nullsLast: true,
   },
+  'best-cafes-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // National or international chains never go in best lists (Karl, Oct 19, 2026).
+      'starbucks-coffee-company-squamish',
+      'starbucks-coffee-company-squamish-2',
+      // Google Maps showed "Permanently closed" on Oct 19, 2026.
+      'parkside-cafe-squamish',
+    ],
+    nullsLast: true,
+  },
+  'best-breweries-whistler': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    nullsLast: true,
+  },
+  'best-breweries-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    nullsLast: true,
+  },
   'best-restaurants-squamish': {
     updatedLabel: 'October 19, 2026',
     dateModified: '2026-10-19',
@@ -101,8 +123,6 @@ const GUIDE_REFRESH: Record<
       // Google Maps showed "Temporarily closed" on Oct 19, 2026. Remove once reopened.
       'blackbird-bakery-pemberton',
       'sunstone-golf-club-bar-and-grill-pemberton',
-      // Google listing would not load; owner site lists a new address. Re-check before restoring.
-      'grab-and-go-pemberton-pemberton',
       // National or international chains never go in best lists (Karl, Oct 19, 2026).
       'mcdonalds-pemberton',
     ],
