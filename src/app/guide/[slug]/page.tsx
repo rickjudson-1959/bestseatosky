@@ -81,6 +81,69 @@ const GUIDE_REFRESH: Record<
     dateModified: '2026-10-19',
     nullsLast: true,
   },
+  'best-hotels-whistler': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Campground or RV park, not a hotel.
+      'singing-creek-campground-whistler',
+      'garibaldi-lake-campground-whistler',
+      'cheakamus-lake-campground-whistler',
+      'helm-creek-camping-whistler',
+      'whistler-olympic-park-rv-and-campground-whistler',
+      'cal-cheak-campground-whistler',
+      'whistler-rv-park-and-campgrounds-whistler',
+      'riverside-a-parkbridge-camping-and-rv-resort-whistler',
+      // Single private vacation rental or whole-house rental (Karl: single rentals stay out in Whistler).
+      '31-gleneagle-whistler-whistler',
+      'suite-420-cascade-lodge-whistler',
+      'alpine-guestroom-whistler',
+      'wedge-mountain-lodge-and-spa-whistler',
+      'whistler-snowy-creek-accommodation-whistler',
+      'treeline-by-holiday-whistler-whistler',
+      // Google Maps showed "Temporarily closed" on Oct 19, 2026; its site shows no availability. Remove once it reopens.
+      'alpine-lodge-whistler-whistler',
+      // Fewer than 10 Google reviews or unrated on Oct 19, 2026 (10-review minimum).
+      'haus-landsberg-bandb-whistler',
+      'bear-trail-inn-whistler',
+    ],
+    nullsLast: true,
+  },
+  'best-hotels-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Campground or RV park, not a hotel.
+      'alice-lake-campgrounds-squamish',
+      'paradise-valley-campground-squamish',
+      'stawamus-chief-provincial-park-campground-squamish',
+      'mamquam-river-campground-squamish',
+      'high-falls-recreation-site-squamish',
+      'squamish-valley-campground-squamish',
+      'klahanie-campground-squamish',
+      // Korean-only name; English name not verifiable on Google or its own site. Remove once verified and renamed.
+      '-squamish',
+      // Google rating under 4.0 on Oct 19, 2026 (Squamish 4.0 floor).
+      'meadowbrook-suite-squamish',
+      'sea-to-sky-hotel-squamish',
+      'mountain-retreat-hotel-and-suites-squamish',
+      'hotel-squamish-squamish',
+    ],
+    nullsLast: true,
+  },
+  'best-hotels-pemberton': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Campground or RV park, not a hotel.
+      'nairn-falls-campground-pemberton',
+      'birkenhead-lake-provincial-park-campground-pemberton',
+      // Fewer than 10 Google reviews or unrated on Oct 19, 2026 (10-review minimum).
+      'the-barnhouse-in-the-meadows-pemberton',
+      'lazy-acres-pemberton',
+    ],
+    nullsLast: true,
+  },
   'best-restaurants-squamish': {
     updatedLabel: 'October 19, 2026',
     dateModified: '2026-10-19',
