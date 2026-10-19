@@ -24,6 +24,25 @@ const CAT_ICONS: Record<string, string> = {
 
 const GUIDE_YEAR = '2026';
 
+// Shared fallback for guides that have not had a dated refresh yet.
+const DEFAULT_GUIDE_UPDATED_LABEL = 'February 2026';
+
+// Per-guide refresh settings. Only guides listed here get a new visible date,
+// a dateModified in schema, and any exclusions. Other guides are unchanged.
+const GUIDE_REFRESH: Record<
+  string,
+  { updatedLabel: string; dateModified: string; excludeSlugs?: string[]; nullsLast?: boolean }
+> = {
+  'best-restaurants-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    // Google Maps showed both as "Temporarily closed" on Oct 19, 2026.
+    // Remove from this list once they reopen.
+    excludeSlugs: ['the-black-box-cuisine-squamish', 'pink-tuna-cafe-squamish'],
+    nullsLast: true,
+  },
+};
+
 // Hand-picked extra entries shown under the intro on specific guides.
 const GUIDE_EXTRA_PICKS: Record<string, { name: string; href: string; text: string; label?: string }[]> = {
   'best-attractions-squamish': [
@@ -129,7 +148,11 @@ export default async function GuidePage({ params }: Props) {
   const page = await getSeoPageBySlug(slug);
   if (!page) notFound();
 
-  const listings = await getGuideListings(page);
+  const refresh = GUIDE_REFRESH[slug];
+  const listings = await getGuideListings(page, {
+    excludeSlugs: refresh?.excludeSlugs,
+    nullsLast: refresh?.nullsLast,
+  });
 
   const schema = omitEmptyAggregateRatings(page.schema_json || {
     '@context': 'https://schema.org',
@@ -172,7 +195,7 @@ export default async function GuidePage({ params }: Props) {
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
-        Last updated: February 2026 · {listings.length} places ranked by rating &amp; popularity
+        Last updated: {refresh?.updatedLabel ?? DEFAULT_GUIDE_UPDATED_LABEL} · {listings.length} places ranked by rating &amp; popularity
       </p>
 
       {page.intro_content && (
@@ -331,6 +354,22 @@ export default async function GuidePage({ params }: Props) {
           }),
         }}
       />
+
+      {/* WebPage Schema (dated refreshes only) */}
+      {refresh && (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'WebPage',
+              name: page.h1_text || page.title,
+              url: `https://bestseatosky.com/guide/${slug}`,
+              dateModified: refresh.dateModified,
+            }),
+          }}
+        />
+      )}
 
       {/* ItemList Schema */}
       <script
