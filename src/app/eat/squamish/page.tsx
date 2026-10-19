@@ -37,7 +37,6 @@ const TOP_PICKS: { name: string; take: string }[] = [
   { name: 'Smoke Bluff Coffee House', take: 'Best coffee, cozy vibe, climber central' },
   { name: 'Taka Ramen & Sushi', take: 'Solid ramen, great lunch spot' },
   { name: 'Green Olive Market and Cafe', take: 'Healthy lunch, good coffee, local favorite' },
-  { name: 'Festal Cafe', take: 'Brunch done right' },
   { name: 'The Ledge', take: 'Breakfast with a view of the Chief' },
 ];
 
@@ -60,7 +59,6 @@ const BEST_BY_CATEGORY: {
     title: 'Best for Brunch',
     emoji: '🥞',
     picks: [
-      { name: 'Festal Cafe', desc: 'The go-to brunch spot in Squamish — always consistent, always a line on weekends' },
       { name: 'The Ledge', desc: 'Breakfast with views of the Stawamus Chief, hard to beat the setting' },
       { name: 'Green Olive Market and Cafe', desc: 'Light, fresh, good for a healthy start to a big day outside' },
     ],
@@ -81,7 +79,6 @@ const BEST_BY_CATEGORY: {
     picks: [
       { name: 'Smoke Bluff Coffee House', desc: 'The local favorite, no contest — half of Squamish starts their day here' },
       { name: 'Green Olive Market and Cafe', desc: 'Solid espresso with a side of people-watching on Cleveland Ave' },
-      { name: 'Festal Cafe', desc: 'Good drip coffee and the pastry game is strong' },
       { name: 'The Ledge', desc: 'Reliable morning coffee with a view — pairs well with their breakfast menu' },
     ],
   },

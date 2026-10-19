@@ -41,6 +41,23 @@ const GUIDE_REFRESH: Record<
     excludeSlugs: ['the-black-box-cuisine-squamish', 'pink-tuna-cafe-squamish'],
     nullsLast: true,
   },
+  'best-restaurants-whistler': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Google Maps showed "Temporarily closed" on Oct 19, 2026. Remove once reopened.
+      'brandywine-tavern-whistler',
+      '200-degrees-bakery-whistler',
+      // Not restaurants: pub crawl, private dining room, monthly pop up bakery, nightclubs.
+      'bar-hop-whistler-whistler',
+      'the-cellar-by-araxi-whistler',
+      'rising-knead-bakery-whistler',
+      'garfinkels-whistler-whistler',
+      'moe-joes-whistler',
+      'apres-apres-whistler',
+    ],
+    nullsLast: true,
+  },
 };
 
 // Hand-picked extra entries shown under the intro on specific guides.
