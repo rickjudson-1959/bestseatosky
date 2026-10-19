@@ -144,6 +144,105 @@ const GUIDE_REFRESH: Record<
     ],
     nullsLast: true,
   },
+  'things-to-do-whistler': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Google Maps showed "Temporarily closed" on Oct 19, 2026. Remove once reopened.
+      'black-diamond-bike-rentals-whistler',
+      'whistler-creek-athletic-club-whistler',
+      'whistler-olympic-park-whistler',
+      'the-callaghans-base-at-alexander-falls-whistler',
+      'fairmont-chateau-whistler-golf-course-whistler',
+      'nicklaus-north-golf-course-whistler',
+      // Gym, fitness, yoga or kids club; not a visitor activity.
+      'alpha-hiit-whistler',
+      'opus-athletics-home-of-crossfit-whistler-whistler',
+      'whistler-gymnastics-club-whistler',
+      'altitude-fitness-whistler',
+      'yogacara-whistler-whistler',
+      'basecamp-fitness-whistler-whistler',
+      // Retail or repair shop without rentals.
+      'evo-outlet-whistler',
+      'fineline-bike-shop-whistler-whistler',
+      // Duplicate of the Whistler Blackcomb resort listing.
+      'whistler-mountain-whistler',
+      'blackcomb-mountain-whistler',
+      'whistler-creekside-whistler',
+      'blackcomb-guest-services-whistler',
+      // Fewer than 10 Google reviews or unrated on Oct 19, 2026 (10-review minimum).
+      'valley-trail-whistler',
+      'ascent-trail-whistler',
+      'fitzsimmons-accessible-nature-trail-whistler',
+    ],
+    nullsLast: true,
+  },
+  'things-to-do-squamish': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Google Maps showed "Temporarily closed" on Oct 19, 2026. Remove once reopened.
+      'specialized-squamish-squamish',
+      // Google Maps showed "Permanently closed" on Oct 19, 2026, but its own site still takes drop-ins; not archived (no second source).
+      'kind-yoga-squamish-squamish',
+      // Gym, fitness, yoga or kids club; not a visitor activity.
+      'the-ninja-gym-squamish-squamish',
+      'bestrong-training-squamish',
+      'squamish-barbell-crossfit-squamish-squamish',
+      'mountain-top-strength-and-conditioning-squamish',
+      'peak-strength-club-squamish',
+      'rebel-fitness-squamish-squamish',
+      'ashtanga-yoga-squamish-squamish',
+      'the-vitality-lab-squamish',
+      'prana-yoga-squamish-squamish',
+      'wild-life-gym-inc-squamish',
+      'yoga-detour-squamish',
+      'sea-to-sky-yoga-meditation-and-ayurveda-squamish',
+      'integral-strength-training-squamish',
+      'shala-yoga-squamish',
+      'storm-strength-and-performance-squamish',
+      'f45-training-squamish-squamish',
+      'the-yoga-studio-squamish',
+      'oxygen-yoga-and-fitness-squamish-squamish',
+      'hotbox-fitness-squamish',
+      'clubflex-24hr-fitness-squamish',
+      'squamish-athletic-club-squamish',
+      'mountain-fitness-center-squamish',
+      'anytime-fitness-squamish',
+      'breathe-squamish-squamish',
+      // Pool and hot tub service company, not an activity.
+      'sea-to-sky-spa-and-pool-service-squamish',
+      // Retail or repair shop without rentals.
+      'spoke-haven-bike-shop-squamish',
+      'day-time-cycling-squamish',
+      'drop-bar-cycles-squamish',
+      'tantalus-bike-shop-squamish',
+      'corsa-cycles-squamish',
+      // Trail is near Pemberton/D'Arcy, not Squamish (town data issue).
+      'cool-creek-canyon-trail-squamish',
+      'semaphore-lakes-trailhead-squamish',
+      // Fewer than 10 Google reviews or unrated on Oct 19, 2026 (10-review minimum).
+      'squamish-paddling-club-squamish',
+    ],
+    nullsLast: true,
+  },
+  'things-to-do-pemberton': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Gym, fitness, yoga or kids club; not a visitor activity.
+      'richlife-fitness-pemberton',
+      'village-yoga-pemberton',
+      // Retail or repair shop without rentals.
+      'elevate-bike-shop-pemberton',
+      'snowboarder-lifestyle-pemberton',
+      // Fewer than 10 Google reviews or unrated on Oct 19, 2026 (10-review minimum).
+      'one-mile-lake-hill-pemberton',
+      'bike-skills-park-pemberton',
+      'happy-trail-pemberton',
+    ],
+    nullsLast: true,
+  },
   'best-restaurants-squamish': {
     updatedLabel: 'October 19, 2026',
     dateModified: '2026-10-19',
