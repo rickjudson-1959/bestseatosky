@@ -33,6 +33,32 @@ const GUIDE_REFRESH: Record<
   string,
   { updatedLabel: string; dateModified: string; excludeSlugs?: string[]; nullsLast?: boolean }
 > = {
+  'best-skiing-whistler': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Information desk, not a place to ski or take lessons.
+      'blackcomb-guest-services-whistler',
+      // Resort shows once, as Whistler Blackcomb (Karl, Oct 19, 2026).
+      'whistler-mountain-whistler',
+      'blackcomb-mountain-whistler',
+      'whistler-creekside-whistler',
+    ],
+    nullsLast: true,
+  },
+  'best-cafes-whistler': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Google Maps showed "Temporarily closed" on Oct 19, 2026; also a national chain.
+      'blenz-coffee-whistler-whistler',
+      // National or international chains never go in best lists (Karl, Oct 19, 2026).
+      'arabica-whistler-village-whistler',
+      // Hilton hotel cafe serving Starbucks drinks. Reverse if Karl treats it as local.
+      'l-apres-cafe-and-lounge-whistler',
+    ],
+    nullsLast: true,
+  },
   'best-restaurants-squamish': {
     updatedLabel: 'October 19, 2026',
     dateModified: '2026-10-19',
