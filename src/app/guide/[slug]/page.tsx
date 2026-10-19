@@ -55,6 +55,30 @@ const GUIDE_REFRESH: Record<
       'garfinkels-whistler-whistler',
       'moe-joes-whistler',
       'apres-apres-whistler',
+      // National or international chains never go in best lists (Karl, Oct 19, 2026).
+      'pizza-hut-whistler',
+      'earls-kitchen-bar-whistler',
+      'the-keg-steakhouse-bar-whistler-whistler',
+      'blenz-coffee-whistler-whistler',
+      'the-old-spaghetti-factory-whistler-whistler',
+      'dairy-queen-treat-whistler',
+      'dominos-pizza-whistler',
+      'rocky-mtn-chocolate-whistler',
+      'beavertails-queues-de-castor-whistler-whistler',
+    ],
+    nullsLast: true,
+  },
+  'best-restaurants-pemberton': {
+    updatedLabel: 'October 19, 2026',
+    dateModified: '2026-10-19',
+    excludeSlugs: [
+      // Google Maps showed "Temporarily closed" on Oct 19, 2026. Remove once reopened.
+      'blackbird-bakery-pemberton',
+      'sunstone-golf-club-bar-and-grill-pemberton',
+      // Google listing would not load; owner site lists a new address. Re-check before restoring.
+      'grab-and-go-pemberton-pemberton',
+      // National or international chains never go in best lists (Karl, Oct 19, 2026).
+      'mcdonalds-pemberton',
     ],
     nullsLast: true,
   },
