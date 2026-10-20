@@ -37,7 +37,7 @@ const TOP_PICKS: { name: string; take: string }[] = [
   { name: 'Purebread', take: 'Bakery and coffee; go early for the best selection' },
   { name: 'Peaked Pies', take: 'Australian style meat pies on Main Street' },
   { name: '21 Steps Kitchen + Bar', take: 'Small plates and cocktails in the village' },
-  { name: 'Rim Rock Cafe', take: 'Seafood and game near Creekside' },
+  { name: 'Rimrock Café', take: 'Seafood and game near Creekside' },
   { name: 'Hunter Gather', take: 'Smoked meats and local ingredients on Main Street' },
   { name: 'La Brasserie des Artistes', take: 'French bistro on the Village Stroll' },
 ];
@@ -70,7 +70,7 @@ const BEST_BY_CATEGORY: {
     emoji: '🕯️',
     picks: [
       { name: 'Araxi Restaurant & Oyster Bar', desc: 'Fine dining with an oyster bar; book ahead' },
-      { name: 'Rim Rock Cafe', desc: 'Seafood and game in a small, upscale room' },
+      { name: 'Rimrock Café', desc: 'Seafood and game in a small, upscale room' },
       { name: '21 Steps Kitchen + Bar', desc: 'Small plates to share and a wine list, a bit more casual' },
     ],
   },

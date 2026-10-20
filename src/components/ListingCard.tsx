@@ -4,6 +4,7 @@ import { getListingImageAlt } from '@/lib/listingImage';
 import { listingPhone, listingTelHref } from '@/lib/phone';
 import { hasRealPriceLevel } from '@/lib/price';
 import { hasRealRating } from '@/lib/rating';
+import { isTemporarilyClosed } from '@/lib/closures';
 import FallbackImage from './FallbackImage';
 import PriceLevel from './PriceLevel';
 
@@ -57,6 +58,7 @@ export default function ListingCard({
   const showGoogle = showGoogleRatingLabel && googleRating > 0;
   const phone = listingPhone(listing.phone);
   const phoneHref = listingTelHref(phone);
+  const tempClosed = isTemporarilyClosed(listing.slug);
 
   return (
     <div className={`rounded-2xl overflow-hidden transition-all duration-300 hover:-translate-y-1.5 hover:shadow-xl shadow-sm group ${
@@ -81,6 +83,11 @@ export default function ListingCard({
           {isFeatured && (
             <div className="absolute bottom-3 left-3 bg-emerald-700 rounded-full px-3 py-1 text-xs font-bold text-white tracking-wide flex items-center gap-1">
               ★ Featured
+            </div>
+          )}
+          {tempClosed && (
+            <div className="absolute bottom-3 right-3 bg-slate-900/80 rounded-full px-3 py-1 text-xs font-bold text-white tracking-wide">
+              Temporarily closed
             </div>
           )}
           {showRating && (

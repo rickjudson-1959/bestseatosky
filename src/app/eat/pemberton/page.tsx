@@ -31,9 +31,21 @@ export const metadata: Metadata = {
 // --- Curated editorial content ---
 
 const TOP_PICKS: { name: string; take: string }[] = [
+  { name: 'Bistro Truck Bob\'s', take: 'Food truck on Stonecutter Place' },
+  { name: 'The Bread Warehouse', take: 'Bakery on Carpenter Road' },
+  { name: 'The British Baker', take: 'Bakery on Industrial Way in Mount Currie' },
+  { name: 'The Beer Farmers', take: 'Farm brewery on Pemberton Meadows Road' },
+  { name: 'SanehThai', take: 'Thai restaurant on Pemberton Portage Road in Mount Currie' },
+  { name: 'Lynx Cafe', take: 'Cafe on Highway 99' },
+  { name: 'Backcountry Pizza', take: 'Pizza takeout on Pemberton Portage Road' },
+  { name: 'Fish and Rice, Sushi and Beyond.', take: 'Sushi on Frontier Street' },
+  { name: 'Mount Currie Coffee Company', take: 'Coffee shop on Arbutus Street' },
+  { name: 'Grimm\'s Gourmet & Deli', take: 'Sandwiches, pizza and local goods on Frontier Street' },
+  { name: 'Pemberton Brewing Company', take: 'Brewery on Stonecutter Place' },
   { name: 'Mile One Eating House', take: 'Farm-to-table food with ingredients from the Pemberton Valley' },
   { name: 'The Pony', take: 'Pub fare and beer on Pemberton Portage Road' },
-  { name: 'Grimm\'s Gourmet & Deli', take: 'Sandwiches, pizza and local goods on Frontier Street' },
+  { name: 'Town Square Restaurant', take: 'Restaurant on Frontier Street' },
+  { name: 'The Centennial', take: 'Chinese restaurant on Frontier Street' },
 ];
 
 const BEST_BY_CATEGORY: {
@@ -46,6 +58,8 @@ const BEST_BY_CATEGORY: {
     emoji: '🥾',
     picks: [
       { name: 'The Pony', desc: 'Beer and pub food after a day outside' },
+      { name: 'The Beer Farmers', desc: 'Farm brewery out on Pemberton Meadows Road' },
+      { name: 'Pemberton Brewing Company', desc: 'Brewery taproom on Stonecutter Place' },
       { name: 'Mile One Eating House', desc: 'A sit down meal after Joffre Lakes or Nairn Falls' },
     ],
   },
@@ -60,6 +74,9 @@ const BEST_BY_CATEGORY: {
     title: 'Best Coffee & Bakeries',
     emoji: '☕',
     picks: [
+      { name: 'The Bread Warehouse', desc: 'Bakery on Carpenter Road' },
+      { name: 'Mount Currie Coffee Company', desc: 'Coffee shop on Arbutus Street' },
+      { name: 'Lynx Cafe', desc: 'Cafe on Highway 99' },
       { name: 'Grimm\'s Gourmet & Deli', desc: 'Coffee, sandwiches and local specialty goods to take home' },
     ],
   },
@@ -153,7 +170,7 @@ export default async function PembertonEatPage() {
       {/* Intro */}
       <div className="prose prose-slate max-w-none mb-10 space-y-4">
         <p className="text-slate-600 leading-relaxed text-base">
-          Pemberton is a small town with a short list of places to eat. Many visitors drive
+          Pemberton is a small town with a handful of places to eat. Many visitors drive
           through on the way to Joffre Lakes. Several restaurants here use ingredients from
           the Pemberton Valley.
         </p>
