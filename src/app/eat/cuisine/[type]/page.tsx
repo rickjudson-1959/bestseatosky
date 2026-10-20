@@ -21,7 +21,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   if (!cuisine) return {};
 
   const title = `Best ${cuisine.name} Restaurants in Squamish, Whistler & Pemberton`;
-  const description = `Locally-curated ${cuisine.name} restaurants across the Sea to Sky corridor. Skip the tourist traps — find where locals actually eat.`;
+  const description = `Locally-curated ${cuisine.name} restaurants across the Sea to Sky corridor. Find where to eat, with Google ratings.`;
   const url = `https://bestseatosky.com/eat/cuisine/${cuisine.slug}`;
 
   return {

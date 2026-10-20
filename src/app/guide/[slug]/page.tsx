@@ -247,6 +247,8 @@ const GUIDE_REFRESH: Record<
       'one-mile-lake-hill-pemberton',
       'bike-skills-park-pemberton',
       'happy-trail-pemberton',
+      // Moved from Squamish to Pemberton Oct 19, 2026; 3 Google reviews (10-review minimum).
+      'cool-creek-canyon-trail-squamish',
     ],
     nullsLast: true,
   },
@@ -369,6 +371,8 @@ const GUIDE_REFRESH: Record<
       // Fewer than 10 Google reviews on Oct 19, 2026 (10-review minimum).
       'one-mile-lake-hill-pemberton',
       'happy-trail-pemberton',
+      // Moved from Squamish to Pemberton Oct 19, 2026; 3 Google reviews (10-review minimum).
+      'cool-creek-canyon-trail-squamish',
     ],
     nullsLast: true,
     // Hikes guides also pull hiking-tagged listings from the visit category.

@@ -9,35 +9,35 @@ import TagFilterGrid from '@/components/TagFilterGrid';
 import HubPageConversion from '@/components/HubPageConversion';
 
 export const metadata: Metadata = {
-  title: 'Best Restaurants in Squamish (2026) — A Local\'s Guide',
+  title: 'Best Restaurants in Squamish (2026): A Local\'s Guide',
   description:
-    'Skip the tourist traps. Here are the best restaurants in Squamish, hand-picked by locals who actually live here. From post-hike fuel to date night spots.',
+    'Restaurants in Squamish picked by our editors, with Google ratings: post-hike food, brunch, date night, coffee and breweries.',
   alternates: { canonical: '/eat/squamish' },
   openGraph: {
-    title: 'Best Restaurants in Squamish (2026) — A Local\'s Guide',
+    title: 'Best Restaurants in Squamish (2026): A Local\'s Guide',
     description:
-      'Skip the tourist traps. Here are the best restaurants in Squamish, hand-picked by locals who actually live here. From post-hike fuel to date night spots.',
+      'Restaurants in Squamish picked by our editors, with Google ratings: post-hike food, brunch, date night, coffee and breweries.',
     url: 'https://bestseatosky.com/eat/squamish',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Restaurants in Squamish (2026) — A Local\'s Guide',
+    title: 'Best Restaurants in Squamish (2026): A Local\'s Guide',
     description:
-      'Skip the tourist traps. Here are the best restaurants in Squamish, hand-picked by locals who actually live here. From post-hike fuel to date night spots.',
+      'Restaurants in Squamish picked by our editors, with Google ratings: post-hike food, brunch, date night, coffee and breweries.',
   },
 };
 
 // --- Curated editorial content ---
 
 const TOP_PICKS: { name: string; take: string }[] = [
-  { name: 'The Broken Seal', take: 'Best cocktails in town, small plates worth the wait' },
-  { name: 'Backcountry Brewing', take: 'Post-hike beer and pizza, always packed for a reason' },
-  { name: 'Saha Eatery', take: 'Middle Eastern flavors, fresh ingredients, friendly owners' },
-  { name: 'Smoke Bluff Coffee House', take: 'Best coffee, cozy vibe, climber central' },
-  { name: 'Taka Ramen & Sushi', take: 'Solid ramen, great lunch spot' },
-  { name: 'Green Olive Market and Cafe', take: 'Healthy lunch, good coffee, local favorite' },
-  { name: 'The Ledge', take: 'Breakfast with a view of the Chief' },
+  { name: 'The Broken Seal', take: 'Cocktails and small plates downtown' },
+  { name: 'Backcountry Brewing', take: 'Brewery taproom with pizza, busy after a hike' },
+  { name: 'Saha Eatery', take: 'Middle Eastern food on Second Avenue' },
+  { name: 'Smoke Bluff Coffee House', take: 'Coffee near the Smoke Bluffs climbing area' },
+  { name: 'Taka Ramen & Sushi', take: 'Ramen and sushi on Cleveland Avenue, good for lunch' },
+  { name: 'Green Olive Market and Cafe', take: 'Lunch and coffee on Cleveland Avenue' },
+  { name: 'The Ledge', take: 'Breakfast and lunch on Cleveland Avenue' },
 ];
 
 const BEST_BY_CATEGORY: {
@@ -49,46 +49,44 @@ const BEST_BY_CATEGORY: {
     title: 'Best Post-Hike',
     emoji: '🥾',
     picks: [
-      { name: 'Backcountry Brewing', desc: 'Cold beer and wood-fired pizza after the Chief — the Squamish post-hike ritual' },
-      { name: 'Taka Ramen & Sushi', desc: 'A big bowl of ramen hits different after a long day on the trails' },
-      { name: 'Smoke Bluff Coffee House', desc: 'Quick refuel with great coffee and a pastry before the drive home' },
-      { name: 'The Ledge', desc: 'Hearty breakfast or lunch with solid portions to recover on' },
+      { name: 'Backcountry Brewing', desc: 'Beer and wood fired pizza after the Chief' },
+      { name: 'Taka Ramen & Sushi', desc: 'A bowl of ramen after a day on the trails' },
+      { name: 'Smoke Bluff Coffee House', desc: 'Coffee and a pastry before the drive home' },
+      { name: 'The Ledge', desc: 'Breakfast or lunch with generous portions' },
     ],
   },
   {
     title: 'Best for Brunch',
     emoji: '🥞',
     picks: [
-      { name: 'The Ledge', desc: 'Breakfast with views of the Stawamus Chief, hard to beat the setting' },
-      { name: 'Green Olive Market and Cafe', desc: 'Light, fresh, good for a healthy start to a big day outside' },
+      { name: 'The Ledge', desc: 'Breakfast downtown on Cleveland Avenue' },
+      { name: 'Green Olive Market and Cafe', desc: 'A lighter start before a day outside' },
     ],
   },
   {
     title: 'Best Date Night',
     emoji: '🕯️',
     picks: [
-      { name: 'The Broken Seal', desc: 'Craft cocktails, dim lighting, small plates — Squamish\'s best evening out' },
-      { name: 'Saha Eatery', desc: 'Intimate space, unique flavors, feels special without trying too hard' },
-      { name: 'Nightingale Restaurant', desc: 'Cozy neighbourhood spot with a seasonal menu and a great wine list' },
-      { name: 'Norman Rudy\'s', desc: 'Waterfront dining on the Mamquam Blind Channel — sunset views and solid food' },
+      { name: 'The Broken Seal', desc: 'Craft cocktails and small plates for an evening out' },
+      { name: 'Saha Eatery', desc: 'Middle Eastern dishes in a small dining room' },
     ],
   },
   {
     title: 'Best Coffee',
     emoji: '☕',
     picks: [
-      { name: 'Smoke Bluff Coffee House', desc: 'The local favorite, no contest — half of Squamish starts their day here' },
-      { name: 'Green Olive Market and Cafe', desc: 'Solid espresso with a side of people-watching on Cleveland Ave' },
-      { name: 'The Ledge', desc: 'Reliable morning coffee with a view — pairs well with their breakfast menu' },
+      { name: 'Smoke Bluff Coffee House', desc: 'Coffee shop popular with climbers' },
+      { name: 'Green Olive Market and Cafe', desc: 'Espresso on Cleveland Avenue' },
+      { name: 'The Ledge', desc: 'Morning coffee with a breakfast menu' },
     ],
   },
   {
     title: 'Best Breweries',
     emoji: '🍺',
     picks: [
-      { name: 'Backcountry Brewing', desc: 'The flagship Squamish brewery — great taproom, rotating seasonals, and legit pizza' },
-      { name: 'A-Frame Brewing', desc: 'Small-batch craft beer in a relaxed industrial space — the locals\' brewery' },
-      { name: 'Howe Sound Brewing', desc: 'The OG Squamish brewery with a huge lodge-style brewpub and reliable pints' },
+      { name: 'Backcountry Brewing', desc: 'Taproom with rotating beers and pizza' },
+      { name: 'A-Frame Brewing', desc: 'Craft beer in a relaxed taproom on Queens Way' },
+      { name: 'Howe Sound Brewing', desc: 'Brewpub at the Howe Sound Inn on Cleveland Avenue' },
     ],
   },
 ];
@@ -139,7 +137,7 @@ export default async function SquamishEatPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Best Restaurants in Squamish (2026)',
-    description: 'Hand-picked by locals — the best restaurants in Squamish, BC.',
+    description: 'Editor picks for restaurants in Squamish, BC.',
     numberOfItems: sortedListings.length,
     itemListElement: sortedListings.slice(0, 20).map((listing, i) => ({
       '@type': 'ListItem',
@@ -174,22 +172,21 @@ export default async function SquamishEatPage() {
 
       {/* Header */}
       <h1 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">
-        Best Restaurants in Squamish — A Local&apos;s Guide
+        Best Restaurants in Squamish: A Local&apos;s Guide
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
-        Last updated: March 2026 · {sortedListings.length} restaurants ranked
+        Last updated: October 19, 2026 · {sortedListings.length} restaurants ranked
       </p>
 
       {/* Intro */}
       <div className="prose prose-slate max-w-none mb-10 space-y-4">
         <p className="text-slate-600 leading-relaxed text-base">
-          Squamish has quietly become one of the best food towns between Vancouver and Whistler.
-          Forget the generic highway stops — these are the spots locals actually eat at, whether
-          you&apos;re starving after the Chief or looking for a proper dinner.
+          Squamish has a growing food scene between Vancouver and Whistler. These are our
+          editors&apos; picks, whether you&apos;re hungry after the Chief or looking for dinner.
         </p>
         <p className="text-slate-600 leading-relaxed text-base">
-          We live here. We&apos;ve eaten everywhere. This is the real list.
+          Each pick has at least 10 Google reviews, checked October 19, 2026.
         </p>
         <p className="text-slate-600 leading-relaxed text-base">
           Planning a weekend? See{' '}
