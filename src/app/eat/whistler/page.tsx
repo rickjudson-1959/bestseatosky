@@ -9,38 +9,37 @@ import TagFilterGrid from '@/components/TagFilterGrid';
 import HubPageConversion from '@/components/HubPageConversion';
 
 export const metadata: Metadata = {
-  title: 'Best Restaurants in Whistler (2026) — A Local\'s Guide',
+  title: 'Best Restaurants in Whistler (2026): A Local\'s Guide',
   description:
-    'The real Whistler food guide — skip the overpriced tourist spots. Locals\' picks for apres-ski eats, date night, brunch, and the best coffee in the village.',
+    'Restaurants in Whistler picked by our editors, with Google ratings: apres ski, brunch, date night, coffee and sushi.',
   alternates: { canonical: '/eat/whistler' },
   openGraph: {
-    title: 'Best Restaurants in Whistler (2026) — A Local\'s Guide',
+    title: 'Best Restaurants in Whistler (2026): A Local\'s Guide',
     description:
-      'The real Whistler food guide — skip the overpriced tourist spots. Locals\' picks for apres-ski eats, date night, brunch, and the best coffee in the village.',
+      'Restaurants in Whistler picked by our editors, with Google ratings: apres ski, brunch, date night, coffee and sushi.',
     url: 'https://bestseatosky.com/eat/whistler',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Restaurants in Whistler (2026) — A Local\'s Guide',
+    title: 'Best Restaurants in Whistler (2026): A Local\'s Guide',
     description:
-      'The real Whistler food guide — skip the overpriced tourist spots. Locals\' picks for apres-ski eats, date night, brunch, and the best coffee in the village.',
+      'Restaurants in Whistler picked by our editors, with Google ratings: apres ski, brunch, date night, coffee and sushi.',
   },
 };
 
 // --- Curated editorial content ---
 
 const TOP_PICKS: { name: string; take: string }[] = [
-  { name: 'Araxi Restaurant + Oyster Bar', take: 'Fine dining institution — the special occasion spot everyone comes back to' },
-  { name: 'Sushi Village', take: 'Iconic Whistler sushi, always a wait, always worth it' },
-  { name: 'Splitz Grill', take: 'Best burgers in the village, no-frills and proud of it' },
-  { name: 'Purebread', take: 'Legendary bakery — everything is unreal, get there early' },
-  { name: 'Peaked Pies', take: 'Australian meat pies with a cult following' },
-  { name: 'Creekbread', take: 'Wood-fired pizza in Creekside, laid-back and legit' },
-  { name: '21 Steps Kitchen + Bar', take: 'Creative small plates and a great cocktail list' },
-  { name: 'Rim Rock Cafe', take: 'Upscale seafood and game — worth the splurge' },
-  { name: 'Hunter Gather', take: 'Farm-to-table done right, solid all-around' },
-  { name: 'La Brasserie des Artistes', take: 'Reliable French bistro right in the village' },
+  { name: 'Araxi Restaurant & Oyster Bar', take: 'Fine dining and an oyster bar in Whistler Village' },
+  { name: 'Sushi Village', take: 'Sushi on Sundial Crescent; expect a wait at peak times' },
+  { name: 'Splitz Grill', take: 'Burgers on Main Street, quick and casual' },
+  { name: 'Purebread', take: 'Bakery and coffee; go early for the best selection' },
+  { name: 'Peaked Pies', take: 'Australian style meat pies on Main Street' },
+  { name: '21 Steps Kitchen + Bar', take: 'Small plates and cocktails in the village' },
+  { name: 'Rim Rock Cafe', take: 'Seafood and game near Creekside' },
+  { name: 'Hunter Gather', take: 'Smoked meats and local ingredients on Main Street' },
+  { name: 'La Brasserie des Artistes', take: 'French bistro on the Village Stroll' },
 ];
 
 const BEST_BY_CATEGORY: {
@@ -52,42 +51,41 @@ const BEST_BY_CATEGORY: {
     title: 'Best Apres-Ski',
     emoji: '⛷️',
     picks: [
-      { name: 'Splitz Grill', desc: 'A proper burger after a powder day — fast, cheap, and exactly what you need' },
-      { name: 'Peaked Pies', desc: 'Hot meat pies and cold beer, made for frozen hands and empty stomachs' },
-      { name: 'Creekbread', desc: 'Wood-fired pizza at Creekside base — skip the village crowds' },
-      { name: 'La Brasserie des Artistes', desc: 'French comfort food, great beer selection, buzzing atmosphere' },
+      { name: 'Splitz Grill', desc: 'Burgers and fries after a day on the hill' },
+      { name: 'Peaked Pies', desc: 'Hot meat pies, easy to grab on the way out of the village' },
+      { name: 'La Brasserie des Artistes', desc: 'French comfort food and beer in the village' },
     ],
   },
   {
     title: 'Best for Brunch',
     emoji: '🥞',
     picks: [
-      { name: 'Purebread', desc: 'Not a sit-down brunch but the pastries are a meal — get the almond croissant' },
-      { name: '21 Steps Kitchen + Bar', desc: 'The proper brunch spot, creative plates and solid coffee' },
-      { name: 'Hunter Gather', desc: 'Farm-fresh breakfast with local ingredients, relaxed vibe' },
+      { name: 'Purebread', desc: 'Not a sit down brunch, but the pastries make a good breakfast' },
+      { name: '21 Steps Kitchen + Bar', desc: 'Sit down brunch with creative plates' },
+      { name: 'Hunter Gather', desc: 'Breakfast with local ingredients in a relaxed room' },
     ],
   },
   {
     title: 'Best Date Night',
     emoji: '🕯️',
     picks: [
-      { name: 'Araxi Restaurant + Oyster Bar', desc: 'The gold standard for Whistler fine dining — oyster bar is a must' },
-      { name: 'Rim Rock Cafe', desc: 'Intimate, upscale, incredible seafood — feels like a real occasion' },
-      { name: '21 Steps Kitchen + Bar', desc: 'Small plates to share, great wine list, more casual but still impressive' },
+      { name: 'Araxi Restaurant & Oyster Bar', desc: 'Fine dining with an oyster bar; book ahead' },
+      { name: 'Rim Rock Cafe', desc: 'Seafood and game in a small, upscale room' },
+      { name: '21 Steps Kitchen + Bar', desc: 'Small plates to share and a wine list, a bit more casual' },
     ],
   },
   {
     title: 'Best Coffee',
     emoji: '☕',
     picks: [
-      { name: 'Purebread', desc: 'Great coffee and the best baked goods in town — dangerous combination' },
+      { name: 'Purebread', desc: 'Coffee and a wide range of baked goods' },
     ],
   },
   {
     title: 'Best Sushi',
     emoji: '🍣',
     picks: [
-      { name: 'Sushi Village', desc: 'The original Whistler sushi spot — lively atmosphere, solid rolls, book ahead' },
+      { name: 'Sushi Village', desc: 'Lively sushi spot in the village; book ahead' },
     ],
   },
 ];
@@ -135,7 +133,7 @@ export default async function WhistlerEatPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Best Restaurants in Whistler (2026)',
-    description: 'Hand-picked by locals — the best restaurants in Whistler, BC.',
+    description: 'Editor picks for restaurants in Whistler, BC.',
     numberOfItems: sortedListings.length,
     itemListElement: sortedListings.slice(0, 20).map((listing, i) => ({
       '@type': 'ListItem',
@@ -170,22 +168,21 @@ export default async function WhistlerEatPage() {
 
       {/* Header */}
       <h1 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">
-        Best Restaurants in Whistler — A Local&apos;s Guide
+        Best Restaurants in Whistler: A Local&apos;s Guide
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
-        Last updated: March 2026 · {sortedListings.length} restaurants ranked
+        Last updated: October 19, 2026 · {sortedListings.length} restaurants ranked
       </p>
 
       {/* Intro */}
       <div className="prose prose-slate max-w-none mb-10 space-y-4">
         <p className="text-slate-600 leading-relaxed text-base">
-          Whistler has more restaurants per capita than almost anywhere in BC — and half of them
-          are tourist traps charging resort prices for mediocre food. This guide is the other half.
-          The places locals actually go when they&apos;re not working in them.
+          Whistler has a lot of places to eat, and resort prices are common. These are our
+          editors&apos; picks, each with at least 10 Google reviews, checked October 19, 2026.
         </p>
         <p className="text-slate-600 leading-relaxed text-base">
-          From $8 meat pies to oyster bars, here&apos;s where to eat in Whistler.
+          From meat pies to oyster bars, here&apos;s where to eat in Whistler.
         </p>
       </div>
 

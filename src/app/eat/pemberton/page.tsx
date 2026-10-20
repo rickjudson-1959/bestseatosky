@@ -9,32 +9,31 @@ import TripPlannerCapture from '@/components/TripPlannerCapture';
 import TagFilterGrid from '@/components/TagFilterGrid';
 
 export const metadata: Metadata = {
-  title: 'Best Restaurants in Pemberton (2026) — A Local\'s Guide',
+  title: 'Best Restaurants in Pemberton (2026): A Local\'s Guide',
   description:
-    'Pemberton\'s food scene is small but mighty. Here are the restaurants worth the drive past Whistler — farm-to-table dining, great bakeries, and proper pub food.',
+    'Restaurants in Pemberton picked by our editors, with Google ratings: farm-to-table dining, deli food and pub fare.',
   alternates: { canonical: '/eat/pemberton' },
   openGraph: {
-    title: 'Best Restaurants in Pemberton (2026) — A Local\'s Guide',
+    title: 'Best Restaurants in Pemberton (2026): A Local\'s Guide',
     description:
-      'Pemberton\'s food scene is small but mighty. Here are the restaurants worth the drive past Whistler — farm-to-table dining, great bakeries, and proper pub food.',
+      'Restaurants in Pemberton picked by our editors, with Google ratings: farm-to-table dining, deli food and pub fare.',
     url: 'https://bestseatosky.com/eat/pemberton',
     type: 'website',
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Best Restaurants in Pemberton (2026) — A Local\'s Guide',
+    title: 'Best Restaurants in Pemberton (2026): A Local\'s Guide',
     description:
-      'Pemberton\'s food scene is small but mighty. Here are the restaurants worth the drive past Whistler — farm-to-table dining, great bakeries, and proper pub food.',
+      'Restaurants in Pemberton picked by our editors, with Google ratings: farm-to-table dining, deli food and pub fare.',
   },
 };
 
 // --- Curated editorial content ---
 
 const TOP_PICKS: { name: string; take: string }[] = [
-  { name: 'Mile One Eating House', take: 'Farm-to-table pioneer — the reason food lovers drive past Whistler' },
-  { name: 'The Pony', take: 'Classic Pemberton gathering spot, solid pub fare and cold beer' },
-  { name: 'Blackbird Bakery', take: 'Best pastries and coffee in town, worth the stop alone' },
-  { name: 'Grimm\'s Deli & Gourmet', take: 'Great sandwiches and local goods — a Pemberton institution' },
+  { name: 'Mile One Eating House', take: 'Farm-to-table food with ingredients from the Pemberton Valley' },
+  { name: 'The Pony', take: 'Pub fare and beer on Pemberton Portage Road' },
+  { name: 'Grimm\'s Gourmet & Deli', take: 'Sandwiches, pizza and local goods on Frontier Street' },
 ];
 
 const BEST_BY_CATEGORY: {
@@ -46,31 +45,22 @@ const BEST_BY_CATEGORY: {
     title: 'Best After a Day Out',
     emoji: '🥾',
     picks: [
-      { name: 'The Pony', desc: 'Cold beer, hearty pub food, and the kind of atmosphere where muddy boots are welcome' },
-      { name: 'Mile One Eating House', desc: 'If you want to reward yourself properly after Joffre Lakes or Nairn Falls' },
-    ],
-  },
-  {
-    title: 'Best for Brunch',
-    emoji: '🥞',
-    picks: [
-      { name: 'Blackbird Bakery', desc: 'Fresh pastries, great coffee, and a relaxed small-town morning vibe' },
-      { name: 'Mile One Eating House', desc: 'Weekend brunch with farm-fresh ingredients from the Pemberton Valley' },
+      { name: 'The Pony', desc: 'Beer and pub food after a day outside' },
+      { name: 'Mile One Eating House', desc: 'A sit down meal after Joffre Lakes or Nairn Falls' },
     ],
   },
   {
     title: 'Best Date Night',
     emoji: '🕯️',
     picks: [
-      { name: 'Mile One Eating House', desc: 'The best dinner in Pemberton, full stop — seasonal menu, local ingredients, thoughtful wine list' },
+      { name: 'Mile One Eating House', desc: 'Seasonal menu with local ingredients' },
     ],
   },
   {
     title: 'Best Coffee & Bakeries',
     emoji: '☕',
     picks: [
-      { name: 'Blackbird Bakery', desc: 'The go-to morning stop — locals line up for the fresh bread and pastries' },
-      { name: 'Grimm\'s Deli & Gourmet', desc: 'Good coffee plus sandwiches and local specialty goods to take home' },
+      { name: 'Grimm\'s Gourmet & Deli', desc: 'Coffee, sandwiches and local specialty goods to take home' },
     ],
   },
 ];
@@ -118,7 +108,7 @@ export default async function PembertonEatPage() {
     '@context': 'https://schema.org',
     '@type': 'ItemList',
     name: 'Best Restaurants in Pemberton (2026)',
-    description: 'Hand-picked by locals — the best restaurants in Pemberton, BC.',
+    description: 'Editor picks for restaurants in Pemberton, BC.',
     numberOfItems: sortedListings.length,
     itemListElement: sortedListings.slice(0, 20).map((listing, i) => ({
       '@type': 'ListItem',
@@ -153,23 +143,22 @@ export default async function PembertonEatPage() {
 
       {/* Header */}
       <h1 className="font-serif text-3xl md:text-4xl font-bold text-slate-900 leading-tight mb-4">
-        Best Restaurants in Pemberton — A Local&apos;s Guide
+        Best Restaurants in Pemberton: A Local&apos;s Guide
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
-        Last updated: March 2026 · {sortedListings.length} restaurants ranked
+        Last updated: October 19, 2026 · {sortedListings.length} restaurants ranked
       </p>
 
       {/* Intro */}
       <div className="prose prose-slate max-w-none mb-10 space-y-4">
         <p className="text-slate-600 leading-relaxed text-base">
-          Pemberton&apos;s food scene is small but mighty. Most visitors blow right through on
-          their way to Joffre Lakes — their loss. The restaurants here punch well above their
-          weight, with farm-to-table ingredients from the valley and a laid-back atmosphere
-          you won&apos;t find in Whistler.
+          Pemberton is a small town with a short list of places to eat. Many visitors drive
+          through on the way to Joffre Lakes. Several restaurants here use ingredients from
+          the Pemberton Valley.
         </p>
         <p className="text-slate-600 leading-relaxed text-base">
-          It&apos;s a short list because Pemberton is a small town. Every spot on it is here for a reason.
+          Each pick has at least 10 Google reviews, checked October 19, 2026.
         </p>
       </div>
 
