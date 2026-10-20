@@ -30,6 +30,10 @@ export default function TagFilterGrid({ listings, tags }: Props) {
     return result.sort((a, b) => {
       if (a.featured && !b.featured) return -1;
       if (!a.featured && b.featured) return 1;
+      // Places with fewer than 10 Google reviews sort below the rest (still listed).
+      const aLow = (a.google_review_count || 0) < 10;
+      const bLow = (b.google_review_count || 0) < 10;
+      if (aLow !== bLow) return aLow ? 1 : -1;
       return (b.google_rating || 0) - (a.google_rating || 0);
     });
   }, [listings, activeTags]);

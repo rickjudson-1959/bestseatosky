@@ -86,7 +86,7 @@ const BEST_BY_CATEGORY: {
     picks: [
       { name: 'Backcountry Brewing', desc: 'Taproom with rotating beers and pizza' },
       { name: 'A-Frame Brewing', desc: 'Craft beer in a relaxed taproom on Queens Way' },
-      { name: 'Howe Sound Brewing', desc: 'Brewpub at the Howe Sound Inn on Cleveland Avenue' },
+      { name: 'Howe Sound Inn & Brewing', desc: 'Brewpub at the Howe Sound Inn on Cleveland Avenue' },
     ],
   },
 ];
