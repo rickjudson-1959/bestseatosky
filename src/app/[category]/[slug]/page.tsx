@@ -1,4 +1,4 @@
-import { notFound } from 'next/navigation';
+import { notFound, permanentRedirect } from 'next/navigation';
 import { Metadata } from 'next';
 import Link from 'next/link';
 import { getListingBySlug, getRelatedListings, getCrossCategoryListings, getGuidesForListing, getListingFeatures } from '@/lib/data';
@@ -152,6 +152,9 @@ export default async function ListingPage({ params }: Props) {
   if (!listing) notFound();
 
   const catSlug = listing.categories?.slug || categorySlug;
+  // Any wrong or legacy prefix (for example /listing/<slug>) goes to the one canonical URL.
+  // This also keeps the site phone footer off listing pages, since that footer only hides on real category paths.
+  if (catSlug !== categorySlug) permanentRedirect(`/${catSlug}/${slug}`);
   const styles = CAT_STYLES[catSlug] || CAT_STYLES.eat;
   const tags = listing.listing_tags?.map((lt) => lt.tags) || [];
   const townHubHref = getCategoryTownHubHref(catSlug, listing.towns?.slug);
