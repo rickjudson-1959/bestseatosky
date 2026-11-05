@@ -13,6 +13,14 @@ const SUPABASE_HOSTNAME = (() => {
 const nextConfig: NextConfig = {
   reactCompiler: true,
 
+  // Weekend issues are read from disk at request/build time. Trace the folder
+  // so a new JSON file is present on Vercel without a static import list.
+  outputFileTracingIncludes: {
+    '/weekend': ['./src/data/weekend/**/*'],
+    '/weekend/[slug]': ['./src/data/weekend/**/*'],
+    '/sitemap.xml': ['./src/data/weekend/**/*'],
+  },
+
   images: {
     formats: ['image/avif', 'image/webp'],
     remotePatterns: [

@@ -7,17 +7,25 @@ import { trackSubscribeSuccess, type LeadType } from '@/lib/analytics';
 type Props = {
   source?: string;
   variant?: 'default' | 'compact';
-  /** Every capture on the site today is the free trip planner. */
+  /** Trip planner on the rest of the site. The weekend list passes newsletter. */
   leadType?: LeadType;
   /** Shown only after a successful submit. Used to gate the trip planner PDF. */
   successDownloadHref?: string;
+  /** Replaces the trip planner button label. Other pages leave this unset. */
+  buttonLabel?: string;
+  /** Replaces the trip planner success line. Other pages leave this unset. */
+  successMessage?: string;
 };
+
+const TRIP_PLANNER_SUCCESS = "You're in! Check your inbox for your Sea to Sky trip planner.";
 
 export default function NewsletterSignup({
   source = 'website',
   variant = 'default',
   leadType = 'trip_planner',
   successDownloadHref,
+  buttonLabel,
+  successMessage,
 }: Props) {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -57,7 +65,7 @@ export default function NewsletterSignup({
     return (
       <div className={variant === 'compact' ? 'text-center py-4' : 'text-center py-6'}>
         <p className="text-emerald-700 font-semibold text-sm">
-          You&apos;re in! Check your inbox for your Sea to Sky trip planner.
+          {successMessage ?? TRIP_PLANNER_SUCCESS}
         </p>
         {successDownloadHref ? (
           <a
@@ -88,7 +96,7 @@ export default function NewsletterSignup({
             disabled={status === 'submitting'}
             className="w-full sm:w-auto px-5 py-3 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors disabled:opacity-50 shrink-0"
           >
-            {status === 'submitting' ? '...' : 'Get the Planner'}
+            {status === 'submitting' ? '...' : (buttonLabel ?? 'Get the Planner')}
           </button>
         </div>
         {status === 'error' ? (
@@ -118,7 +126,7 @@ export default function NewsletterSignup({
           disabled={status === 'submitting'}
           className="px-6 py-3.5 rounded-xl bg-emerald-700 text-white text-sm font-bold hover:bg-emerald-800 transition-colors disabled:opacity-50 shrink-0"
         >
-          {status === 'submitting' ? 'Sending...' : 'Get the Free Planner'}
+          {status === 'submitting' ? 'Sending...' : (buttonLabel ?? 'Get the Free Planner')}
         </button>
       </div>
       <p className="text-xs text-slate-400 mt-3">

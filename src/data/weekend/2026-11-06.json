@@ -1,0 +1,666 @@
+{
+  "slug": "2026-11-06",
+  "title": "Writers festival, Cornucopia and live music: your Sea to Sky weekend",
+  "description": "What’s on in Whistler, Squamish, Pemberton and Britannia Beach this weekend: literary festival, food & drink, markets, live music, comedy and more.",
+  "masthead": "Sea to Sky weekend: Nov 6–8",
+  "startDate": "2026-11-06",
+  "endDate": "2026-11-08",
+  "updated": "2026-11-04T13:38:00-07:00",
+  "intro": "What’s on in Whistler, Squamish, Pemberton and Britannia Beach this weekend: literary festival, food & drink, markets, live music, comedy and more.",
+  "days": [
+    {
+      "heading": "Friday, November 6",
+      "countLabel": "12 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "Day 2 of 4",
+              "timeTone": "span",
+              "name": "Whistler Writers Festival",
+              "venue": "Fairmont Chateau Whistler, 4599 Chateau Blvd · Squamish Lil’wat Cultural Centre, 4584 Blackcomb Way",
+              "blurb": "25th annual literary festival. Friday sessions: one-on-one editing sessions 3:30 PM, “Cultural & Spiritual Care: Healing through Stories” 5:30–6:45 PM, and “Characters on the Edge: Analyzing Psychological Thrillers” 8:00–10:00 PM.",
+              "sources": [
+                {
+                  "label": "whistler.com",
+                  "href": "https://www.whistler.com/events/whistler-writers-festival/"
+                },
+                {
+                  "label": "eventbrite.ca",
+                  "href": "https://www.eventbrite.ca/e/2026-whistler-writers-festival-tickets-2000324723094"
+                }
+              ],
+              "badges": [
+                "Runs Nov 5–8",
+                "Passes $0–$323.95"
+              ]
+            },
+            {
+              "time": "Day 2 of 11",
+              "timeTone": "span",
+              "name": "Cornucopia: Whistler’s Food & Drink Festival",
+              "venue": "Various venues across Whistler",
+              "blurb": "Whistler’s signature food & drink festival: tastings, culinary demos, winemaker dinners and drink seminars across the village.",
+              "sources": [
+                {
+                  "label": "chateau-whistler.com: November in Whistler",
+                  "href": "https://www.chateau-whistler.com/blog/november-whistler/"
+                }
+              ],
+              "badges": [
+                "Runs Nov 5–15",
+                "Prices vary · some dinners sold out"
+              ]
+            },
+            {
+              "time": "10:00 AM",
+              "timeTone": "clock",
+              "name": "Express Yourself Through Art",
+              "venue": "Whistler Community Services, 8000 Nesters Rd",
+              "blurb": "Relaxed morning art session with Dr. Helma, music and colour, no skills needed, all supplies provided.",
+              "sources": [
+                {
+                  "label": "allevents.in: Whistler this weekend",
+                  "href": "https://allevents.in/whistler/this-weekend"
+                }
+              ],
+              "badges": [
+                "Free"
+              ]
+            },
+            {
+              "time": "6:00 PM",
+              "timeTone": "clock",
+              "name": "Fairmont Friday at Mallard Lounge",
+              "venue": "Mallard Lounge, Fairmont Chateau Whistler, 4599 Chateau Blvd",
+              "blurb": "Weekly Friday tradition with handcrafted cocktails, live music and a shareable feature food menu.",
+              "sources": [
+                {
+                  "label": "allevents.in: Whistler this weekend",
+                  "href": "https://allevents.in/whistler/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "6:00 PM",
+              "timeTone": "clock",
+              "name": "We Heart Local Art | Art Party",
+              "venue": "Maury Young Arts Centre, 4129 Village Stroll",
+              "blurb": "Arts Whistler celebrates the 16 local artists behind the “We Heart Local Art” exhibit, landscapes, wildlife and textiles.",
+              "sources": [
+                {
+                  "label": "allevents.in: Whistler this weekend",
+                  "href": "https://allevents.in/whistler/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "7:30 PM",
+              "timeTone": "clock",
+              "name": "Benson @ Après Après: Fluid Fridays",
+              "venue": "Après Après, 4204 Village Square",
+              "blurb": "DJ Benson brings house beats and a high-energy set for a Welcome Week edition of Fluid Fridays.",
+              "sources": [
+                {
+                  "label": "gibbonswhistler.com: calendar",
+                  "href": "https://gibbonswhistler.com/calendar/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "Day 1 of 3",
+              "timeTone": "span",
+              "name": "SEEK Bespoke Market",
+              "venue": "Railway Museum of BC, 39645 Government Rd",
+              "blurb": "Curated market with 100 creative brands, plus wreath-making and flow-writing workshops, constellation piercings, flash tattoos, intuitive readings and pop-up portraits. VIP shopping hour 4:00–5:00 PM.",
+              "sources": [
+                {
+                  "label": "bespokemarket.ca: Squamish November market",
+                  "href": "https://www.bespokemarket.ca/squamish-november-market"
+                }
+              ],
+              "badges": [
+                "Runs Fri–Sun",
+                "$7 all-weekend ticket"
+              ]
+            },
+            {
+              "time": "5:30 PM & 7:45 PM",
+              "timeTone": "clock",
+              "name": "Sip & Savour: Experience Macau at Fergie’s Café",
+              "venue": "Fergie’s Café, 70002 Squamish Valley Rd",
+              "blurb": "A tasting experience through Macau’s Portuguese-Chinese fusion cuisine, widely considered the world’s first fusion food. Two seatings.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "$10"
+              ]
+            },
+            {
+              "time": "8:00 PM",
+              "timeTone": "clock",
+              "name": "Jon Bryant with J Aaron Cockburn",
+              "venue": "Brackendale Art Gallery, 41950 Government Rd",
+              "blurb": "Indie-rock/folk singer-songwriter with pedal steel, bass and drums; opener J Aaron Cockburn.",
+              "sources": [
+                {
+                  "label": "eventbrite.ca",
+                  "href": "https://www.eventbrite.ca/e/jon-bryant-tickets-1994911790868"
+                }
+              ],
+              "badges": [
+                "$30 advance · $35 door"
+              ]
+            },
+            {
+              "time": "9:00 PM",
+              "timeTone": "clock",
+              "name": "Coastal Distortion Vol. 2",
+              "venue": "Trickster’s Hideout, 38005 Cleveland Ave",
+              "blurb": "Raw underground rock night headlined by Vancouver punk veteran I, Braineater, with Tides Will Turn, Shone and Zombie Roof.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: November events",
+                  "href": "https://trickstershideout.ca/events/month/2026-11/"
+                }
+              ],
+              "badges": [
+                "~$17"
+              ],
+              "warnings": [
+                "Time unconfirmed: venue lists 9:00 PM, allevents lists 7:00 PM"
+              ]
+            },
+            {
+              "time": "By appointment",
+              "timeTone": "clock",
+              "name": "Colour Analysis at SEEK Bespoke Market",
+              "venue": "Railway Museum of BC, 39645 Government Rd",
+              "blurb": "Personalized one-on-one colour analysis consultation, running all three market days.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "$158"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pemberton",
+          "entries": [
+            {
+              "time": "8:00–9:00 PM",
+              "timeTone": "clock",
+              "name": "Live Music @ Town Square: JR",
+              "venue": "Town Square Restaurant, 7439 Frontier St, Pemberton",
+              "blurb": "Weekly Friday-night live music series at Town Square.",
+              "sources": [
+                {
+                  "label": "tourismpembertonbc.com: Pemberton events",
+                  "href": "https://www.tourismpembertonbc.com/"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Saturday, November 7",
+      "countLabel": "17 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "Day 3 of 4",
+              "timeTone": "span",
+              "name": "Whistler Writers Festival",
+              "venue": "Fairmont Chateau Whistler, 4599 Chateau Blvd",
+              "blurb": "Day three of the literary festival: readings, panels and workshops, including “Glorious, Disrupting Dystopia” 1:45–3:00 PM.",
+              "sources": [
+                {
+                  "label": "whistler.com",
+                  "href": "https://www.whistler.com/events/whistler-writers-festival/"
+                }
+              ],
+              "badges": [
+                "Runs Nov 5–8",
+                "Passes $0–$323.95"
+              ]
+            },
+            {
+              "time": "Day 3 of 11",
+              "timeTone": "span",
+              "name": "Cornucopia: Whistler’s Food & Drink Festival",
+              "venue": "Various venues across Whistler",
+              "blurb": "The food & drink festival continues, tastings, culinary demos, winemaker dinners and drink seminars.",
+              "sources": [
+                {
+                  "label": "chateau-whistler.com: November in Whistler",
+                  "href": "https://www.chateau-whistler.com/blog/november-whistler/"
+                }
+              ],
+              "badges": [
+                "Runs Nov 5–15"
+              ]
+            },
+            {
+              "time": "1:00 PM",
+              "timeTone": "clock",
+              "name": "Sculpt & Sip x Cornucopia x Fort Berens",
+              "venue": "The Westin Resort & Spa Whistler, 4090 Whistler Way",
+              "blurb": "Guided stone-carving class with Fathom Stone Art. Pick a project and take home what you make. Tools and materials included, no experience needed.",
+              "sources": [
+                {
+                  "label": "allevents.in: Whistler this weekend",
+                  "href": "https://allevents.in/whistler/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "1:00 PM",
+              "timeTone": "clock",
+              "name": "AGELESS Expo",
+              "venue": "Myrtle Philip Community School, 6195 Lorimer Rd",
+              "blurb": "Expo of resources and connections tailored for the 50+ crowd, presented by Pique Newsmagazine.",
+              "sources": [
+                {
+                  "label": "allevents.in: Whistler this weekend",
+                  "href": "https://allevents.in/whistler/this-weekend"
+                }
+              ],
+              "badges": [
+                "Free"
+              ]
+            },
+            {
+              "time": "7:00 PM",
+              "timeTone": "clock",
+              "name": "Whistler Comedy Classic",
+              "venue": "Maury Young Arts Centre, 4335 Blackcomb Way",
+              "blurb": "Pro stand-up comedy night produced by Jokers Canada, with scheduled performers including Syd Bosel.",
+              "sources": [
+                {
+                  "label": "allevents.in: Whistler this weekend",
+                  "href": "https://allevents.in/whistler/this-weekend"
+                }
+              ],
+              "badges": [
+                "$39.90–$49.35"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "Day 2 of 3",
+              "timeTone": "span",
+              "name": "SEEK Bespoke Market",
+              "venue": "Railway Museum of BC, 39645 Government Rd",
+              "blurb": "The 100-brand curated market continues, with workshops and experiences through the day.",
+              "sources": [
+                {
+                  "label": "bespokemarket.ca: Squamish November market",
+                  "href": "https://www.bespokemarket.ca/squamish-november-market"
+                }
+              ],
+              "badges": [
+                "Runs Fri–Sun",
+                "$7 all-weekend ticket"
+              ],
+              "warnings": [
+                "Hours unconfirmed: organizer lists 10 AM–5 PM, allevents lists 10 AM–6 PM"
+              ]
+            },
+            {
+              "time": "10:00 AM–2:00 PM",
+              "timeTone": "clock",
+              "name": "Squamish Farmers Winter Market",
+              "venue": "37996 Cleveland Ave (corner of Victoria St & Cleveland Ave)",
+              "blurb": "Weekly winter market with fresh local farm produce, prepared foods and artisan products.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "Free entry"
+              ]
+            },
+            {
+              "time": "10:00 AM–1:00 PM",
+              "timeTone": "clock",
+              "name": "Explore CapU Squamish: Fall Open House",
+              "venue": "Capilano University Squamish Campus, 3200 University Blvd",
+              "blurb": "Open house with program info, campus tours and student meet-and-greets.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "Free · registration required"
+              ]
+            },
+            {
+              "time": "10:00 AM",
+              "timeTone": "clock",
+              "name": "Sea to Sky Artisan Market",
+              "venue": "Squamish Elementary School, 38370 Buckley Ave",
+              "blurb": "Early-Christmas-gift shopping from artisans across the Sea to Sky corridor.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "10:00 AM–12:00 PM",
+              "timeTone": "clock",
+              "name": "Watercolour Painting Workshop: Bespoke Wellness",
+              "venue": "Railway Museum of BC, 39645 Government Rd (inside SEEK market)",
+              "blurb": "Guided winter-landscape watercolour workshop inside the SEEK Bespoke Market.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "$60"
+              ]
+            },
+            {
+              "time": "1:00 PM",
+              "timeTone": "clock",
+              "name": "Sound of Devotion ~ A Day Retreat",
+              "venue": "40383 Tantalus Rd, Unit 3, Squamish",
+              "blurb": "Day retreat of sound vibration, mantra, story and grounding practice for the dark half of the year.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "4:00 PM",
+              "timeTone": "clock",
+              "name": "Squamish United Coffee House: Catherine McInnes",
+              "venue": "Squamish United Church, 38014 Fourth Ave",
+              "blurb": "Afternoon of live music and stories.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "Free"
+              ]
+            },
+            {
+              "time": "5:00 PM",
+              "timeTone": "clock",
+              "name": "The Zummers LIVE!",
+              "venue": "Routes Eatery, Capilano University, 3200 University Blvd",
+              "blurb": "Live band night with food and local beer at the campus eatery.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "timeNote": "doors 5, music 6",
+              "badges": [
+                "Free"
+              ]
+            },
+            {
+              "time": "7:00 PM",
+              "timeTone": "clock",
+              "name": "New Moon Sound Journey",
+              "venue": "BreathWorks Studio, 38224 Eaglewind Blvd",
+              "blurb": "Meditative sound journey for the new moon: deep rest and inward connection.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "$37"
+              ]
+            },
+            {
+              "time": "9:30 PM",
+              "timeTone": "clock",
+              "name": "Dani Black, Drew Storey, Shane Terry",
+              "venue": "Trickster’s Hideout, 38005 Cleveland Ave",
+              "blurb": "Singer-songwriter night: Drew Storey (Langley) plus Dani Black and Shane Terry.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: November events",
+                  "href": "https://trickstershideout.ca/events/month/2026-11/"
+                }
+              ],
+              "badges": [
+                "$15–$20"
+              ]
+            },
+            {
+              "time": "By appointment",
+              "timeTone": "clock",
+              "name": "Colour Analysis at SEEK Bespoke Market",
+              "venue": "Railway Museum of BC, 39645 Government Rd",
+              "blurb": "Personalized one-on-one colour analysis consultation.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "$158"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pemberton",
+          "entries": [
+            {
+              "time": "Evening",
+              "timeTone": "clock",
+              "name": "This Ain’t No Dog & Pony Show: Art Exhibition & Fundraiser",
+              "venue": "Pemberton & District Museum, 7455 Prospect St",
+              "blurb": "Fundraiser celebrating 20 years of arts and culture in the Pemberton Valley, with a live silent auction of local treasures.",
+              "sources": [
+                {
+                  "label": "tourismpembertonbc.com: Pemberton events",
+                  "href": "https://www.tourismpembertonbc.com/"
+                }
+              ],
+              "badges": [
+                "$25 · limited availability"
+              ],
+              "warnings": [
+                "Time unconfirmed: source lists both 6:00–9:30 PM and 5:00–8:30 PM"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Sunday, November 8",
+      "countLabel": "8 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "Day 4 of 4",
+              "timeTone": "span",
+              "name": "Whistler Writers Festival: closing day",
+              "venue": "Fairmont Chateau Whistler, 4599 Chateau Blvd",
+              "blurb": "Closing day: “Being Forest: A Salish Stroll” 9:00–10:30 AM (meet in the lobby), then Sunday BookTalk and breakfast 11:00 AM–1:00 PM.",
+              "sources": [
+                {
+                  "label": "whistler.com",
+                  "href": "https://www.whistler.com/events/whistler-writers-festival/"
+                }
+              ],
+              "badges": [
+                "Runs Nov 5–8",
+                "Passes $0–$323.95"
+              ]
+            },
+            {
+              "time": "Day 4 of 11",
+              "timeTone": "span",
+              "name": "Cornucopia: Whistler’s Food & Drink Festival",
+              "venue": "Various venues across Whistler",
+              "blurb": "The food & drink festival rolls on, tastings, demos and seminars across the village.",
+              "sources": [
+                {
+                  "label": "chateau-whistler.com: November in Whistler",
+                  "href": "https://www.chateau-whistler.com/blog/november-whistler/"
+                }
+              ],
+              "badges": [
+                "Runs Nov 5–15"
+              ]
+            },
+            {
+              "time": "12:00 PM",
+              "timeTone": "clock",
+              "name": "Run & Restore: Hit & Go × Yogacara",
+              "venue": "4433 Sundial Place, Whistler",
+              "blurb": "Casual community run paired with movement and recovery guidance from Yogacara’s Emily Kane.",
+              "sources": [
+                {
+                  "label": "eventbrite.ca: Whistler events",
+                  "href": "https://www.eventbrite.ca/d/canada--whistler/phat-wednesday/"
+                }
+              ],
+              "badges": [
+                "~$3"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "Day 3 of 3",
+              "timeTone": "span",
+              "name": "SEEK Bespoke Market: final day",
+              "venue": "Railway Museum of BC, 39645 Government Rd",
+              "blurb": "Final day of the 100-brand curated market, 10:00 AM–4:00 PM.",
+              "sources": [
+                {
+                  "label": "bespokemarket.ca: Squamish November market",
+                  "href": "https://www.bespokemarket.ca/squamish-november-market"
+                }
+              ],
+              "badges": [
+                "Runs Fri–Sun",
+                "$7 all-weekend ticket"
+              ]
+            },
+            {
+              "time": "9:00 AM",
+              "timeTone": "clock",
+              "name": "Squamish Estuary Monthly Bird Count",
+              "venue": "Meet in the lobby of Howe Sound Inn & Brewing, 37801 Cleveland Ave",
+              "blurb": "Monthly citizen-science bird count in the Squamish Estuary: all levels welcome, binoculars optional, groups split into four.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "5:00 PM",
+              "timeTone": "clock",
+              "name": "Sunday Night Football",
+              "venue": "Trickster’s Hideout, 38005 Cleveland Ave",
+              "blurb": "Full sound system and three projectors showing the 5 PM games.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: November events",
+                  "href": "https://trickstershideout.ca/events/month/2026-11/"
+                }
+              ]
+            },
+            {
+              "time": "By appointment",
+              "timeTone": "clock",
+              "name": "Colour Analysis at SEEK Bespoke Market",
+              "venue": "Railway Museum of BC, 39645 Government Rd",
+              "blurb": "Personalized one-on-one colour analysis consultation, final day.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "$158"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Britannia Beach",
+          "entries": [
+            {
+              "time": "9:00 AM–4:30 PM",
+              "timeTone": "clock",
+              "name": "ORE & ORCAS: new exhibit at Britannia Mine Museum",
+              "venue": "Britannia Mine Museum, 150 Copper Dr",
+              "blurb": "Temporary Terra Lab exhibit on Howe Sound’s recovering marine ecosystem, included with museum admission (underground train + BOOM! show).",
+              "sources": [
+                {
+                  "label": "britanniaminemuseum.ca: events",
+                  "href": "https://www.britanniaminemuseum.ca/pages/events-at-britannia-mine-museum"
+                }
+              ],
+              "badges": [
+                "Runs Nov 2 – Feb 28",
+                "Adult $42.95 · under 5 free"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Confirm before you go. Times were researched on Nov 4, 2026 from the source pages linked above. Check the event pages directly before heading out, especially listings marked with time warnings.",
+    "Events without stated times were listed on their source calendars with no start time given; those marked “unconfirmed” had conflicting times across sources."
+  ]
+}

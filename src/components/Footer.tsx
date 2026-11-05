@@ -35,6 +35,7 @@ const FOOTER_LINKS = {
     { label: 'Bridges & Trails', href: '/visit?tag=bridges' },
   ],
   Guides: [
+    { label: 'This Weekend', href: '/weekend' },
     { label: '48 Hours in Squamish', href: '/48-hours-squamish' },
     { label: 'Ski Season Survival Guide', href: '/ski-season' },
     { label: 'Best Patios', href: '/best-patios' },
