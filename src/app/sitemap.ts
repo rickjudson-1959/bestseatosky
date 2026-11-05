@@ -1,6 +1,7 @@
 import { MetadataRoute } from 'next';
 import { supabase } from '@/lib/supabase';
 import { getAllCategoryFeaturePaths, getCuisineCounts } from '@/lib/data';
+import { weekendSitemapEntries } from '@/lib/weekend';
 
 export const dynamic = 'force-dynamic';
 
@@ -81,5 +82,5 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
       priority: 0.75,
     }));
 
-  return [...staticPages, ...listingPages, ...guidePages, ...blogPages, ...featurePages, ...cuisinePages];
+  return [...staticPages, ...weekendSitemapEntries(), ...listingPages, ...guidePages, ...blogPages, ...featurePages, ...cuisinePages];
 }
