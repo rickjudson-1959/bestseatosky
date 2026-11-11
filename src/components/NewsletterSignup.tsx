@@ -2,7 +2,9 @@
 'use no memo';
 
 import { useState, FormEvent } from 'react';
+import Link from 'next/link';
 import { trackSubscribeSuccess, type LeadType } from '@/lib/analytics';
+import { CONSENT_TEXT_V1, consentNoticeParts } from '@/lib/consent';
 
 type Props = {
   source?: string;
@@ -15,7 +17,34 @@ type Props = {
   buttonLabel?: string;
   /** Replaces the trip planner success line. Other pages leave this unset. */
   successMessage?: string;
+  /** Light consent text for forms on a dark background, such as the homepage hero. */
+  onDark?: boolean;
 };
+
+function ConsentNotice({ onDark = false }: { onDark?: boolean }) {
+  const { before, label, after } = consentNoticeParts(CONSENT_TEXT_V1);
+
+  return (
+    <p
+      className={`mt-3 text-left text-xs leading-relaxed ${
+        onDark ? 'text-slate-300' : 'text-slate-600'
+      }`}
+    >
+      {before}
+      <Link
+        href="/privacy"
+        className={`underline underline-offset-2 ${
+          onDark
+            ? 'text-emerald-300 hover:text-emerald-200'
+            : 'text-emerald-800 hover:text-emerald-950'
+        }`}
+      >
+        {label}
+      </Link>
+      {after}
+    </p>
+  );
+}
 
 const TRIP_PLANNER_SUCCESS = "You're in! Check your inbox for your Sea to Sky trip planner.";
 
@@ -26,6 +55,7 @@ export default function NewsletterSignup({
   successDownloadHref,
   buttonLabel,
   successMessage,
+  onDark = false,
 }: Props) {
   const [status, setStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [errorMessage, setErrorMessage] = useState('');
@@ -42,7 +72,11 @@ export default function NewsletterSignup({
       const res = await fetch('/api/subscribe', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ email, source }),
+        body: JSON.stringify({
+          email,
+          source,
+          source_url: window.location.href,
+        }),
       });
 
       const result = await res.json();
@@ -102,6 +136,7 @@ export default function NewsletterSignup({
         {status === 'error' ? (
           <p className="text-red-600 text-xs mt-2">{errorMessage}</p>
         ) : null}
+        <ConsentNotice onDark={onDark} />
       </form>
     );
   }
@@ -129,9 +164,7 @@ export default function NewsletterSignup({
           {status === 'submitting' ? 'Sending...' : (buttonLabel ?? 'Get the Free Planner')}
         </button>
       </div>
-      <p className="text-xs text-slate-400 mt-3">
-        Free. No spam. Unsubscribe anytime.
-      </p>
+      <ConsentNotice onDark={onDark} />
     </form>
   );
 }
