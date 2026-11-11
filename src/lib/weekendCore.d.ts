@@ -40,7 +40,8 @@ export type WeekendIssue = {
   masthead: string;
   startDate: string;
   endDate: string;
-  updated: string;
+  /** Send time. Omitted when the email has not been sent. */
+  updated?: string;
   intro: string;
   days: WeekendDay[];
   notes: string[];

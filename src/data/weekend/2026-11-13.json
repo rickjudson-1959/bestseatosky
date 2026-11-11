@@ -1,0 +1,410 @@
+{
+  "slug": "2026-11-13",
+  "title": "Cornucopia's closing gala, Lions Bay blues and Anything Goes: your Sea to Sky weekend",
+  "description": "What’s on in Whistler, Squamish, Pemberton, Lions Bay and Britannia Beach this weekend: Cornucopia’s closing weekend, live music, markets and theatre.",
+  "masthead": "Sea to Sky weekend: Nov 13-15",
+  "startDate": "2026-11-13",
+  "endDate": "2026-11-15",
+  "intro": "What’s on in Whistler, Squamish, Pemberton, Lions Bay and Britannia Beach this weekend: Cornucopia’s closing weekend, live music, markets and theatre.",
+  "days": [
+    {
+      "heading": "Friday, November 13",
+      "countLabel": "7 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "8:00-10:30 PM",
+              "timeTone": "clock",
+              "name": "Cornucopia Night Market: Legends & Next Generation",
+              "venue": "Whistler Conference Centre, 4010 Whistler Way",
+              "blurb": "Culinary legends meet the next generation at a lively night market of inventive dishes, exceptional pours, music and discovery.",
+              "sources": [
+                {
+                  "label": "whistlercornucopia.com: Night Market",
+                  "href": "https://www.whistlercornucopia.com/schedule/nightmarket26/"
+                }
+              ],
+              "badges": [
+                "19+ · $79"
+              ],
+              "warnings": [
+                "Sold out as of Nov 10"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "7:00 PM",
+              "timeTone": "clock",
+              "name": "KHIVA + SUBSCURA",
+              "venue": "Trickster’s Hideout, Squamish",
+              "blurb": "An intimate night of bass music and performance art with Creek St, Ghost Orchid, Daega Sound and Siadic.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: November events",
+                  "href": "https://trickstershideout.ca/events/"
+                }
+              ],
+              "badges": [
+                "Tickets $25-30"
+              ]
+            },
+            {
+              "time": "7:45 PM seating",
+              "timeTone": "clock",
+              "name": "Sip & Savour: Experience Italy at Fergie’s Café",
+              "venue": "Fergie’s Café, 70002 Squamish Valley Rd",
+              "blurb": "An Italian-inspired tasting evening at Fergie’s Café in the Squamish Valley.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "8:00 PM",
+              "timeTone": "clock",
+              "name": "Fresh Cut Grass",
+              "venue": "Brackendale Art Gallery, 41950 Government Rd, Squamish",
+              "blurb": "Live music night at the Brackendale Art Gallery café and culture centre.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "Tickets $24-29"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pemberton",
+          "entries": [
+            {
+              "time": "6:00 PM",
+              "timeTone": "clock",
+              "name": "Anything Goes: The Musical",
+              "venue": "Pemberton Legion, 7440 Prospect St",
+              "blurb": "The Pemberton Arts Council Theatre Group presents the Cole Porter classic: romance, mistaken identities and spectacular dance numbers. Double-cast, so each night is a different show.",
+              "sources": [
+                {
+                  "label": "tourismpembertonbc.com",
+                  "href": "https://www.tourismpembertonbc.com/pemberton-events"
+                },
+                {
+                  "label": "zeffy.com: tickets",
+                  "href": "https://www.zeffy.com/en-CA/ticketing/anything-goes-theatre-production-pemberton-legion"
+                }
+              ],
+              "badges": [
+                "Tickets $15"
+              ]
+            },
+            {
+              "time": "7:00-9:00 PM",
+              "timeTone": "clock",
+              "name": "Live Music @ Town Square: Stephan Vogler",
+              "venue": "Pemberton Town Square",
+              "blurb": "The fall Friday-night live music series continues with Stephan Vogler: live music and good food every Friday night.",
+              "sources": [
+                {
+                  "label": "tourismpembertonbc.com: Pemberton events",
+                  "href": "https://www.tourismpembertonbc.com/pemberton-events"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Britannia Beach",
+          "entries": [
+            {
+              "time": "Runs Nov 2 - Feb 28",
+              "timeTone": "span",
+              "name": "ORE & ORCAS: Howe Sound, a Recovering Ecosystem",
+              "venue": "Britannia Mine Museum",
+              "blurb": "New exhibit on Howe Sound’s recovering ecosystem, alongside the underground mine tour, gold panning and the BOOM! show.",
+              "sources": [
+                {
+                  "label": "britanniaminemuseum.ca: events and exhibits",
+                  "href": "http://www.britanniaminemuseum.ca/pages/events-at-britannia-mine-museum"
+                }
+              ],
+              "badges": [
+                "New exhibit"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Saturday, November 14",
+      "countLabel": "12 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "11:00 AM-12:30 PM",
+              "timeTone": "clock",
+              "name": "Cornucopia Drink Seminar: Free Spirit Whistler!",
+              "venue": "Whistler Conference Centre",
+              "blurb": "An alcohol-free tasting seminar as part of Cornucopia’s closing weekend.",
+              "sources": [
+                {
+                  "label": "vitamagazine.com: Cornucopia closing weekend",
+                  "href": "https://vitamagazine.com/2026/10/01/10-ways-to-celebrate-30-years-of-cornucopia-in-whistler/"
+                }
+              ],
+              "badges": [
+                "$59"
+              ]
+            },
+            {
+              "time": "11:30 AM-1:00 PM",
+              "timeTone": "clock",
+              "name": "Cornucopia Drink Seminar: Italy Beyond Pinot Grigio",
+              "venue": "Whistler Conference Centre",
+              "blurb": "A Cornucopia drink seminar exploring Italian wines beyond Pinot Grigio.",
+              "sources": [
+                {
+                  "label": "whistlercornucopia.com: events around this date",
+                  "href": "https://www.whistlercornucopia.com/schedule/nightmarket26/"
+                }
+              ]
+            },
+            {
+              "time": "Runs Nov 14-15",
+              "timeTone": "span",
+              "name": "Early-season Nordic ski at Whistler Olympic Park",
+              "venue": "Whistler Olympic Park",
+              "blurb": "First Nordic laps of the season on snow stored from last year, plus the grand opening of the Nordic Ski Shop on Saturday.",
+              "sources": [
+                {
+                  "label": "whistler.com: The Local’s List: What’s On in November",
+                  "href": "https://www.whistler.com/blog/post/locals-list-november/"
+                }
+              ],
+              "warnings": [
+                "Hours not listed on the source page"
+              ]
+            },
+            {
+              "time": "7:00 PM",
+              "timeTone": "clock",
+              "name": "Surf Hat @ Après Après",
+              "venue": "Après Après, Whistler Village",
+              "blurb": "The Squamish psych-surf duo bring their fall tour to Whistler: reverb-soaked guitars, catchy hooks and electrifying live shows.",
+              "sources": [
+                {
+                  "label": "gibbonswhistler.com: calendar",
+                  "href": "https://gibbonswhistler.com/calendar/"
+                }
+              ]
+            },
+            {
+              "time": "8:30-11:00 PM",
+              "timeTone": "clock",
+              "name": "Cornucopia 30th Edition Gala",
+              "venue": "Whistler Conference Centre",
+              "blurb": "Cornucopia’s ultimate 30th birthday celebration: a Greek-inspired, party-forward gala with wines, sparkling pours, cocktails, spirits, creative alcohol-free options and delicious bites.",
+              "sources": [
+                {
+                  "label": "whistlercornucopia.com: packages",
+                  "href": "https://www.whistlercornucopia.com/packages/"
+                }
+              ],
+              "badges": [
+                "$139 · 19+",
+                "Early entry 7:30 PM, $159"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "9:45 AM-12:45 PM",
+              "timeTone": "clock",
+              "name": "SORCA Dig Day #11: Corsa Cycles",
+              "venue": "Kiki, meet at the end of Tantalus Rd, Squamish",
+              "blurb": "Trail-building morning hosted by Corsa Cycles. Give back to the network as the autumn air gets crisp.",
+              "sources": [
+                {
+                  "label": "sorca.ca: upcoming events",
+                  "href": "https://www.sorca.ca/events-list"
+                }
+              ]
+            },
+            {
+              "time": "10:00 AM",
+              "timeTone": "clock",
+              "name": "Squamish Farmers Winter Market",
+              "venue": "37996 Cleveland Ave, Squamish",
+              "blurb": "The winter market with local produce, food and artisans in downtown Squamish.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "8:00 PM",
+              "timeTone": "clock",
+              "name": "Maiden Vancouver",
+              "venue": "Brackendale Art Gallery, 41950 Government Rd, Squamish",
+              "blurb": "Live music night at the Brackendale Art Gallery café and culture centre.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish this weekend",
+                  "href": "https://allevents.in/squamish/this-weekend"
+                }
+              ],
+              "badges": [
+                "Tickets $35-41"
+              ]
+            },
+            {
+              "time": "9:00 PM",
+              "timeTone": "clock",
+              "name": "Country Night: Judah Wardrope",
+              "venue": "Trickster’s Hideout, Squamish",
+              "blurb": "Modern and classic country hits all night long with Judah Wardrope and his band.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: November events",
+                  "href": "https://trickstershideout.ca/events/"
+                }
+              ],
+              "badges": [
+                "Tickets $15-20"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pemberton",
+          "entries": [
+            {
+              "time": "2:00-5:00 PM",
+              "timeTone": "clock",
+              "name": "Signal Hill Fall Fair",
+              "venue": "Signal Hill Elementary, Pemberton",
+              "blurb": "Family-friendly fall fair supporting the Signal Hill PAC: games and challenges, face painting, prizes, snacks and hot drinks, a gift basket raffle, snow cones and hair glitter.",
+              "sources": [
+                {
+                  "label": "tourismpembertonbc.com: Pemberton events",
+                  "href": "https://www.tourismpembertonbc.com/pemberton-events"
+                }
+              ]
+            },
+            {
+              "time": "Time not listed",
+              "timeTone": "span",
+              "name": "Anything Goes: The Musical",
+              "venue": "Pemberton Legion, 7440 Prospect St",
+              "blurb": "Second night of the Pemberton Arts Council Theatre Group’s Cole Porter musical. A different cast from Friday, so a completely different show.",
+              "sources": [
+                {
+                  "label": "tourismpembertonbc.com",
+                  "href": "https://www.tourismpembertonbc.com/pemberton-events"
+                },
+                {
+                  "label": "zeffy.com: tickets",
+                  "href": "https://www.zeffy.com/en-CA/ticketing/anything-goes-theatre-production-pemberton-legion"
+                }
+              ],
+              "badges": [
+                "Tickets $15"
+              ],
+              "warnings": [
+                "Show time not listed on the source pages"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Lions Bay",
+          "entries": [
+            {
+              "time": "7:00-9:30 PM",
+              "timeTone": "clock",
+              "name": "Mark Crissinger Blues Band",
+              "venue": "Lions Bay Village Hall, 400 Centre Rd",
+              "blurb": "Veteran blues-rocker and former Toronto scene mainstay Mark Crissinger brings his high-energy, original blues sound to Lions Bay for a full-band performance, with a new album in tow.",
+              "sources": [
+                {
+                  "label": "eventbrite.ca: Mark Crissinger Blues Band in Lions Bay",
+                  "href": "https://www.eventbrite.ca/e/mark-crissinger-blues-band-in-lions-bay-tickets-1989803139755"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Sunday, November 15",
+      "countLabel": "2 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "10:00 AM-12:00 PM",
+              "timeTone": "clock",
+              "name": "The Brunch League: Cornucopia closing event",
+              "venue": "Whistler Conference Centre",
+              "blurb": "Cornucopia wraps with a karaoke brunch: weekend brunch meets your favourite singalong, with brunch bites, music, singing and dancing.",
+              "sources": [
+                {
+                  "label": "yumyak.ca: Cornucopia closing weekend",
+                  "href": "https://www.yumyak.ca/whistler-cornucopia-closing-weekend-nov-13-15-2026/"
+                }
+              ],
+              "badges": [
+                "$79"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "6:00-10:00 PM",
+              "timeTone": "clock",
+              "name": "Nathan Stanley: A Tribute to Dr. Ralph Stanley",
+              "venue": "Trickster’s Hideout, Squamish",
+              "blurb": "Dove Award winner and Grammy nominee Nathan Stanley celebrates the life, legacy and timeless music of his grandfather, bluegrass pioneer Dr. Ralph Stanley.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: November events",
+                  "href": "https://trickstershideout.ca/events/"
+                }
+              ],
+              "badges": [
+                "Tickets $25-30"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Confirm before you go. Times were researched on Nov 11, 2026 from the source pages linked above. Check the event pages directly before heading out, especially listings marked with time warnings.",
+    "Events without stated times were listed on their source calendars with no start time given; the Whistler Farmers’ Market season ended Oct 11, so it is not running this weekend. No events were found for Horseshoe Bay or Furry Creek this weekend."
+  ]
+}

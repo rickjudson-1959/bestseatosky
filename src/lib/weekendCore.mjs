@@ -19,18 +19,18 @@ const MONTHS = [
   'December',
 ];
 
-const ISSUE_KEYS = [
+const ISSUE_REQUIRED = [
   'slug',
   'title',
   'description',
   'masthead',
   'startDate',
   'endDate',
-  'updated',
   'intro',
   'days',
   'notes',
 ];
+const ISSUE_OPTIONAL = ['updated'];
 
 const DAY_KEYS = ['heading', 'countLabel', 'towns'];
 const TOWN_KEYS = ['name', 'entries'];
@@ -131,11 +131,16 @@ function assertObject(value, label) {
 }
 
 function assertExactKeys(value, keys, label) {
+  assertAllowedKeys(value, keys, [], label);
+}
+
+function assertAllowedKeys(value, required, optional, label) {
   assertObject(value, label);
+  const allowed = [...required, ...optional];
   for (const key of Object.keys(value)) {
-    if (!keys.includes(key)) fail(`${label} has unknown field "${key}".`);
+    if (!allowed.includes(key)) fail(`${label} has unknown field "${key}".`);
   }
-  for (const key of keys) {
+  for (const key of required) {
     if (!(key in value)) fail(`${label} is missing ${key}.`);
   }
 }
@@ -195,7 +200,7 @@ function assertEntry(entry, label) {
 }
 
 export function validateIssue(issue, filename = 'issue') {
-  assertExactKeys(issue, ISSUE_KEYS, filename);
+  assertAllowedKeys(issue, ISSUE_REQUIRED, ISSUE_OPTIONAL, filename);
   assertIsoDate(issue.slug, `${filename} slug`);
   assertIsoDate(issue.startDate, `${filename} startDate`);
   assertIsoDate(issue.endDate, `${filename} endDate`);
@@ -204,7 +209,10 @@ export function validateIssue(issue, filename = 'issue') {
     fail(`${filename} must be named ${issue.slug}.json.`);
   }
   if (issue.endDate < issue.startDate) fail(`${filename} endDate is before startDate.`);
-  if (Number.isNaN(new Date(issue.updated).getTime())) fail(`${filename} updated is not a date.`);
+  if ('updated' in issue) {
+    assertText(issue.updated, `${filename} updated`);
+    if (Number.isNaN(new Date(issue.updated).getTime())) fail(`${filename} updated is not a date.`);
+  }
   assertText(issue.title, `${filename} title`);
   assertText(issue.description, `${filename} description`);
   assertText(issue.masthead, `${filename} masthead`);

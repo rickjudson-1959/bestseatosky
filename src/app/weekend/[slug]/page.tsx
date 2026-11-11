@@ -58,8 +58,7 @@ export default async function WeekendIssuePage({ params }: Props) {
     '@type': 'Article',
     headline: issue.title,
     description: issue.description,
-    datePublished: issue.updated,
-    dateModified: issue.updated,
+    ...(issue.updated ? { datePublished: issue.updated, dateModified: issue.updated } : {}),
     inLanguage: 'en-CA',
     author: {
       '@type': 'Organization',
