@@ -244,7 +244,7 @@ test('an issue with no send time omits updated', () => {
   assert.equal('updated' in validated, false);
 });
 
-test('Nov 13-15 issue is unsent and keeps the HTML counts and warnings', () => {
+test('Nov 13-15 issue keeps the send time, HTML counts, and warnings', () => {
   const file = path.join(DATA_DIR, '2026-11-13.json');
   const raw = fs.readFileSync(file, 'utf8');
   const issue = validateIssue(JSON.parse(raw), '2026-11-13.json');
@@ -253,7 +253,8 @@ test('Nov 13-15 issue is unsent and keeps the HTML counts and warnings', () => {
   assert.equal(issue.startDate, '2026-11-13');
   assert.equal(issue.endDate, '2026-11-15');
   assert.equal(issue.masthead, 'Sea to Sky weekend: Nov 13-15');
-  assert.equal('updated' in issue, false);
+  assert.equal(issue.updated, '2026-11-11T16:59:14-07:00');
+  assert.equal(formatUpdated(issue.updated), 'Updated Nov 11, 2026, 4:59 p.m. PT');
   assert.deepEqual(issue.days.map((day) => day.countLabel), ['7 happenings', '12 happenings', '2 happenings']);
   const warnings = issue.days.flatMap((day) => day.towns.flatMap((town) => town.entries.flatMap((entry) => entry.warnings ?? [])));
   assert.deepEqual(warnings, [
