@@ -227,6 +227,52 @@ test('the HTML converter drops the unsubscribe tag and keeps an unconfirmed warn
   assert.equal(JSON.stringify(issue).includes('fonts.googleapis'), false);
   assert.equal(issue.notes.length, 1);
   assert.equal(issue.days[0].towns[0].entries[0].blurb.includes('\u2013'), true);
+
+  const unsent = parseWeekendHtml(html, {
+    title: 'Subject line',
+    start: '2026-11-06',
+    end: '2026-11-08',
+  });
+  assert.equal('updated' in unsent, false);
+  assert.equal(unsent.days[0].countLabel, '1 happenings');
+});
+
+test('an issue with no send time omits updated', () => {
+  const issue = sampleIssue();
+  delete issue.updated;
+  const validated = validateIssue(issue, '2026-11-06.json');
+  assert.equal('updated' in validated, false);
+});
+
+test('Nov 13-15 issue keeps the send time, HTML counts, and warnings', () => {
+  const file = path.join(DATA_DIR, '2026-11-13.json');
+  const raw = fs.readFileSync(file, 'utf8');
+  const issue = validateIssue(JSON.parse(raw), '2026-11-13.json');
+  assert.equal(issue.title, "Cornucopia's closing gala, Lions Bay blues and Anything Goes: your Sea to Sky weekend");
+  assert.equal(issue.slug, '2026-11-13');
+  assert.equal(issue.startDate, '2026-11-13');
+  assert.equal(issue.endDate, '2026-11-15');
+  assert.equal(issue.masthead, 'Sea to Sky weekend: Nov 13-15');
+  assert.equal(issue.updated, '2026-11-11T16:59:14-07:00');
+  assert.equal(formatUpdated(issue.updated), 'Updated Nov 11, 2026, 4:59 p.m. PT');
+  assert.deepEqual(issue.days.map((day) => day.countLabel), ['7 happenings', '12 happenings', '2 happenings']);
+  const warnings = issue.days.flatMap((day) => day.towns.flatMap((town) => town.entries.flatMap((entry) => entry.warnings ?? [])));
+  assert.deepEqual(warnings, [
+    'Sold out as of Nov 10',
+    'Hours not listed on the source page',
+    'Show time not listed on the source pages',
+  ]);
+  assert.equal(raw.includes('unsubscribe'), false);
+  assert.equal(raw.includes('{{'), false);
+  assert.equal(raw.includes('eventlist-bluebar'), false);
+  assert.equal(issue.notes[0].startsWith('Confirm before you go.'), true);
+  assert.equal(issue.notes.some((note) => /bestseatosky\.com/i.test(note)), false);
+
+  const issues = [issue, validateIssue(JSON.parse(fs.readFileSync(ISSUE_FILE, 'utf8')), '2026-11-06.json')];
+  assert.equal(pickLatest(issues).slug, '2026-11-13');
+  assert.deepEqual(pickArchive(issues, '2026-11-11').map((item) => item.slug), ['2026-11-06']);
+  assert.equal(isIssueCurrent(issue.endDate, '2026-11-15'), true);
+  assert.equal(isIssueCurrent(issue.endDate, '2026-11-16'), false);
 });
 
 test('weekend signup copy asks for the list and leaves the planner defaults in place', () => {

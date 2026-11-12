@@ -3,6 +3,8 @@
  *
  * The email subject is not inside the HTML file. Pass it with --title.
  * --updated is the send time, shown as the Updated line (include the offset).
+ * Leave --updated off when the email has not been sent. The JSON then has no
+ * updated field, so the page does not show a send time.
  *
  *   node scripts/weekend-issue-from-html.mjs \
  *     --html ./issue.html \
@@ -240,7 +242,7 @@ export function parseWeekendHtml(html, meta) {
     masthead,
     startDate: meta.start,
     endDate: meta.end,
-    updated: meta.updated,
+    ...(meta.updated ? { updated: meta.updated } : {}),
     intro,
     days,
     notes,
@@ -279,12 +281,12 @@ function main() {
   if (!htmlPath) throw new Error('Pass --html path/to/issue.html');
   if (!title) throw new Error('Pass --title with the email subject. It is not inside the HTML file.');
   if (end < start) throw new Error('--end is before --start.');
-  if (!updated || Number.isNaN(new Date(updated).getTime())) {
+  if (updated && Number.isNaN(new Date(updated).getTime())) {
     throw new Error('--updated must be a date or time the Updated line can format, such as 2026-11-04T13:38:00-07:00.');
   }
 
   const html = fs.readFileSync(htmlPath, 'utf8');
-  const issue = parseWeekendHtml(html, { title, start, end, updated });
+  const issue = parseWeekendHtml(html, { title, start, end, updated: updated || undefined });
   const outPath = outFlag || path.join('src/data/weekend', `${start}.json`);
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, `${JSON.stringify(issue, null, 2)}\n`);

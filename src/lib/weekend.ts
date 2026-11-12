@@ -79,7 +79,7 @@ export function weekendSitemapEntries(today: string = weekendAsOf()): MetadataRo
     if (!isIssueCurrent(issue.endDate, today)) continue;
     entries.push({
       url: `${SITE}/weekend/${issue.slug}`,
-      lastModified: new Date(issue.updated),
+      ...(issue.updated ? { lastModified: new Date(issue.updated) } : {}),
       changeFrequency: 'weekly',
       priority: 0.6,
     });

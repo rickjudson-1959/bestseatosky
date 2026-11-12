@@ -23,14 +23,16 @@ export default function WeekendIssueView({ issue, today, pastDetail }: Props) {
         {formatWeekendRange(issue.startDate, issue.endDate)}
       </p>
       <p className="text-sm text-slate-500 mt-1">{issue.masthead}</p>
-      <p className="mt-4">
-        <time
-          dateTime={issue.updated}
-          className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-sm font-semibold text-white"
-        >
-          {formatUpdated(issue.updated)}
-        </time>
-      </p>
+      {issue.updated ? (
+        <p className="mt-4">
+          <time
+            dateTime={issue.updated}
+            className="inline-flex rounded-full bg-slate-900 px-3 py-1 text-sm font-semibold text-white"
+          >
+            {formatUpdated(issue.updated)}
+          </time>
+        </p>
+      ) : null}
 
       {past ? (
         <p className="mt-4 rounded-xl border border-amber-200 bg-amber-50 px-4 py-3 text-sm font-semibold text-amber-950">
