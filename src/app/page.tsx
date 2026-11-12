@@ -168,7 +168,7 @@ export default async function HomePage() {
               <p className="text-sm text-slate-300 mb-4 leading-relaxed">
                 Local picks for Squamish, Whistler, and Pemberton. Enter your email and we will send it.
               </p>
-              <NewsletterSignup source="homepage-hero" variant="compact" />
+              <NewsletterSignup source="homepage-hero" variant="compact" onDark />
             </div>
             <div className="rounded-2xl border border-white/10 bg-white/5 backdrop-blur-sm p-5 flex flex-col">
               <p className="text-emerald-400 text-xs font-semibold tracking-[2px] uppercase mb-2">
@@ -335,7 +335,7 @@ export default async function HomePage() {
             Local restaurant picks, must-do trails, and insider tips for the corridor,
             delivered to your inbox.
           </p>
-          <NewsletterSignup source="homepage" />
+          <NewsletterSignup source="homepage" onDark />
         </div>
       </section>
 
