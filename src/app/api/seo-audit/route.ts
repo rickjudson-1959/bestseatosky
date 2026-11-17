@@ -29,9 +29,10 @@ export async function POST(request: NextRequest) {
       console.error('Audit request insert error:', dbError);
     }
 
-    // Send email notification
+    // Send email notification. The row is already saved, so a Resend
+    // failure still returns success. Log name and message only.
     try {
-      await resend.emails.send({
+      const { error: sendError } = await resend.emails.send({
         from: 'Best Sea to Sky <noreply@bestseatosky.com>',
         to: 'hello@bestseatosky.com',
         replyTo: email.trim(),
@@ -48,8 +49,17 @@ export async function POST(request: NextRequest) {
           </table>
         `,
       });
+      if (sendError) {
+        console.error('Audit notification email failed:', {
+          name: sendError.name,
+          message: sendError.message,
+        });
+      }
     } catch (emailError) {
-      console.error('Audit notification email failed:', emailError);
+      console.error('Audit notification email failed:', {
+        name: emailError instanceof Error ? emailError.name : 'Error',
+        message: emailError instanceof Error ? emailError.message : 'Audit notification email failed',
+      });
     }
 
     return NextResponse.json({ success: true });
