@@ -1,7 +1,21 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { supabase } from '@/lib/supabase';
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+function resendFailureLog(error: unknown): { name: string; message: string } {
+  if (error instanceof Error) {
+    return { name: error.name, message: error.message };
+  }
+  if (error && typeof error === 'object') {
+    const name = 'name' in error && typeof error.name === 'string' ? error.name : 'Error';
+    const message =
+      'message' in error && typeof error.message === 'string' ? error.message : 'Resend send failed';
+    return { name, message };
+  }
+  return { name: 'Error', message: 'Resend send failed' };
+}
 
 export async function POST(request: NextRequest) {
   try {
@@ -19,8 +33,32 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: 'Please provide a valid email address.' }, { status: 400 });
     }
 
+    const id = crypto.randomUUID();
+    let saved = false;
+
+    try {
+      const { error: insertError } = await supabase.from('contact_messages').insert({
+        id,
+        name: name.trim(),
+        email: email.trim(),
+        subject: subject.trim(),
+        message: message.trim(),
+      });
+
+      if (insertError) {
+        console.error('Contact message insert error:', insertError.code, insertError.message);
+      } else {
+        saved = true;
+      }
+    } catch (insertError) {
+      console.error(
+        'Contact message insert error:',
+        insertError instanceof Error ? insertError.message : 'Contact message insert failed'
+      );
+    }
+
     // Resend reports API and network failures as { error } instead of throwing.
-    // A failed send must not return success.
+    // A failed send must not return success unless the message was saved.
     try {
       const emailResult = await resend.emails.send({
         from: 'Best Sea to Sky <noreply@bestseatosky.com>',
@@ -39,18 +77,35 @@ export async function POST(request: NextRequest) {
       });
 
       if (emailResult.error || !emailResult.data) {
-        console.error('Email notification failed:', emailResult.error ?? emailResult);
+        console.error('Email notification failed:', resendFailureLog(emailResult.error));
+        if (saved) {
+          return NextResponse.json({ success: true });
+        }
         return NextResponse.json(
           { success: false, error: 'Failed to send message. Please try again.' },
           { status: 502 }
         );
       }
     } catch (emailError) {
-      console.error('Email notification failed:', emailError);
+      console.error('Email notification failed:', resendFailureLog(emailError));
+      if (saved) {
+        return NextResponse.json({ success: true });
+      }
       return NextResponse.json(
         { success: false, error: 'Failed to send message. Please try again.' },
         { status: 500 }
       );
+    }
+
+    if (saved) {
+      const { error: updateError } = await supabase
+        .from('contact_messages')
+        .update({ email_sent: true })
+        .eq('id', id);
+
+      if (updateError) {
+        console.error('Contact message email_sent update error:', updateError.code, updateError.message);
+      }
     }
 
     return NextResponse.json({ success: true });

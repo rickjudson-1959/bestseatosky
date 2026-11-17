@@ -62,9 +62,10 @@ export async function POST(request: NextRequest) {
       console.warn('Brevo env vars missing — BREVO_API_KEY:', !!process.env.BREVO_API_KEY, 'BREVO_LIST_ID:', !!process.env.BREVO_LIST_ID);
     }
 
-    // Notify you of new subscriber
+    // Notify you of new subscriber. The row is already saved, so a Resend
+    // failure still returns success. Log name and message only.
     try {
-      await resend.emails.send({
+      const { error: sendError } = await resend.emails.send({
         from: 'Best Sea to Sky <noreply@bestseatosky.com>',
         to: 'hello@bestseatosky.com',
         subject: `New subscriber: ${trimmedEmail}`,
@@ -75,8 +76,17 @@ export async function POST(request: NextRequest) {
           <p><strong>Time:</strong> ${new Date().toISOString()}</p>
         `,
       });
-    } catch {
-      // Non-critical
+      if (sendError) {
+        console.error('Subscriber notification email failed:', {
+          name: sendError.name,
+          message: sendError.message,
+        });
+      }
+    } catch (emailError) {
+      console.error('Subscriber notification email failed:', {
+        name: emailError instanceof Error ? emailError.name : 'Error',
+        message: emailError instanceof Error ? emailError.message : 'Subscriber notification email failed',
+      });
     }
 
     return NextResponse.json({ success: true });
