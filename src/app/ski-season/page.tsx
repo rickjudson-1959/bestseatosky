@@ -26,7 +26,7 @@ const SECTIONS = [
       'Handlebar Cafe for breakfast — massive portions, local crowd, reasonable prices. The breakfast burrito will fuel a full ski day.',
       'Dusty\'s at Creekside for apr\u00e8s — pulled pork, craft beer, live music. Half the price of Village apr\u00e8s, twice the atmosphere.',
       'Grocery run at Nesters Market before you arrive. Cook at your condo two nights out of five. Your credit card will thank you.',
-      'Creekbread in Creekside for the best pizza in Whistler. Wood-fired, family-friendly, and you can actually get a table.',
+      'Creekbread in Creekside for the best pizza in Whistler. Wood-fired, family-friendly, and you can actually get a table. Closed Nov 9 to Dec 2, reopens Dec 3 at 4pm.',
     ],
   },
   {
