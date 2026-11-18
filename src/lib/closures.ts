@@ -5,7 +5,6 @@
  */
 export const TEMPORARILY_CLOSED_SLUGS: ReadonlySet<string> = new Set([
   'creekbread-whistler',
-  'blackbird-bakery-pemberton',
 ]);
 
 export function isTemporarilyClosed(slug: string | null | undefined): boolean {

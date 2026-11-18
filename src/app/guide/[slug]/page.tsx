@@ -487,7 +487,6 @@ const GUIDE_REFRESH: Record<
     dateModified: '2026-10-19',
     excludeSlugs: [
       // Google Maps showed "Temporarily closed" on Oct 19, 2026. Remove once reopened.
-      'blackbird-bakery-pemberton',
       'sunstone-golf-club-bar-and-grill-pemberton',
       // National or international chains never go in best lists (Karl, Oct 19, 2026).
       'mcdonalds-pemberton',
