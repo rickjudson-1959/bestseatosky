@@ -275,7 +275,7 @@ test('Nov 13-15 issue keeps the send time, HTML counts, and warnings', () => {
   assert.equal(isIssueCurrent(issue.endDate, '2026-11-16'), false);
 });
 
-test('Nov 20-22 issue omits the send time and keeps 17 events', () => {
+test('Nov 20-22 issue keeps the send time and 17 events', () => {
   const file = path.join(DATA_DIR, '2026-11-20.json');
   const raw = fs.readFileSync(file, 'utf8');
   const issue = validateIssue(JSON.parse(raw), '2026-11-20.json');
@@ -285,7 +285,8 @@ test('Nov 20-22 issue omits the send time and keeps 17 events', () => {
   assert.equal(issue.endDate, '2026-11-22');
   assert.equal(issue.masthead, 'Sea to Sky weekend: Nov 20-22');
   assert.equal(issue.description, issue.intro);
-  assert.equal('updated' in issue, false);
+  assert.equal(issue.updated, '2026-11-18T18:40:00-07:00');
+  assert.equal(formatUpdated(issue.updated), 'Updated Nov 18, 2026, 6:40 p.m. PT');
   assert.deepEqual(issue.days.map((day) => day.countLabel), ['7 happenings', '7 happenings', '3 happenings']);
   const entries = issue.days.flatMap((day) => day.towns.flatMap((town) => town.entries));
   assert.equal(entries.length, 17);
