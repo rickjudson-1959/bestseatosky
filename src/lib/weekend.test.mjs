@@ -275,6 +275,65 @@ test('Nov 13-15 issue keeps the send time, HTML counts, and warnings', () => {
   assert.equal(isIssueCurrent(issue.endDate, '2026-11-16'), false);
 });
 
+test('Nov 20-22 issue omits the send time and keeps 17 events', () => {
+  const file = path.join(DATA_DIR, '2026-11-20.json');
+  const raw = fs.readFileSync(file, 'utf8');
+  const issue = validateIssue(JSON.parse(raw), '2026-11-20.json');
+  assert.equal(issue.title, 'Blackcomb opens, Brass Camel and Anything Goes: your Sea to Sky weekend');
+  assert.equal(issue.slug, '2026-11-20');
+  assert.equal(issue.startDate, '2026-11-20');
+  assert.equal(issue.endDate, '2026-11-22');
+  assert.equal(issue.masthead, 'Sea to Sky weekend: Nov 20-22');
+  assert.equal(issue.description, issue.intro);
+  assert.equal('updated' in issue, false);
+  assert.deepEqual(issue.days.map((day) => day.countLabel), ['7 happenings', '7 happenings', '3 happenings']);
+  const entries = issue.days.flatMap((day) => day.towns.flatMap((town) => town.entries));
+  assert.equal(entries.length, 17);
+  assert.deepEqual(entries.map((entry) => entry.name), [
+    'Opening Day: Blackcomb is open',
+    'Eleven Painters Start A War opens',
+    'Anything Goes: The Musical',
+    'Heavy Fest, night one',
+    'Sip & Savour dine-around',
+    'Ore & Orcas: Howe Sound, a recovering ecosystem',
+    'Handmade Histories: Britannia’s Memories at our Fingertips',
+    'Solstice: Through Storm & Stillness',
+    'Anything Goes: The Musical',
+    'SORCA Dig Day #12 with DHaRCO and Tacofino',
+    'Giant Wreath Workshop',
+    'Coast Mountain Folk Trad Session',
+    'Heavy Fest, night two',
+    'Brass Camel with Chopping Spree',
+    'Sarah Hagen, piano',
+    'Create Public Art Pitch Night',
+    'Blind Book Swap',
+  ]);
+  const warnings = entries.flatMap((entry) => entry.warnings ?? []);
+  assert.deepEqual(warnings, [
+    'Time unconfirmed: listing says 9 PM, Brass Camel around 10 PM',
+    'Time unconfirmed: listing says 6 to 9 PM, ticket data says 5 to 8 PM',
+    'Time unconfirmed: Eventbrite headline says 7 to 8:30 PM',
+  ]);
+  const hrefs = entries.flatMap((entry) => entry.sources.map((source) => source.href));
+  assert.ok(hrefs.every((href) => href.startsWith('https://')));
+  assert.equal(issue.notes[0], 'Confirm before you go. Details were checked on Nov 18, 2026 from the source pages linked above. Check the event pages directly before heading out, especially listings marked with time warnings.');
+  assert.equal(issue.notes[1].includes('https://www.seatoskygondola.com/hours-and-prices/'), true);
+  assert.equal(raw.includes('unsubscribe'), false);
+  assert.equal(raw.includes('{{'), false);
+  assert.equal(raw.includes('\u2014'), false);
+
+  const earlier = ['2026-11-13.json', '2026-11-06.json'].map((name) => (
+    validateIssue(JSON.parse(fs.readFileSync(path.join(DATA_DIR, name), 'utf8')), name)
+  ));
+  const issues = [issue, ...earlier];
+  assert.equal(pickLatest(issues).slug, '2026-11-20');
+  assert.deepEqual(pickArchive(issues, '2026-11-19').map((item) => item.slug), ['2026-11-13', '2026-11-06']);
+  assert.equal(isIssueCurrent(issue.endDate, '2026-11-19'), true);
+  assert.equal(isIssueCurrent(issue.endDate, '2026-11-22'), true);
+  assert.equal(isIssueCurrent(issue.endDate, '2026-11-23'), false);
+  assert.equal(isIssueCurrent(earlier[0].endDate, '2026-11-19'), false);
+});
+
 test('weekend signup copy asks for the list and leaves the planner defaults in place', () => {
   const page = fs.readFileSync(path.join(process.cwd(), 'src/app/weekend/page.tsx'), 'utf8');
   const issuePage = fs.readFileSync(path.join(process.cwd(), 'src/app/weekend/[slug]/page.tsx'), 'utf8');

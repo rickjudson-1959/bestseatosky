@@ -1,0 +1,372 @@
+{
+  "slug": "2026-11-20",
+  "title": "Blackcomb opens, Brass Camel and Anything Goes: your Sea to Sky weekend",
+  "description": "Blackcomb opens Friday, weather permitting. Ski season is basically here. Plus Anything Goes in Whistler, two nights of Heavy Fest, Brass Camel in Brackendale and a new show at the Audain. 17 picks for Whistler, Squamish and Britannia Beach.",
+  "masthead": "Sea to Sky weekend: Nov 20-22",
+  "startDate": "2026-11-20",
+  "endDate": "2026-11-22",
+  "intro": "Blackcomb opens Friday, weather permitting. Ski season is basically here. Plus Anything Goes in Whistler, two nights of Heavy Fest, Brass Camel in Brackendale and a new show at the Audain. 17 picks for Whistler, Squamish and Britannia Beach.",
+  "days": [
+    {
+      "heading": "Friday, November 20",
+      "countLabel": "7 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "Lifts from 9:00 AM",
+              "timeTone": "clock",
+              "name": "Opening Day: Blackcomb is open",
+              "venue": "Blackcomb base lifts, Whistler Blackcomb",
+              "blurb": "Here we go. Blackcomb kicks off the season Friday, with base lifts turning from 9 AM. Whistler Mountain, PEAK 2 PEAK and Creekside follow on Wednesday, Nov 25. All of it is conditions permitting, so check the hours page before you load the car.",
+              "sources": [
+                {
+                  "label": "whistlerblackcomb.com: hours of operation",
+                  "href": "https://www.whistlerblackcomb.com/explore-the-resort/about-the-resort/hours-of-operation.aspx"
+                }
+              ],
+              "badges": [
+                "Weather and conditions permitting",
+                "Whistler Mountain opens Wed Nov 25"
+              ]
+            },
+            {
+              "time": "11:00 AM to 6:00 PM",
+              "timeTone": "clock",
+              "name": "Eleven Painters Start A War opens",
+              "venue": "Audain Art Museum, 4350 Blackcomb Way, Whistler",
+              "blurb": "Opening day for the Audain’s big new show on the eleven painters who shook up Canadian abstract art. It runs to May 3, 2027, so no rush, but it’s a great rainy day plan.",
+              "sources": [
+                {
+                  "label": "audainartmuseum.com: Eleven Painters",
+                  "href": "https://audainartmuseum.com/exhibitions/eleven-painters-start-a-war/"
+                },
+                {
+                  "label": "hours",
+                  "href": "https://audainartmuseum.com/visit/"
+                }
+              ],
+              "badges": [
+                "New exhibition",
+                "Runs to May 3, 2027"
+              ]
+            },
+            {
+              "time": "7:00 to 9:00 PM",
+              "timeTone": "clock",
+              "name": "Anything Goes: The Musical",
+              "venue": "Maury Young Arts Centre, 4335 Blackcomb Way, Whistler",
+              "blurb": "The Pemberton Arts Council theatre crew brings Cole Porter’s classic down the valley to Whistler: tap numbers, mistaken identities and big songs. Night one of two.",
+              "sources": [
+                {
+                  "label": "pembertonartscouncil.com",
+                  "href": "https://pembertonartscouncil.com/event/anything-goes-maury-young-arts-centre-whistler/"
+                },
+                {
+                  "label": "zeffy.com: tickets",
+                  "href": "https://www.zeffy.com/en-CA/ticketing/anything-goes-theatre-production-maury-young-arts-centre"
+                }
+              ],
+              "badges": [
+                "Youth $15 · Adult $25"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "Doors 7 PM, show 8 PM",
+              "timeTone": "clock",
+              "name": "Heavy Fest, night one",
+              "venue": "Trickster’s Hideout, Squamish",
+              "blurb": "The first ever Heavy Fest. Friday’s lineup: Heavy Trip, Trenchraid, Druin, Hushed and Morsh. Loud, sludgy and stoner-y. Bring earplugs.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: Heavy Fest",
+                  "href": "https://trickstershideout.ca/event/heavy-fest-nov-20-21/"
+                }
+              ],
+              "badges": [
+                "$40 one night · $60 weekend"
+              ]
+            },
+            {
+              "time": "All weekend",
+              "timeTone": "span",
+              "name": "Sip & Savour dine-around",
+              "venue": "13 spots around Squamish",
+              "blurb": "Tourism Squamish’s dine-around runs to Nov 26. Think Autostrada, Howe Sound Brew Pub, House of Lager, Tacofino, Raincity Distillery and more, each with a special menu or pour.",
+              "sources": [
+                {
+                  "label": "exploresquamish.com: Sip & Savour",
+                  "href": "https://www.exploresquamish.com/campaigns/sip-savour/"
+                }
+              ],
+              "badges": [
+                "Runs to Nov 26"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Britannia Beach",
+          "entries": [
+            {
+              "time": "Museum hours",
+              "timeTone": "span",
+              "name": "Ore & Orcas: Howe Sound, a recovering ecosystem",
+              "venue": "Terra Lab, Britannia Mine Museum",
+              "blurb": "A new temporary exhibit on how Howe Sound’s marine life is bouncing back. Good one for kids, and an easy stop on a Sea to Sky drive.",
+              "sources": [
+                {
+                  "label": "britanniaminemuseum.ca: events",
+                  "href": "https://www.britanniaminemuseum.ca/pages/events-at-britannia-mine-museum"
+                }
+              ],
+              "badges": [
+                "Runs to Feb 28, 2027"
+              ]
+            },
+            {
+              "time": "Museum hours",
+              "timeTone": "span",
+              "name": "Handmade Histories: Britannia’s Memories at our Fingertips",
+              "venue": "Britannia Mine Museum",
+              "blurb": "Scrapbooks and photo albums made by the people who lived in Britannia, showing what town life was really like. Just opened this week.",
+              "sources": [
+                {
+                  "label": "britanniaminemuseum.ca: featured display",
+                  "href": "https://www.britanniaminemuseum.ca/pages/featured-display"
+                }
+              ],
+              "badges": [
+                "Featured display, to Jan 4, 2027"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Saturday, November 21",
+      "countLabel": "7 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "11:00 AM to 6:00 PM",
+              "timeTone": "clock",
+              "name": "Solstice: Through Storm & Stillness",
+              "venue": "Audain Art Museum, 4350 Blackcomb Way, Whistler",
+              "blurb": "Pair it with the new Eleven Painters show. Solstice pulls from the Audain’s permanent collection on a season of storms and renewal, and runs to Apr 12, 2027.",
+              "sources": [
+                {
+                  "label": "audainartmuseum.com: Solstice",
+                  "href": "https://audainartmuseum.com/exhibitions/solstice-through-storm-and-stillness/"
+                },
+                {
+                  "label": "hours",
+                  "href": "https://audainartmuseum.com/visit/"
+                }
+              ],
+              "badges": [
+                "Runs to Apr 12, 2027"
+              ]
+            },
+            {
+              "time": "7:00 to 9:00 PM",
+              "timeTone": "clock",
+              "name": "Anything Goes: The Musical",
+              "venue": "Maury Young Arts Centre, 4335 Blackcomb Way, Whistler",
+              "blurb": "Last chance to catch the Cole Porter musical in Whistler.",
+              "sources": [
+                {
+                  "label": "pembertonartscouncil.com",
+                  "href": "https://pembertonartscouncil.com/event/anything-goes-maury-young-arts-centre-whistler/"
+                },
+                {
+                  "label": "zeffy.com: tickets",
+                  "href": "https://www.zeffy.com/en-CA/ticketing/anything-goes-theatre-production-maury-young-arts-centre"
+                }
+              ],
+              "badges": [
+                "Youth $15 · Adult $25"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "9:45 AM to 12:45 PM",
+              "timeTone": "clock",
+              "name": "SORCA Dig Day #12 with DHaRCO and Tacofino",
+              "venue": "Singletrack Mind, Valleycliffe. Meet at the washrooms near Squamish Canyon",
+              "blurb": "Give back to the trails you ride. Tools are provided, and minors need to come with an adult.",
+              "sources": [
+                {
+                  "label": "sorca.ca: Dig Day #12",
+                  "href": "https://www.sorca.ca/events-list/smjx69lp14gd0yzvzaezv0iqujpij6"
+                },
+                {
+                  "label": "dig day rules",
+                  "href": "https://www.sorca.ca/dig-days"
+                }
+              ],
+              "badges": [
+                "SORCA members only · registration required"
+              ]
+            },
+            {
+              "time": "10:30 AM to 12:30 PM",
+              "timeTone": "clock",
+              "name": "Giant Wreath Workshop",
+              "venue": "Pink Tuna Cafe, 38209 Westway Ave, Squamish",
+              "blurb": "Whistler Flower School’s Barbora walks you through building a big holiday wreath to take home.",
+              "sources": [
+                {
+                  "label": "whistlerflowerschool.com: book",
+                  "href": "https://whistlerflowerschool.com/products/giant-wreath-workshop-squamish-november-21-2026"
+                }
+              ],
+              "badges": [
+                "$85, or $150 for two",
+                "Booking required"
+              ]
+            },
+            {
+              "time": "12:00 to 2:00 PM",
+              "timeTone": "clock",
+              "name": "Coast Mountain Folk Trad Session",
+              "venue": "Brackendale Art Gallery, 41950 Government Rd, Squamish",
+              "blurb": "Monthly traditional music session with Jocelyn Pettit and Coast Mountain Folk. Bring an instrument or just come listen. There’s an optional prep workshop from 11 AM if you email to sign up.",
+              "sources": [
+                {
+                  "label": "eventbrite.ca: Folk Trad Session",
+                  "href": "https://www.eventbrite.ca/e/coast-mountain-folk-trad-session-tickets-2001895681874"
+                }
+              ],
+              "badges": [
+                "Free · All ages"
+              ]
+            },
+            {
+              "time": "Doors 7 PM, show 8 PM",
+              "timeTone": "clock",
+              "name": "Heavy Fest, night two",
+              "venue": "Trickster’s Hideout, Squamish",
+              "blurb": "Saturday’s lineup: Anciients, Burnt Lung, The Subteraliens, Bong Witch and Shiny Red Button.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: Heavy Fest",
+                  "href": "https://trickstershideout.ca/event/heavy-fest-nov-20-21/"
+                }
+              ],
+              "badges": [
+                "$40 one night · $60 weekend"
+              ]
+            },
+            {
+              "time": "9:00 PM",
+              "timeTone": "clock",
+              "name": "Brass Camel with Chopping Spree",
+              "venue": "Brackendale Art Gallery, 41950 Government Rd, Squamish",
+              "blurb": "A Saturday night show at the gallery. Chopping Spree opens, with Brass Camel up later. All ages.",
+              "sources": [
+                {
+                  "label": "eventbrite.ca: Brass Camel",
+                  "href": "https://www.eventbrite.ca/e/brass-camel-tickets-2002108295808"
+                }
+              ],
+              "badges": [
+                "$25 advance · $28 door"
+              ],
+              "warnings": [
+                "Time unconfirmed: listing says 9 PM, Brass Camel around 10 PM"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Sunday, November 22",
+      "countLabel": "3 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "5:00 to 6:15 PM",
+              "timeTone": "clock",
+              "name": "Sarah Hagen, piano",
+              "venue": "Maury Young Arts Centre, 4335 Blackcomb Way, Whistler",
+              "blurb": "The Whistler Chamber Music Society presents pianist Sarah Hagen. An easy early evening concert to cap the weekend. Doors 4:30 PM.",
+              "sources": [
+                {
+                  "label": "whistlerchambermusic.ca: Sarah Hagen",
+                  "href": "https://www.whistlerchambermusic.ca/concert/sarah-hagen/"
+                }
+              ],
+              "badges": [
+                "Adult $25 · Youth $20"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "Evening",
+              "timeTone": "clock",
+              "name": "Create Public Art Pitch Night",
+              "venue": "Brackendale Art Gallery, Squamish",
+              "blurb": "Local makers pitch big public art ideas for festivals, parks and public spaces around the Sea to Sky. Come watch, cheer and vote. Cash bar and snacks.",
+              "sources": [
+                {
+                  "label": "eventbrite.com: Pitch Night",
+                  "href": "https://www.eventbrite.com/e/create-public-art-pitch-night-tickets-2003948306329"
+                }
+              ],
+              "badges": [
+                "Free · All ages"
+              ],
+              "warnings": [
+                "Time unconfirmed: listing says 6 to 9 PM, ticket data says 5 to 8 PM"
+              ]
+            },
+            {
+              "time": "6:00 to 7:30 PM",
+              "timeTone": "clock",
+              "name": "Blind Book Swap",
+              "venue": "Smoke Bluff Coffee House, 1907 Maple Dr, Squamish",
+              "blurb": "Wrap up a favourite book, swap it for a mystery one. Bookmark station, literary games and a raffle while you wait. Aimed at adults.",
+              "sources": [
+                {
+                  "label": "exploresquamish.com: Blind Book Swap",
+                  "href": "https://www.exploresquamish.com/event/blind-book-swap/"
+                }
+              ],
+              "badges": [
+                "$10"
+              ],
+              "warnings": [
+                "Time unconfirmed: Eventbrite headline says 7 to 8:30 PM"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Confirm before you go. Details were checked on Nov 18, 2026 from the source pages linked above. Check the event pages directly before heading out, especially listings marked with time warnings.",
+    "Heads up: the Sea to Sky Gondola is closed Nov 16 to 26 for annual maintenance and reopens Friday, Nov 27 (seatoskygondola.com https://www.seatoskygondola.com/hours-and-prices/)."
+  ]
+}
