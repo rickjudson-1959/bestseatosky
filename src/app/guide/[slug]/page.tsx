@@ -448,8 +448,8 @@ const GUIDE_REFRESH: Record<
     extraCategorySlugs: ['visit'],
   },
   'best-restaurants-squamish': {
-    updatedLabel: 'October 19, 2026',
-    dateModified: '2026-10-19',
+    updatedLabel: 'November 16, 2026',
+    dateModified: '2026-11-16',
     // Google Maps showed both as "Temporarily closed" on Oct 19, 2026.
     // Remove from this list once they reopen.
     excludeSlugs: ['the-black-box-cuisine-squamish', 'pink-tuna-cafe-squamish'],

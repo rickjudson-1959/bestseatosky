@@ -4,7 +4,7 @@ import Link from 'next/link';
 export const metadata: Metadata = {
   title: 'Good Weekend Itinerary Based in Squamish for the Sea to Sky',
   description:
-    'Looking for a good weekend itinerary based in Squamish for the Sea to Sky? Sleep in Squamish, hike the Chief or Shannon Falls on Day 1, then day-trip Whistler lifts or Alice Lake on Day 2.',
+    'A weekend itinerary based in Squamish from Best Sea to Sky, a hand-picked local directory with real Google ratings. Day 1 the Chief and downtown, Day 2 Brackendale eagles and a Whistler or Alice Lake day. Updated November 16, 2026.',
   alternates: { canonical: '/guide/squamish-base-weekend' },
 };
 
@@ -17,10 +17,11 @@ const PACKING_TIPS = [
   'One ambitious outdoor block per day is usually enough.',
   'Download offline maps for trailheads where cell signal gets shy.',
   'Respect trail closures and posted signs. Check before you go.',
+  'Late fall: a headlamp, warm layers and grippy footwear. Daylight is short and stairs get slick.',
 ];
 
 const WEEKEND_SUMMARY = [
-  'Base in Squamish when Village rates are wild.',
+  'Base in Squamish and day-trip the corridor.',
   'Day 1: Chief, Shannon Falls, or both, then a patio.',
   'Day 2: Whistler lifts or quieter lakes near Alice Lake, then back.',
   'Book sleep via Stay. Browse patios via Best Patios.',
@@ -31,12 +32,27 @@ const FAQS = [
   {
     question: 'Good weekend itinerary based in Squamish for the Sea to Sky?',
     answer:
-      'Sleep in Squamish, hike the Chief or Shannon Falls on Day 1, then day-trip Whistler lifts (or Alice Lake) on Day 2 and come back for a patio dinner. You still get the corridor. You just stop paying Village prices for every hour you are not on a chairlift.',
+      'Sleep in Squamish. Day 1: coffee downtown, hike the Stawamus Chief or walk Shannon Falls, then dinner on Loggers Lane. Day 2: breakfast in Brackendale and bald eagle viewing (peak season is November to December), then either a Whistler ski day or the Four Lakes Trail at Alice Lake. Best Sea to Sky is a local Sea to Sky directory, hand-picked, with real Google ratings and no pay-to-rank. Updated November 16, 2026.',
+  },
+  {
+    question: 'How are places chosen for this itinerary?',
+    answer:
+      'Best Sea to Sky is a local Sea to Sky directory, hand-picked, with real Google ratings and no pay-to-rank. We pick each stop for the season and link to its listing, where you can see its Google rating and review count. We do not invent prices or hours, so check before you go.',
+  },
+  {
+    question: 'What is open in Squamish in late November 2026?',
+    answer:
+      'The Sea to Sky Gondola is closed November 16 to 26 for annual maintenance and reopens November 27 for Spirit of the Season. Blackcomb is scheduled to open November 20 and Whistler Mountain November 25, conditions permitting. Bald eagle viewing in Brackendale peaks November to December. The Chief trails are open, but expect slippery stairs.',
+  },
+  {
+    question: 'When is eagle season in Squamish?',
+    answer:
+      'BC Parks says bald eagle viewing in Brackendale peaks from November to December, with significant numbers present November to January. Watch from the Eagle Run dyke on Government Road. The eagle park itself is closed to visitors from October 1 to March 31.',
   },
   {
     question: 'Why base a weekend in Squamish for the Sea to Sky?',
     answer:
-      'Squamish sits roughly midway on the Sea to Sky corridor. You still get the Chief, patio dinners, and an easy drive up for a lift day. Sleep stays in the neighbourhood of $150 a night when you book early, instead of Village rates that look like a car payment.',
+      'Squamish sits roughly midway on the Sea to Sky corridor. You still get the Chief, patio dinners, and an easy drive up for a lift day. Squamish rooms usually cost less than Whistler Village on the same weekend, so more of the budget goes to the fun parts.',
   },
   {
     question: 'Who is a Squamish base weekend for?',
@@ -46,22 +62,22 @@ const FAQS = [
   {
     question: 'What should I do on Day 1?',
     answer:
-      'Hike the Stawamus Chief, or walk Shannon Falls if the group is tired, then a Squamish patio. Do not overschedule the first night.',
+      'Morning: coffee at Tuba Cafe and the Stawamus Chief, or Shannon Falls if the trail is icy. Afternoon: downtown and the Squamish Adventure Centre. Evening: dinner at The Broken Seal or Howe Sound Inn & Brewing.',
   },
   {
     question: 'What should I do on Day 2?',
     answer:
-      'Drive up to Whistler for lifts, or stay closer for Alice Lake and the Four Lakes loop. Come back to Squamish for dinner.',
+      'Morning: breakfast at The Crabapple Café and eagle viewing on the Brackendale dyke. Afternoon: Whistler lifts once they open (Blackcomb November 20, Whistler Mountain November 25, conditions permitting) or the Four Lakes Trail at Alice Lake. Evening: The Watershed Grill or Backcountry Brewing, then home.',
   },
   {
     question: 'Where should I stay?',
     answer:
-      'Stay in Squamish. Browse the Stay listings, filter for Squamish, and read the real Google ratings. We are not naming hotels or inventing nightly rates. Aim for the $150 a night neighbourhood when you can.',
+      'Stay in Squamish. Options in our directory include Sandman Hotel & Suites Squamish, Squamish Adventure Inn & Hostel, and Sunwolf Riverside Resort in Brackendale. Each listing shows its real Google rating. We do not quote nightly rates, so check the hotel directly.',
   },
   {
     question: 'Where should I eat?',
     answer:
-      'Use the Best Patios guide and the Squamish restaurants page. For the stay-here-versus-Village question, read Squamish vs Whistler: Where Should You Stay?',
+      'Our Squamish restaurants page groups places by breakfast and coffee, casual, dinner and breweries, each with its real Google rating. For outdoor seats, see Best Patios.',
   },
   {
     question: 'What should I pack?',
@@ -101,7 +117,7 @@ export default function SquamishBaseWeekendPage() {
       </h1>
 
       <p className="text-sm text-slate-400 mb-6">
-        Updated September 2026 &middot; A cheaper Sea to Sky base when Village rates spike
+        Updated November 16, 2026 &middot; A cheaper Sea to Sky base when Village rates spike
       </p>
 
       <div className="prose prose-slate max-w-none text-sm leading-relaxed text-slate-600 mb-12">
@@ -118,6 +134,42 @@ export default function SquamishBaseWeekendPage() {
         <p>
           {LOCKED_CLAIM}
         </p>
+        <p>
+          How we chose these stops: Best Sea to Sky is a local Sea to Sky directory, hand-picked, with real Google ratings and no pay-to-rank. Every place below links to its listing, where you can see its Google rating and review count.
+        </p>
+      </div>
+
+      <div className="bg-amber-50 rounded-2xl p-6 md:p-8 border border-amber-100 mb-8">
+        <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
+          What is open in Squamish in late November 2026?
+        </h2>
+        <ul className="space-y-3 text-sm text-slate-600 leading-relaxed list-disc pl-5">
+          <li>
+            <Link href="/visit/sea-to-sky-gondola-squamish" className="text-emerald-700 font-semibold hover:underline">
+              Sea to Sky Gondola
+            </Link>
+            : closed November 16 to 26 for annual maintenance. It reopens Friday, November 27 for Spirit of the Season, which runs to December 31, with the Christmas Tree Lighting on Saturday, November 28. During the closure there are no gondola rides down, so if you hike up, you hike down.
+          </li>
+          <li>
+            Whistler Blackcomb: Blackcomb is scheduled to open Friday, November 20, and Whistler Mountain, PEAK 2 PEAK and the Creekside Gondola on Wednesday, November 25. Early season base lifts run 9am to 3:30pm. All dates and hours are subject to change with conditions, so check whistlerblackcomb.com before you drive. See the{' '}
+            <Link href="/guide/best-skiing-whistler" className="text-emerald-700 font-semibold hover:underline">
+              Whistler skiing guide
+            </Link>
+            .
+          </li>
+          <li>
+            <Link href="/visit/brackendale-eagles-provincial-park-squamish" className="text-emerald-700 font-semibold hover:underline">
+              Bald eagles in Brackendale
+            </Link>
+            : BC Parks says viewing peaks November to December. Watch from the Eagle Run dyke on Government Road. The eagle park itself is closed to visitors in winter.
+          </li>
+          <li>
+            <Link href="/visit/stawamus-chief-provincial-park-squamish" className="text-emerald-700 font-semibold hover:underline">
+              The Stawamus Chief
+            </Link>
+            : open, but BC Parks warns that trail and stair treads can be slippery in winter, with falling ice. Start early, since daylight is short, and bring a headlamp.
+          </li>
+        </ul>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
@@ -142,10 +194,7 @@ export default function SquamishBaseWeekendPage() {
           drive up for a lift day. Your sleep just costs less of the weekend budget.
         </p>
         <p className="text-sm text-slate-600 leading-relaxed">
-          Think roughly in the neighbourhood of $150 a night for a solid stay, depending on
-          season and how early you book. Village rates can blow past that without blinking. We
-          will not pretend every listing hits that number. The point is the pattern: Squamish
-          as your home base, Whistler (or the quieter lakes) as your day trip.
+          Rates move with the season and how early you book, so we do not quote prices. The pattern is what matters: Squamish as your home base, Whistler or the quieter lakes as your day trip.
         </p>
       </div>
 
@@ -177,60 +226,84 @@ export default function SquamishBaseWeekendPage() {
         </div>
 
         <p className="text-sm text-slate-600 leading-relaxed mb-6">
-          Hike the Chief, or walk Shannon Falls, then a patio. Roll in from Vancouver. Traffic
-          on Highway 99 can be a character of its own on Friday afternoons, so leave with a bit
-          of buffer if you can. Once you hit Squamish, park the car and stretch. Do not
-          overschedule Day 1.
+          Drive up Highway 99 from Vancouver, leave a buffer for Friday or Saturday traffic, and keep the first day simple: one hike, one wander, one good dinner.
         </p>
 
-        <div className="flex flex-col gap-5 mb-6">
+        <div className="flex flex-col gap-5">
           <div className="bg-white rounded-xl p-5 md:p-6 border border-slate-100">
-            <p className="text-xs font-bold uppercase tracking-wide text-emerald-700 mb-2">
-              Option A
-            </p>
             <h3 className="font-serif text-base font-bold text-slate-900 mb-2">
-              The Chief (or a shorter piece of it)
+              Morning
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              The Stawamus Chief is the postcard. First Peak is the classic &quot;I did a
-              thing&quot; stop. Second Peak rewards you with a bigger view and usually fewer
-              people. If your legs are fresh and you have daylight, go farther. If you just
-              arrived and want something friendlier, pick a shorter trail or a viewpoint and
-              save the full grind for another visit.
+              Coffee at{' '}
+              <Link href="/eat/tuba-cafe-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Tuba Cafe
+              </Link>
+              {' '}on 2 Ave, then hike the{' '}
+              <Link href="/play/stawamus-chief-trail-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Stawamus Chief
+              </Link>
+              . First Peak is 1.5 km with about 540 m of gain, per BC Parks, and the stairs get slick in late fall. If the group is tired or the trail is icy, walk to{' '}
+              <Link href="/visit/shannon-falls-provincial-park-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Shannon Falls
+              </Link>
+              {' '}instead. It sits right beside the Chief.
             </p>
           </div>
 
           <div className="bg-white rounded-xl p-5 md:p-6 border border-slate-100">
-            <p className="text-xs font-bold uppercase tracking-wide text-emerald-700 mb-2">
-              Option B
-            </p>
             <h3 className="font-serif text-base font-bold text-slate-900 mb-2">
-              Shannon Falls
+              Afternoon
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Easy boardwalk, big waterfall, mist on your face. Good when the group has mixed
-              energy levels or you arrived later than planned. Pair it with a short forest
-              wander if you still have juice.
+              Warm up downtown. Stop at the{' '}
+              <Link href="/shop/squamish-adventure-centre-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Squamish Adventure Centre
+              </Link>
+              {' '}on Loggers Lane for local info, then a bowl at{' '}
+              <Link href="/eat/taka-ramen-and-sushi-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Taka Ramen &amp; Sushi
+              </Link>
+              {' '}on Cleveland Avenue. The{' '}
+              <Link href="/visit/sea-to-sky-gondola-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Sea to Sky Gondola
+              </Link>
+              {' '}is closed until November 27; from then on it is a strong afternoon pick for the festive Summit.
             </p>
           </div>
-        </div>
 
-        <div className="bg-slate-50 rounded-xl p-5 md:p-6 border border-slate-100">
-          <h3 className="font-serif text-base font-bold text-slate-900 mb-2">
-            Evening: patio, please
-          </h3>
-          <p className="text-sm text-slate-600 leading-relaxed">
-            Squamish does patios well. Browse{' '}
-            <Link href="/best-patios" className="text-emerald-700 font-semibold hover:underline">
-              Best Patios
-            </Link>{' '}
-            or{' '}
-            <Link href="/guide/best-restaurants-squamish" className="text-emerald-700 font-semibold hover:underline">
-              restaurants in Squamish
-            </Link>
-            . We will not invent tonight&apos;s hours. Check ratings, check what is open, and
-            pick a spot that matches your vibe. Sleep in Squamish. That is the whole move.
-          </p>
+          <div className="bg-white rounded-xl p-5 md:p-6 border border-slate-100">
+            <h3 className="font-serif text-base font-bold text-slate-900 mb-2">
+              Evening
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              Small plates and cocktails at{' '}
+              <Link href="/eat/the-broken-seal-squamish" className="text-emerald-700 font-semibold hover:underline">
+                The Broken Seal
+              </Link>
+              {' '}on Loggers Lane, or a pint at{' '}
+              <Link href="/eat/howe-sound-inn-and-brewing-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Howe Sound Inn &amp; Brewing
+              </Link>
+              {' '}downtown. More ideas on our{' '}
+              <Link href="/guide/best-restaurants-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Squamish restaurants page
+              </Link>
+              . Sleep in Squamish:{' '}
+              <Link href="/stay/sandman-hotel-and-suites-squamish-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Sandman Hotel &amp; Suites
+              </Link>
+              ,{' '}
+              <Link href="/stay/squamish-adventure-inn-and-hostel-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Squamish Adventure Inn &amp; Hostel
+              </Link>
+              {' '}or{' '}
+              <Link href="/stay/sunwolf-riverside-resort-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Sunwolf Riverside Resort
+              </Link>
+              {' '}in Brackendale.
+            </p>
+          </div>
         </div>
       </div>
 
@@ -245,45 +318,75 @@ export default function SquamishBaseWeekendPage() {
         </div>
 
         <p className="text-sm text-slate-600 leading-relaxed mb-6">
-          Whistler lifts, or Alice Lake and the Four Lakes loop. Wake up without Village
-          parking stress. Coffee in Squamish. Then decide based on weather and mood.
+          Wake up without Village parking stress, then pick your day by weather and mood.
         </p>
 
-        <div className="flex flex-col gap-5 mb-6">
+        <div className="flex flex-col gap-5">
           <div className="bg-white rounded-xl p-5 md:p-6 border border-slate-100">
             <h3 className="font-serif text-base font-bold text-slate-900 mb-2">
-              If you came for the hill
+              Morning
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Drive up to Whistler for lifts. You get the terrain. You skip paying Village
-              hotel rates. Pack layers, snacks, and a plan for leaving before the weekend
-              rush home. Coming back down to Squamish for dinner often feels like exhaling.
+              Breakfast at{' '}
+              <Link href="/eat/the-crabapple-cafe-squamish" className="text-emerald-700 font-semibold hover:underline">
+                The Crabapple Café
+              </Link>
+              {' '}in Brackendale, then walk to the Eagle Run dyke on Government Road to look for{' '}
+              <Link href="/visit/brackendale-eagles-provincial-park-squamish" className="text-emerald-700 font-semibold hover:underline">
+                bald eagles
+              </Link>
+              . Late November into December is peak season. Bring binoculars and stay on the dyke.{' '}
+              <Link href="/eat/zephyr-cafe-at-the-bag-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Zephyr Café at The BAG
+              </Link>
+              {' '}is nearby for a second coffee.
             </p>
           </div>
 
           <div className="bg-white rounded-xl p-5 md:p-6 border border-slate-100">
             <h3 className="font-serif text-base font-bold text-slate-900 mb-2">
-              If the hill is socked in (or you want quiet)
+              Afternoon
+            </h3>
+            <p className="text-sm text-slate-600 leading-relaxed mb-3">
+              If you came for the hill: drive up to Whistler. Blackcomb opens November 20 and Whistler Mountain November 25, conditions permitting. Check whistlerblackcomb.com for lift status before you go.
+            </p>
+            <p className="text-sm text-slate-600 leading-relaxed">
+              If the hill is socked in or not open yet: stay close to base and walk the{' '}
+              <Link href="/visit/four-lakes-trail-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Four Lakes Trail
+              </Link>
+              {' '}at{' '}
+              <Link href="/visit/alice-lake-provincial-park-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Alice Lake Provincial Park
+              </Link>
+              . Trees, shoreline, and room to breathe.
+            </p>
+          </div>
+
+          <div className="bg-white rounded-xl p-5 md:p-6 border border-slate-100">
+            <h3 className="font-serif text-base font-bold text-slate-900 mb-2">
+              Evening
             </h3>
             <p className="text-sm text-slate-600 leading-relaxed">
-              Head for forest and water closer to home base. The Four Lakes area near Alice
-              Lake is a quieter forest-and-lakes loop. Think trees, shoreline, and room to
-              breathe.
+              Dinner at{' '}
+              <Link href="/eat/the-watershed-grill-squamish" className="text-emerald-700 font-semibold hover:underline">
+                The Watershed Grill
+              </Link>
+              {' '}on Government Road in Brackendale, or{' '}
+              <Link href="/eat/backcountry-brewing-squamish" className="text-emerald-700 font-semibold hover:underline">
+                Backcountry Brewing
+              </Link>
+              {' '}on Commercial Way. Then drive home, and give yourself time, because Sunday traffic back to Vancouver can be slow.
             </p>
           </div>
         </div>
-
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Either path works. Late afternoon or evening, you are back in Squamish. Another
-          patio if you have it in you. Early night if the legs are cooked.
-        </p>
       </div>
 
       <div className="bg-white rounded-2xl p-6 md:p-8 border border-slate-200 mb-8">
         <h2 className="font-serif text-xl font-bold text-slate-900 mb-3">
           Where should I stay?
         </h2>
-        <p className="text-sm text-slate-600 leading-relaxed mb-3">
+        <p className="text-sm text-slate-600 leading-relaxed">
           Stay in Squamish. We are not going to name three hotels and invent nightly rates.
           Start here:{' '}
           <Link href="/stay" className="text-emerald-700 font-semibold hover:underline">
@@ -291,10 +394,6 @@ export default function SquamishBaseWeekendPage() {
           </Link>
           . Filter for Squamish, read the real ratings, and pick something that fits your
           budget and style.
-        </p>
-        <p className="text-sm text-slate-600 leading-relaxed">
-          Rough budgeting tip: aim for that ~$150/night neighbourhood when you can, and book
-          earlier for peak weekends.
         </p>
       </div>
 

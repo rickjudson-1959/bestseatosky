@@ -91,6 +91,7 @@ const DAYS: { day: string; title: string; slots: Slot[] }[] = [
         title: ['Ride the ', L.gondola],
         body: [
           'The gondola climbs above Howe Sound to viewing platforms, the Sky Pilot suspension bridge, and hiking trails at the top. Food is available at the ', L.summitLodge, '.',
+          ' Note: the gondola is closed November 16 to 26, 2026 for annual maintenance and reopens November 27.',
         ],
       },
       {
