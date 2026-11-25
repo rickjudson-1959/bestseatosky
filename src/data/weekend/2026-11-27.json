@@ -1,0 +1,736 @@
+{
+  "slug": "2026-11-27",
+  "title": "Sea to Sky weekend: Nov 27 to 29, 2026",
+  "description": "What’s on in Whistler, Squamish, Pemberton and Britannia Beach this weekend: both mountains open, the gondola reopens, tree lightings, holiday markets and the North Pole Express.",
+  "masthead": "Sea to Sky weekend: Nov 27 to 29, 2026",
+  "startDate": "2026-11-27",
+  "endDate": "2026-11-29",
+  "intro": "What’s on in Whistler, Squamish, Pemberton and Britannia Beach this weekend: both mountains open, the gondola reopens, tree lightings, holiday markets and the North Pole Express.",
+  "days": [
+    {
+      "heading": "Friday, November 27",
+      "countLabel": "15 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "9:00 AM–3:30 PM",
+              "timeTone": "clock",
+              "name": "Whistler Blackcomb: both mountains now open",
+              "venue": "Whistler Mountain & Blackcomb Mountain",
+              "blurb": "Whistler Mountain opened Wed Nov 25, joining Blackcomb (open since Nov 20), with the PEAK 2 PEAK and Creekside Gondola running. Opening terrain includes Emerald 6, Franz’s, Big Red and the Creekside Gondola. Lifts run 9:00 AM–3:30 PM through Jan 15.",
+              "sources": [
+                {
+                  "label": "whistlerblackcomb.com: Opening Day 2026–27",
+                  "href": "https://blog.whistlerblackcomb.com/2026/11/whistler-blackcomb-opening-day-2026-27-important-information-before-you-join-us/"
+                },
+                {
+                  "label": "whistlerblackcomb.com: Hours of operation",
+                  "href": "http://www.whistlerblackcomb.com/explore-the-resort/about-the-resort/hours-of-operation.aspx?tc_1=2"
+                }
+              ],
+              "timeNote": "both mountains open",
+              "warnings": [
+                "About 105 acres on Whistler Peak stay closed all winter after the 2026 rockslide"
+              ]
+            },
+            {
+              "time": "1:30–3:30 PM",
+              "timeTone": "clock",
+              "name": "Train Wreck Winter Hike",
+              "venue": "Whistler Experience Guide Basecamp, Fairmont Chateau Whistler",
+              "blurb": "Guided winter hike along the glacier-fed Cheakamus River to the remains of a 1950s train derailment.",
+              "sources": [
+                {
+                  "label": "chateau-whistler.com: Celebrate Season",
+                  "href": "https://www.chateau-whistler.com/experience/holidays-special-events/celebrate/"
+                }
+              ],
+              "badges": [
+                "Fairmont Chateau guests: advance sign-up required"
+              ]
+            },
+            {
+              "time": "3:00 PM",
+              "timeTone": "clock",
+              "name": "Taylor James après at Dusty’s Bar & BBQ",
+              "venue": "Dusty’s, Creekside, 2990 Creekside Way",
+              "blurb": "Live après set at Creekside; Dusty’s serves breakfast from Friday, and the season’s first Country Night follows Friday evening.",
+              "sources": [
+                {
+                  "label": "whistlerblackcomb.com: Opening Day 2026–27",
+                  "href": "https://blog.whistlerblackcomb.com/2026/11/whistler-blackcomb-opening-day-2026-27-important-information-before-you-join-us/"
+                }
+              ]
+            },
+            {
+              "time": "Evening",
+              "timeTone": "span",
+              "name": "Hairfarmers at Merlin’s",
+              "venue": "Merlin’s Bar & Grill, Whistler Village",
+              "blurb": "The Whistler band plays the opening-week Friday après.",
+              "sources": [
+                {
+                  "label": "whistlerblackcomb.com: Opening Day 2026–27",
+                  "href": "https://blog.whistlerblackcomb.com/2026/11/whistler-blackcomb-opening-day-2026-27-important-information-before-you-join-us/"
+                }
+              ],
+              "warnings": [
+                "Start time not published"
+              ]
+            },
+            {
+              "time": "7:00 PM doors, 8:00–10:00 PM",
+              "timeTone": "clock",
+              "name": "C.R. Avery’s East Van Abbey Cabaret",
+              "venue": "The Point Artist-Run Centre, 5678 Alta Lake Rd",
+              "blurb": "Harmonica, spoken word and heartfelt songs with a five-piece band, featured songwriters, poets and a dancer; cash/card bar. $25 (the $20 advance price ended Nov 14/15).",
+              "sources": [
+                {
+                  "label": "thepointartists.com: C.R. Avery’s East Van Abbey Cabaret",
+                  "href": "https://www.thepointartists.com/events/c-r-averys-east-van-abbey-cabaret-sgsml"
+                }
+              ],
+              "warnings": [
+                "Venue says doors 7 PM / show 8 PM: aggregators list 6 PM"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "9:00 AM",
+              "timeTone": "clock",
+              "name": "Sea to Sky Gondola reopens",
+              "venue": "36800 Highway 99",
+              "blurb": "Back from annual maintenance (closed Nov 16–26) with Spirit of the Season under way. Daily hours 9 AM–5 PM, last ride down 6 PM. Adult $73.95 online / $81.95 at the window; youth 13–18 $43.95 / $51.95; child 6–12 $29.95 / $37.95; under 6 free.",
+              "sources": [
+                {
+                  "label": "seatoskygondola.com: Annual maintenance closure",
+                  "href": "https://www.seatoskygondola.com/blog/sea-to-sky-gondola-annual-maintenance-closure-november-16-26/"
+                }
+              ],
+              "timeNote": "reopening day"
+            },
+            {
+              "time": "9:30 AM–1:30 PM",
+              "timeTone": "clock",
+              "name": "Photos with Santa at the Summit",
+              "venue": "Summit Lodge, Sea to Sky Gondola",
+              "blurb": "Pre-booked Santa photos at the summit. $30 for one photo; gondola ticket extra. Also Saturday and Sunday.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Photos with Santa at the Summit",
+                  "href": "https://whistlerroam.com/squamish/events/photos-with-santa-at-the-summit"
+                }
+              ]
+            },
+            {
+              "time": "10:30 AM & 11:30 AM",
+              "timeTone": "clock",
+              "name": "Storytime at the Library",
+              "venue": "Squamish Public Library",
+              "blurb": "Free half-hour of stories, songs and rhymes: family storytime at 10:30 AM, baby storytime at 11:30 AM. Regular Tue/Fri/Sat program.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Squamish this weekend",
+                  "href": "https://whistlerroam.com/squamish/events/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "4:00 PM",
+              "timeTone": "clock",
+              "name": "Pokémon Drop-In",
+              "venue": "Arrow Wood Games, Squamish",
+              "blurb": "Card trading and play for kids about 6–14. $15.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Squamish this weekend",
+                  "href": "https://whistlerroam.com/squamish/events/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "6:00 PM",
+              "timeTone": "clock",
+              "name": "Board Game Drop-in (adults only)",
+              "venue": "Arrow Wood Games, Squamish",
+              "blurb": "Evening board games for adults. $15.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Squamish this weekend",
+                  "href": "https://whistlerroam.com/squamish/events/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "6:30 PM",
+              "timeTone": "clock",
+              "name": "Kirtan and Potluck",
+              "venue": "Shala Yoga, Squamish",
+              "blurb": "Community chanting evening with a shared potluck.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish events",
+                  "href": "https://allevents.in/squamish"
+                }
+              ]
+            },
+            {
+              "time": "8:00 PM",
+              "timeTone": "clock",
+              "name": "Surf Hat (Night 1)",
+              "venue": "Brackendale Art Gallery, 41950 Government Rd, Squamish",
+              "blurb": "Squamish cold-water surf rock with opener Jean Jacket. $30 advance / $35 door. Also Saturday.",
+              "sources": [
+                {
+                  "label": "eventbrite.ca: Surf Hat tickets",
+                  "href": "https://www.eventbrite.ca/e/surf-hat-tickets-1991641024919"
+                }
+              ],
+              "timeNote": "night 1",
+              "warnings": [
+                "Listed as sold out in places, and the start time varies by source (7–9 PM). Check before going"
+              ]
+            },
+            {
+              "time": "9:30 PM–2:00 AM",
+              "timeTone": "clock",
+              "name": "BASSTACHE: A Dubstep Movember Fundraiser",
+              "venue": "Trickster’s Hideout, 38005 Cleveland Ave, Squamish",
+              "blurb": "Dubstep and bass night on the Lost Signal Sound System with Calamity, Cyborq, DSAV and Hugh Mungus. $10 / $15 / $20.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: Events",
+                  "href": "https://trickstershideout.ca/event/"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Britannia Beach",
+          "entries": [
+            {
+              "time": "5:00–7:00 PM, tree lit 6:00 PM",
+              "timeTone": "span",
+              "name": "Britannia Village Christmas Tree Lighting",
+              "venue": "Britannia Village, 101 Church St",
+              "blurb": "Free. Carollers (Sunshine Choir and Monika Macias, 5–6 PM), hot drinks, kids’ activities, the first Holiday Makers Market of the season, and the Britannia Beach Fire Department’s vintage fire truck.",
+              "sources": [
+                {
+                  "label": "britanniavillage.ca: Holiday Season 2026",
+                  "href": "https://britanniavillage.ca/holiday-season-2026/"
+                },
+                {
+                  "label": "exploresquamish.com: Tree Lighting",
+                  "href": "https://www.exploresquamish.com/event/britannia-village-christmas-tree-lighting/"
+                }
+              ],
+              "warnings": [
+                "Village Instagram lists 4–8 PM; tree lighting at 6 PM on all sources"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pemberton",
+          "entries": [
+            {
+              "time": "6:15 PM doors, 6:30 PM movie",
+              "timeTone": "clock",
+              "name": "PAC Movie Night: “HOME” (the Whistler Blackcomb movie)",
+              "venue": "Signal Hill Elementary Gym, Portage Rd, Pemberton",
+              "blurb": "Family ski-film fundraiser for the PAC, with swag giveaways (Oyuki, Whistler Blackcomb, HEAD) and Grade 7 snack sales. Bring cash. $5 at the door; students must be accompanied by an adult.",
+              "sources": [
+                {
+                  "label": "Signal Hill PAC: Facebook",
+                  "href": "https://www.facebook.com/SignalHillPAC/posts/pfbid0jvEDc97KKG589iLYJWppijCSEv8wtchFo5dyoQ3W56Eh4EuQ1iZzdbAG4rSdECz5l"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Saturday, November 28",
+      "countLabel": "12 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "11:00 AM–7:00 PM",
+              "timeTone": "clock",
+              "name": "Arts Whistler Holiday Market (Day 1)",
+              "venue": "Whistler Conference Centre, 4010 Whistler Way",
+              "blurb": "100+ BC artisan stalls (food and drink, fine art, jewellery, ceramics and apparel) plus the Bratz Biz young-entrepreneur market. $5; kids under 16 free. Also Sunday.",
+              "sources": [
+                {
+                  "label": "artswhistler.com: Holiday Market",
+                  "href": "https://artswhistler.com/calendar/arts-whistler-holiday-market/"
+                }
+              ],
+              "timeNote": "day 1",
+              "warnings": [
+                "Stall count varies by source (100+ / 150+)"
+              ]
+            },
+            {
+              "time": "4:00–6:00 PM",
+              "timeTone": "clock",
+              "name": "Holiday Family Portraits",
+              "venue": "Fairmont Chateau Whistler (Algonquin room)",
+              "blurb": "Pre-holiday family portraits at the Chateau.",
+              "sources": [
+                {
+                  "label": "chateau-whistler.com: Celebrate Season",
+                  "href": "https://www.chateau-whistler.com/experience/holidays-special-events/celebrate/"
+                }
+              ],
+              "badges": [
+                "Fairmont Chateau guests: advance sign-up required"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "9:00 AM",
+              "timeTone": "clock",
+              "name": "Squamish Mamquam Parkrun",
+              "venue": "Mamquam River trails",
+              "blurb": "Free, volunteer-run timed 5 km on a flat gravel double loop; walkers welcome. Regular weekly run.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Squamish this weekend",
+                  "href": "https://whistlerroam.com/squamish/events/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "9:30 AM–1:30 PM",
+              "timeTone": "clock",
+              "name": "Photos with Santa at the Summit",
+              "venue": "Summit Lodge, Sea to Sky Gondola",
+              "blurb": "Pre-booked Santa photos at the summit. $30 for one photo; gondola ticket extra. Also Friday and Sunday.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Photos with Santa at the Summit",
+                  "href": "https://whistlerroam.com/squamish/events/photos-with-santa-at-the-summit"
+                }
+              ]
+            },
+            {
+              "time": "10:00 AM–2:00 PM",
+              "timeTone": "clock",
+              "name": "Squamish Farmers’ Winter Market",
+              "venue": "37996 Cleveland Ave, downtown next to Junction Park",
+              "blurb": "Local farmers, food makers, crafts and buskers; the winter market runs Saturdays to Dec 19.",
+              "sources": [
+                {
+                  "label": "squamishfarmersmarket.com: About the Market",
+                  "href": "https://www.squamishfarmersmarket.com/about-the-market"
+                }
+              ]
+            },
+            {
+              "time": "10:00 AM–4:00 PM",
+              "timeTone": "clock",
+              "name": "Sea to Sky Potters’ Guild Holiday Pottery Sale",
+              "venue": "Squamish Adventure Centre, 38551 Loggers Lane",
+              "blurb": "Holiday pottery sale from the local potters’ guild.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish events",
+                  "href": "https://allevents.in/squamish"
+                }
+              ]
+            },
+            {
+              "time": "10:00 AM–4:00 PM",
+              "timeTone": "clock",
+              "name": "Create-mas Squamish Holiday Market",
+              "venue": "Units 1 & 2, 39449 Queens Way",
+              "blurb": "Holiday market from local makers.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish events",
+                  "href": "https://allevents.in/squamish"
+                }
+              ]
+            },
+            {
+              "time": "11:00 AM, 1:00, 3:00, 5:00 PM",
+              "timeTone": "clock",
+              "name": "North Pole Express (Day 1)",
+              "venue": "Railway Museum of BC, 39645 Government Rd",
+              "blurb": "Christmas train ride with onboard entertainment, cookies and a visit with Santa and Mrs. Claus. Bronze $48.76, Silver $55.12, Gold $60.95, Platinum $75.26 per seat; arrive 1 hour before departure. Also Sunday.",
+              "sources": [
+                {
+                  "label": "wcra.org: North Pole Express",
+                  "href": "https://www.wcra.org/north-pole-express/"
+                }
+              ],
+              "timeNote": "day 1",
+              "badges": [
+                "Limited-release 35% off Bronze & Platinum for Nov 28–29 departures bought within 48 hours"
+              ]
+            },
+            {
+              "time": "2:30–5:30 PM, tree lit 5:00 PM",
+              "timeTone": "span",
+              "name": "Christmas Tree Lighting at the Summit",
+              "venue": "Summit Lodge & Backyard Plaza, Sea to Sky Gondola",
+              "blurb": "Live music from Doug & Jane, Sea to Sky Singers carols 4:30–5:30 PM, Santa helps light the tree, plus a fire, food and drink specials and a kids’ craft table. Free with lift ticket or membership.",
+              "sources": [
+                {
+                  "label": "seatoskygondola.com: What’s coming up",
+                  "href": "https://www.seatoskygondola.com/blog/whats-coming-up-at-sea-to-sky-gondola/"
+                },
+                {
+                  "label": "exploresquamish.com: Christmas Tree Lighting",
+                  "href": "https://www.exploresquamish.com/event/christmas-tree-lighting/"
+                }
+              ],
+              "warnings": [
+                "Explore Squamish lists 3–5 PM; tree lighting at 5 PM on all sources"
+              ]
+            },
+            {
+              "time": "8:00–10:00 PM",
+              "timeTone": "clock",
+              "name": "Nearly Neil (Neil Diamond tribute)",
+              "venue": "Royal Canadian Legion Br 277, Squamish",
+              "blurb": "Neil Diamond tribute night at the Legion. $25.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish events",
+                  "href": "https://allevents.in/squamish"
+                }
+              ]
+            },
+            {
+              "time": "8:00 PM",
+              "timeTone": "clock",
+              "name": "Surf Hat (Night 2)",
+              "venue": "Brackendale Art Gallery, 41950 Government Rd, Squamish",
+              "blurb": "Second night of the Squamish cold-water surf rock band, with opener Jean Jacket. $30 advance / $35 door.",
+              "sources": [
+                {
+                  "label": "eventbrite.ca: Surf Hat tickets",
+                  "href": "https://www.eventbrite.ca/e/surf-hat-tickets-1991641024919"
+                }
+              ],
+              "timeNote": "night 2",
+              "warnings": [
+                "Listed as sold out in places; start time varies by source. Check before going"
+              ]
+            },
+            {
+              "time": "9:00 PM doors, 9:30 PM show",
+              "timeTone": "clock",
+              "name": "Bobcaygeon: A Tribute to The Tragically Hip",
+              "venue": "Trickster’s Hideout, 38005 Cleveland Ave, Squamish",
+              "blurb": "Vancouver tribute band playing the Hip’s catalogue. $20 / $25.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: Events",
+                  "href": "https://trickstershideout.ca/event/"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Sunday, November 29",
+      "countLabel": "14 happenings",
+      "towns": [
+        {
+          "name": "Whistler",
+          "entries": [
+            {
+              "time": "10:00 AM–6:00 PM",
+              "timeTone": "clock",
+              "name": "Arts Whistler Holiday Market (Day 2)",
+              "venue": "Whistler Conference Centre, 4010 Whistler Way",
+              "blurb": "Second day of the holiday market: 100+ BC artisan stalls plus the Bratz Biz young-entrepreneur market. $5; kids under 16 free.",
+              "sources": [
+                {
+                  "label": "artswhistler.com: Holiday Market",
+                  "href": "https://artswhistler.com/calendar/arts-whistler-holiday-market/"
+                }
+              ],
+              "timeNote": "day 2"
+            },
+            {
+              "time": "10:00–11:00 AM",
+              "timeTone": "clock",
+              "name": "Letters to Santa",
+              "venue": "Empress Ballroom, Fairmont Chateau Whistler",
+              "blurb": "Festive family workshop: write a letter to Santa with hot chocolate, creative stationery and holiday keepsakes.",
+              "sources": [
+                {
+                  "label": "chateau-whistler.com: Celebrate Season",
+                  "href": "https://www.chateau-whistler.com/experience/holidays-special-events/celebrate/"
+                }
+              ],
+              "badges": [
+                "Fairmont Chateau guests: advance sign-up required"
+              ]
+            },
+            {
+              "time": "4:00–4:45 PM",
+              "timeTone": "clock",
+              "name": "Holiday Card Writing",
+              "venue": "Empress Ballroom, Fairmont Chateau Whistler",
+              "blurb": "Complimentary cards and postage for holiday greetings.",
+              "sources": [
+                {
+                  "label": "chateau-whistler.com: Celebrate Season",
+                  "href": "https://www.chateau-whistler.com/experience/holidays-special-events/celebrate/"
+                }
+              ],
+              "badges": [
+                "Fairmont Chateau guests: advance sign-up required"
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Squamish",
+          "entries": [
+            {
+              "time": "9:30 AM–1:30 PM",
+              "timeTone": "clock",
+              "name": "Photos with Santa at the Summit",
+              "venue": "Summit Lodge, Sea to Sky Gondola",
+              "blurb": "Pre-booked Santa photos at the summit. $30 for one photo; gondola ticket extra. Also Friday and Saturday.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Photos with Santa at the Summit",
+                  "href": "https://whistlerroam.com/squamish/events/photos-with-santa-at-the-summit"
+                }
+              ]
+            },
+            {
+              "time": "10:00 AM",
+              "timeTone": "clock",
+              "name": "Free Drop-In Storytime",
+              "venue": "Gather Bookshop, downtown Squamish",
+              "blurb": "Free Sunday storytime, sometimes with local author guests.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Squamish this weekend",
+                  "href": "https://whistlerroam.com/squamish/events/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "11:00 AM, 1:00, 3:00, 5:00 PM",
+              "timeTone": "clock",
+              "name": "North Pole Express (Day 2)",
+              "venue": "Railway Museum of BC, 39645 Government Rd",
+              "blurb": "Second day of the Christmas train ride with onboard entertainment, cookies and a visit with Santa and Mrs. Claus. Bronze $48.76, Silver $55.12, Gold $60.95, Platinum $75.26 per seat; arrive 1 hour before departure.",
+              "sources": [
+                {
+                  "label": "wcra.org: North Pole Express",
+                  "href": "https://www.wcra.org/north-pole-express/"
+                }
+              ],
+              "timeNote": "day 2",
+              "badges": [
+                "Limited-release 35% off Bronze & Platinum for Nov 28–29 departures bought within 48 hours"
+              ]
+            },
+            {
+              "time": "12:00–4:00 PM",
+              "timeTone": "clock",
+              "name": "Squamish Dance Centre Holiday Craft Fair",
+              "venue": "Squamish Dance Centre",
+              "blurb": "Holiday craft fair from local makers.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish events",
+                  "href": "https://allevents.in/squamish"
+                }
+              ]
+            },
+            {
+              "time": "12:00 PM",
+              "timeTone": "clock",
+              "name": "Board Game Drop-in (with game host)",
+              "venue": "Arrow Wood Games, Squamish",
+              "blurb": "Sunday board games with a host to teach the games. $15.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Squamish this weekend",
+                  "href": "https://whistlerroam.com/squamish/events/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "1:00–5:00 PM",
+              "timeTone": "span",
+              "name": "Britannia Village Holiday Makers Market",
+              "venue": "Britannia Village, 101 Church St, Britannia Beach",
+              "blurb": "Weekly Sunday makers market, running through the season.",
+              "sources": [
+                {
+                  "label": "vancouver.page: Britannia Village Holiday Season",
+                  "href": "https://vancouver.page/event/britannia-village-holiday-season/"
+                }
+              ],
+              "warnings": [
+                "Hours per an event roundup: not confirmed on the village’s own page"
+              ]
+            },
+            {
+              "time": "5:00 PM",
+              "timeTone": "clock",
+              "name": "Robbie Johnson Live at The Backyard",
+              "venue": "The Backyard, Squamish",
+              "blurb": "Free Sunday set of classic country and contemporary folk, in the Johnny Cash / Corb Lund vein.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: Squamish this weekend",
+                  "href": "https://whistlerroam.com/squamish/events/this-weekend"
+                }
+              ]
+            },
+            {
+              "time": "5:00 PM",
+              "timeTone": "clock",
+              "name": "Sunday Night Football",
+              "venue": "Trickster’s Hideout, Squamish",
+              "blurb": "Sunday night games on the big screens with the full sound system and three projectors: the weekly football watch at Trickster’s.",
+              "sources": [
+                {
+                  "label": "trickstershideout.ca: Events",
+                  "href": "https://trickstershideout.ca/event/"
+                }
+              ]
+            },
+            {
+              "time": "6:30–8:30 PM",
+              "timeTone": "clock",
+              "name": "Carol’s Carols",
+              "venue": "Brackendale Art Gallery, 41950 Government Rd, Squamish",
+              "blurb": "Free community carol singing at the BAG.",
+              "sources": [
+                {
+                  "label": "allevents.in: Squamish events",
+                  "href": "https://allevents.in/squamish"
+                }
+              ]
+            }
+          ]
+        },
+        {
+          "name": "Pemberton",
+          "entries": [
+            {
+              "time": "10:00 AM–3:00 PM",
+              "timeTone": "clock",
+              "name": "SantaPAWS",
+              "venue": "North Arm Farm, 1888 Highway 99, Pemberton",
+              "blurb": "Holiday photos with Santa for pets (and their people); annual fundraiser for the Pemberton Animal Well-Being Society.",
+              "sources": [
+                {
+                  "label": "whistlerroam.com: SantaPAWS",
+                  "href": "https://whistlerroam.com/pemberton/events/santapaws"
+                }
+              ],
+              "warnings": [
+                "No price listed on the source"
+              ]
+            },
+            {
+              "time": "Time not listed",
+              "timeTone": "span",
+              "name": "Market at the Helmers Farm Stand: Stock up for Winter",
+              "venue": "Helmers Organic Farm, 8409 Pemberton Meadows Rd",
+              "blurb": "Farm stand market to stock up for winter.",
+              "sources": [
+                {
+                  "label": "allevents.in: Pemberton events",
+                  "href": "https://allevents.in/pemberton/"
+                }
+              ],
+              "warnings": [
+                "Date confirmed; hours not published"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "heading": "Running all weekend",
+      "countLabel": "3 happenings",
+      "towns": [
+        {
+          "name": "",
+          "entries": [
+            {
+              "time": "Runs Nov 27–29",
+              "timeTone": "span",
+              "name": "Whistler Winterlight",
+              "venue": "Whistler Olympic Plaza, 4144 Village Stroll",
+              "blurb": "Ferris wheel (50+ ft, lit): Fri/Sat 12–8 PM, Sun 12–5 PM, $5/ride. Free evening programming Fri/Sat 5–8 PM: Converge laser installation, glowing archways, live DJs, Berzerkatroid the fire-breathing dragon, Firefly Forest, shadow puppets, illuminated characters and a pop-up market. Outdoor skating daily in three sessions (11 AM–1:30 PM, 2:30–5 PM, 6–8:30 PM): adult $6.25, youth $5.25, child $3.75, skate rental $7.25. Free entry to the Plaza.",
+              "sources": [
+                {
+                  "label": "whistler.com: Whistler Winterlight",
+                  "href": "https://www.whistler.com/events/whistler-winterlight/"
+                },
+                {
+                  "label": "whistler.ca: Winterlight",
+                  "href": "http://www.whistler.ca/parks-recreation-culture/festivals-and-events/celebrate-the-start-of-the-season-with-whistler-winterlight/"
+                }
+              ]
+            },
+            {
+              "time": "Runs Nov 27 – Dec 31",
+              "timeTone": "span",
+              "name": "Spirit of the Season, Sea to Sky Gondola",
+              "venue": "Summit, 36800 Highway 99",
+              "blurb": "Decorated Spirit Trail forest walk daily, plus a guided Forest Walking Tour daily 12–1 PM and a Twilight Tour daily 4–5 PM (headlamp); Santa photos on select dates. Included with gondola admission.",
+              "sources": [
+                {
+                  "label": "seatoskygondola.com: What’s coming up",
+                  "href": "https://www.seatoskygondola.com/blog/whats-coming-up-at-sea-to-sky-gondola/"
+                }
+              ]
+            },
+            {
+              "time": "Runs Nov 2 – Feb 28",
+              "timeTone": "span",
+              "name": "Ore & Orcas: Howe Sound / Átl’ḵa7tsem, A Recovering Ecosystem",
+              "venue": "Britannia Mine Museum, Terra Lab: open daily 9:00 AM–4:30 PM",
+              "blurb": "Temporary exhibit on Howe Sound’s recovering marine ecosystem, including a real killer-whale skeleton, plus the new Handmade Histories display of Britannia scrapbooks and photo albums (Nov 16 – Jan 4).",
+              "sources": [
+                {
+                  "label": "britanniaminemuseum.ca: Events and Exhibits",
+                  "href": "https://www.britanniaminemuseum.ca/pages/events-at-britannia-mine-museum"
+                }
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "notes": [
+    "Confirm before you go. Times were researched on Nov 25, 2026 from the source pages linked above. Check the event pages directly before heading out, especially listings marked with time warnings.",
+    "Events without stated times were listed on their source calendars with no start time given; those marked “unconfirmed” had conflicting times across sources. Lions Bay, Horseshoe Bay and Furry Creek had no verified events this weekend. The Sea to Sky Gondola reopens Friday, Nov 27, after annual maintenance."
+  ]
+}

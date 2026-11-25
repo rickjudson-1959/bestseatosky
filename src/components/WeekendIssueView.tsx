@@ -57,10 +57,12 @@ export default function WeekendIssueView({ issue, today, pastDetail }: Props) {
           </h2>
           {day.towns.map((town) => (
             <div key={`${day.heading}-${town.name}`}>
-              <h3 className="mt-6 mb-3 text-xs font-bold uppercase tracking-widest text-emerald-800">
-                {town.name}
-              </h3>
-              <div className="flex flex-col gap-3">
+              {town.name ? (
+                <h3 className="mt-6 mb-3 text-xs font-bold uppercase tracking-widest text-emerald-800">
+                  {town.name}
+                </h3>
+              ) : null}
+              <div className={`flex flex-col gap-3${town.name ? '' : ' mt-6'}`}>
                 {town.entries.map((entry) => (
                   <article
                     key={`${day.heading}-${town.name}-${entry.name}-${entry.time}`}

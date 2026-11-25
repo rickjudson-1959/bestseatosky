@@ -117,6 +117,8 @@ test('forbidden strings fail in any phone formatting, and en dashes do not', () 
   assert.ok(findIssueViolations('A real \u2014 dash').includes('em dash'));
   assert.ok(findIssueViolations('written as \\u2014').includes('em dash'));
   assert.ok(findIssueViolations('Cheakamus Centre').includes('Cheakamus'));
+  assert.ok(findIssueViolations('cheakamus   centre').includes('Cheakamus'));
+  assert.deepEqual(findIssueViolations('glacier-fed Cheakamus River'), []);
   assert.ok(findIssueViolations('{{ unsubscribe }}').includes('{{'));
 
   const broken = sampleIssue();
@@ -237,6 +239,41 @@ test('the HTML converter drops the unsubscribe tag and keeps an unconfirmed warn
   assert.equal(unsent.days[0].countLabel, '1 happenings');
 });
 
+test('a day with no town heading keeps its cards and counts them', () => {
+  const html = `<!DOCTYPE html><html><body>
+<table><tr><td style="background-color:#17422e;padding:34px;">
+<div style="font-size:30px;">Sea to Sky weekend: Nov 27&ndash;29</div>
+<div style="font-size:14px;">What is on.</div>
+</td></tr><tr><td>
+<div style="font-size:22px;">Running all weekend</div>
+<table role="presentation" style="border-radius:14px;"><tr><td style="padding:16px;">
+<span style="background:#c26716;padding:5px 10px;">Runs Nov 27&ndash;29</span>
+<div style="font-size:16px;font-weight:700;">Sample lights</div>
+<div style="font-size:13px;">Town plaza</div>
+<div style="font-size:14px;">Lights from 5&ndash;8 PM.</div>
+<div style="border-top:1px dashed #e2dccc;">Source: <a href="https://example.com/lights">example.com: lights</a></div>
+</td></tr></table>
+</td></tr>
+<tr><td style="background-color:#f2eee4;"><!-- Footer -->
+<div>Confirm before you go.</div>
+<div>Best Sea to Sky &middot; <a href="https://bestseatosky.com">bestseatosky.com</a></div>
+</td></tr></table></body></html>`;
+
+  const issue = parseWeekendHtml(html, {
+    title: 'Sea to Sky weekend: Nov 27–29, 2026',
+    start: '2026-11-27',
+    end: '2026-11-29',
+  });
+  assert.equal(issue.days.length, 1);
+  assert.equal(issue.days[0].heading, 'Running all weekend');
+  assert.equal(issue.days[0].countLabel, '1 happenings');
+  assert.equal(issue.days[0].towns[0].name, '');
+  assert.equal(issue.days[0].towns[0].entries[0].name, 'Sample lights');
+  assert.equal(issue.days[0].towns[0].entries[0].timeTone, 'span');
+  assert.equal('updated' in issue, false);
+  assert.equal(validateIssue(issue, '2026-11-27.json').days[0].towns[0].name, '');
+});
+
 test('an issue with no send time omits updated', () => {
   const issue = sampleIssue();
   delete issue.updated;
@@ -333,6 +370,97 @@ test('Nov 20-22 issue keeps the send time and 17 events', () => {
   assert.equal(isIssueCurrent(issue.endDate, '2026-11-22'), true);
   assert.equal(isIssueCurrent(issue.endDate, '2026-11-23'), false);
   assert.equal(isIssueCurrent(earlier[0].endDate, '2026-11-19'), false);
+});
+
+test('Nov 27-29 issue keeps the source counts and omits the send time', () => {
+  const file = path.join(DATA_DIR, '2026-11-27.json');
+  const raw = fs.readFileSync(file, 'utf8');
+  const issue = validateIssue(JSON.parse(raw), '2026-11-27.json');
+  assert.equal(issue.title, 'Sea to Sky weekend: Nov 27 to 29, 2026');
+  assert.equal(issue.slug, '2026-11-27');
+  assert.equal(issue.startDate, '2026-11-27');
+  assert.equal(issue.endDate, '2026-11-29');
+  assert.equal(issue.masthead, 'Sea to Sky weekend: Nov 27 to 29, 2026');
+  assert.equal(issue.description, issue.intro);
+  assert.equal(formatWeekendRange(issue.startDate, issue.endDate), 'November 27 to 29, 2026');
+  assert.equal('updated' in issue, false);
+  assert.deepEqual(issue.days.map((day) => day.heading), [
+    'Friday, November 27',
+    'Saturday, November 28',
+    'Sunday, November 29',
+    'Running all weekend',
+  ]);
+  assert.deepEqual(issue.days.map((day) => day.countLabel), [
+    '15 happenings',
+    '12 happenings',
+    '14 happenings',
+    '3 happenings',
+  ]);
+  assert.deepEqual(issue.days.map((day) => day.towns.map((town) => town.name)), [
+    ['Whistler', 'Squamish', 'Britannia Beach', 'Pemberton'],
+    ['Whistler', 'Squamish'],
+    ['Whistler', 'Squamish', 'Pemberton'],
+    [''],
+  ]);
+  const entries = issue.days.flatMap((day) => day.towns.flatMap((town) => town.entries));
+  assert.equal(entries.length, 44);
+  assert.deepEqual(entries.map((entry) => entry.name), [
+    "Whistler Blackcomb: both mountains now open",
+    "Train Wreck Winter Hike",
+    "Taylor James après at Dusty’s Bar & BBQ",
+    "Hairfarmers at Merlin’s",
+    "C.R. Avery’s East Van Abbey Cabaret",
+    "Sea to Sky Gondola reopens",
+    "Photos with Santa at the Summit",
+    "Storytime at the Library",
+    "Pokémon Drop-In",
+    "Board Game Drop-in (adults only)",
+    "Kirtan and Potluck",
+    "Surf Hat (Night 1)",
+    "BASSTACHE: A Dubstep Movember Fundraiser",
+    "Britannia Village Christmas Tree Lighting",
+    "PAC Movie Night: “HOME” (the Whistler Blackcomb movie)",
+    "Arts Whistler Holiday Market (Day 1)",
+    "Holiday Family Portraits",
+    "Squamish Mamquam Parkrun",
+    "Photos with Santa at the Summit",
+    "Squamish Farmers’ Winter Market",
+    "Sea to Sky Potters’ Guild Holiday Pottery Sale",
+    "Create-mas Squamish Holiday Market",
+    "North Pole Express (Day 1)",
+    "Christmas Tree Lighting at the Summit",
+    "Nearly Neil (Neil Diamond tribute)",
+    "Surf Hat (Night 2)",
+    "Bobcaygeon: A Tribute to The Tragically Hip",
+    "Arts Whistler Holiday Market (Day 2)",
+    "Letters to Santa",
+    "Holiday Card Writing",
+    "Photos with Santa at the Summit",
+    "Free Drop-In Storytime",
+    "North Pole Express (Day 2)",
+    "Squamish Dance Centre Holiday Craft Fair",
+    "Board Game Drop-in (with game host)",
+    "Britannia Village Holiday Makers Market",
+    "Robbie Johnson Live at The Backyard",
+    "Sunday Night Football",
+    "Carol’s Carols",
+    "SantaPAWS",
+    "Market at the Helmers Farm Stand: Stock up for Winter",
+    "Whistler Winterlight",
+    "Spirit of the Season, Sea to Sky Gondola",
+    "Ore & Orcas: Howe Sound / Átl’ḵa7tsem, A Recovering Ecosystem"
+  ]);
+  const hike = entries.find((entry) => entry.name === 'Train Wreck Winter Hike');
+  assert.equal(hike.blurb, 'Guided winter hike along the glacier-fed Cheakamus River to the remains of a 1950s train derailment.');
+  assert.equal(raw.includes('Cheakamus Centre'), false);
+  assert.equal(raw.includes('\u2014'), false);
+  assert.equal(raw.replace(/\D/g, '').includes('7787702931'), false);
+  assert.equal(/years on the corridor/i.test(raw), false);
+  assert.equal(issue.notes[0].startsWith('Confirm before you go.'), true);
+  assert.equal(issue.notes.some((note) => /bestseatosky\.com/i.test(note)), false);
+  const hrefs = entries.flatMap((entry) => entry.sources.map((source) => source.href));
+  assert.ok(hrefs.every((href) => href.startsWith('http://') || href.startsWith('https://')));
+  assert.equal(hrefs.filter((href) => href.startsWith('http://')).length, 2);
 });
 
 test('weekend signup copy asks for the list and leaves the planner defaults in place', () => {
