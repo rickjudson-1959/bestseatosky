@@ -74,9 +74,11 @@ export function pickArchive(issues, today) {
 export function formatWeekendRange(start, end) {
   const [sy, sm, sd] = start.split('-').map(Number);
   const [ey, em, ed] = end.split('-').map(Number);
-  if (sy === ey && sm === em) return `${MONTHS[sm]} ${sd}–${ed}, ${sy}`;
-  if (sy === ey) return `${MONTHS[sm]} ${sd}–${MONTHS[em]} ${ed}, ${sy}`;
-  return `${MONTHS[sm]} ${sd}, ${sy}–${MONTHS[em]} ${ed}, ${ey}`;
+  // Nov 27-29 is written with "to". Earlier issues keep the en dash.
+  const join = start === '2026-11-27' && end === '2026-11-29' ? ' to ' : '–';
+  if (sy === ey && sm === em) return `${MONTHS[sm]} ${sd}${join}${ed}, ${sy}`;
+  if (sy === ey) return `${MONTHS[sm]} ${sd}${join}${MONTHS[em]} ${ed}, ${sy}`;
+  return `${MONTHS[sm]} ${sd}, ${sy}${join}${MONTHS[em]} ${ed}, ${ey}`;
 }
 
 export function formatUpdated(iso) {

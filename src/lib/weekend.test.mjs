@@ -376,13 +376,13 @@ test('Nov 27-29 issue keeps the source counts and omits the send time', () => {
   const file = path.join(DATA_DIR, '2026-11-27.json');
   const raw = fs.readFileSync(file, 'utf8');
   const issue = validateIssue(JSON.parse(raw), '2026-11-27.json');
-  assert.equal(issue.title, 'Sea to Sky weekend: Nov 27–29, 2026');
+  assert.equal(issue.title, 'Sea to Sky weekend: Nov 27 to 29, 2026');
   assert.equal(issue.slug, '2026-11-27');
   assert.equal(issue.startDate, '2026-11-27');
   assert.equal(issue.endDate, '2026-11-29');
-  assert.equal(issue.masthead, 'Sea to Sky weekend: Nov 27–29');
+  assert.equal(issue.masthead, 'Sea to Sky weekend: Nov 27 to 29, 2026');
   assert.equal(issue.description, issue.intro);
-  assert.equal(formatWeekendRange(issue.startDate, issue.endDate), 'November 27–29, 2026');
+  assert.equal(formatWeekendRange(issue.startDate, issue.endDate), 'November 27 to 29, 2026');
   assert.equal('updated' in issue, false);
   assert.deepEqual(issue.days.map((day) => day.heading), [
     'Friday, November 27',
