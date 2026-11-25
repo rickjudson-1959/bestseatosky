@@ -107,7 +107,7 @@ export function findIssueViolations(text) {
   ) {
     violations.push('em dash');
   }
-  if (/cheakamus/i.test(text)) violations.push('Cheakamus');
+  if (/cheakamus\s+centre/i.test(text)) violations.push('Cheakamus');
   if (text.includes('{{')) violations.push('{{');
   if (text.replace(/\D/g, '').includes('7787702931')) violations.push('phone');
   return violations;
@@ -231,7 +231,9 @@ export function validateIssue(issue, filename = 'issue') {
     let count = 0;
     for (const town of day.towns) {
       assertExactKeys(town, TOWN_KEYS, `${day.heading} town`);
-      assertText(town.name, `${day.heading} town name`);
+      if (typeof town.name !== 'string' || (town.name !== '' && town.name.trim() === '')) {
+        fail(`${day.heading} town name must be text.`);
+      }
       if (!Array.isArray(town.entries) || town.entries.length === 0) {
         fail(`${day.heading} / ${town.name} has no events.`);
       }

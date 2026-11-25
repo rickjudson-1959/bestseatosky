@@ -31,6 +31,8 @@ Check the JSON before you commit: the title is the subject, the three fields `st
 
 The HTML Mark sends is one event card per table, with a day heading, a town heading, a time chip, a name, a venue, a blurb, optional badges, and a Source line. If a future file uses a different shape, the script exits with an error instead of writing a partial file. Fix the HTML only if a tag is broken, or extend the script. Do not hand-copy a partial conversion over a failed run without checking every event.
 
+A day heading with no "N happenings" label, and event cards with no town heading under it, is still one section. The script sets the count from the number of cards. The town name is blank, and the page does not show a town heading for that section.
+
 A hand-written file has to match `2026-11-06.json`:
 
 - `slug` equals `startDate`, and the filename is `<startDate>.json`.
@@ -56,7 +58,7 @@ The first issue has no photos. If you add one, the event needs all three fields:
 `npm test` reads every JSON file here and fails if any issue text contains:
 
 - an em dash (U+2014), including `&mdash;`
-- the word Cheakamus
+- Cheakamus Centre (the Cheakamus River is allowed)
 - `{{` (a Brevo merge tag)
 - the phone number 778-770-2931, in any formatting
 

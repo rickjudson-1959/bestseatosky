@@ -15,6 +15,9 @@
  *
  * Strips the Brevo unsubscribe link, email table chrome, and the Google Fonts
  * tag. Drops ?ref=eventlist-bluebar on allevents.in links. Keeps en dashes.
+ * A day heading with no happenings count, and cards with no town heading,
+ * stays one section. The count becomes the number of cards. The town name
+ * is blank so the page does not add a town heading.
  */
 
 import fs from 'node:fs';
@@ -48,6 +51,7 @@ const NAMED_ENTITIES = {
   ecirc: '\u00ea',
   euml: '\u00eb',
   aacute: '\u00e1',
+  Aacute: '\u00c1',
   agrave: '\u00e0',
   acirc: '\u00e2',
   auml: '\u00e4',
@@ -160,9 +164,11 @@ function parseCard(tableHtml) {
 function parseDayHeading(inner) {
   const span = inner.match(/<span[^>]*>([\s\S]*?)<\/span>/);
   const heading = textOf(span ? inner.slice(0, span.index) : inner);
-  const countLabel = span ? textOf(span[1]) : '';
-  if (!heading || !/^\d+\s+happenings$/.test(countLabel)) {
-    throw new Error(`Day heading is missing its happenings count: ${heading || inner}`);
+  if (!heading) throw new Error(`Day heading is empty: ${inner}`);
+  if (!span) return { heading, countLabel: '' };
+  const countLabel = textOf(span[1]);
+  if (!/^\d+\s+happenings$/.test(countLabel)) {
+    throw new Error(`Day heading is missing its happenings count: ${heading}`);
   }
   return { heading, countLabel };
 }
@@ -219,7 +225,10 @@ export function parseWeekendHtml(html, meta) {
       town = { name: textOf(marker.inner), entries: [] };
       day.towns.push(town);
     } else if (!town) {
-      throw new Error('An event card appears before its town heading.');
+      if (day.countLabel) throw new Error('An event card appears before its town heading.');
+      town = { name: '', entries: [] };
+      day.towns.push(town);
+      town.entries.push(parseCard(marker.html));
     } else {
       town.entries.push(parseCard(marker.html));
     }
@@ -227,8 +236,12 @@ export function parseWeekendHtml(html, meta) {
 
   if (days.length === 0) throw new Error('No day sections found.');
   for (const section of days) {
-    const expected = Number(section.countLabel.split(/\s+/)[0]);
     const actual = section.towns.reduce((sum, item) => sum + item.entries.length, 0);
+    if (!section.countLabel) {
+      if (actual === 0) throw new Error(`${section.heading} has no events.`);
+      section.countLabel = `${actual} happenings`;
+    }
+    const expected = Number(section.countLabel.split(/\s+/)[0]);
     if (actual !== expected) {
       throw new Error(`${section.heading} says ${section.countLabel} but ${actual} events were parsed.`);
     }
